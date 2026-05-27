@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Il Covo di Nello</title>
+<title>Il Covo di Nello — App Fire TV &amp; Android TV</title>
+<meta name="description" content="Il Covo di Nello: catalogo APK aggiornato per Amazon Fire TV Stick e Android TV. Download diretto, aggiornamenti automatici, guide e tutorial.">
+<meta name="theme-color" content="#0a0a0f">
+<meta property="og:title" content="Il Covo di Nello — App Fire TV & Android TV">
+<meta property="og:description" content="Catalogo APK aggiornato per Fire TV Stick e Android TV. Download diretto con codici Downloader.">
+<meta property="og:image" content="assets/nello.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="assets/nello.png">
+<link rel="apple-touch-icon" href="assets/nello.png">
+<link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -432,10 +441,8 @@ body.lite-mode.light-theme .search-box input {
 </div>
 
 <!-- Debug User Agent & Manual Switch -->
-<div id="lite-mode-banner" style="display:block; background:#ef4444; color:white; padding:20px; text-align:center; font-weight:bold; cursor:pointer;" onclick="activateLiteModeManual()">
-    ⚡ CLICCA QUI PER VERSIONE VELOCE FIRE TV ⚡<br>
-    <span style="font-size:12px; font-weight:normal;">Se vedi questo messaggio, clicca per attivare la modalità leggera e rimuovere lag.</span>
-    <div style="font-size:10px; font-weight:normal; opacity:0.8; margin-top:5px; user-select:all;" id="ua-debug"></div>
+<div id="lite-mode-banner" style="display:none; background:linear-gradient(135deg,#7c3aed,#ef4444); color:white; padding:15px 20px; text-align:center; font-weight:bold; cursor:pointer; border-radius:0 0 16px 16px;" onclick="activateLiteModeManual()">
+    ⚡ Fire TV rilevata — Clicca per versione veloce ⚡
 </div>
 
 <header>
@@ -1011,11 +1018,17 @@ body.lite-mode.light-theme .search-box input {
       const clickCount = clicks || 0;
       const clickHtml = `<div class="click-counter">⬇️ ${clickCount}</div>`;
 
+      const escapeHtml = (str) => {
+          if (!str) return '';
+          return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      };
       const escapeAppValue = (str) => {
           if (!str) return '';
           return str.replace(/\\/g, '\\\\')
                     .replace(/'/g, "\\'")
                     .replace(/"/g, '&quot;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
                     .replace(/\n/g, '\\n')
                     .replace(/\r/g, '');
       };
@@ -1035,10 +1048,10 @@ body.lite-mode.light-theme .search-box input {
       newCard.innerHTML = `
         ${badgeHtml}
         ${controlsHtml}
-        <div class="icon-container"><img src="${finalIcon}" onerror="this.src='assets/nello.png'" alt="${name}"></div>
+        <div class="icon-container"><img src="${escapeHtml(finalIcon)}" loading="lazy" onerror="this.src='assets/nello.png'" alt="${escapeHtml(name)}"></div>
         <div class="card-text">
-          <h4>${name}</h4>
-          <span>${displayDesc}</span>
+          <h4>${escapeHtml(name)}</h4>
+          <span>${escapeHtml(displayDesc)}</span>
         </div>
         <div class="actions">${actionBtnHtml}</div>
         ${clickHtml}
@@ -1123,30 +1136,25 @@ body.lite-mode.light-theme .search-box input {
       }
   };
 
-  // Auto-Detect FireTV or Low End device
   function detectLowEndDevice() {
-      // Check localStorage first
       const savedMode = localStorage.getItem('mode');
-      if (savedMode) {
-          if (savedMode === 'lite') {
-              document.body.classList.add('lite-mode');
-              document.getElementById('lite-mode-banner').style.display = 'none';
-          }
+      if (savedMode === 'lite') {
+          document.body.classList.add('lite-mode');
+          const btn = document.querySelector('button[onclick="toggleLiteMode()"]');
+          if (btn) btn.innerHTML = '🎨';
+          return;
       }
-      
+
       const ua = navigator.userAgent;
-      document.getElementById('ua-debug').innerText = "Device: " + ua;
-      
-      // Common FireTV identifiers: "AFT", "Silk", "Android" on TV, and "Downloader" for the Downloader app
-      const isFireTV = /AFT|Silk|Amazon|Android.*TV|SmartTV|HbbTV|CrKey|Roku|AppleTV|Downloader|AFTS|AFTB|AFTT|AFTM|AFTN|AFTRS|Mobile VR|Dalvik|Android 5|Android 6|Android 7|Android 8|Android 9/.test(ua);
-      
-      if (isFireTV) {
-          activateLiteModeManual(); // Reuse function
+      const isFireTV = /AFT[SBTMN]|AFTRS|AFTN|Silk.*Fire|Amazon.*Fire|Downloader\/|KFTT|KFSOWI/.test(ua);
+      const isAndroidTV = /Android.*TV|SmartTV|HbbTV|CrKey/.test(ua) && !/Mobile/.test(ua);
+
+      if (isFireTV || isAndroidTV) {
+          document.getElementById('lite-mode-banner').style.display = 'block';
       }
   }
 
   window.activateLiteModeManual = function() {
-      console.log("Enabling Lite Mode manually.");
       document.body.classList.add('lite-mode');
       localStorage.setItem('mode', 'lite');
       const btn = document.querySelector('button[onclick="toggleLiteMode()"]');
@@ -1233,8 +1241,8 @@ body.lite-mode.light-theme .search-box input {
       const icon = app.icon || 'assets/nello.png';
       chip.innerHTML = `
         <div class="chip-check">✓</div>
-        <img src="${icon}" onerror="this.src='assets/nello.png'" alt="${app.name}">
-        <span class="chip-name">${app.name}</span>
+        <img src="${escapeHtml(icon)}" loading="lazy" onerror="this.src='assets/nello.png'" alt="${escapeHtml(app.name)}">
+        <span class="chip-name">${escapeHtml(app.name)}</span>
       `;
       chip.addEventListener('click', () => chip.classList.toggle('selected'));
       container.appendChild(chip);
@@ -1301,6 +1309,9 @@ body.lite-mode.light-theme .search-box input {
       btn.innerHTML = '✅ Iscriviti';
     }
   };
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
 </script>
 </body>
 </html>
