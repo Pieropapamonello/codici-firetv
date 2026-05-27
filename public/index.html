@@ -697,7 +697,16 @@ body.lite-mode.light-theme .search-box input {
       renderApps();
     }
 
+    let dataLoaded = false;
+    setTimeout(() => {
+      if (!dataLoaded) {
+        const loading = document.getElementById('loading-msg');
+        if (loading) loading.innerHTML = '⚠️ Connessione lenta o non disponibile.<br><button onclick="location.reload()" class="btn" style="margin-top:12px;">Riprova</button>';
+      }
+    }, 10000);
+
     onValue(dbRef, (snapshot) => {
+      dataLoaded = true;
       const data = snapshot.val();
       if (data) {
         appsData = data;
@@ -744,27 +753,48 @@ body.lite-mode.light-theme .search-box input {
         });
     }
 
+    const PAGE_SIZE = 30;
+    let currentFiltered = [];
+    let renderedCount = 0;
+    let isLoadingMore = false;
+
     window.renderApps = function() {
         const main = document.getElementById('main-content');
         main.innerHTML = '';
-        
+        renderedCount = 0;
+
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        
-        const filteredApps = allAppsData.filter(app => {
+
+        currentFiltered = allAppsData.filter(app => {
             const matchesSearch = app.name.toLowerCase().includes(searchTerm) || (app.desc && app.desc.toLowerCase().includes(searchTerm));
             const matchesCategory = currentCategory === 'Tutte' || app.category === currentCategory;
             return matchesSearch && matchesCategory;
         });
 
-        if(filteredApps.length === 0) {
+        if(currentFiltered.length === 0) {
             main.innerHTML = '<div style="width:100%;text-align:center;padding:40px;color:var(--text-muted);">Nessuna app trovata.</div>';
             return;
         }
 
-        filteredApps.forEach((app) => {
-          createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
-        });
+        loadMoreCards();
     };
+
+    function loadMoreCards() {
+        if (isLoadingMore || renderedCount >= currentFiltered.length) return;
+        isLoadingMore = true;
+        const batch = currentFiltered.slice(renderedCount, renderedCount + PAGE_SIZE);
+        batch.forEach(app => {
+            createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
+        });
+        renderedCount += batch.length;
+        isLoadingMore = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 600) {
+            loadMoreCards();
+        }
+    });
 
     window.filterApps = function() {
         renderApps();

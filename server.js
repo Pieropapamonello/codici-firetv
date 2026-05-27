@@ -25,6 +25,8 @@ import fixDbHandler from './api/fix-db.js';
 import searchIconHandler from './api/search-icon.js';
 import subscribeHandler from './api/subscribe.js';
 import updateAllIconsHandler from './api/update-all-icons.js';
+import healthHandler from './api/health.js';
+import unsubscribeHandler from './api/unsubscribe.js';
 
 app.all('/api/check-stremio', (req, res) => checkStremioHandler(req, res));
 app.all('/api/check-paramount', (req, res) => checkParamountHandler(req, res));
@@ -37,6 +39,8 @@ app.all('/api/fix-db', (req, res) => fixDbHandler(req, res));
 app.all('/api/search-icon', (req, res) => searchIconHandler(req, res));
 app.all('/api/subscribe', (req, res) => subscribeHandler(req, res));
 app.all('/api/update-all-icons', (req, res) => updateAllIconsHandler(req, res));
+app.all('/api/health', (req, res) => healthHandler(req, res));
+app.all('/api/unsubscribe', (req, res) => unsubscribeHandler(req, res));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

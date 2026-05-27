@@ -38,8 +38,8 @@ export async function sendTelegramNotification(appName, version, downloadUrl, ic
 
 // Funzione per inviare notifiche Email (tramite Resend)
 export async function sendEmailNotification(appName, version, downloadUrl, iconUrl) {
-    const resendApiKey = process.env.RESEND_API_KEY || "re_W7vEFbU5_5k9sRmtoPU2zFae9Yg1e2YF2";
-    const senderEmail = process.env.RESEND_SENDER_EMAIL || "onboarding@resend.dev"; // Sostituisci con la tua email verificata su Resend
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const senderEmail = process.env.RESEND_SENDER_EMAIL;
 
     if (!resendApiKey) {
         console.log("Chiave API Resend mancante. Salto la notifica Email.");
@@ -95,11 +95,9 @@ export async function sendEmailNotification(appName, version, downloadUrl, iconU
 
         if (emails.length === 0) return;
 
-        const emailPayload = {
-            from: `FireTV Updates <${senderEmail}>`,
-            to: emails[0], // Resend richiede almeno un 'to', mettiamo il primo
-            subject: `🚀 Nuovo Aggiornamento: ${appName} v${version}`,
-            html: `
+        function buildHtml(recipientEmail) {
+            const unsub = `https://peppinoqq-codici-firetv.hf.space/api/unsubscribe?email=${encodeURIComponent(recipientEmail)}`;
+            return `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
                     <h2 style="color: #a855f7; text-align: center;">Nuovo Aggiornamento Disponibile!</h2>
                     <div style="text-align: center; margin: 20px 0;">
@@ -111,30 +109,36 @@ export async function sendEmailNotification(appName, version, downloadUrl, iconU
                         <a href="${downloadUrl}" style="background-color: #a855f7; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">Scarica Subito</a>
                     </div>
                     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="color: #666; font-size: 12px; text-align: center;">Ricevi questa email perché ti sei iscritto alle notifiche sul nostro sito.</p>
+                    <p style="color: #666; font-size: 12px; text-align: center;">Ricevi questa email perché ti sei iscritto alle notifiche sul nostro sito.<br>
+                    <a href="${unsub}" style="color: #a855f7;">Disiscriviti</a></p>
                 </div>
-            `
-        };
-
-        if (emails.length > 1) {
-            emailPayload.bcc = emails.slice(1); // Gli altri in copia nascosta
+            `;
         }
 
-        // 2. Invia l'email a tutti gli iscritti (usando Bcc per privacy)
-        const response = await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${resendApiKey}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(emailPayload)
-        });
-
-        if (!response.ok) {
-            console.error("Errore invio Email (Resend):", await response.text());
-        } else {
-            console.log(`Notifica Email inviata con successo a ${emails.length} iscritti!`);
+        // Invia email individuali (serve per link disiscriviti personalizzato)
+        let sent = 0;
+        for (const email of emails) {
+            try {
+                const response = await fetch('https://api.resend.com/emails', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${resendApiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        from: `FireTV Updates <${senderEmail}>`,
+                        to: email,
+                        subject: `🚀 Nuovo Aggiornamento: ${appName} v${version}`,
+                        html: buildHtml(email)
+                    })
+                });
+                if (response.ok) sent++;
+                else console.error(`Email failed for ${email}:`, await response.text());
+            } catch (e) {
+                console.error(`Email error for ${email}:`, e.message);
+            }
         }
+        console.log(`Notifiche Email inviate: ${sent}/${emails.length}`);
 
     } catch (error) {
         console.error("Errore durante l'invio delle email:", error);

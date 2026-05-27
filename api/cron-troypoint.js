@@ -208,22 +208,34 @@ export default async function handler(req, res) {
         const updates = {};
         const notifications = [];
         
+        function baseName(name) {
+            return name.toLowerCase().replace(/\b(v?\d+[\d.]*)\b/g, '').replace(/\b(stable|release|beta|arm|apk|bundle|for fire tv|for android tv|android tv boxes|most|latest|new)\b/gi, '').replace(/[^a-z]/g, '').trim();
+        }
+
         // 1. Process Scraped Data (Add new or Update existing links)
         for (const scraped of scrapedApps) {
             const scrapedNameNorm = scraped.name.toLowerCase().trim();
+            const scrapedBase = baseName(scraped.name);
 
             // Salta se l'admin ha eliminato questa app in precedenza
             if (ignoredNames.has(scrapedNameNorm)) {
                 console.log(`Skipping ignored app: ${scraped.name}`);
                 continue;
             }
+            // Check anche il nome base nella ignore list
+            if ([...ignoredNames].some(ignored => baseName(ignored) === scrapedBase)) {
+                console.log(`Skipping ignored (fuzzy): ${scraped.name}`);
+                continue;
+            }
 
             let foundKey = null;
             let existingApp = null;
 
-            // Trova per nome (case-insensitive + trim per sicurezza)
+            // Trova per nome esatto O per nome base (fuzzy match)
             for (const [key, val] of Object.entries(existingApps)) {
-                if (val.name && val.name.toLowerCase().trim() === scrapedNameNorm) {
+                if (!val.name) continue;
+                const valNorm = val.name.toLowerCase().trim();
+                if (valNorm === scrapedNameNorm || baseName(val.name) === scrapedBase) {
                     foundKey = key;
                     existingApp = val;
                     break;
