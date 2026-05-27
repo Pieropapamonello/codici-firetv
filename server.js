@@ -27,6 +27,9 @@ import subscribeHandler from './api/subscribe.js';
 import updateAllIconsHandler from './api/update-all-icons.js';
 import healthHandler from './api/health.js';
 import unsubscribeHandler from './api/unsubscribe.js';
+import telegramWebhookHandler from './api/telegram-webhook.js';
+import checkStremioBetaHandler from './api/check-stremio-beta.js';
+import telegramBotInfoHandler from './api/telegram-bot-info.js';
 
 app.all('/api/check-stremio', (req, res) => checkStremioHandler(req, res));
 app.all('/api/check-paramount', (req, res) => checkParamountHandler(req, res));
@@ -41,6 +44,9 @@ app.all('/api/subscribe', (req, res) => subscribeHandler(req, res));
 app.all('/api/update-all-icons', (req, res) => updateAllIconsHandler(req, res));
 app.all('/api/health', (req, res) => healthHandler(req, res));
 app.all('/api/unsubscribe', (req, res) => unsubscribeHandler(req, res));
+app.post('/api/telegram-webhook', (req, res) => telegramWebhookHandler(req, res));
+app.all('/api/check-stremio-beta', (req, res) => checkStremioBetaHandler(req, res));
+app.all('/api/telegram-bot-info', (req, res) => telegramBotInfoHandler(req, res));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -67,8 +73,9 @@ cron.schedule('0 8 * * *', () => {
 });
 
 cron.schedule('0 12 * * *', () => {
-    console.log('[CRON] Running check-stremio...');
+    console.log('[CRON] Running check-stremio + check-stremio-beta...');
     callHandler(checkStremioHandler, 'check-stremio');
+    callHandler(checkStremioBetaHandler, 'check-stremio-beta');
 });
 
 cron.schedule('0 13 * * *', () => {
@@ -90,4 +97,14 @@ cron.schedule('0 15 * * *', () => {
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
     console.log('Cron jobs scheduled.');
+
+    // Auto-register Telegram webhook
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    if (botToken) {
+        const webhookUrl = 'https://peppinoqq-codici-firetv.hf.space/api/telegram-webhook';
+        fetch(`https://api.telegram.org/bot${botToken}/setWebhook?url=${encodeURIComponent(webhookUrl)}`)
+            .then(r => r.json())
+            .then(d => console.log('Telegram webhook:', d.ok ? 'registered' : d.description))
+            .catch(e => console.error('Telegram webhook registration failed:', e.message));
+    }
 });

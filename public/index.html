@@ -161,6 +161,19 @@ header h1 {
 }
 .bookmark-hint strong { color: #fff; }
 
+/* Time badge on cards */
+.time-badge { position: absolute; bottom: 8px; left: 16px; font-size: 10px; color: var(--text-muted); opacity: 0.6; }
+.time-badge.recent { color: var(--neon-cyan); opacity: 1; font-weight: 600; }
+
+/* Voice search */
+.voice-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 20px; cursor: pointer; opacity: 0.6; transition: all 0.3s; z-index: 2; padding: 6px; }
+.voice-btn:hover { opacity: 1; }
+.voice-btn.listening { opacity: 1; animation: pulseGlow 1s infinite; }
+
+/* Sort select */
+.sort-select { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); padding: 8px 14px; border-radius: 50px; font-family: inherit; font-size: 13px; outline: none; backdrop-filter: blur(5px); cursor: pointer; }
+.sort-select:focus { border-color: var(--neon-cyan); }
+
 /* Search & Filters */
 .controls-bar { max-width: 1200px; margin: 0 auto 20px; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between; }
 .search-box { flex: 1; min-width: 250px; position: relative; }
@@ -460,7 +473,15 @@ body.lite-mode.light-theme .search-box input {
 <div class="controls-bar">
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Cerca un'app..." oninput="filterApps()">
+    <button class="voice-btn" id="voiceBtn" onclick="startVoiceSearch()" title="Ricerca vocale">🎤</button>
   </div>
+  <select class="sort-select" id="sortSelect" onchange="sortApps(this.value)">
+    <option value="order">Ordine default</option>
+    <option value="recent">Recenti</option>
+    <option value="clicks">Piu' scaricate</option>
+    <option value="az">A → Z</option>
+    <option value="za">Z → A</option>
+  </select>
   <div class="category-filters" id="categoryFilters">
     <button class="filter-btn active" onclick="setCategory('Tutte')">Tutte</button>
   </div>
@@ -562,6 +583,9 @@ body.lite-mode.light-theme .search-box input {
       <a href="https://t.me/ilcovodinello" target="_blank" class="form-btn" style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:rgba(0,136,204,0.12);border-color:rgba(0,136,204,0.35);color:#fff;box-shadow:none;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="#0088CC"><path d="M21.1406 2.85938C21.1406 2.85938 22.6406 2.25 22.5 3.75C22.4531 4.35938 21.9375 7.64062 21.4219 11.25L19.6406 20.25C19.6406 20.25 19.5 21.375 18.6562 21.5625C17.8125 21.75 16.4531 20.8125 16.1719 20.625C15.9375 20.4375 11.8594 17.8125 10.4062 16.5C10.0312 16.1719 9.5625 15.5156 10.4531 14.7188C12.4688 12.8438 14.8125 10.6406 15.8906 9.5625C16.3594 9.09375 16.8281 7.875 14.6719 9.32812C11.625 11.3906 7.5 14.1562 7.5 14.1562C7.5 14.1562 6.5625 14.7188 4.82812 14.1562C2.67188 13.5 1.5 13.125 1.5 13.125C1.5 13.125 0.5625 12.5625 1.96875 12C5.34375 10.5 11.3438 8 15.1875 6.42188C16.9688 5.67188 21.1406 3.9375 21.1406 2.85938Z"/></svg>
         Canale Telegram
+      </a>
+      <a id="telegram-bot-link" href="#" target="_blank" class="form-btn" style="display:none;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.35);color:#fff;box-shadow:none;margin-top:8px;">
+        🤖 Collega Telegram (notifiche personali)
       </a>
       <button onclick="document.getElementById('notify-modal').classList.remove('active')" class="close-modal">Chiudi</button>
     </div>
@@ -1048,6 +1072,11 @@ body.lite-mode.light-theme .search-box input {
       const clickCount = clicks || 0;
       const clickHtml = `<div class="click-counter">⬇️ ${clickCount}</div>`;
 
+      // Time badge
+      const age = timeAgo(timestamp);
+      const isRecent = timestamp && (Date.now() - timestamp < 7 * 24 * 3600 * 1000);
+      const timeBadgeHtml = age ? `<div class="time-badge${isRecent ? ' recent' : ''}">${isRecent ? '🆕 ' : ''}${age}</div>` : '';
+
       const escapeHtml = (str) => {
           if (!str) return '';
           return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -1085,6 +1114,7 @@ body.lite-mode.light-theme .search-box input {
         </div>
         <div class="actions">${actionBtnHtml}</div>
         ${clickHtml}
+        ${timeBadgeHtml}
       `;
       
       main.appendChild(newCard);
@@ -1339,6 +1369,81 @@ body.lite-mode.light-theme .search-box input {
       btn.innerHTML = '✅ Iscriviti';
     }
   };
+  // --- Voice Search ---
+  window.startVoiceSearch = function() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert('Ricerca vocale non supportata su questo browser.');
+      return;
+    }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SR();
+    recognition.lang = 'it-IT';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    const btn = document.getElementById('voiceBtn');
+    btn.classList.add('listening');
+    btn.textContent = '🔴';
+    recognition.onresult = (e) => {
+      const text = e.results[0][0].transcript;
+      document.getElementById('searchInput').value = text;
+      filterApps();
+    };
+    recognition.onend = () => { btn.classList.remove('listening'); btn.textContent = '🎤'; };
+    recognition.onerror = () => { btn.classList.remove('listening'); btn.textContent = '🎤'; };
+    recognition.start();
+  };
+
+  // --- Sort ---
+  window.sortApps = function(mode) {
+    if (!window.renderApps) return;
+    const sorters = {
+      order: (a, b) => (a.order || 0) - (b.order || 0),
+      recent: (a, b) => (b.timestamp || 0) - (a.timestamp || 0),
+      clicks: (a, b) => (b.clicks || 0) - (a.clicks || 0),
+      az: (a, b) => a.name.localeCompare(b.name),
+      za: (a, b) => b.name.localeCompare(a.name)
+    };
+    if (sorters[mode] && window._notifyAppsData) {
+      allAppsData.sort(sorters[mode]);
+      renderApps();
+    }
+  };
+
+  // --- Time Badge helper ---
+  window.timeAgo = function(ts) {
+    if (!ts) return '';
+    const diff = Date.now() - ts;
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return `${mins}min fa`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours}h fa`;
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days}g fa`;
+    if (days < 30) return `${Math.floor(days/7)}sett fa`;
+    return '';
+  };
+
+  // --- Telegram Bot link ---
+  (async () => {
+    try {
+      const r = await fetch('/api/health');
+      const d = await r.json();
+      if (d.env?.telegram) {
+        const botLink = document.getElementById('telegram-bot-link');
+        if (botLink) {
+          const infoR = await fetch('/api/telegram-bot-info');
+          if (infoR.ok) {
+            const info = await infoR.json();
+            if (info.username) {
+              botLink.href = `https://t.me/${info.username}?start=1`;
+              botLink.style.display = 'flex';
+            }
+          }
+        }
+      }
+    } catch(_) {}
+  })();
+
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(() => {});
   }

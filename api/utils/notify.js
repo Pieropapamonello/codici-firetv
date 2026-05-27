@@ -2,37 +2,61 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-// Funzione per inviare notifiche Telegram
 export async function sendTelegramNotification(appName, version, downloadUrl, iconUrl) {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-
-    if (!botToken || !chatId) {
-        console.log("Credenziali Telegram mancanti. Salto la notifica Telegram.");
+    if (!botToken) {
+        console.log("TELEGRAM_BOT_TOKEN mancante. Salto notifiche Telegram.");
         return;
     }
 
     const message = `🚀 *Nuovo Aggiornamento Disponibile!*\n\n📱 *App:* ${appName}\n🔄 *Versione:* ${version}\n\n📥 [Scarica Subito](${downloadUrl})`;
 
     try {
-        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: message,
-                parse_mode: 'Markdown',
-                disable_web_page_preview: true
-            })
-        });
+        const firebaseConfig = {
+            apiKey: process.env.FIREBASE_API_KEY,
+            authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+            databaseURL: process.env.FIREBASE_DATABASE_URL,
+            projectId: process.env.FIREBASE_PROJECT_ID,
+            storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+            messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+            appId: process.env.FIREBASE_APP_ID
+        };
+        const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+        await signInWithEmailAndPassword(auth, process.env.FIREBASE_ADMIN_EMAIL, process.env.FIREBASE_ADMIN_PASSWORD);
 
-        if (!response.ok) {
-            console.error("Errore invio Telegram:", await response.text());
-        } else {
-            console.log("Notifica Telegram inviata con successo!");
+        const snapshot = await get(ref(db, 'telegram_users'));
+        if (!snapshot.exists()) {
+            console.log("Nessun utente Telegram registrato.");
+            return;
         }
+
+        const users = snapshot.val();
+        const appNameLower = appName.toLowerCase();
+        const appBaseName = appNameLower.split(' ')[0];
+        let sent = 0;
+
+        for (const [chatId, user] of Object.entries(users)) {
+            if (!user.apps) continue;
+            const match = user.apps.includes('all') || user.apps.some(a => {
+                const aLower = a.toLowerCase();
+                return aLower === appNameLower || (aLower.split(' ')[0] === appBaseName && appBaseName.length > 2);
+            });
+            if (!match) continue;
+
+            try {
+                const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown', disable_web_page_preview: true })
+                });
+                if (res.ok) sent++;
+            } catch (_) {}
+        }
+        console.log(`Notifiche Telegram inviate: ${sent}/${Object.keys(users).length}`);
     } catch (error) {
-        console.error("Errore di rete Telegram:", error);
+        console.error("Errore Telegram:", error.message);
     }
 }
 
