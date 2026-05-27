@@ -1,0 +1,1306 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Il Covo di Nello</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --neon-purple: #a855f7;
+  --neon-cyan: #22d3ee;
+  --neon-pink: #ec4899;
+  --neon-blue: #3b82f6;
+  --dark-bg: #0a0a0f;
+  --card-bg: rgba(15, 15, 25, 0.8);
+  --card-border: rgba(168, 85, 247, 0.3);
+  --primary: var(--neon-purple);
+  --primary-hover: #9333ea;
+  --secondary: var(--neon-cyan);
+  --secondary-hover: #0891b2;
+  --danger: #ef4444;
+  --text: #f0f0f0;
+  --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+body.light-theme {
+  --dark-bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(168, 85, 247, 0.2);
+  --text: #0f172a;
+  --text-muted: #64748b;
+}
+body.light-theme::before {
+  background: linear-gradient(135deg, #f8fafc 0%, rgba(168, 85, 247, 0.1) 25%, #f8fafc 50%, rgba(34, 211, 238, 0.1) 75%, #f8fafc 100%);
+}
+body.light-theme .card-text h4 { color: #0f172a; }
+body.light-theme .bookmark-hint strong { color: #0f172a; }
+body.light-theme .icon-container { background: rgba(255,255,255,0.8); box-shadow: inset 0 2px 10px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); }
+body.light-theme .btn { color: var(--neon-purple); background: rgba(168, 85, 247, 0.1); }
+body.light-theme .btn:hover { color: #fff; background: var(--neon-purple); }
+body.light-theme .guide-card code { background: rgba(0,0,0,0.05); color: #0f172a; }
+body.light-theme .form-input { background: rgba(255,255,255,0.8); color: #0f172a; border-color: rgba(0,0,0,0.1); }
+body.light-theme .modal-content { background: #f8fafc; }
+
+body { 
+  font-family: 'Inter', sans-serif; 
+  background: var(--dark-bg); 
+  color: var(--text); 
+  min-height: 100vh; 
+  margin: 0; 
+  padding-bottom: 50px; 
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg,
+          var(--dark-bg) 0%,
+          rgba(88, 28, 135, 0.3) 25%,
+          var(--dark-bg) 50%,
+          rgba(6, 78, 97, 0.3) 75%,
+          var(--dark-bg) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+      radial-gradient(ellipse at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(34, 211, 238, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 60%);
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Floating particles */
+.particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: -1; }
+.particle { position: absolute; width: 4px; height: 4px; background: var(--neon-purple); border-radius: 50%; box-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple); animation: floatUp 20s linear infinite; opacity: 0.6; }
+.particle:nth-child(2n) { background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+.particle:nth-child(3n) { background: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 20s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 28s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 22s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 18s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 24s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 2s; animation-duration: 26s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 0s; animation-duration: 21s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 4s; animation-duration: 23s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+header { padding: 40px 20px 20px; text-align: center; }
+header img { 
+  width: 80px; height: 80px; border-radius: 50%; 
+  border: 2px solid transparent;
+  background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
+              linear-gradient(135deg, var(--neon-purple), var(--neon-cyan)) border-box;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+  margin-bottom: 15px; transition: all 0.4s ease; 
+}
+header img:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(34, 211, 238, 0.5); }
+header h1 { 
+  margin: 0; font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: 2px; 
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink));
+  background-size: 200% 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: textGlow 3s ease infinite; text-transform: uppercase;
+}
+
+@keyframes textGlow {
+  0%, 100% { background-position: 0% 50%; filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5)); }
+  50% { background-position: 100% 50%; filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.5)); }
+}
+
+.bookmark-hint {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.3);
+  padding: 10px 20px; border-radius: 50px; margin-top: 20px;
+  font-size: 14px; color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+  backdrop-filter: blur(10px);
+}
+.bookmark-hint strong { color: #fff; }
+
+/* Search & Filters */
+.controls-bar { max-width: 1200px; margin: 0 auto 20px; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between; }
+.search-box { flex: 1; min-width: 250px; position: relative; }
+.search-box input { width: 100%; padding: 14px 20px 14px 45px; border-radius: 50px; border: 1px solid var(--card-border); background: var(--card-bg); color: var(--text); font-family: inherit; font-size: 15px; outline: none; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(168, 85, 247, 0.1); transition: all 0.3s; box-sizing: border-box; }
+.search-box input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 30px rgba(34, 211, 238, 0.2); }
+.search-box::before { content: '🔍'; position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 16px; opacity: 0.7; }
+
+.category-filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.filter-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); padding: 8px 16px; border-radius: 50px; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(5px); }
+.filter-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+.filter-btn.active { background: rgba(168, 85, 247, 0.2); color: #fff; border-color: var(--neon-purple); box-shadow: 0 0 15px rgba(168, 85, 247, 0.3); }
+
+/* Badges & Counters */
+.badge-new { position: absolute; top: -10px; left: -10px; background: var(--neon-pink); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; box-shadow: 0 0 15px var(--neon-pink); animation: pulseGlow 2s infinite; z-index: 5; letter-spacing: 1px; }
+.click-counter { position: absolute; bottom: 10px; right: 16px; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; opacity: 0.7; }
+
+/* Theme Toggle & QR */
+.header-actions { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; }
+.icon-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; backdrop-filter: blur(10px); transition: all 0.3s; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+.icon-btn:hover { transform: scale(1.1); border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
+
+#qr-modal img { width: 200px; height: 200px; border-radius: 16px; margin: 0 auto 20px; display: block; border: 4px solid #fff; box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
+
+main { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+
+.card {
+  width: 320px; background: var(--card-bg); border-radius: 24px; padding: 16px; display: flex; gap: 16px; align-items: center;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.2), 0 0 80px rgba(34, 211, 238, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1); 
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s ease; position: relative;
+}
+.card:hover { 
+  transform: translateY(-6px) scale(1.02); 
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 60px rgba(168, 85, 247, 0.3), 0 0 100px rgba(34, 211, 238, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15); 
+}
+
+/* Drag & Drop styles only for admin */
+body.is-admin .card { cursor: grab; }
+body.is-admin .card:active { cursor: grabbing; }
+.card.dragging { opacity: 0.4; transform: scale(0.95); border: 2px dashed var(--neon-cyan); }
+
+.icon-container { width: 64px; height: 64px; flex-shrink: 0; border-radius: 16px; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 10px; box-sizing: border-box; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); }
+.icon-container img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); }
+
+.card-text { flex: 1; min-width: 0; }
+.card-text h4 { margin: 0 0 6px 0; font-size: 15px; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: #fff; }
+.card-text span { font-size: 13px; color: var(--text-muted); display: block; line-height: 1.4; }
+
+.btn { 
+  background: rgba(168, 85, 247, 0.2); color: #fff; padding: 10px 18px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s ease; 
+  border: 1px solid rgba(168, 85, 247, 0.5); cursor: pointer; 
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); 
+}
+.btn:hover { 
+  background: rgba(168, 85, 247, 0.4); transform: scale(1.05); 
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4); 
+  border-color: var(--neon-purple);
+}
+
+/* Admin controls */
+.admin-only { display: none !important; }
+body.is-admin .admin-only { display: flex !important; }
+body.is-admin .admin-only-block { display: block !important; }
+
+.admin-controls { position: absolute; top: -12px; right: -12px; gap: 8px; z-index: 10; }
+.admin-btn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); transition: all 0.3s ease; }
+.admin-btn:hover { transform: scale(1.15); }
+.btn-edit { background: rgba(34, 211, 238, 0.3); border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(34, 211, 238, 0.3); }
+.btn-edit:hover { background: rgba(34, 211, 238, 0.6); box-shadow: 0 0 25px rgba(34, 211, 238, 0.5); }
+.btn-delete { background: rgba(236, 72, 153, 0.3); border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(236, 72, 153, 0.3); }
+.btn-delete:hover { background: rgba(236, 72, 153, 0.6); box-shadow: 0 0 25px rgba(236, 72, 153, 0.5); }
+
+/* Add App Section */
+.add-app-section { max-width: 600px; margin: 40px auto; padding: 30px; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--card-border); backdrop-filter: blur(20px); box-shadow: 0 0 40px rgba(168, 85, 247, 0.2); }
+.add-app-section h3 { margin-top: 0; color: var(--neon-cyan); text-align: center; font-size: 22px; margin-bottom: 20px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; }
+.form-group { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.form-input { flex: 1; min-width: 140px; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.5); color: white; font-family: inherit; outline: none; transition: all 0.3s ease; font-size: 14px; }
+.form-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(34, 211, 238, 0.3); }
+.form-btn { width: 100%; padding: 16px; background: rgba(34, 211, 238, 0.2); color: white; border: 1px solid rgba(34, 211, 238, 0.5); border-radius: 12px; font-weight: 600; font-size: 16px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); }
+.form-btn:hover { background: rgba(34, 211, 238, 0.4); transform: translateY(-2px); box-shadow: 0 0 25px rgba(34, 211, 238, 0.4); border-color: var(--neon-cyan); }
+
+/* Footer & Login */
+footer { text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 14px; }
+.login-trigger { background: none; border: none; color: var(--text-muted); cursor: pointer; text-decoration: underline; margin-top: 15px; font-family: inherit; font-size: 13px; transition: color 0.2s; }
+.login-trigger:hover { color: var(--neon-cyan); }
+
+/* Modal */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 100; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+.modal.active { display: flex; opacity: 1; }
+.modal-content { background: var(--dark-bg); padding: 35px; border-radius: 24px; width: 90%; max-width: 380px; border: 1px solid var(--card-border); box-shadow: 0 0 50px rgba(168, 85, 247, 0.3); transform: translateY(20px); transition: transform 0.3s; }
+.modal.active .modal-content { transform: translateY(0); }
+.modal-content h3 { margin-top: 0; text-align: center; font-size: 24px; margin-bottom: 25px; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); }
+.modal-content .form-input { width: 100%; box-sizing: border-box; margin-bottom: 15px; }
+.modal-content .form-btn { background: rgba(168, 85, 247, 0.2); border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
+.modal-content .form-btn:hover { background: rgba(168, 85, 247, 0.4); border-color: var(--neon-purple); box-shadow: 0 0 25px rgba(168, 85, 247, 0.4); }
+.close-modal { background: none; border: none; color: var(--text-muted); width: 100%; margin-top: 15px; cursor: pointer; font-family: inherit; transition: color 0.2s; }
+.close-modal:hover { color: white; }
+
+/* Notify Modal */
+.notify-step { display: none; }
+.notify-step.active { display: block; }
+.notify-step > h3 { margin-top: 0; text-align: center; font-family: 'Orbitron', sans-serif; color: var(--neon-purple); font-size: 20px; margin-bottom: 8px; }
+.notify-step > p { color: var(--text-muted); font-size: 13px; text-align: center; margin-bottom: 16px; }
+#notify-modal .modal-content { max-width: 480px; }
+.app-chips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; max-height: 280px; overflow-y: auto; margin-bottom: 14px; padding: 2px 2px 6px; scrollbar-width: thin; scrollbar-color: var(--neon-purple) transparent; }
+.app-chips-grid::-webkit-scrollbar { width: 4px; }
+.app-chips-grid::-webkit-scrollbar-thumb { background: var(--neon-purple); border-radius: 2px; }
+.app-chip { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 10px 6px 8px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.03); cursor: pointer; transition: all 0.2s; text-align: center; position: relative; user-select: none; }
+.app-chip:hover { border-color: rgba(168,85,247,0.5); background: rgba(168,85,247,0.08); }
+.app-chip.selected { border-color: var(--neon-purple); background: rgba(168,85,247,0.18); box-shadow: 0 0 10px rgba(168,85,247,0.25); }
+.app-chip img { width: 34px; height: 34px; border-radius: 8px; object-fit: contain; }
+.app-chip .chip-name { font-size: 10px; color: var(--text-muted); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.app-chip.selected .chip-name { color: #ddd; }
+.app-chip .chip-check { position: absolute; top: 5px; right: 5px; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.2); background: transparent; font-size: 8px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.app-chip.selected .chip-check { background: var(--neon-purple); border-color: var(--neon-purple); color: white; }
+.notify-select-all { width: 100%; padding: 8px 12px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.25); color: var(--neon-cyan); border-radius: 8px; cursor: pointer; font-size: 12px; margin-bottom: 10px; transition: all 0.2s; font-family: inherit; }
+.notify-select-all:hover { background: rgba(34,211,238,0.15); }
+#notify-bell-btn { position: relative; }
+#notify-bell-btn.has-subs::after { content: ''; position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: var(--neon-pink); border-radius: 50%; box-shadow: 0 0 6px var(--neon-pink); }
+
+/* Guides Section */
+.guides-section { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.guide-card { background: var(--card-bg); border-radius: 24px; padding: 24px; border: 1px solid var(--card-border); backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(168, 85, 247, 0.1); transition: all 0.4s ease; }
+.guide-card:hover { border-color: rgba(34, 211, 238, 0.4); box-shadow: 0 0 40px rgba(34, 211, 238, 0.2); }
+.guide-card h3 { margin-top: 0; color: var(--neon-cyan); font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-family: 'Orbitron', sans-serif; }
+.guide-card ol { margin: 0; padding-left: 20px; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+.guide-card li { margin-bottom: 8px; }
+.guide-card a { color: var(--neon-pink); text-decoration: none; font-weight: 600; transition: all 0.2s; }
+.guide-card a:hover { text-decoration: underline; text-shadow: 0 0 10px rgba(236, 72, 153, 0.5); }
+/* --- LITE MODE (Fire TV / Low End) --- */
+body.lite-mode {
+    background: var(--dark-bg) !important;
+}
+body.lite-mode::before,
+body.lite-mode::after,
+body.lite-mode .particles {
+    display: none !important;
+}
+/* Disabilita animazioni e trasparenze pesanti su elementi specifici */
+body.lite-mode .card,
+body.lite-mode .guide-card,
+body.lite-mode .add-app-section,
+body.lite-mode .modal-content,
+body.lite-mode .search-box input,
+body.lite-mode .filter-btn,
+body.lite-mode .icon-btn,
+body.lite-mode .bookmark-hint,
+body.lite-mode .btn,
+body.lite-mode .form-btn,
+body.lite-mode .form-input,
+body.lite-mode .admin-btn,
+body.lite-mode .app-chip {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+}
+body.lite-mode .particle { display: none !important; }
+body.lite-mode header h1 {
+    animation: none !important;
+}
+/* Sfondi solidi per le card */
+body.lite-mode .card,
+body.lite-mode .guide-card,
+body.lite-mode .add-app-section,
+body.lite-mode .bookmark-hint {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+}
+body.lite-mode .modal-content {
+    background: var(--dark-bg) !important;
+    border: 1px solid var(--card-border) !important;
+}
+body.lite-mode .search-box input {
+    background: var(--card-bg) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--card-border) !important;
+}
+body.lite-mode .filter-btn {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    color: var(--text-muted) !important;
+}
+body.lite-mode .filter-btn.active {
+    background: rgba(168, 85, 247, 0.25) !important;
+    border-color: var(--neon-purple) !important;
+    color: #fff !important;
+}
+body.lite-mode .icon-btn {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+    color: var(--text) !important;
+}
+body.lite-mode .btn {
+    background: rgba(168, 85, 247, 0.2) !important;
+    border: 1px solid rgba(168, 85, 247, 0.5) !important;
+    color: #fff !important;
+}
+body.lite-mode .form-btn {
+    background: rgba(34, 211, 238, 0.15) !important;
+    border: 1px solid rgba(34, 211, 238, 0.4) !important;
+    color: #fff !important;
+}
+body.lite-mode .form-input {
+    background: rgba(0,0,0,0.3) !important;
+    color: var(--text) !important;
+    border: 1px solid rgba(255,255,255,0.15) !important;
+}
+body.lite-mode .card-text h4 { color: var(--text) !important; }
+body.lite-mode .card-text span { color: var(--text-muted) !important; }
+body.lite-mode .card:hover { transform: none !important; border-color: var(--neon-purple) !important; }
+body.lite-mode header img {
+    border: 3px solid var(--neon-purple) !important;
+    background: none !important;
+}
+body.lite-mode header h1 {
+    background: none !important;
+    -webkit-text-fill-color: var(--neon-purple) !important;
+    color: var(--neon-purple) !important;
+    filter: none !important;
+}
+body.lite-mode .app-chip {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid var(--card-border) !important;
+}
+body.lite-mode .app-chip.selected {
+    background: rgba(168,85,247,0.2) !important;
+    border-color: var(--neon-purple) !important;
+}
+/* Lite + Tema Chiaro */
+body.lite-mode.light-theme .card,
+body.lite-mode.light-theme .guide-card,
+body.lite-mode.light-theme .add-app-section,
+body.lite-mode.light-theme .bookmark-hint {
+    background: rgba(255,255,255,0.95) !important;
+    border: 1px solid rgba(168,85,247,0.2) !important;
+}
+body.lite-mode.light-theme .filter-btn {
+    background: rgba(0,0,0,0.04) !important;
+    border: 1px solid rgba(0,0,0,0.12) !important;
+    color: #64748b !important;
+}
+body.lite-mode.light-theme .filter-btn.active {
+    background: rgba(168, 85, 247, 0.15) !important;
+    color: var(--neon-purple) !important;
+}
+body.lite-mode.light-theme .form-input {
+    background: rgba(255,255,255,0.9) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+}
+body.lite-mode.light-theme .icon-btn {
+    background: rgba(255,255,255,0.9) !important;
+    color: #0f172a !important;
+}
+body.lite-mode.light-theme .search-box input {
+    background: rgba(255,255,255,0.9) !important;
+    color: #0f172a !important;
+}
+</style>
+</head>
+<body>
+
+<!-- Floating particles -->
+<div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+
+<!-- Debug User Agent & Manual Switch -->
+<div id="lite-mode-banner" style="display:block; background:#ef4444; color:white; padding:20px; text-align:center; font-weight:bold; cursor:pointer;" onclick="activateLiteModeManual()">
+    ⚡ CLICCA QUI PER VERSIONE VELOCE FIRE TV ⚡<br>
+    <span style="font-size:12px; font-weight:normal;">Se vedi questo messaggio, clicca per attivare la modalità leggera e rimuovere lag.</span>
+    <div style="font-size:10px; font-weight:normal; opacity:0.8; margin-top:5px; user-select:all;" id="ua-debug"></div>
+</div>
+
+<header>
+  <div class="header-actions">
+    <button class="icon-btn" onclick="toggleLiteMode()" title="Modalità Grafica Veloce">⚡</button>
+    <button class="icon-btn" onclick="toggleTheme()" title="Cambia Tema">🌓</button>
+    <button id="notify-bell-btn" class="icon-btn" onclick="openNotifyModal()" title="Notifiche Aggiornamenti App">🔔</button>
+    <button id="login-btn" class="icon-btn" onclick="document.getElementById('login-modal').classList.add('active')" title="Accesso Amministratore">🔐</button>
+    <button id="logout-btn" class="icon-btn admin-only" onclick="logoutAdmin()" title="Esci dall'Amministrazione">🔓</button>
+  </div>
+  <img src="assets/nello.png" alt="Nello">
+  <h1>Il Covo di Nello</h1>
+</header>
+
+<div class="controls-bar">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Cerca un'app..." oninput="filterApps()">
+  </div>
+  <div class="category-filters" id="categoryFilters">
+    <button class="filter-btn active" onclick="setCategory('Tutte')">Tutte</button>
+  </div>
+</div>
+
+<main id="main-content">
+  <div id="loading-msg" style="width:100%;text-align:center;padding:40px;color:var(--text-muted);font-size:18px;">Caricamento App...</div>
+</main>
+
+
+
+<div class="guides-section">
+  <div class="guide-card">
+    <h3>🎬 Riproduzione 4K & live — Vimu / Stremio</h3>
+    <ol>
+      <li>Installa da qui: <a href="https://go.aftvnews.com/3188516">Vimu Installer</a> (usa il pulsante sopra).</li>
+      <li>Inserisci la chiave: <code style="cursor:pointer;" onclick="copyToClipboard('fea63c49-a7f2-441e-be4a-e75cc36b74d8', event)" title="Clicca per copiare">fea63c49-a7f2-441e-be4a-e75cc36b74d8</code></li>
+      <li>In <strong>Stremio</strong>: Impostazioni ➔ Riproduzione ➔ Player predefinito ➔ seleziona <em>player esterno</em>.</li>
+      <li>Se audio non automatico in italiano: apri Vimu ➔ Options ➔ Settings ➔ Content ➔ Preferred Audio Language ➔ Italiano.</li>
+    </ol>
+  </div>
+  <div class="guide-card">
+    <h3>🇮🇹 Impostare lingua Italiana su Kodi</h3>
+    <ol>
+      <li><a href="https://go.aftvnews.com/2130077">Installa Kodi</a> (pulsante sopra).</li>
+      <li>Kodi ➔ ⚙️ Impostazioni ➔ Interfaccia ➔ Regional / Regione ➔ Language ➔ Italiano.</li>
+    </ol>
+  </div>
+  <div class="guide-card">
+    <h3>📺 Configurazione Kodi + WLTV</h3>
+    <ol>
+      <li>Home Kodi ➔ ⚙️ ➔ File ➔ Aggiungi sorgente ➔ URL: <code style="cursor:pointer;" onclick="copyToClipboard('http://worldlivetv.github.io/repo/', event)" title="Clicca per copiare">http://worldlivetv.github.io/repo/</code> (Nome: WLTV Repo).</li>
+      <li>Add-ons ➔ Installa da file zip ➔ repository.wltv-1.x.x.zip ➔ Installa da repository ➔ WLTV Helper.</li>
+      <li>Home ➔ Add-ons ➔ WLTV Helper ➔ Lista ➔ Sezione TV.</li>
+    </ol>
+  </div>
+  <div class="guide-card">
+    <h3>🧪 Scienziato Pazzo su Kodi</h3>
+    <ol>
+      <li>⚙️ Home Kodi ➔ Ingranaggio</li>
+      <li>📁 File > Aggiungi sorgente ➔ 🔗 <code style="cursor:pointer;" onclick="copyToClipboard('http://aandroide.github.io/installer/repo/', event)" title="Clicca per copiare">http://aandroide.github.io/installer/repo/</code></li>
+      <li>📦 Add-ons ➔ 📦 Scatola ➔ Installa da file zip </li>
+      <li>📥 Installa da repository</li>
+    </ol>
+  </div>
+  <div class="guide-card">
+    <h3>📺 Avvio automatico TV (Kodi)</h3>
+    <ol>
+      <li>Impostazioni ➔ Interfaccia ➔ Altro / Skin ➔ Startup window ➔ seleziona TV ➔ Riavvia Kodi.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="add-app-section admin-only admin-only-block">
+  <h3>➕ Gestione Applicazioni</h3>
+  <div class="form-group">
+      <input type="hidden" id="editingKey">
+      <input type="text" id="appName" class="form-input" placeholder="Nome App (es. MyApp)">
+      <input type="text" id="appCode" class="form-input" placeholder="Codice / URL (es. 123456)">
+  </div>
+  <div class="form-group">
+      <input type="text" id="appDesc" class="form-input" placeholder="Descrizione breve">
+      <div style="display: flex; gap: 10px; width: 100%;">
+          <input type="text" id="appIcon" class="form-input" placeholder="URL Icona (opzionale)" style="flex: 1;">
+          <button onclick="searchIcon()" class="form-btn" style="width: auto; padding: 0 15px; font-size: 14px;" title="Cerca icona in base al nome">🔍 Cerca</button>
+      </div>
+      <input type="text" id="appCategory" class="form-input" placeholder="Categoria (es. Streaming)" list="categoryList">
+      <datalist id="categoryList"></datalist>
+  </div>
+  <div style="display: flex; gap: 10px; margin-top: 15px;">
+      <button id="submitAppBtn" onclick="addApp()" class="form-btn" style="flex: 2;">Aggiungi Scheda</button>
+      <button onclick="updateAllIcons()" class="form-btn" style="flex: 1; background: rgba(34, 211, 238, 0.2); border-color: rgba(34, 211, 238, 0.5);" title="Cerca e aggiorna le icone mancanti per tutte le app">🔄 Aggiorna Tutte le Icone</button>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 40px;">
+  <div class="bookmark-hint">
+    🦴 <span><strong>Aggiungi ai preferiti:</strong> se hai una Fire TV, tieni premuto il tasto <strong>☰</strong> (3 lineette) sul telecomando.</span>
+  </div>
+</div>
+
+<footer>
+  Il Covo di Nello — Codice: <strong>9888634</strong><br>
+</footer>
+
+<!-- Notify Modal -->
+<div id="notify-modal" class="modal">
+  <div class="modal-content">
+    <!-- Step 1: Email -->
+    <div id="notify-step-1" class="notify-step active">
+      <h3>🔔 Notifiche App</h3>
+      <p>Inserisci la tua email e scegli per quali app ricevere gli aggiornamenti.</p>
+      <input type="email" id="notify-email" class="form-input" placeholder="La tua email..." autocomplete="email" style="width:100%;box-sizing:border-box;margin-bottom:10px;">
+      <button onclick="goToNotifyStep2()" class="form-btn">Scegli le App →</button>
+      <div style="margin:14px 0;position:relative;text-align:center;">
+        <div style="position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.08);"></div>
+        <span style="position:relative;background:var(--dark-bg);padding:0 12px;color:var(--text-muted);font-size:12px;">OPPURE</span>
+      </div>
+      <a href="https://t.me/ilcovodinello" target="_blank" class="form-btn" style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:rgba(0,136,204,0.12);border-color:rgba(0,136,204,0.35);color:#fff;box-shadow:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#0088CC"><path d="M21.1406 2.85938C21.1406 2.85938 22.6406 2.25 22.5 3.75C22.4531 4.35938 21.9375 7.64062 21.4219 11.25L19.6406 20.25C19.6406 20.25 19.5 21.375 18.6562 21.5625C17.8125 21.75 16.4531 20.8125 16.1719 20.625C15.9375 20.4375 11.8594 17.8125 10.4062 16.5C10.0312 16.1719 9.5625 15.5156 10.4531 14.7188C12.4688 12.8438 14.8125 10.6406 15.8906 9.5625C16.3594 9.09375 16.8281 7.875 14.6719 9.32812C11.625 11.3906 7.5 14.1562 7.5 14.1562C7.5 14.1562 6.5625 14.7188 4.82812 14.1562C2.67188 13.5 1.5 13.125 1.5 13.125C1.5 13.125 0.5625 12.5625 1.96875 12C5.34375 10.5 11.3438 8 15.1875 6.42188C16.9688 5.67188 21.1406 3.9375 21.1406 2.85938Z"/></svg>
+        Canale Telegram
+      </a>
+      <button onclick="document.getElementById('notify-modal').classList.remove('active')" class="close-modal">Chiudi</button>
+    </div>
+    <!-- Step 2: App selection -->
+    <div id="notify-step-2" class="notify-step">
+      <h3>📱 Scegli le App</h3>
+      <p>Seleziona le app per cui vuoi ricevere notifiche di aggiornamento.</p>
+      <button class="notify-select-all" onclick="toggleSelectAllApps()">☑️ Seleziona / Deseleziona Tutte</button>
+      <div id="app-chips-container" class="app-chips-grid">
+        <div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:20px;">Caricamento…</div>
+      </div>
+      <button onclick="submitNotifySubscription()" class="form-btn" id="notify-submit-btn">✅ Iscriviti</button>
+      <div id="notify-step2-msg" style="font-size:13px;margin-top:8px;display:none;text-align:center;"></div>
+      <button onclick="goToNotifyStep1()" class="close-modal" style="margin-top:8px;">← Indietro</button>
+    </div>
+    <!-- Step 3: Success -->
+    <div id="notify-step-3" class="notify-step">
+      <div style="text-align:center;padding:20px 0;">
+        <div style="font-size:56px;margin-bottom:16px;">✅</div>
+        <h3 style="color:var(--neon-cyan);font-family:'Orbitron',sans-serif;font-size:18px;margin-bottom:10px;">Iscritto!</h3>
+        <p id="notify-success-msg" style="color:var(--text-muted);font-size:13px;"></p>
+        <button onclick="document.getElementById('notify-modal').classList.remove('active')" class="form-btn" style="margin-top:16px;">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <h3>Accesso Admin</h3>
+    <input type="email" id="adminEmail" class="form-input" placeholder="Email">
+    <input type="password" id="adminPass" class="form-input" placeholder="Password">
+    <button onclick="loginAdmin()" class="form-btn">Accedi</button>
+    <button onclick="document.getElementById('login-modal').classList.remove('active')" class="close-modal">Annulla</button>
+  </div>
+</div>
+
+<!-- QR Modal -->
+<div id="qr-modal" class="modal">
+  <div class="modal-content" style="text-align:center;">
+    <h3>Condividi Sito</h3>
+    <img id="qr-image" src="" alt="QR Code">
+    <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Inquadra con la fotocamera per aprire Il Covo di Nello sul telefono.</p>
+    <button onclick="document.getElementById('qr-modal').classList.remove('active')" class="form-btn">Chiudi</button>
+  </div>
+</div>
+
+<!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, push, onValue, remove, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  
+  import { firebaseConfig } from "./firebase-config.js";
+
+  if (!firebaseConfig.databaseURL || firebaseConfig.databaseURL.includes("PLACEHOLDER")) {
+    console.warn("Firebase non configurato.");
+  } else {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    const dbRef = ref(db, 'apps');
+
+    // Gestione Autenticazione
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.body.classList.add('is-admin');
+        document.getElementById('login-btn').style.display = 'none';
+      } else {
+        document.body.classList.remove('is-admin');
+        document.getElementById('login-btn').style.display = 'inline-block';
+      }
+    });
+
+    window.loginAdmin = function() {
+      const email = document.getElementById('adminEmail').value;
+      const pass = document.getElementById('adminPass').value;
+      if(!email || !pass) return alert("Inserisci email e password");
+      
+      signInWithEmailAndPassword(auth, email, pass)
+        .then(() => {
+          document.getElementById('login-modal').classList.remove('active');
+          document.getElementById('adminEmail').value = '';
+          document.getElementById('adminPass').value = '';
+        })
+        .catch(e => alert("Errore login: Credenziali non valide."));
+    };
+
+    window.logoutAdmin = function() {
+      signOut(auth).then(() => alert("Disconnesso con successo."));
+    };
+
+    // Ascolta i cambiamenti in tempo reale
+    let allAppsData = [];
+    let appsData = {};
+    let softwareData = {};
+    let currentCategory = 'Tutte';
+
+    function mergeAndRender() {
+      const loading = document.getElementById('loading-msg');
+      if(loading) loading.style.display = 'none';
+
+      const appsArray = Object.entries(appsData).map(([key, val]) => ({
+          id: key, 
+          type: 'apps',
+          ...val
+      }));
+
+      const softwareArray = Object.entries(softwareData).map(([key, val]) => {
+          let description = val.version ? `v${val.version}` : '';
+          if (val.lastUpdated) {
+             const date = new Date(val.lastUpdated).toLocaleDateString();
+             description += ` (${date})`;
+          }
+          return {
+              id: key,
+              type: 'software',
+              name: val.name,
+              code: val.code,
+              desc: description,
+              category: 'Strumenti',
+              icon: val.icon || 'assets/downloads.png',
+              timestamp: new Date(val.lastUpdated || Date.now()).getTime(),
+              order: Date.now() // Mettiamo in fondo o ordiniamo per data
+          };
+      });
+
+      allAppsData = [...appsArray, ...softwareArray].sort((a,b) => (a.order || 0) - (b.order || 0));
+      window._notifyAppsData = allAppsData; // Expose for notify modal
+      
+      updateCategoryFilters();
+      renderApps();
+    }
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        appsData = data;
+      } else {
+         initDefaultApps(dbRef);
+      }
+      mergeAndRender();
+    });
+
+    onValue(ref(db, 'software'), (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        softwareData = data;
+      }
+      mergeAndRender();
+    });
+
+    function updateCategoryFilters() {
+        const categories = new Set();
+        allAppsData.forEach(app => {
+            if(app.category) categories.add(app.category);
+        });
+        
+        const filterContainer = document.getElementById('categoryFilters');
+        filterContainer.innerHTML = `<button class="filter-btn ${currentCategory === 'Tutte' ? 'active' : ''}" onclick="setCategory('Tutte')">Tutte</button>`;
+        
+        const datalist = document.getElementById('categoryList');
+        if(datalist) datalist.innerHTML = '';
+        
+        Array.from(categories).sort().forEach(cat => {
+            // Add to filters
+            const btn = document.createElement('button');
+            btn.className = `filter-btn ${currentCategory === cat ? 'active' : ''}`;
+            btn.onclick = () => setCategory(cat);
+            btn.innerText = cat;
+            filterContainer.appendChild(btn);
+            
+            // Add to datalist
+            if(datalist) {
+                const option = document.createElement('option');
+                option.value = cat;
+                datalist.appendChild(option);
+            }
+        });
+    }
+
+    window.renderApps = function() {
+        const main = document.getElementById('main-content');
+        main.innerHTML = '';
+        
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        
+        const filteredApps = allAppsData.filter(app => {
+            const matchesSearch = app.name.toLowerCase().includes(searchTerm) || (app.desc && app.desc.toLowerCase().includes(searchTerm));
+            const matchesCategory = currentCategory === 'Tutte' || app.category === currentCategory;
+            return matchesSearch && matchesCategory;
+        });
+
+        if(filteredApps.length === 0) {
+            main.innerHTML = '<div style="width:100%;text-align:center;padding:40px;color:var(--text-muted);">Nessuna app trovata.</div>';
+            return;
+        }
+
+        filteredApps.forEach((app) => {
+          createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
+        });
+    };
+
+    window.filterApps = function() {
+        renderApps();
+    };
+
+    window.setCategory = function(cat) {
+        currentCategory = cat;
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText === cat);
+        });
+        renderApps();
+    };
+
+    window.searchIcon = async function() {
+        const name = document.getElementById('appName').value;
+        if (!name) {
+            alert("Inserisci prima il nome dell'app per cercare l'icona!");
+            return;
+        }
+        
+        const iconInput = document.getElementById('appIcon');
+        const originalPlaceholder = iconInput.placeholder;
+        iconInput.placeholder = "Ricerca in corso...";
+        iconInput.value = "";
+        
+        try {
+            const response = await fetch(`/api/search-icon?name=${encodeURIComponent(name)}`);
+            
+            if (!response.ok) {
+                // Se il server restituisce un errore (es. 404 o 500)
+                try {
+                    const errorData = await response.json();
+                    console.warn("Ricerca icona fallita:", errorData.error);
+                } catch (e) {
+                    console.warn("Nessuna icona trovata o errore del server.");
+                }
+                // Ripristiniamo il placeholder ma NON blocchiamo l'utente
+                iconInput.placeholder = "URL Icona (opzionale)";
+                return;
+            }
+
+            const data = await response.json();
+            
+            if (data.success && data.icon) {
+                iconInput.value = data.icon;
+            } else {
+                console.warn("Nessuna icona trovata per questo nome.");
+            }
+        } catch (error) {
+            console.error("Errore durante la ricerca dell'icona:", error);
+        } finally {
+            iconInput.placeholder = "URL Icona (opzionale)";
+        }
+    };
+
+    window.addApp = function() {
+      const name = document.getElementById('appName').value;
+      const code = document.getElementById('appCode').value;
+      const desc = document.getElementById('appDesc').value;
+      const icon = document.getElementById('appIcon').value;
+      const category = document.getElementById('appCategory').value || 'Altro';
+      const editingKey = document.getElementById('editingKey').value;
+      
+      if(!name || !code) return alert("Inserisci almeno Nome e Codice!");
+      
+      const appData = {
+        name: name,
+        code: code,
+        desc: desc,
+        icon: icon,
+        category: category,
+        timestamp: Date.now(),
+        order: editingKey ? undefined : Date.now() 
+      };
+
+      Object.keys(appData).forEach(key => appData[key] === undefined && delete appData[key]);
+
+      if (editingKey) {
+        update(ref(db, 'apps/' + editingKey), appData)
+        .then(() => { resetForm(); }).catch((error) => { alert("Errore modifica: " + error.message); });
+      } else {
+        push(dbRef, appData).then(() => { resetForm(); }).catch((error) => { alert("Errore aggiunta: " + error.message); });
+      }
+    };
+    
+    window.updateAllIcons = async function() {
+        if(!confirm("Vuoi avviare la ricerca automatica delle icone mancanti per tutte le app? L'operazione potrebbe richiedere un po' di tempo.")) return;
+        
+        let updatedCount = 0;
+        const updates = {};
+        
+        // Mostra un indicatore di caricamento
+        const btn = document.querySelector('button[onclick="updateAllIcons()"]');
+        const originalText = btn.innerText;
+        btn.innerText = "⏳ Aggiornamento in corso...";
+        btn.disabled = true;
+
+        try {
+            for (const app of allAppsData) {
+                // Salta se ha già un'icona valida (link http e non un'icona di default locale)
+                if (app.icon && app.icon.startsWith('http') && !app.icon.includes('nello.png') && !app.icon.includes('downloads.png')) {
+                    continue;
+                }
+
+                try {
+                    const response = await fetch(`/api/search-icon?name=${encodeURIComponent(app.name)}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.success && data.icon) {
+                            const dbPath = app.type === 'software' ? `software/${app.id}/icon` : `apps/${app.id}/icon`;
+                            updates[dbPath] = data.icon;
+                            updatedCount++;
+                        }
+                    }
+                } catch (e) {
+                    console.error("Errore per", app.name, e);
+                }
+            }
+
+            if (updatedCount > 0) {
+                await update(ref(db), updates);
+                alert(`Operazione completata! Aggiornate ${updatedCount} icone.`);
+            } else {
+                alert("Nessuna icona da aggiornare. Tutte le app hanno già un'icona valida.");
+            }
+        } catch (error) {
+            console.error("Errore durante l'aggiornamento massivo:", error);
+            alert("Errore durante il salvataggio nel database.");
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    };
+
+    window.saveOrder = function() {
+        const cards = document.querySelectorAll('.card');
+        const updates = {};
+        cards.forEach((card, index) => {
+            const key = card.getAttribute('data-key');
+            const type = card.getAttribute('data-type') || 'apps';
+            const icon = card.getAttribute('data-icon');
+            if(key) {
+                const dbPath = type === 'software' ? `software/${key}/order` : `apps/${key}/order`;
+                updates[dbPath] = index;
+                
+                // Assicuriamoci di non perdere l'icona durante il salvataggio dell'ordine
+                if (icon) {
+                    const iconPath = type === 'software' ? `software/${key}/icon` : `apps/${key}/icon`;
+                    updates[iconPath] = icon;
+                }
+            }
+        });
+        update(ref(db), updates).catch(e => console.error(e));
+    };
+
+    window.removeAppFromCloud = function(key, type, appName) {
+      if(confirm('Sei sicuro di voler eliminare definitivamente questa app?')) {
+        const dbPath = (type === 'software') ? 'software/' : 'apps/';
+        remove(ref(db, dbPath + key)).catch(e => alert("Errore eliminazione: " + e.message));
+        // Se è un'app (non software), aggiungila alla blacklist di TroyPoint
+        // così il cron non la re-inserisce automaticamente al prossimo giro
+        if (type === 'apps' && appName) {
+          const ignoredKey = appName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+          set(ref(db, 'troypoint_ignored/' + ignoredKey), { name: appName, timestamp: Date.now() })
+            .catch(e => console.warn('Blacklist write failed:', e));
+        }
+      }
+    };
+
+    window.editAppFromCloud = function(key, name, code, desc, icon, category, type) {
+        if (type === 'software') {
+            alert("Questa app è gestita automaticamente dagli script. Modificala tramite backend o script.");
+            return;
+        }
+        document.getElementById('appName').value = name;
+        document.getElementById('appCode').value = code;
+        document.getElementById('appDesc').value = desc || '';
+        document.getElementById('appIcon').value = icon || '';
+        document.getElementById('appCategory').value = category || '';
+        document.getElementById('editingKey').value = key;
+        
+        const btn = document.getElementById('submitAppBtn');
+        btn.innerText = "💾 Salva Modifiche";
+        btn.style.background = "#eab308";
+        
+        document.querySelector('.add-app-section').scrollIntoView({behavior: 'smooth'});
+    };
+
+    function resetForm() {
+        document.getElementById('appName').value = '';
+        document.getElementById('appCode').value = '';
+        document.getElementById('appDesc').value = '';
+        document.getElementById('appIcon').value = '';
+        document.getElementById('appCategory').value = '';
+        document.getElementById('editingKey').value = '';
+        
+        const btn = document.getElementById('submitAppBtn');
+        btn.innerText = "Aggiungi Scheda";
+        btn.style.background = "";
+    }
+  }
+  
+  function initDefaultApps(dbRef) {
+      const defaults = [
+          {name: "Xrom", code: "4537574", desc: "Custom ROM / launcher", icon: "assets/android-os.png", category: "Launcher"},
+          {name: "Vimu Craccato", code: "6768823", desc: "Vimu media player", icon: "assets/play-button-circled.png", category: "Streaming"},
+          {name: "Stremio Cell Mod VLC", code: "5578609", desc: "Stremio mobile mod", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stremio_Icon.svg/512px-Stremio_Icon.svg.png", category: "Mod"},
+          {name: "Stremio TV Mod VLC", code: "3988093", desc: "Stremio TV mod", icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stremio_Icon.svg/512px-Stremio_Icon.svg.png", category: "Mod"},
+          {name: "Stremio Proxy MPD", code: "4095972", desc: "Proxy MPD", icon: "assets/proxy.png", category: "Strumenti"},
+          {name: "Smart Tube", code: "9587028", desc: "Player YouTube-like", icon: "assets/youtube-play.png", category: "Streaming"},
+          {name: "Kodi", code: "2130077", desc: "Media center", icon: "assets/kodi.png", category: "Streaming"},
+          {name: "Veezie", code: "2895641", desc: "Player / aggregator", icon: "assets/video.png", category: "Streaming"},
+          {name: "Launcher Manager 1.15", code: "7113338", desc: "Gestore launcher", icon: "assets/launcher.png", category: "Strumenti"},
+          {name: "Launcher Manager 1.04 AndroidTV", code: "2096234", desc: "", icon: "assets/tv-settings.png", category: "Strumenti"},
+          {name: "Launcher Fire TV", code: "5683409", desc: "Launcher ottimizzato", icon: "assets/tv.png", category: "Launcher"},
+          {name: "Vimu Installer", code: "3188516", desc: "Installa Vimu", icon: "assets/downloads.png", category: "Strumenti"},
+          {name: "Xrom Lite", code: "3271802", desc: "Versione leggera", icon: "assets/android-file.png", category: "Launcher"},
+          {name: "Xrom Nuovo", code: "2306309", desc: "Nuova versione", icon: "assets/android-new.png", category: "Launcher"},
+          {name: "Tutti i File", code: "730116", desc: "Archivio completo", icon: "assets/folder-invoices.png", category: "Altro"},
+          {name: "Archivio completo / Altri", code: "250931", desc: "Raccolta link e file", icon: "assets/star.png", category: "Altro"}
+      ];
+      
+      defaults.forEach((app, index) => {
+          push(dbRef, {...app, order: index, timestamp: Date.now()});
+      });
+  }
+
+  function createAppCard(name, code, desc, firebaseKey, iconPath, timestamp, clicks, category, type = 'apps') {
+      let link = code;
+
+      if(code.match(/^\d+$/)) {
+          link = 'https://go.aftvnews.com/' + code;
+      }
+      
+      const main = document.getElementById('main-content');
+      const newCard = document.createElement('div');
+      newCard.className = 'card';
+      newCard.draggable = true;
+      newCard.setAttribute('data-key', firebaseKey);
+      newCard.setAttribute('data-type', type);
+      newCard.setAttribute('data-icon', iconPath || '');
+      
+      const finalIcon = iconPath || 'assets/nello.png';
+      
+      const displayCode = (code.startsWith('http') || code.startsWith('/')) ? '' : code;
+      const displayDesc = [displayCode, desc].filter(Boolean).join(' — ');
+
+      const badgeHtml = '';
+      
+      // Contatore Click
+      const clickCount = clicks || 0;
+      const clickHtml = `<div class="click-counter">⬇️ ${clickCount}</div>`;
+
+      const escapeAppValue = (str) => {
+          if (!str) return '';
+          return str.replace(/\\/g, '\\\\')
+                    .replace(/'/g, "\\'")
+                    .replace(/"/g, '&quot;')
+                    .replace(/\n/g, '\\n')
+                    .replace(/\r/g, '');
+      };
+
+      const controlsHtml = `
+        <div class="admin-controls admin-only">
+            <button onclick="editAppFromCloud('${firebaseKey}', '${escapeAppValue(name)}', '${String(code)}', '${escapeAppValue(desc)}', '${escapeAppValue(iconPath)}', '${escapeAppValue(category)}', '${type}')" 
+                    class="admin-btn btn-edit" title="Modifica">✏️</button>
+            <button onclick="removeAppFromCloud('${firebaseKey}', '${type}', '${escapeAppValue(name)}')" 
+                    class="admin-btn btn-delete" title="Elimina">🗑️</button>
+        </div>
+      `;
+      
+      // Se è un codice numerico, mostriamo "Scarica" (che apre il link)
+      const actionBtnHtml = `<a class="btn" href="${link}" target="_blank">Scarica</a>`;
+
+      newCard.innerHTML = `
+        ${badgeHtml}
+        ${controlsHtml}
+        <div class="icon-container"><img src="${finalIcon}" onerror="this.src='assets/nello.png'" alt="${name}"></div>
+        <div class="card-text">
+          <h4>${name}</h4>
+          <span>${displayDesc}</span>
+        </div>
+        <div class="actions">${actionBtnHtml}</div>
+        ${clickHtml}
+      `;
+      
+      main.appendChild(newCard);
+      
+      newCard.addEventListener('click', (e)=>{ 
+        if(e.target.closest('button') || e.target.closest('a')) return;
+        
+        // Incrementa contatore click
+        if(firebaseKey) {
+            import("https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js").then(({ getDatabase, ref, runTransaction }) => {
+                const db = getDatabase();
+                runTransaction(ref(db, 'apps/' + firebaseKey + '/clicks'), (currentClicks) => {
+                    return (currentClicks || 0) + 1;
+                });
+            });
+        }
+        
+        window.open(link, '_blank'); 
+      });
+
+      newCard.addEventListener('dragstart', (e) => {
+          if(!document.body.classList.contains('is-admin')) { e.preventDefault(); return; }
+          newCard.classList.add('dragging');
+      });
+      newCard.addEventListener('dragend', () => {
+          newCard.classList.remove('dragging');
+          if(document.body.classList.contains('is-admin')) window.saveOrder();
+      });
+  }
+  
+  const mainContainer = document.getElementById('main-content');
+  mainContainer.addEventListener('dragover', e => {
+      if(!document.body.classList.contains('is-admin')) return;
+      e.preventDefault();
+      const afterElement = getDragAfterElement(mainContainer, e.clientY, e.clientX);
+      const draggable = document.querySelector('.dragging');
+      if(draggable) {
+          if (afterElement == null) {
+              mainContainer.appendChild(draggable);
+          } else {
+              mainContainer.insertBefore(draggable, afterElement);
+          }
+      }
+  });
+
+  function getDragAfterElement(container, y, x) {
+      const draggableElements = [...container.querySelectorAll('.card:not(.dragging)')];
+      return draggableElements.reduce((closest, child) => {
+          const box = child.getBoundingClientRect();
+          const offsetX = x - box.left - box.width / 2;
+          const offsetY = y - box.top - box.height / 2;
+          const dist = Math.hypot(offsetX, offsetY);
+          if (dist < closest.offset) {
+              return { offset: dist, element: child };
+          } else {
+              return closest;
+          }
+      }, { offset: Number.POSITIVE_INFINITY }).element;
+  }
+
+  // Theme Toggle
+  window.toggleTheme = function() {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  };
+  if(localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
+
+  // Lite Mode (Fast/FireTV) Toggle
+  window.toggleLiteMode = function() {
+      document.body.classList.toggle('lite-mode');
+      const isLite = document.body.classList.contains('lite-mode');
+      localStorage.setItem('mode', isLite ? 'lite' : 'full');
+      // Show feedback
+      const btn = document.querySelector('button[onclick="toggleLiteMode()"]');
+      if (btn) btn.innerHTML = isLite ? '🎨' : '⚡'; // Switch icon
+      if (isLite) {
+          alert("Modalità Lite Attiva: Animazioni e trasparenze rimosse per massima velocità.");
+      }
+  };
+
+  // Auto-Detect FireTV or Low End device
+  function detectLowEndDevice() {
+      // Check localStorage first
+      const savedMode = localStorage.getItem('mode');
+      if (savedMode) {
+          if (savedMode === 'lite') {
+              document.body.classList.add('lite-mode');
+              document.getElementById('lite-mode-banner').style.display = 'none';
+          }
+      }
+      
+      const ua = navigator.userAgent;
+      document.getElementById('ua-debug').innerText = "Device: " + ua;
+      
+      // Common FireTV identifiers: "AFT", "Silk", "Android" on TV, and "Downloader" for the Downloader app
+      const isFireTV = /AFT|Silk|Amazon|Android.*TV|SmartTV|HbbTV|CrKey|Roku|AppleTV|Downloader|AFTS|AFTB|AFTT|AFTM|AFTN|AFTRS|Mobile VR|Dalvik|Android 5|Android 6|Android 7|Android 8|Android 9/.test(ua);
+      
+      if (isFireTV) {
+          activateLiteModeManual(); // Reuse function
+      }
+  }
+
+  window.activateLiteModeManual = function() {
+      console.log("Enabling Lite Mode manually.");
+      document.body.classList.add('lite-mode');
+      localStorage.setItem('mode', 'lite');
+      const btn = document.querySelector('button[onclick="toggleLiteMode()"]');
+      if (btn) btn.innerHTML = '🎨';
+      document.getElementById('lite-mode-banner').style.display = 'none';
+  };
+  detectLowEndDevice();
+
+  // QR Code
+  window.showQR = function() {
+      const url = encodeURIComponent(window.location.href);
+      document.getElementById('qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${url}&bgcolor=0a0a0f&color=a855f7`;
+      document.getElementById('qr-modal').classList.add('active');
+  };
+
+  // Copia Codice per Downloader
+  window.copyToClipboard = function(text, event) {
+      if(event) event.stopPropagation();
+      
+      navigator.clipboard.writeText(text).then(() => {
+          // Mostra un piccolo feedback visivo sul bottone cliccato
+          if(event && event.target) {
+              const btn = event.target;
+              const originalText = btn.innerHTML;
+              btn.innerHTML = "✅ Copiato!";
+              btn.style.background = "var(--primary)";
+              btn.style.color = "#fff";
+              
+              setTimeout(() => {
+                  btn.innerHTML = originalText;
+                  btn.style.background = "";
+                  btn.style.color = "";
+              }, 2000);
+          } else {
+              alert("Codice " + text + " copiato negli appunti! Incollalo nell'app Downloader sulla tua TV.");
+          }
+      }).catch(err => {
+          console.error('Errore nella copia: ', err);
+          alert("Codice: " + text);
+      });
+  };
+
+  // ---- Notify Modal ----
+  window.openNotifyModal = function() {
+    goToNotifyStep1();
+    document.getElementById('notify-modal').classList.add('active');
+  };
+
+  window.goToNotifyStep1 = function() {
+    document.querySelectorAll('.notify-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('notify-step-1').classList.add('active');
+    // Reset step-3 heading in case it was changed by an update flow
+    const step3h3 = document.querySelector('#notify-step-3 h3');
+    if (step3h3) step3h3.textContent = '✅ Iscritto!';
+  };
+
+  window.goToNotifyStep2 = function() {
+    const emailEl = document.getElementById('notify-email');
+    const email = emailEl.value.trim();
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      emailEl.focus();
+      emailEl.style.borderColor = '#ef4444';
+      setTimeout(() => emailEl.style.borderColor = '', 2000);
+      return;
+    }
+    document.querySelectorAll('.notify-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('notify-step-2').classList.add('active');
+    renderAppChips();
+  };
+
+  function renderAppChips() {
+    const container = document.getElementById('app-chips-container');
+    const apps = window._notifyAppsData || [];
+    if (apps.length === 0) {
+      container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:20px;">Caricamento app…</div>';
+      setTimeout(renderAppChips, 800);
+      return;
+    }
+    container.innerHTML = '';
+    apps.forEach(app => {
+      const chip = document.createElement('div');
+      chip.className = 'app-chip';
+      chip.dataset.name = app.name;
+      const icon = app.icon || 'assets/nello.png';
+      chip.innerHTML = `
+        <div class="chip-check">✓</div>
+        <img src="${icon}" onerror="this.src='assets/nello.png'" alt="${app.name}">
+        <span class="chip-name">${app.name}</span>
+      `;
+      chip.addEventListener('click', () => chip.classList.toggle('selected'));
+      container.appendChild(chip);
+    });
+  }
+
+  window.toggleSelectAllApps = function() {
+    const chips = document.querySelectorAll('#app-chips-container .app-chip');
+    const allSelected = [...chips].every(c => c.classList.contains('selected'));
+    chips.forEach(c => allSelected ? c.classList.remove('selected') : c.classList.add('selected'));
+  };
+
+  window.submitNotifySubscription = async function() {
+    const email = document.getElementById('notify-email').value.trim();
+    const selectedChips = document.querySelectorAll('#app-chips-container .app-chip.selected');
+    const btn = document.getElementById('notify-submit-btn');
+    const msg = document.getElementById('notify-step2-msg');
+
+    if (selectedChips.length === 0) {
+      msg.style.color = '#ef4444';
+      msg.innerText = '⚠️ Seleziona almeno un\'app.';
+      msg.style.display = 'block';
+      return;
+    }
+
+    const allApps = window._notifyAppsData || [];
+    const selectedApps = selectedChips.length === allApps.length
+      ? ['all']
+      : [...selectedChips].map(c => c.dataset.name);
+
+    btn.disabled = true;
+    btn.innerHTML = 'Iscrizione in corso…';
+    msg.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, apps: selectedApps })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        const label = selectedApps[0] === 'all' ? 'tutte le app' : `${selectedApps.length} app`;
+        if (data.updated) {
+          document.getElementById('notify-success-msg').innerText = `Iscrizione aggiornata. Riceverai notifiche per ${label}.`;
+          document.querySelector('#notify-step-3 h3').textContent = '✏️ Aggiornato!';
+        } else {
+          document.getElementById('notify-success-msg').innerText = `Riceverai notifiche per ${label}.`;
+          document.querySelector('#notify-step-3 h3').textContent = '✅ Iscritto!';
+        }
+        document.querySelectorAll('.notify-step').forEach(s => s.classList.remove('active'));
+        document.getElementById('notify-step-3').classList.add('active');
+      } else {
+        msg.style.color = '#ef4444';
+        msg.innerText = '❌ ' + (data.error || 'Errore durante l\'iscrizione.');
+        msg.style.display = 'block';
+      }
+    } catch (e) {
+      msg.style.color = '#ef4444';
+      msg.innerText = '❌ Errore di connessione. Riprova più tardi.';
+      msg.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '✅ Iscriviti';
+    }
+  };
+</script>
+</body>
+</html>
