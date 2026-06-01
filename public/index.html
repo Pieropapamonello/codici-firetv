@@ -464,6 +464,7 @@ body.lite-mode.light-theme .search-box input {
     <button class="icon-btn" onclick="toggleTheme()" title="Cambia Tema">🌓</button>
     <button id="notify-bell-btn" class="icon-btn" onclick="openNotifyModal()" title="Notifiche Aggiornamenti App">🔔</button>
     <button id="login-btn" class="icon-btn" onclick="document.getElementById('login-modal').classList.add('active')" title="Accesso Amministratore">🔐</button>
+    <button class="icon-btn admin-only" onclick="openStatsModal()" title="Statistiche">📊</button>
     <button id="logout-btn" class="icon-btn admin-only" onclick="logoutAdmin()" title="Esci dall'Amministrazione">🔓</button>
   </div>
   <img src="assets/nello.png" alt="Nello">
@@ -621,6 +622,17 @@ body.lite-mode.light-theme .search-box input {
     <input type="password" id="adminPass" class="form-input" placeholder="Password">
     <button onclick="loginAdmin()" class="form-btn">Accedi</button>
     <button onclick="document.getElementById('login-modal').classList.remove('active')" class="close-modal">Annulla</button>
+  </div>
+</div>
+
+<!-- Stats Modal -->
+<div id="stats-modal" class="modal">
+  <div class="modal-content" style="max-width: 560px; max-height: 85vh; overflow-y: auto;">
+    <h3>📊 Statistiche</h3>
+    <div id="stats-content" style="color: var(--text);">
+      <div style="text-align:center;padding:20px;color:var(--text-muted);">Caricamento…</div>
+    </div>
+    <button onclick="document.getElementById('stats-modal').classList.remove('active')" class="close-modal">Chiudi</button>
   </div>
 </div>
 
@@ -1369,6 +1381,83 @@ body.lite-mode.light-theme .search-box input {
       btn.innerHTML = '✅ Iscriviti';
     }
   };
+  // --- Admin Stats Modal ---
+  window.openStatsModal = async function() {
+    const modal = document.getElementById('stats-modal');
+    const content = document.getElementById('stats-content');
+    modal.classList.add('active');
+    content.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-muted);">Caricamento…</div>';
+
+    try {
+      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
+      const user = auth.currentUser;
+      if (!user) {
+        content.innerHTML = '<p style="color:#ef4444;text-align:center;">Devi essere loggato come admin.</p>';
+        return;
+      }
+      const token = await user.getIdToken();
+      const r = await fetch('/api/admin-stats', { headers: { 'Authorization': 'Bearer ' + token } });
+      const d = await r.json();
+      if (!r.ok) {
+        content.innerHTML = `<p style="color:#ef4444;text-align:center;">${d.error || 'Errore caricamento stats'}</p>`;
+        return;
+      }
+
+      const fmtDate = (ts) => new Date(ts).toLocaleDateString('it-IT', { day:'2-digit', month:'short' });
+      const t = d.totals;
+      const topList = (d.topClicked || []).map((a, i) =>
+        `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span>${i+1}. ${escapeHtml(a.name)}</span>
+          <strong style="color:var(--neon-cyan);">⬇️ ${a.clicks}</strong>
+        </div>`).join('') || '<div style="color:var(--text-muted);text-align:center;padding:10px;">Nessun click registrato</div>';
+
+      const newList = (d.newApps || []).map(a =>
+        `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span>${escapeHtml(a.name)}</span>
+          <span style="color:var(--neon-pink);font-size:12px;">${fmtDate(a.timestamp)}</span>
+        </div>`).join('') || '<div style="color:var(--text-muted);text-align:center;padding:10px;">Nessuna nuova app questa settimana</div>';
+
+      const catList = Object.entries(d.categoryCounts || {})
+        .sort((a, b) => b[1] - a[1])
+        .map(([cat, n]) => `<span style="display:inline-block;background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);padding:4px 10px;border-radius:20px;margin:3px;font-size:12px;">${escapeHtml(cat)} <strong>${n}</strong></span>`)
+        .join('');
+
+      content.innerHTML = `
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px;">
+          <div style="background:rgba(168,85,247,0.1);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(168,85,247,0.3);">
+            <div style="font-size:28px;font-weight:800;color:var(--neon-purple);">${t.apps}</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">App</div>
+          </div>
+          <div style="background:rgba(34,211,238,0.1);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(34,211,238,0.3);">
+            <div style="font-size:28px;font-weight:800;color:var(--neon-cyan);">${t.totalClicks}</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">Click totali</div>
+          </div>
+          <div style="background:rgba(236,72,153,0.1);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(236,72,153,0.3);">
+            <div style="font-size:28px;font-weight:800;color:var(--neon-pink);">${t.emailSubscribers}</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">Email iscritti</div>
+          </div>
+          <div style="background:rgba(0,136,204,0.1);padding:12px;border-radius:12px;text-align:center;border:1px solid rgba(0,136,204,0.3);">
+            <div style="font-size:28px;font-weight:800;color:#0088CC;">${t.telegramSubscribers}</div>
+            <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;">Telegram iscritti</div>
+          </div>
+        </div>
+
+        <h4 style="color:var(--neon-cyan);margin:20px 0 8px;font-family:'Orbitron',sans-serif;font-size:14px;">🔥 Top 10 cliccate</h4>
+        <div style="font-size:13px;">${topList}</div>
+
+        <h4 style="color:var(--neon-pink);margin:20px 0 8px;font-family:'Orbitron',sans-serif;font-size:14px;">🆕 Nuove (ultima settimana)</h4>
+        <div style="font-size:13px;">${newList}</div>
+
+        <h4 style="color:var(--neon-purple);margin:20px 0 8px;font-family:'Orbitron',sans-serif;font-size:14px;">📁 Categorie</h4>
+        <div>${catList}</div>
+      `;
+    } catch (e) {
+      content.innerHTML = `<p style="color:#ef4444;text-align:center;">Errore: ${e.message}</p>`;
+    }
+  };
+
+  function escapeHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
   // --- Voice Search ---
   window.startVoiceSearch = function() {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {

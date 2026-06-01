@@ -30,6 +30,7 @@ import unsubscribeHandler from './api/unsubscribe.js';
 import telegramWebhookHandler from './api/telegram-webhook.js';
 import checkStremioBetaHandler from './api/check-stremio-beta.js';
 import telegramBotInfoHandler from './api/telegram-bot-info.js';
+import adminStatsHandler from './api/admin-stats.js';
 
 app.all('/api/check-stremio', (req, res) => checkStremioHandler(req, res));
 app.all('/api/check-paramount', (req, res) => checkParamountHandler(req, res));
@@ -47,6 +48,7 @@ app.all('/api/unsubscribe', (req, res) => unsubscribeHandler(req, res));
 app.post('/api/telegram-webhook', (req, res) => telegramWebhookHandler(req, res));
 app.all('/api/check-stremio-beta', (req, res) => checkStremioBetaHandler(req, res));
 app.all('/api/telegram-bot-info', (req, res) => telegramBotInfoHandler(req, res));
+app.all('/api/admin-stats', (req, res) => adminStatsHandler(req, res));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
