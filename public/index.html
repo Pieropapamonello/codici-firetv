@@ -161,6 +161,30 @@ header h1 {
 }
 .bookmark-hint strong { color: #fff; }
 
+/* Advanced Guides */
+.advanced-guides { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.advanced-guides > h2 { font-family: 'Orbitron', sans-serif; font-size: 22px; color: var(--neon-pink); text-align: center; margin-bottom: 24px; letter-spacing: 1px; }
+.adv-guide { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--card-border); backdrop-filter: blur(20px); margin-bottom: 14px; overflow: hidden; box-shadow: 0 0 20px rgba(168,85,247,0.1); }
+.adv-guide summary { padding: 16px 20px; font-weight: 600; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); transition: background 0.2s; }
+.adv-guide summary::-webkit-details-marker { display: none; }
+.adv-guide summary::before { content: '▶'; font-size: 11px; color: var(--neon-cyan); transition: transform 0.3s; }
+.adv-guide[open] summary::before { transform: rotate(90deg); }
+.adv-guide summary:hover { background: rgba(168,85,247,0.05); }
+.adv-guide .guide-body { padding: 0 20px 20px; font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.adv-guide .guide-body h4 { color: var(--neon-cyan); margin: 18px 0 8px; font-size: 14px; font-weight: 600; }
+.adv-guide .guide-body strong { color: var(--text); }
+.adv-guide .guide-body a { color: var(--neon-pink); text-decoration: none; word-break: break-all; }
+.adv-guide .guide-body a:hover { text-decoration: underline; }
+.adv-guide .guide-body ol, .adv-guide .guide-body ul { padding-left: 22px; margin: 6px 0; }
+.adv-guide .guide-body li { margin-bottom: 10px; }
+.code-snippet { position: relative; background: rgba(0,0,0,0.5); border: 1px solid rgba(168,85,247,0.2); border-radius: 8px; padding: 12px 50px 12px 14px; margin: 8px 0; font-family: 'Courier New', monospace; font-size: 13px; color: #22d3ee; white-space: pre-wrap; word-break: break-all; cursor: pointer; transition: all 0.2s; }
+.code-snippet:hover { border-color: var(--neon-cyan); background: rgba(0,0,0,0.7); }
+.code-snippet::after { content: '📋 Copia'; position: absolute; right: 8px; top: 8px; font-size: 10px; padding: 4px 8px; background: rgba(34,211,238,0.15); border: 1px solid rgba(34,211,238,0.3); border-radius: 6px; color: var(--neon-cyan); font-family: 'Inter', sans-serif; }
+.code-snippet.copied::after { content: '✅ Copiato!'; background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981; }
+.inline-code { background: rgba(168,85,247,0.15); padding: 2px 8px; border-radius: 6px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 12px; color: var(--neon-cyan); border: 1px solid rgba(168,85,247,0.25); transition: all 0.2s; }
+.inline-code:hover { background: rgba(168,85,247,0.3); }
+.inline-code.copied { background: rgba(16,185,129,0.2); color: #10b981; border-color: #10b981; }
+
 /* Time badge on cards */
 .time-badge { position: absolute; bottom: 8px; left: 16px; font-size: 10px; color: var(--text-muted); opacity: 0.6; }
 .time-badge.recent { color: var(--neon-cyan); opacity: 1; font-weight: 600; }
@@ -534,6 +558,181 @@ body.lite-mode.light-theme .search-box input {
       <li>Impostazioni ➔ Interfaccia ➔ Altro / Skin ➔ Startup window ➔ seleziona TV ➔ Riavvia Kodi.</li>
     </ol>
   </div>
+</div>
+
+<div class="advanced-guides">
+  <h2>📚 GUIDE AVANZATE</h2>
+
+  <details class="adv-guide">
+    <summary>🔋 Fire TV — Disabilitare risparmio energetico per EasyProxy</summary>
+    <div class="guide-body">
+      <h4>1. Sblocca Opzioni Sviluppatore</h4>
+      Impostazioni → La mia Fire TV → Informazioni → clicca <strong>7 volte su "Numero di serie"</strong> → Opzioni Sviluppatore → attiva <strong>Debug ADB</strong> e <strong>Debug ADB di rete</strong>
+
+      <h4>2. Trova l'IP della Fire TV</h4>
+      Impostazioni → La mia Fire TV → Informazioni → Rete → annota l'IP (es. <code class="inline-code">192.168.1.XX</code>)
+
+      <h4>3. Installa Termux sul telefono</h4>
+      Scarica da F-Droid (NON Play Store): <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">f-droid.org/com.termux</a><br>
+      ⚠️ Telefono e Fire TV devono essere sulla <strong>stessa rete Wi-Fi</strong>
+
+      <h4>4. Installa ADB su Termux</h4>
+      <div class="code-snippet">pkg update && pkg install android-tools -y</div>
+
+      <h4>5. Connettiti alla Fire TV</h4>
+      <div class="code-snippet">adb connect 192.168.1.XX</div>
+      👉 Sostituisci l'IP. Accetta il pop-up sulla TV → "Consenti sempre"
+
+      <h4>6. Esegui i comandi</h4>
+      <div class="code-snippet">adb shell dumpsys deviceidle whitelist +com.mediaflow.proxy.tv</div>
+      <div class="code-snippet">adb shell pm grant com.mediaflow.proxy.tv android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</div>
+
+      <h4>7. Verifica</h4>
+      <div class="code-snippet">adb shell dumpsys deviceidle whitelist</div>
+      ✅ Dovresti vedere <code class="inline-code">com.mediaflow.proxy.tv</code> nell'elenco
+
+      <h4>↩️ Per annullare</h4>
+      <div class="code-snippet">adb shell dumpsys deviceidle whitelist -com.mediaflow.proxy.tv</div>
+      <div class="code-snippet">adb shell pm revoke com.mediaflow.proxy.tv android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</div>
+
+      <p style="margin-top:14px;padding:10px;background:rgba(16,185,129,0.1);border-left:3px solid #10b981;border-radius:6px;">📌 <strong>Permanente ai riavvii.</strong> Si resetta solo con aggiornamenti Fire OS — in quel caso ripeti solo i punti 5 e 6.</p>
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>🌐 Esporre EasyProxy su Internet via Cloudflare Tunnel — Parte 1 (link temporaneo)</summary>
+    <div class="guide-body">
+      <h4>1. Installa Termux sul telefono</h4>
+      <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">f-droid.org/com.termux</a> (NON Play Store)
+
+      <h4>2. Installa cloudflared</h4>
+      <div class="code-snippet">pkg update && pkg install cloudflared -y</div>
+
+      <h4>3. Avvia il tunnel temporaneo</h4>
+      <div class="code-snippet">cloudflared tunnel --url http://localhost:7860</div>
+      ✅ Apparirà un link tipo <code class="inline-code">https://qualcosa-random.trycloudflare.com</code><br>
+      ⚠️ Il link cambia ad ogni riavvio
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>🌐 Cloudflare Tunnel — Parte 2 (link fisso permanente, gratis)</summary>
+    <div class="guide-body">
+      <h4>4. Registra un dominio gratuito</h4>
+      <a href="https://domain.digitalplat.org" target="_blank">domain.digitalplat.org</a> → scegli un nome tipo <code class="inline-code">mioproxy.dpdns.org</code>
+
+      <h4>5. Crea un account Cloudflare gratuito</h4>
+      <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a> → <strong>+ Add</strong> → <strong>Connect a domain</strong> → inserisci il tuo dominio DigitalPlat → Continue
+
+      <h4>6. Copia i nameserver Cloudflare</h4>
+      Cloudflare ti mostrera' 2 nameserver tipo:
+      <div class="code-snippet">daisy.ns.cloudflare.com
+fred.ns.cloudflare.com</div>
+
+      <h4>7. Aggiorna i nameserver su DigitalPlat</h4>
+      DigitalPlat → Domain List → sostituisci i nameserver con quelli di Cloudflare → salva<br>
+      ⏳ Aspetta l'email di conferma da Cloudflare (10 min - 2 ore)
+
+      <h4>8. Crea il tunnel fisso</h4>
+      Cloudflare → menu sinistra → <strong>Networking → Tunnels → Create a Tunnel</strong> → dai un nome (es. pippo) → Save
+
+      <h4>9. Collega Termux al tunnel</h4>
+      Nella pagina del tunnel seleziona: OS <strong>Debian</strong>, Architettura <strong>arm64</strong><br>
+      Copia il comando sotto <strong>"Or, run tunnel (manual)"</strong> e incollalo su Termux<br>
+      ✅ Il tunnel diventera' <strong>Healthy</strong>
+
+      <h4>10. Aggiungi il dominio al tunnel</h4>
+      Cloudflare → Networking → Tunnels → tab <strong>Routes → + Add route → Public Hostname</strong>:
+      <ul>
+        <li>Subdomain: <em>lascia vuoto</em> (o scrivi <code class="inline-code">proxy</code>)</li>
+        <li>Domain: <code class="inline-code">tuosito.dpdns.org</code></li>
+        <li>URL: <code class="inline-code">http://localhost:7860</code></li>
+      </ul>
+      ✅ Il tuo link fisso sara' <code class="inline-code">https://tuosito.dpdns.org</code> per sempre
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>⚙️ Cloudflare Tunnel — Parte 3 (gestione manuale)</summary>
+    <div class="guide-body">
+      <h4>Salva il comando per avviarlo facilmente</h4>
+      <div class="code-snippet">echo "INSERIRE LINK DEL TUNNEL OTTENUTO nel punto 9" > ~/tunnel.sh
+chmod +x ~/tunnel.sh</div>
+
+      <h4>Aggiungi un alias per avviarlo velocemente</h4>
+      <div class="code-snippet">echo "alias tunnel='bash ~/tunnel.sh'" >> ~/.bashrc
+source ~/.bashrc</div>
+
+      <h4>Avviare il tunnel</h4>
+      <div class="code-snippet">bash ~/tunnel.sh</div>
+      oppure semplicemente <code class="inline-code">tunnel</code>
+
+      <h4>Stoppare il tunnel</h4>
+      Premi <strong>Ctrl+C</strong> su Termux oppure chiudi la sessione Termux
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>🚀 Cloudflare Tunnel — Parte 4 (avvio automatico al boot del telefono)</summary>
+    <div class="guide-body">
+      <p>⚠️ Avviare prima l'app del proxy, scorrere e mettere la spunta su <strong>"Autostart on boot"</strong></p>
+
+      <h4>1. Installa Termux:Boot da F-Droid</h4>
+      <a href="https://f-droid.org/en/packages/com.termux.boot/" target="_blank">f-droid.org/com.termux.boot</a><br>
+      ⚠️ Aprilo almeno una volta dopo l'installazione
+
+      <h4>2. Crea lo script di avvio automatico</h4>
+      <div class="code-snippet">pkg install nano -y
+mkdir -p ~/.termux/boot
+nano ~/.termux/boot/start-tunnel.sh</div>
+      Scrivi queste 3 righe nel file:
+      <div class="code-snippet">#!/data/data/com.termux/files/usr/bin/sh
+termux-wake-lock
+bash ~/tunnel.sh</div>
+      Salva: <strong>Ctrl+X → Y → Invio</strong>
+
+      <h4>3. Rendi lo script eseguibile</h4>
+      <div class="code-snippet">chmod +x ~/.termux/boot/start-tunnel.sh</div>
+
+      <h4>4. Verifica che il file sia corretto</h4>
+      <div class="code-snippet">cat ~/.termux/boot/start-tunnel.sh</div>
+      ✅ Devono apparire esattamente le 3 righe sopra
+
+      <h4>5. Disabilita ottimizzazione batteria</h4>
+      Impostazioni Android → App → fai <strong>"Nessuna restrizione"</strong> per:
+      <ul style="list-style:none;padding-left:0;">
+        <li>✅ Termux</li>
+        <li>✅ Termux:Boot</li>
+        <li>✅ EasyProxy</li>
+      </ul>
+
+      <p style="margin-top:14px;padding:10px;background:rgba(16,185,129,0.1);border-left:3px solid #10b981;border-radius:6px;">
+      <strong>Risultato finale:</strong> Ad ogni riaccensione del telefono → 🔒 Wake lock attivo (Termux rimane sveglio in background) → 🚀 Tunnel Cloudflare parte automaticamente.<br>
+      📲 EasyProxy va avviata manualmente oppure impostata su "avvia all'avvio" nelle sue impostazioni.</p>
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>📶 Fire TV — Configurare IP/DNS manualmente</summary>
+    <div class="guide-body">
+      <p><strong>Metodo direttamente dalla Fire TV</strong></p>
+      <ol>
+        <li>Vai su <strong>Impostazioni</strong></li>
+        <li>Entra in <strong>Rete</strong></li>
+        <li>Seleziona la tua rete Wi-Fi</li>
+        <li>Premi il tasto con le tre linee <strong>(☰)</strong> sul telecomando → <strong>Avanzate</strong></li>
+        <li>Se disponibile, scegli <strong>Configura IP → Manuale</strong></li>
+      </ol>
+      A questo punto devi inserire:
+      <ul>
+        <li>Indirizzo IP (es. <code class="inline-code">192.168.1.50</code>)</li>
+        <li>Gateway (di solito <code class="inline-code">192.168.1.1</code>)</li>
+        <li>Prefisso di rete (di solito <code class="inline-code">24</code>)</li>
+        <li>DNS 1 (es. <code class="inline-code">8.8.8.8</code>)</li>
+        <li>DNS 2 (es. <code class="inline-code">8.8.4.4</code>)</li>
+      </ul>
+    </div>
+  </details>
 </div>
 
 <div class="add-app-section admin-only admin-only-block">
@@ -1381,6 +1580,17 @@ body.lite-mode.light-theme .search-box input {
       btn.innerHTML = '✅ Iscriviti';
     }
   };
+  // --- Click-to-copy per code-snippet e inline-code ---
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('.code-snippet, .inline-code');
+    if (!el) return;
+    const text = el.textContent.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      el.classList.add('copied');
+      setTimeout(() => el.classList.remove('copied'), 1500);
+    }).catch(() => alert('Copiato: ' + text));
+  });
+
   // --- Admin Stats Modal ---
   window.openStatsModal = async function() {
     const modal = document.getElementById('stats-modal');
@@ -1482,9 +1692,10 @@ body.lite-mode.light-theme .search-box input {
     recognition.start();
   };
 
-  // --- Sort ---
+  // --- Sort (uses window._notifyAppsData which is same ref as allAppsData) ---
   window.sortApps = function(mode) {
-    if (!window.renderApps) return;
+    const data = window._notifyAppsData;
+    if (!data || !window.renderApps) return;
     const sorters = {
       order: (a, b) => (a.order || 0) - (b.order || 0),
       recent: (a, b) => (b.timestamp || 0) - (a.timestamp || 0),
@@ -1492,9 +1703,9 @@ body.lite-mode.light-theme .search-box input {
       az: (a, b) => a.name.localeCompare(b.name),
       za: (a, b) => b.name.localeCompare(a.name)
     };
-    if (sorters[mode] && window._notifyAppsData) {
-      allAppsData.sort(sorters[mode]);
-      renderApps();
+    if (sorters[mode]) {
+      data.sort(sorters[mode]);
+      window.renderApps();
     }
   };
 

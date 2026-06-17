@@ -148,32 +148,63 @@ async function scrapeTroypoint() {
         const response = await fetch("https://troypoint.com/troypoint-toolbox/");
         const html = await response.text();
         const apps = [];
-        
-        const sections = html.split(/<h3[^>]*>/);
-        for (let i = 1; i < sections.length; i++) {
-            const section = sections[i];
-            const appBlocks = section.split('class="inherit-container-width wp-block-group');
-            for (let j = 1; j < appBlocks.length; j++) {
-                const block = appBlocks[j];
-                const nameMatch = block.match(/<p class="has-text-align-center"[^>]*>(.*?)<\/p>/);
-                const linkMatch = block.match(/href="([^"]+)"[^>]*><strong>Download<\/strong>/);
 
-                if (nameMatch && linkMatch) {
-                    let name = nameMatch[1].replace(/<[^>]+>/g, '').trim();
-                    const downloadUrl = linkMatch[1];
-                    if (!name || name.length < 2 || name.includes("Note:") || name.toLowerCase().includes("tutorial")) continue;
-                    name = name.replace(/&amp;/g, '&');
-                    
-                    if (!apps.some(a => a.name === name)) {
-                        apps.push({
-                            name: name,
-                            code: downloadUrl,
-                            timestamp: Date.now()
-                        });
+        // Cerca ogni "toolbox-button" che ha sia nome (in <p class="...toolbox-button-text">) sia link href
+        const linkRegex = /<a[^>]+href="([^"]+)"[^>]*>[\s\S]*?<p class="[^"]*toolbox-button-text[^"]*"[^>]*>([^<]+)<\/p>/g;
+        const rawApps = [];
+        let m;
+        while ((m = linkRegex.exec(html)) !== null) {
+            const downloadUrl = m[1];
+            let name = m[2].replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").trim();
+            if (!name || name.length < 2 || name.includes("Note:") || name.toLowerCase().includes("tutorial")) continue;
+            if (!downloadUrl.startsWith('http')) continue;
+            rawApps.push({ name, code: downloadUrl, timestamp: Date.now() });
+        }
+
+        // Fallback al vecchio parsing se il nuovo non trova nulla
+        if (rawApps.length === 0) {
+            const sections = html.split(/<h3[^>]*>/);
+            for (let i = 1; i < sections.length; i++) {
+                const appBlocks = sections[i].split('class="inherit-container-width wp-block-group');
+                for (let j = 1; j < appBlocks.length; j++) {
+                    const block = appBlocks[j];
+                    const nm = block.match(/<p class="has-text-align-center"[^>]*>(.*?)<\/p>/);
+                    const lm = block.match(/href="([^"]+)"[^>]*><strong>Download<\/strong>/);
+                    if (nm && lm) {
+                        let n = nm[1].replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim();
+                        if (n && n.length >= 2 && !n.includes("Note:") && !n.toLowerCase().includes("tutorial")) {
+                            rawApps.push({ name: n, code: lm[1], timestamp: Date.now() });
+                        }
                     }
                 }
             }
         }
+
+        // Raggruppa per nome base (senza "(Mirror)" o "Download Mirror") e preferisci la variante Mirror
+        function stripMirror(name) {
+            return name.replace(/\s*\(?\s*(Download\s+)?Mirror\)?[\s\S]*$/i, '').trim();
+        }
+        function isMirror(name) {
+            return /mirror/i.test(name);
+        }
+
+        const groups = {};
+        for (const a of rawApps) {
+            const base = stripMirror(a.name).toLowerCase();
+            if (!groups[base]) groups[base] = [];
+            groups[base].push(a);
+        }
+
+        for (const entries of Object.values(groups)) {
+            // Mirror ha priorita': se esiste, scarta il non-mirror
+            const mirror = entries.find(e => isMirror(e.name));
+            const chosen = mirror || entries[0];
+            // Usa il nome SENZA "(Mirror)" per coerenza con eventuali entry gia' nel DB
+            chosen.name = stripMirror(chosen.name) || chosen.name;
+            if (!apps.some(x => x.name === chosen.name)) apps.push(chosen);
+        }
+
+        console.log(`TroyPoint scraped: ${rawApps.length} raw, ${apps.length} dedup`);
         return apps;
     } catch (e) {
         console.error("Scrape failed:", e);
