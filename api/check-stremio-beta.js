@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         const html = await response.text();
 
         // Cerca l'ultimo URL RC Android TV con architettura armeabi-v7a (Fire TV ARM)
-        const allRcMatches = [...html.matchAll(/href="(https:\/\/dl\.strem\.io\/android\/v([\d.]+)-rc\.(\d+)-androidTV\/com\.stremio\.one-[\d.\-]+-armeabi-v7a\.apk)"/g)];
+        const allRcMatches = [...html.matchAll(/href="(https:\/\/dl\.strem\.io\/android\/v([\d.]+)-rc\.(\d+)-androidTV\/com\.stremio\.one-[\w.\-]+-armeabi-v7a\.apk)"/g)];
 
         if (allRcMatches.length === 0) {
             return res.status(200).json({ success: true, message: 'Nessuna versione RC Android TV ARM trovata.' });
