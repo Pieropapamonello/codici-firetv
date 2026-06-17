@@ -4,32 +4,32 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { notifyAll } from "./utils/notify.js";
 
 export default async function handler(req, res) {
-    console.log("Avvio controllo aggiornamenti Stremio Beta...");
+    console.log("Avvio controllo Stremio Beta/RC Android TV ARM...");
 
     try {
         const response = await fetch('https://www.stremio.com/downloads');
         const html = await response.text();
 
-        const match = html.match(/<a href="([^"]+)" title="Stremio for Android TV ARM Beta[^"]*">Stremio ([0-9.]+)[^<]*Beta[^<]*<\/a>/i)
-            || html.match(/href="([^"]*androidTV[^"]*beta[^"]*)"/i);
+        // Cerca l'ultimo URL RC Android TV con architettura armeabi-v7a (Fire TV ARM)
+        const allRcMatches = [...html.matchAll(/href="(https:\/\/dl\.strem\.io\/android\/v([\d.]+)-rc\.(\d+)-androidTV\/com\.stremio\.one-[\d.\-]+-armeabi-v7a\.apk)"/g)];
 
-        let link, version, appName;
-
-        if (match) {
-            link = match[1];
-            version = match[2] || link.match(/v([\d.]+)/)?.[1] || 'latest';
-            appName = `Stremio Beta ${version} Android TV`;
-        } else {
-            const stableMatch = html.match(/href="([^"]*\/v([\d.]+)-androidTV\/[^"]*)"/);
-            if (!stableMatch) {
-                return res.status(200).json({ success: true, message: 'Nessun link Stremio Beta trovato sulla pagina.' });
-            }
-            version = stableMatch[2];
-            link = `https://dl.strem.io/android/v${version}-androidTV-beta/com.stremio.one-v${version}-androidTV-beta.apk`;
-            appName = `Stremio Beta ${version} Android TV`;
+        if (allRcMatches.length === 0) {
+            return res.status(200).json({ success: true, message: 'Nessuna versione RC Android TV ARM trovata.' });
         }
 
-        console.log(`Stremio Beta: ${version} — ${link}`);
+        // Ordina per versione + rc (prendi la piu' alta)
+        allRcMatches.sort((a, b) => {
+            const va = a[2].split('.').map(Number);
+            const vb = b[2].split('.').map(Number);
+            for (let i = 0; i < 3; i++) {
+                if ((vb[i] || 0) !== (va[i] || 0)) return (vb[i] || 0) - (va[i] || 0);
+            }
+            return parseInt(b[3]) - parseInt(a[3]);
+        });
+
+        const [, link, version, rcNum] = allRcMatches[0];
+        const appName = `Stremio Beta ${version}-rc.${rcNum} ARM TV`;
+        console.log(`Stremio Beta trovata: ${appName} -> ${link}`);
 
         const firebaseConfig = {
             apiKey: process.env.FIREBASE_API_KEY,
@@ -55,8 +55,8 @@ export default async function handler(req, res) {
             const apps = snapshot.val();
             Object.entries(apps).forEach(([key, app]) => {
                 const name = (app.name || '').toLowerCase();
-                if (name.includes('stremio beta')) {
-                    if (app.name === appName || app.code === link) {
+                if (name.includes('stremio beta') || name.includes('stremio') && name.includes('rc')) {
+                    if (app.code === link) {
                         exists = true;
                     } else {
                         oldBetaKeys.push(key);
@@ -68,25 +68,26 @@ export default async function handler(req, res) {
         if (!exists) {
             for (const key of oldBetaKeys) {
                 await remove(child(dbRef, key));
+                console.log(`Rimossa vecchia beta: ${key}`);
             }
 
             await push(dbRef, {
                 name: appName,
                 code: link,
-                desc: "Versione beta con ultime funzionalità — test nuove feature",
+                desc: `Release Candidate ${rcNum} di v${version} — ultime feature in test (ARM 32-bit)`,
                 icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stremio_Icon.svg/512px-Stremio_Icon.svg.png",
                 category: "Film & Serie TV",
                 timestamp: Date.now(),
                 order: -1
             });
 
-            await notifyAll(appName, version, link,
+            await notifyAll(appName, `${version}-rc.${rcNum}`, link,
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stremio_Icon.svg/512px-Stremio_Icon.svg.png");
 
-            return res.status(200).json({ success: true, message: `Aggiunta Stremio Beta ${version}`, removed: oldBetaKeys.length });
+            return res.status(200).json({ success: true, message: `Aggiunta ${appName}`, removed: oldBetaKeys.length });
         }
 
-        return res.status(200).json({ success: true, message: `Nessun aggiornamento. Beta attuale: ${version}` });
+        return res.status(200).json({ success: true, message: `Nessun aggiornamento. Beta attuale: ${version}-rc.${rcNum}` });
     } catch (error) {
         console.error("Errore check Stremio Beta:", error);
         return res.status(500).json({ error: error.message });
