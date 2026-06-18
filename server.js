@@ -102,11 +102,12 @@ app.listen(PORT, '0.0.0.0', () => {
 
     // Auto-register Telegram webhook
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const publicUrl = process.env.PUBLIC_URL || 'https://codici-firetv.onrender.com';
     if (botToken) {
-        const webhookUrl = 'https://peppinoqq-codici-firetv.hf.space/api/telegram-webhook';
+        const webhookUrl = `${publicUrl}/api/telegram-webhook`;
         fetch(`https://api.telegram.org/bot${botToken}/setWebhook?url=${encodeURIComponent(webhookUrl)}`)
             .then(r => r.json())
-            .then(d => console.log('Telegram webhook:', d.ok ? 'registered' : d.description))
+            .then(d => console.log('Telegram webhook:', d.ok ? `registered at ${webhookUrl}` : d.description))
             .catch(e => console.error('Telegram webhook registration failed:', e.message));
     }
 });
