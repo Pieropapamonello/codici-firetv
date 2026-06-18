@@ -143,10 +143,21 @@ async function adminList(chatId, token, n = 10) {
     await tg(chatId, `📋 *Ultime ${list.length} app:*\n\n${text}`, { reply_markup: { inline_keyboard: [[{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]] } });
 }
 
-async function findApp(apps, q) {
+function findExact(apps, q) {
     const lower = q.toLowerCase().trim();
-    return Object.entries(apps).find(([k, a]) => a.name && (a.code === q || a.name.toLowerCase() === lower || k === q))
-        || Object.entries(apps).find(([, a]) => a.name && a.name.toLowerCase().includes(lower));
+    return Object.entries(apps).find(([k, a]) => a.name && (a.code === q || a.name.toLowerCase() === lower || k === q));
+}
+
+function findAllMatches(apps, q) {
+    const lower = q.toLowerCase().trim();
+    const matches = Object.entries(apps).filter(([, a]) => a.name && a.name.toLowerCase().includes(lower));
+    // Ordina: starts-with prima, poi alfabetico
+    return matches.sort((a, b) => {
+        const sa = a[1].name.toLowerCase().startsWith(lower) ? 0 : 1;
+        const sb = b[1].name.toLowerCase().startsWith(lower) ? 0 : 1;
+        if (sa !== sb) return sa - sb;
+        return a[1].name.localeCompare(b[1].name);
+    });
 }
 
 async function showAppDetail(chatId, token, key, app) {
@@ -267,23 +278,34 @@ async function handleStateInput(msg, chatId, token, state) {
         case 'find_to_delete':
         case 'find_to_icon':
         case 'find_to_setaftv': {
+            const actionMap = { find_to_edit: 'edit', find_to_delete: 'delete', find_to_icon: 'icon', find_to_setaftv: 'setaftv' };
+            const action = actionMap[state.action];
             const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
-            const entry = await findApp(apps, text);
-            if (!entry) { await tg(chatId, `❌ Nessuna app trovata per "${text}". Riprova o /cancel`, { reply_markup: cancelKb() }); return; }
-            const [key, app] = entry;
-            await clearState(chatId, token);
-            if (state.action === 'find_to_edit') {
-                await tg(chatId, `✏️ Modifica *${app.name}*\nScegli il campo:`, { reply_markup: editFieldsKb(key) });
-            } else if (state.action === 'find_to_delete') {
-                await tg(chatId, `🗑️ Eliminare *${app.name}*?\n\`${app.code}\` · ${app.category||'?'}`, { reply_markup: { inline_keyboard: [
-                    [{ text: '✅ Si, elimina', callback_data: `d:y:${key}` }, { text: '❌ No', callback_data: 'admin:menu' }]
-                ]}});
-            } else if (state.action === 'find_to_icon') {
-                await searchIcon(chatId, token, key, app);
-            } else if (state.action === 'find_to_setaftv') {
-                await setState(chatId, { action: 'set_aftv', key, appName: app.name }, token);
-                await tg(chatId, `🔢 Mandami il codice aftv.news per *${app.name}*:`, { reply_markup: cancelKb() });
+
+            // 1. Match esatto (code o nome) → procedi diretto
+            const exact = findExact(apps, text);
+            if (exact) {
+                await clearState(chatId, token);
+                await runAction(chatId, token, action, exact[0], exact[1]);
+                return;
             }
+
+            // 2. Match parziali → mostra lista per scegliere
+            const matches = findAllMatches(apps, text);
+            if (matches.length === 0) {
+                await tg(chatId, `❌ Nessuna app trovata per "${text}". Riprova o /cancel`, { reply_markup: cancelKb() });
+                return;
+            }
+            if (matches.length === 1) {
+                await clearState(chatId, token);
+                await runAction(chatId, token, action, matches[0][0], matches[0][1]);
+                return;
+            }
+            // Multi-match: lista + scelta
+            await clearState(chatId, token);
+            const kb = matches.slice(0, 20).map(([k, a]) => [{ text: `${a.name.substring(0, 45)} (${a.category||'?'})`, callback_data: `pk:${action}:${k}` }]);
+            kb.push([{ text: '❌ Annulla', callback_data: 'admin:menu' }]);
+            await tg(chatId, `🔍 *${matches.length} risultati* per "${text}". Quale?`, { reply_markup: { inline_keyboard: kb } });
             return;
         }
 
@@ -298,6 +320,21 @@ async function handleStateInput(msg, chatId, token, state) {
             await showAdminMenu(chatId, token);
             return;
         }
+    }
+}
+
+async function runAction(chatId, token, action, key, app) {
+    if (action === 'edit') {
+        await tg(chatId, `✏️ Modifica *${app.name}*\nScegli il campo:`, { reply_markup: editFieldsKb(key) });
+    } else if (action === 'delete') {
+        await tg(chatId, `🗑️ Eliminare *${app.name}*?\n\`${app.code}\` · ${app.category||'?'}`, { reply_markup: { inline_keyboard: [
+            [{ text: '✅ Si, elimina', callback_data: `d:y:${key}` }, { text: '❌ No', callback_data: 'admin:menu' }]
+        ]}});
+    } else if (action === 'icon') {
+        await searchIcon(chatId, token, key, app);
+    } else if (action === 'setaftv') {
+        await setState(chatId, { action: 'set_aftv', key, appName: app.name }, token);
+        await tg(chatId, `🔢 Mandami il codice aftv.news per *${app.name}*:`, { reply_markup: cancelKb() });
     }
 }
 
@@ -536,6 +573,15 @@ async function handleCallback(cb, token) {
         await fetch(`${DB_URL()}/telegram_admins/${chatId}.json?auth=${token}`, { method: 'DELETE' });
         await tg(chatId, '👋 Disconnesso da admin.');
         await showMainMenu(chatId, token, false);
+        return;
+    }
+
+    // Pick action target from multi-match results
+    if (data.startsWith('pk:')) {
+        const [, action, key] = data.split(':');
+        const app = await (await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`)).json();
+        if (!app) { await tg(chatId, '❌ App non trovata'); return; }
+        await runAction(chatId, token, action, key, app);
         return;
     }
 
