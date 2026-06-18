@@ -29,12 +29,28 @@ export default async function handler(req, res) {
             `);
         }
 
-        // Async click tracking (non-blocking)
+        // Async click tracking + auto-subscribe per Telegram users (non-blocking)
         fetch(`${dbUrl}/short_links/${code}/clicks.json?auth=${token}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify((data.clicks || 0) + 1)
         }).catch(() => {});
+
+        // Se richiesta da un Telegram user (header X-TG-Chat-Id), auto-iscrivilo all'app
+        const tgChat = req.headers?.['x-tg-chat-id'];
+        if (tgChat && data.appName) {
+            fetch(`${dbUrl}/telegram_users/${tgChat}.json?auth=${token}`).then(r => r.json()).then(user => {
+                if (user && user.chatId) {
+                    const apps = user.apps || [];
+                    if (!apps.includes('all') && !apps.includes(data.appName)) {
+                        apps.push(data.appName);
+                        fetch(`${dbUrl}/telegram_users/${tgChat}/apps.json?auth=${token}`, {
+                            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(apps)
+                        }).catch(() => {});
+                    }
+                }
+            }).catch(() => {});
+        }
 
         return res.redirect(302, data.url);
     } catch (e) {

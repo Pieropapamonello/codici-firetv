@@ -500,7 +500,7 @@ body.lite-mode.light-theme .search-box input {
     <button id="notify-bell-btn" class="icon-btn" onclick="openNotifyModal()" title="Notifiche Aggiornamenti App">🔔</button>
     <button id="login-btn" class="icon-btn" onclick="document.getElementById('login-modal').classList.add('active')" title="Accesso Amministratore">🔐</button>
     <button class="icon-btn admin-only" onclick="openUploadModal()" title="Upload APK">📤</button>
-    <button class="icon-btn admin-only" onclick="openStatsModal()" title="Statistiche">📊</button>
+    <a href="/dashboard" class="icon-btn admin-only" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" title="Dashboard">📊</a>
     <button id="logout-btn" class="icon-btn admin-only" onclick="logoutAdmin()" title="Esci dall'Amministrazione">🔓</button>
   </div>
   <img src="assets/nello.png" alt="Nello">
@@ -1739,17 +1739,42 @@ bash ~/tunnel.sh</div>
     }
   };
 
-  // --- Telegram WebApp auto-login ---
+  // --- Telegram WebApp: auto-login + theme + native UI ---
+  window._tgWebApp = null;
   (async () => {
     if (!window.Telegram?.WebApp) return;
     const tg = window.Telegram.WebApp;
+    window._tgWebApp = tg;
     tg.ready();
     tg.expand();
+
+    // Theme nativo Telegram (neon viola coerente)
+    try {
+      tg.setHeaderColor('#0a0a0f');
+      tg.setBackgroundColor('#0a0a0f');
+    } catch (_) {}
+
+    // BackButton di sistema
+    try {
+      tg.BackButton.onClick(() => {
+        const openModal = document.querySelector('.modal.active');
+        if (openModal) { openModal.classList.remove('active'); tg.BackButton.hide(); }
+        else tg.close();
+      });
+    } catch (_) {}
+
+    // Haptic feedback su tap di card e bottoni principali
+    document.addEventListener('click', e => {
+      const target = e.target.closest('.btn, .form-btn, .icon-btn, .filter-btn, .tab-btn, .app-chip, .adv-guide summary');
+      if (target && tg.HapticFeedback) {
+        try { tg.HapticFeedback.impactOccurred('light'); } catch (_) {}
+      }
+    });
+
     if (!tg.initData) return;
     try {
       const r = await fetch('/api/telegram-auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ initData: tg.initData })
       });
       const d = await r.json();
@@ -1759,11 +1784,45 @@ bash ~/tunnel.sh</div>
         if (d.isAdmin) {
           document.body.classList.add('is-admin');
           document.body.classList.add('is-tg-admin');
-          setTimeout(() => window.openUploadModal && window.openUploadModal(), 500);
         }
+        // Deep-link: ?view=...
+        const params = new URLSearchParams(location.search);
+        const view = params.get('view');
+        setTimeout(() => {
+          if (view === 'admin' && d.isAdmin) window.openUploadModal && window.openUploadModal();
+          else if (view === 'upload' && d.isAdmin) window.openUploadModal && window.openUploadModal();
+          else if (view === 'search') document.getElementById('searchInput')?.focus();
+          else if (view === 'notify') window.openNotifyModal && window.openNotifyModal();
+          else if (view === 'guides') document.getElementById('guides-anchor')?.scrollIntoView({behavior:'smooth'});
+          else if (view === 'cats') document.querySelector('.category-filters')?.scrollIntoView({behavior:'smooth'});
+          else if (view === 'apps') document.getElementById('main-content')?.scrollIntoView({behavior:'smooth'});
+        }, 500);
       }
     } catch (_) {}
+
+    // Mostra BackButton quando un modal e' aperto
+    const observer = new MutationObserver(() => {
+      const anyOpen = document.querySelector('.modal.active');
+      try {
+        if (anyOpen) tg.BackButton.show();
+        else tg.BackButton.hide();
+      } catch (_) {}
+    });
+    observer.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
   })();
+
+  // Deep-link anche per browser non-Telegram
+  if (!window.Telegram?.WebApp?.initData) {
+    const params = new URLSearchParams(location.search);
+    const view = params.get('view');
+    if (view) setTimeout(() => {
+      if (view === 'search') document.getElementById('searchInput')?.focus();
+      else if (view === 'notify') window.openNotifyModal && window.openNotifyModal();
+      else if (view === 'guides') document.getElementById('guides-anchor')?.scrollIntoView({behavior:'smooth'});
+      else if (view === 'cats') document.querySelector('.category-filters')?.scrollIntoView({behavior:'smooth'});
+      else if (view === 'apps') document.getElementById('main-content')?.scrollIntoView({behavior:'smooth'});
+    }, 800);
+  }
 
   // --- Onboarding tour (prima visita) ---
   if (!localStorage.getItem('tour_done')) {

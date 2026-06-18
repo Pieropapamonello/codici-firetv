@@ -58,6 +58,10 @@ app.get('/d/:code', (req, res) => shortRedirectHandler(req, res));
 app.post('/api/update-aftv-code', (req, res) => updateAftvCodeHandler(req, res));
 app.post('/api/telegram-auth', (req, res) => telegramAuthHandler(req, res));
 
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

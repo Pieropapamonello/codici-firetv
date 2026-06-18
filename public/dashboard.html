@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard Admin — Il Covo di Nello</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root { --neon-purple:#a855f7; --neon-cyan:#22d3ee; --neon-pink:#ec4899; --dark:#0a0a0f; --card:rgba(15,15,25,0.8); --border:rgba(168,85,247,0.3); --text:#f0f0f0; --muted:rgba(255,255,255,0.6); }
+* { box-sizing: border-box; }
+body { margin:0; font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); min-height:100vh; padding:20px; }
+body::before { content:''; position:fixed; inset:0; z-index:-1; background: radial-gradient(at 20% 20%, rgba(168,85,247,0.15), transparent 50%), radial-gradient(at 80% 80%, rgba(34,211,238,0.1), transparent 50%); }
+header { display:flex; justify-content:space-between; align-items:center; padding:0 0 20px; border-bottom:1px solid var(--border); margin-bottom:24px; }
+header h1 { font-family:'Orbitron'; font-size:24px; margin:0; background:linear-gradient(135deg,var(--neon-purple),var(--neon-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.btn { background:rgba(168,85,247,0.2); border:1px solid var(--border); color:#fff; padding:10px 16px; border-radius:10px; cursor:pointer; font:inherit; text-decoration:none; }
+.btn:hover { background:rgba(168,85,247,0.4); }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px; max-width:1400px; margin:0 auto; }
+.kpi { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; backdrop-filter:blur(20px); }
+.kpi .label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:8px; }
+.kpi .value { font-size:36px; font-weight:800; }
+.kpi .sub { font-size:12px; color:var(--muted); margin-top:4px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; backdrop-filter:blur(20px); }
+.card h3 { font-family:'Orbitron'; font-size:14px; color:var(--neon-cyan); margin:0 0 16px; letter-spacing:1px; }
+.charts { display:grid; grid-template-columns:repeat(auto-fit, minmax(360px,1fr)); gap:18px; max-width:1400px; margin:20px auto 0; }
+canvas { max-height:300px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:8px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.05); }
+th { color:var(--neon-pink); font-size:11px; text-transform:uppercase; }
+.loading { text-align:center; padding:60px; color:var(--muted); }
+.error { color:#ef4444; text-align:center; padding:20px; }
+@media (max-width:600px) { header h1 { font-size:18px; } .kpi .value { font-size:28px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Dashboard Admin</h1>
+  <a href="/" class="btn">← Torna al sito</a>
+</header>
+
+<div id="content" class="loading">⏳ Caricamento statistiche...</div>
+
+<script>
+(async () => {
+  // Auto-login Telegram Mini App
+  let token = sessionStorage.getItem('tg_session');
+  if (window.Telegram?.WebApp) {
+    const tg = window.Telegram.WebApp;
+    tg.ready(); tg.expand();
+    try { tg.setHeaderColor('#0a0a0f'); tg.setBackgroundColor('#0a0a0f'); } catch(_) {}
+    if (tg.initData && !token) {
+      try {
+        const r = await fetch('/api/telegram-auth', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ initData: tg.initData })
+        });
+        const d = await r.json();
+        if (d.success) { sessionStorage.setItem('tg_session', d.sessionId); token = d.sessionId; }
+      } catch(_) {}
+    }
+  }
+  if (!token) {
+    try {
+      const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js");
+      const { getAuth, onAuthStateChanged } = await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js");
+      const { firebaseConfig } = await import("./firebase-config.js");
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      await new Promise(resolve => {
+        onAuthStateChanged(auth, async user => {
+          if (user) { token = await user.getIdToken(); resolve(); }
+          else { document.getElementById('content').innerHTML = '<div class="error">❌ Non sei loggato come admin.<br><a href="/" class="btn" style="margin-top:14px;">Vai al login</a></div>'; resolve(); }
+        });
+      });
+    } catch(e) {}
+  }
+  if (!token) return;
+
+  let stats;
+  try {
+    const r = await fetch('/api/admin-stats', { headers: { 'Authorization': 'Bearer ' + token } });
+    stats = await r.json();
+    if (!r.ok) throw new Error(stats.error);
+  } catch (e) {
+    document.getElementById('content').innerHTML = `<div class="error">❌ ${e.message}</div>`;
+    return;
+  }
+
+  const t = stats.totals;
+  const categories = stats.categoryCounts || {};
+  const topClicked = stats.topClicked || [];
+  const newApps = stats.newApps || [];
+
+  document.getElementById('content').innerHTML = `
+    <div class="grid">
+      <div class="kpi"><div class="label">📱 App nel catalogo</div><div class="value" style="color:var(--neon-purple)">${t.apps}</div></div>
+      <div class="kpi"><div class="label">⬇️ Click totali</div><div class="value" style="color:var(--neon-cyan)">${t.totalClicks}</div></div>
+      <div class="kpi"><div class="label">📧 Iscritti email</div><div class="value" style="color:var(--neon-pink)">${t.emailSubscribers}</div></div>
+      <div class="kpi"><div class="label">📲 Iscritti Telegram</div><div class="value" style="color:#0088CC">${t.telegramSubscribers}</div></div>
+    </div>
+
+    <div class="charts">
+      <div class="card"><h3>🔥 Top 10 piu' cliccate</h3><canvas id="chartTop"></canvas></div>
+      <div class="card"><h3>📁 Distribuzione categorie</h3><canvas id="chartCat"></canvas></div>
+    </div>
+
+    <div class="charts" style="grid-template-columns:1fr;">
+      <div class="card">
+        <h3>🆕 Ultime app aggiunte</h3>
+        ${newApps.length === 0 ? '<div style="color:var(--muted);text-align:center;padding:20px;">Nessuna app aggiunta questa settimana</div>' : `
+          <table>
+            <tr><th>Nome</th><th>Categoria</th><th>Aggiunta</th></tr>
+            ${newApps.map(a => `<tr><td>${esc(a.name)}</td><td style="color:var(--neon-cyan)">${esc(a.category || '?')}</td><td style="color:var(--muted)">${new Date(a.timestamp).toLocaleDateString('it-IT')}</td></tr>`).join('')}
+          </table>`}
+      </div>
+    </div>
+  `;
+
+  // Top 10 chart
+  new Chart(document.getElementById('chartTop'), {
+    type: 'bar',
+    data: {
+      labels: topClicked.map(a => a.name.length > 22 ? a.name.substring(0,20)+'…' : a.name),
+      datasets: [{ data: topClicked.map(a => a.clicks), backgroundColor: 'rgba(168,85,247,0.6)', borderColor: '#a855f7', borderWidth: 1, borderRadius: 6 }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#f0f0f0' }, grid: { color: 'rgba(255,255,255,0.08)' } },
+        y: { ticks: { color: '#f0f0f0' }, grid: { display: false } }
+      }
+    }
+  });
+
+  // Categories chart
+  const catEntries = Object.entries(categories).sort((a,b) => b[1] - a[1]);
+  new Chart(document.getElementById('chartCat'), {
+    type: 'doughnut',
+    data: {
+      labels: catEntries.map(c => c[0]),
+      datasets: [{
+        data: catEntries.map(c => c[1]),
+        backgroundColor: ['#a855f7','#22d3ee','#ec4899','#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6','#06b6d4','#84cc16']
+      }]
+    },
+    options: { plugins: { legend: { position: 'right', labels: { color: '#f0f0f0', font: { size: 11 } } } } }
+  });
+
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+})();
+</script>
+</body>
+</html>

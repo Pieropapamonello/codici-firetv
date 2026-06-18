@@ -89,14 +89,15 @@ function genShortCode(len = 5) {
 
 // ---------- Menus ----------
 function mainMenuPublic(adminFlag) {
+    const url = PUBLIC();
     const kb = [
-        [{ text: '🌐 Apri Il Covo (full)', web_app: { url: PUBLIC() + '/' } }],
-        [{ text: '📥 Ultime app', callback_data: 'apps:latest' }, { text: '🔍 Cerca', callback_data: 'apps:search' }],
-        [{ text: '📁 Categorie', callback_data: 'apps:cats' }],
-        [{ text: '⚙️ La mia iscrizione', callback_data: 'sub:status' }]
+        [{ text: '🌐 Apri Il Covo', web_app: { url: `${url}/` } }],
+        [{ text: '📥 Sfoglia app', web_app: { url: `${url}/?view=apps` } }, { text: '🔍 Cerca', web_app: { url: `${url}/?view=search` } }],
+        [{ text: '📁 Categorie', web_app: { url: `${url}/?view=cats` } }, { text: '📚 Guide', web_app: { url: `${url}/?view=guides` } }],
+        [{ text: '🔔 Notifiche', web_app: { url: `${url}/?view=notify` } }]
     ];
-    if (adminFlag) kb.push([{ text: '👑 Menu Admin', callback_data: 'admin:menu' }]);
-    else kb.push([{ text: '🔐 Accedi come admin', callback_data: 'admin:login' }]);
+    if (adminFlag) kb.push([{ text: '👑 Pannello Admin', web_app: { url: `${url}/?view=admin` } }, { text: '📊 Dashboard', web_app: { url: `${url}/dashboard` } }]);
+    else kb.push([{ text: '🔐 Login admin', callback_data: 'admin:login' }]);
     return { inline_keyboard: kb };
 }
 
@@ -672,6 +673,42 @@ async function handleCallback(cb, token) {
     }
 }
 
+// ---------- Inline query handler ----------
+async function handleInlineQuery(iq, token) {
+    const q = (iq.query || '').trim().toLowerCase();
+    const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+
+    let list = Object.values(apps).filter(a => a.name);
+    if (q) {
+        list = list.filter(a => a.name.toLowerCase().includes(q) || (a.desc || '').toLowerCase().includes(q));
+    } else {
+        list = list.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    }
+    list = list.slice(0, 30);
+
+    const results = list.map((app, i) => {
+        const url = resolveAppUrl(app);
+        const desc = app.desc || app.category || '';
+        return {
+            type: 'article',
+            id: String(i),
+            title: app.name,
+            description: desc,
+            thumb_url: app.icon && app.icon.startsWith('http') ? app.icon : undefined,
+            input_message_content: {
+                message_text: `📥 *${app.name}*\n${desc}\n\n🔗 ${url}`,
+                parse_mode: 'Markdown'
+            },
+            reply_markup: { inline_keyboard: [[{ text: '📥 Scarica', url }]] }
+        };
+    });
+
+    await fetch(`${API()}/answerInlineQuery`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ inline_query_id: iq.id, results, cache_time: 60, is_personal: false })
+    });
+}
+
 // ---------- Main handler ----------
 export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(200).json({ ok: true });
@@ -681,6 +718,10 @@ export default async function handler(req, res) {
         const update = req.body;
         const token = await fbAdminToken();
 
+        if (update.inline_query) {
+            await handleInlineQuery(update.inline_query, token);
+            return res.status(200).json({ ok: true });
+        }
         if (update.callback_query) {
             await handleCallback(update.callback_query, token);
             return res.status(200).json({ ok: true });
