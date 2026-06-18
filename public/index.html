@@ -162,8 +162,10 @@ header h1 {
 .bookmark-hint strong { color: #fff; }
 
 /* Advanced Guides */
-.advanced-guides { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-.advanced-guides > h2 { font-family: 'Orbitron', sans-serif; font-size: 22px; color: var(--neon-pink); text-align: center; margin-bottom: 24px; letter-spacing: 1px; }
+.advanced-guides { max-width: 900px; margin: 40px auto; padding: 0 20px; scroll-margin-top: 20px; }
+.advanced-guides > h2 { font-family: 'Orbitron', sans-serif; font-size: 26px; color: var(--neon-pink); text-align: center; margin-bottom: 8px; letter-spacing: 2px; text-shadow: 0 0 20px rgba(236,72,153,0.4); }
+.guides-group-title { font-family: 'Orbitron', sans-serif; font-size: 14px; color: var(--neon-cyan); margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(34,211,238,0.2); letter-spacing: 1px; text-transform: uppercase; }
+#guides-anchor { scroll-margin-top: 20px; height: 0; }
 .adv-guide { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--card-border); backdrop-filter: blur(20px); margin-bottom: 14px; overflow: hidden; box-shadow: 0 0 20px rgba(168,85,247,0.1); }
 .adv-guide summary { padding: 16px 20px; font-weight: 600; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); transition: background 0.2s; }
 .adv-guide summary::-webkit-details-marker { display: none; }
@@ -484,6 +486,7 @@ body.lite-mode.light-theme .search-box input {
 
 <header>
   <div class="header-actions">
+    <button class="icon-btn" onclick="document.getElementById('guides-anchor').scrollIntoView({behavior:'smooth',block:'start'})" title="Vai alle Guide">📚</button>
     <button class="icon-btn" onclick="toggleLiteMode()" title="Modalità Grafica Veloce">⚡</button>
     <button class="icon-btn" onclick="toggleTheme()" title="Cambia Tema">🌓</button>
     <button id="notify-bell-btn" class="icon-btn" onclick="openNotifyModal()" title="Notifiche Aggiornamenti App">🔔</button>
@@ -518,50 +521,66 @@ body.lite-mode.light-theme .search-box input {
 
 
 
-<div class="guides-section">
-  <div class="guide-card">
-    <h3>🎬 Riproduzione 4K & live — Vimu / Stremio</h3>
-    <ol>
-      <li>Installa da qui: <a href="https://go.aftvnews.com/3188516">Vimu Installer</a> (usa il pulsante sopra).</li>
-      <li>Inserisci la chiave: <code style="cursor:pointer;" onclick="copyToClipboard('fea63c49-a7f2-441e-be4a-e75cc36b74d8', event)" title="Clicca per copiare">fea63c49-a7f2-441e-be4a-e75cc36b74d8</code></li>
-      <li>In <strong>Stremio</strong>: Impostazioni ➔ Riproduzione ➔ Player predefinito ➔ seleziona <em>player esterno</em>.</li>
-      <li>Se audio non automatico in italiano: apri Vimu ➔ Options ➔ Settings ➔ Content ➔ Preferred Audio Language ➔ Italiano.</li>
-    </ol>
-  </div>
-  <div class="guide-card">
-    <h3>🇮🇹 Impostare lingua Italiana su Kodi</h3>
-    <ol>
-      <li><a href="https://go.aftvnews.com/2130077">Installa Kodi</a> (pulsante sopra).</li>
-      <li>Kodi ➔ ⚙️ Impostazioni ➔ Interfaccia ➔ Regional / Regione ➔ Language ➔ Italiano.</li>
-    </ol>
-  </div>
-  <div class="guide-card">
-    <h3>📺 Configurazione Kodi + WLTV</h3>
-    <ol>
-      <li>Home Kodi ➔ ⚙️ ➔ File ➔ Aggiungi sorgente ➔ URL: <code style="cursor:pointer;" onclick="copyToClipboard('http://worldlivetv.github.io/repo/', event)" title="Clicca per copiare">http://worldlivetv.github.io/repo/</code> (Nome: WLTV Repo).</li>
-      <li>Add-ons ➔ Installa da file zip ➔ repository.wltv-1.x.x.zip ➔ Installa da repository ➔ WLTV Helper.</li>
-      <li>Home ➔ Add-ons ➔ WLTV Helper ➔ Lista ➔ Sezione TV.</li>
-    </ol>
-  </div>
-  <div class="guide-card">
-    <h3>🧪 Scienziato Pazzo su Kodi</h3>
-    <ol>
-      <li>⚙️ Home Kodi ➔ Ingranaggio</li>
-      <li>📁 File > Aggiungi sorgente ➔ 🔗 <code style="cursor:pointer;" onclick="copyToClipboard('http://aandroide.github.io/installer/repo/', event)" title="Clicca per copiare">http://aandroide.github.io/installer/repo/</code></li>
-      <li>📦 Add-ons ➔ 📦 Scatola ➔ Installa da file zip </li>
-      <li>📥 Installa da repository</li>
-    </ol>
-  </div>
-  <div class="guide-card">
-    <h3>📺 Avvio automatico TV (Kodi)</h3>
-    <ol>
-      <li>Impostazioni ➔ Interfaccia ➔ Altro / Skin ➔ Startup window ➔ seleziona TV ➔ Riavvia Kodi.</li>
-    </ol>
-  </div>
-</div>
-
+<div id="guides-anchor"></div>
 <div class="advanced-guides">
-  <h2>📚 GUIDE AVANZATE</h2>
+  <h2>📚 GUIDE</h2>
+  <p style="text-align:center;color:var(--text-muted);font-size:13px;margin-top:-12px;margin-bottom:24px;">Clicca su una guida per espanderla. Codici e comandi si copiano con un click.</p>
+
+  <div class="guides-group-title">⚡ Guide rapide Kodi & Stremio</div>
+
+  <details class="adv-guide">
+    <summary>🎬 Riproduzione 4K &amp; live — Vimu / Stremio</summary>
+    <div class="guide-body">
+      <ol>
+        <li>Installa <a href="https://go.aftvnews.com/3188516" target="_blank">Vimu Installer</a> (pulsante sopra).</li>
+        <li>Inserisci la chiave: <code class="inline-code">fea63c49-a7f2-441e-be4a-e75cc36b74d8</code></li>
+        <li>In <strong>Stremio</strong>: Impostazioni → Riproduzione → Player predefinito → <em>player esterno</em>.</li>
+        <li>Audio non automatico in italiano: apri Vimu → Options → Settings → Content → <strong>Preferred Audio Language</strong> → Italiano.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>🇮🇹 Impostare lingua Italiana su Kodi</summary>
+    <div class="guide-body">
+      <ol>
+        <li><a href="https://go.aftvnews.com/2130077" target="_blank">Installa Kodi</a> (pulsante sopra).</li>
+        <li>Kodi → ⚙️ Impostazioni → Interfaccia → <strong>Regional / Regione</strong> → Language → Italiano.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>📺 Configurazione Kodi + WLTV</summary>
+    <div class="guide-body">
+      <ol>
+        <li>Home Kodi → ⚙️ → File → Aggiungi sorgente → URL: <code class="inline-code">http://worldlivetv.github.io/repo/</code> (Nome: <strong>WLTV Repo</strong>).</li>
+        <li>Add-ons → Installa da file zip → <code class="inline-code">repository.wltv-1.x.x.zip</code> → Installa da repository → <strong>WLTV Helper</strong>.</li>
+        <li>Home → Add-ons → WLTV Helper → Lista → <strong>Sezione TV</strong>.</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>🧪 Scienziato Pazzo su Kodi</summary>
+    <div class="guide-body">
+      <ol>
+        <li>Home Kodi → ⚙️ Ingranaggio</li>
+        <li>📁 File → Aggiungi sorgente → <code class="inline-code">http://aandroide.github.io/installer/repo/</code></li>
+        <li>📦 Add-ons → Scatola → <strong>Installa da file zip</strong></li>
+        <li>📥 Installa da repository</li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="adv-guide">
+    <summary>📺 Avvio automatico TV (Kodi)</summary>
+    <div class="guide-body">
+      Impostazioni → Interfaccia → Altro / Skin → <strong>Startup window</strong> → seleziona <strong>TV</strong> → Riavvia Kodi.
+    </div>
+  </details>
+
+  <div class="guides-group-title">🔧 Guide avanzate Fire TV &amp; EasyProxy</div>
 
   <details class="adv-guide">
     <summary>🔋 Fire TV — Disabilitare risparmio energetico per EasyProxy</summary>
@@ -764,7 +783,8 @@ bash ~/tunnel.sh</div>
 </div>
 
 <footer>
-  Il Covo di Nello — Codice: <strong>9888634</strong><br>
+  Il Covo di Nello — Codice: <strong style="cursor:pointer;" onclick="copyToClipboard('7274133', event)" title="Clicca per copiare">7274133</strong><br>
+  <a href="http://aftv.news/7274133" target="_blank" style="color:var(--neon-cyan);font-size:13px;">aftv.news/7274133</a><br>
 </footer>
 
 <!-- Notify Modal -->
