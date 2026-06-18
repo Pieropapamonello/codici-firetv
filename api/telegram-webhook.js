@@ -96,8 +96,6 @@ function mainMenuPublic(adminFlag) {
     ];
     if (adminFlag) kb.push([{ text: '👑 Pannello Admin', callback_data: 'admin:menu' }, { text: '📊 Dashboard', callback_data: 'admin:dashboard' }]);
     else kb.push([{ text: '🔐 Login admin', callback_data: 'admin:login' }]);
-    // Bottone opzionale per aprire il sito full
-    kb.push([{ text: '🌐 Apri sito completo', web_app: { url: PUBLIC() + '/' } }]);
     return { inline_keyboard: kb };
 }
 
@@ -438,12 +436,11 @@ async function handleDocument(msg, chatId, token) {
         const codeText = codeSource === 'aftvnews' ? `⚡ aftv: \`${finalCode}\`` : `🔗 codice: \`${code}\``;
         const downloadUrl = codeSource === 'aftvnews' ? `https://aftv.news/${finalCode}` : `${PUBLIC()}/d/${code}`;
 
-        await tg(chatId, `✅ *APK caricato!*\n\n📝 Nome: *${appName}*\n📁 Categoria: *${category || 'Altro'}*\n📄 Desc: _${desc || 'nessuna'}_\n${codeText}\n🔗 ${downloadUrl}\n\nVuoi modificare nome/descrizione/categoria?`, { reply_markup: { inline_keyboard: [
+        await tg(chatId, `✅ *APK caricato!*\n\n📝 Nome: *${appName}*\n📁 Categoria: *${category || 'Altro'}*\n📄 Desc: _${desc || 'nessuna'}_\n${codeText}\n\nUsa il codice nel Downloader Fire TV o tap sui bottoni per modificare:`, { reply_markup: { inline_keyboard: [
             [{ text: '📝 Modifica nome', callback_data: `e:f:name:${fbKey}` }],
             [{ text: '📄 Modifica descrizione', callback_data: `e:f:desc:${fbKey}` }],
             [{ text: '📁 Modifica categoria', callback_data: `e:f:category:${fbKey}` }],
             [{ text: '🖼️ Cerca icona', callback_data: `i:${fbKey}` }, ...(codeSource !== 'aftvnews' ? [{ text: '🔢 Codice aftv', callback_data: `s:${fbKey}` }] : [])],
-            [{ text: '📥 Test download', url: downloadUrl }],
             [{ text: '✅ Va bene cosi', callback_data: 'admin:menu' }]
         ]}});
     } catch (e) {
@@ -480,15 +477,34 @@ async function handleCallback(cb, token) {
         return;
     }
     if (data === 'guides:list') {
-        await tg(chatId, `📚 *Guide disponibili*\n\nTap per aprire sul sito:`, { reply_markup: { inline_keyboard: [
-            [{ text: '🎬 Vimu / Stremio 4K', url: `${PUBLIC()}/?view=guides` }],
-            [{ text: '🇮🇹 Lingua Kodi italiana', url: `${PUBLIC()}/?view=guides` }],
-            [{ text: '📺 Kodi + WLTV', url: `${PUBLIC()}/?view=guides` }],
-            [{ text: '🔋 Disabilita risparmio EasyProxy', url: `${PUBLIC()}/?view=guides` }],
-            [{ text: '🌐 Cloudflare Tunnel (4 parti)', url: `${PUBLIC()}/?view=guides` }],
-            [{ text: '📶 IP/DNS manuale Fire TV', url: `${PUBLIC()}/?view=guides` }],
+        await tg(chatId, `📚 *Guide disponibili*\n\nTap per leggerla qui in chat:`, { reply_markup: { inline_keyboard: [
+            [{ text: '🎬 Vimu / Stremio 4K', callback_data: 'g:vimu' }],
+            [{ text: '🇮🇹 Lingua Kodi italiana', callback_data: 'g:kodi-lang' }],
+            [{ text: '📺 Kodi + WLTV', callback_data: 'g:kodi-wltv' }],
+            [{ text: '🔋 Disabilita risparmio EasyProxy', callback_data: 'g:easyproxy' }],
+            [{ text: '🌐 Cloudflare Tunnel — Parte 1', callback_data: 'g:cf1' }],
+            [{ text: '🌐 Cloudflare Tunnel — Parte 2', callback_data: 'g:cf2' }],
+            [{ text: '🌐 Cloudflare Tunnel — Parte 3', callback_data: 'g:cf3' }],
+            [{ text: '🌐 Cloudflare Tunnel — Parte 4', callback_data: 'g:cf4' }],
+            [{ text: '📶 IP/DNS manuale Fire TV', callback_data: 'g:ipdns' }],
             [{ text: '⬅️ Menu', callback_data: 'menu' }]
         ]}});
+        return;
+    }
+    if (data.startsWith('g:')) {
+        const guides = {
+            'vimu': `🎬 *Riproduzione 4K live — Vimu / Stremio*\n\n1. Installa Vimu Installer: aftv.news/3188516\n2. Inserisci la chiave:\n\`fea63c49-a7f2-441e-be4a-e75cc36b74d8\`\n3. In *Stremio* → Impostazioni → Riproduzione → Player predefinito → *player esterno*\n4. Audio non automatico in italiano: Vimu → Options → Settings → Content → *Preferred Audio Language* → Italiano`,
+            'kodi-lang': `🇮🇹 *Lingua Italiana Kodi*\n\n1. Installa Kodi: aftv.news/2130077\n2. Kodi → ⚙️ Impostazioni → Interfaccia → *Regional / Regione* → Language → Italiano`,
+            'kodi-wltv': `📺 *Configurazione Kodi + WLTV*\n\n1. Home Kodi → ⚙️ → File → Aggiungi sorgente\n URL: \`http://worldlivetv.github.io/repo/\`\n Nome: *WLTV Repo*\n\n2. Add-ons → Installa da file zip → \`repository.wltv-1.x.x.zip\` → Installa da repository → *WLTV Helper*\n\n3. Home → Add-ons → WLTV Helper → Lista → *Sezione TV*`,
+            'easyproxy': `🔋 *Disabilita risparmio energetico per EasyProxy*\n\n1. *Sblocca Opzioni Sviluppatore*\nImpostazioni → La mia Fire TV → Informazioni → clicca 7 volte su "Numero di serie" → Opzioni Sviluppatore → attiva *Debug ADB* e *Debug ADB di rete*\n\n2. *Trova l'IP della Fire TV*\nImpostazioni → La mia Fire TV → Informazioni → Rete → annota l'IP\n\n3. *Termux* (da F-Droid):\n\`pkg update && pkg install android-tools -y\`\n\n4. *Connettiti*:\n\`adb connect 192.168.1.XX\`\nAccetta il pop-up sulla TV → "Consenti sempre"\n\n5. *Comandi*:\n\`adb shell dumpsys deviceidle whitelist +com.mediaflow.proxy.tv\`\n\`adb shell pm grant com.mediaflow.proxy.tv android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS\``,
+            'cf1': `🌐 *Cloudflare Tunnel — Parte 1 (temporaneo)*\n\n1. *Installa Termux* da F-Droid\n2. *Installa cloudflared*:\n\`pkg update && pkg install cloudflared -y\`\n3. *Tunnel temporaneo*:\n\`cloudflared tunnel --url http://localhost:7860\`\n\n✅ Apparira' un link tipo \`qualcosa.trycloudflare.com\`\n⚠️ Cambia ad ogni riavvio`,
+            'cf2': `🌐 *Cloudflare Tunnel — Parte 2 (fisso, gratis)*\n\n1. *Dominio gratuito*: domain.digitalplat.org → es. \`mioproxy.dpdns.org\`\n2. *Account Cloudflare*: dash.cloudflare.com → + Add → Connect a domain\n3. *Aggiorna nameserver* da DigitalPlat con quelli Cloudflare\n4. *Crea tunnel*: Cloudflare → Networking → Tunnels → Create a Tunnel\n5. *Collega Termux*: OS Debian, ARM64, copia comando "Or, run tunnel (manual)" → incolla su Termux\n6. *Add route* → Public Hostname:\n - Subdomain: vuoto\n - Domain: tuosito.dpdns.org\n - URL: http://localhost:7860`,
+            'cf3': `⚙️ *Cloudflare Tunnel — Parte 3 (gestione)*\n\nSalva comando:\n\`echo "COMANDO_TUNNEL" > ~/tunnel.sh\`\n\`chmod +x ~/tunnel.sh\`\n\nAlias rapido:\n\`echo "alias tunnel='bash ~/tunnel.sh'" >> ~/.bashrc\`\n\`source ~/.bashrc\`\n\nAvvio: \`tunnel\` oppure \`bash ~/tunnel.sh\`\nStop: Ctrl+C`,
+            'cf4': `🚀 *Cloudflare Tunnel — Parte 4 (autostart)*\n\n1. *Termux:Boot* da F-Droid (aprilo almeno una volta)\n2. *Script avvio*:\n\`pkg install nano -y\`\n\`mkdir -p ~/.termux/boot\`\n\`nano ~/.termux/boot/start-tunnel.sh\`\n\n Scrivi nel file:\n\`#!/data/data/com.termux/files/usr/bin/sh\`\n\`termux-wake-lock\`\n\`bash ~/tunnel.sh\`\n\n Salva: Ctrl+X → Y → Invio\n\n3. \`chmod +x ~/.termux/boot/start-tunnel.sh\`\n4. *Disabilita ottimizzazione batteria* per: Termux, Termux:Boot, EasyProxy`,
+            'ipdns': `📶 *IP/DNS manuale Fire TV*\n\nImpostazioni → Rete → seleziona Wi-Fi → tasto *☰* sul telecomando → Avanzate → *Configura IP → Manuale*\n\nInserisci:\n• Indirizzo IP: es. \`192.168.1.50\`\n• Gateway: es. \`192.168.1.1\`\n• Prefisso: \`24\`\n• DNS 1: \`8.8.8.8\`\n• DNS 2: \`8.8.4.4\``
+        };
+        const key = data.substring(2);
+        await tg(chatId, guides[key] || 'Guida non trovata', { reply_markup: { inline_keyboard: [[{ text: '⬅️ Guide', callback_data: 'guides:list' }, { text: '🏠 Menu', callback_data: 'menu' }]] } });
         return;
     }
     if (data === 'admin:dashboard') {
@@ -503,10 +519,22 @@ async function handleCallback(cb, token) {
         const subs = await subsR.json() || {};
         const tel = await telR.json() || {};
         const shorts = await shortsR.json() || {};
-        await tg(chatId, `📊 *Dashboard*\n\n📱 App: *${Object.keys(apps).length}*\n🔗 Short links: *${Object.keys(shorts).length}*\n📧 Email: *${Object.keys(subs).length}*\n📲 Telegram: *${Object.keys(tel).length}*\n\nPer grafici completi:`, { reply_markup: { inline_keyboard: [
-            [{ text: '📈 Apri Dashboard completa', web_app: { url: `${PUBLIC()}/dashboard` } }],
+        const totalClicks = await (async () => {
+            const a = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+            return Object.values(a).reduce((s,x) => s + (x.clicks||0), 0);
+        })();
+        await tg(chatId, `📊 *Dashboard*\n\n📱 App: *${Object.keys(apps).length}*\n🔗 Short links: *${Object.keys(shorts).length}*\n📧 Email: *${Object.keys(subs).length}*\n📲 Telegram: *${Object.keys(tel).length}*\n⬇️ Click totali: *${totalClicks}*`, { reply_markup: { inline_keyboard: [
+            [{ text: '🔥 Top app cliccate', callback_data: 'admin:topclicks' }],
             [{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]
         ]}});
+        return;
+    }
+    if (data === 'admin:topclicks') {
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const top = Object.values(apps).filter(a => a.name && (a.clicks||0) > 0).sort((a,b) => (b.clicks||0)-(a.clicks||0)).slice(0, 10);
+        if (top.length === 0) { await tg(chatId, 'Nessun click registrato ancora.'); return; }
+        const text = top.map((a, i) => `${i+1}. *${a.name}* — ⬇️ ${a.clicks}`).join('\n');
+        await tg(chatId, `🔥 *Top 10 cliccate:*\n\n${text}`, { reply_markup: { inline_keyboard: [[{ text: '⬅️ Dashboard', callback_data: 'admin:dashboard' }]] } });
         return;
     }
     if (data === 'apps:cats') { await showCategories(chatId, token); return; }
@@ -654,7 +682,7 @@ async function handleCallback(cb, token) {
         return;
     }
     if (data === 'a:upload_info') {
-        await tg(chatId, `⬆️ *Upload APK*\n\nManda direttamente il file .apk in questa chat (max 20MB).\n\nDopo l'upload potrai compilare nome, descrizione e categoria con bottoni.\n\nPer file piu' grandi (>20MB) usa il sito: ${PUBLIC()}`, { reply_markup: { inline_keyboard: [[{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]] } });
+        await tg(chatId, `⬆️ *Upload APK*\n\nManda direttamente il file .apk in questa chat (max 20MB - limite Telegram Bot).\n\nDopo l'upload potrai compilare nome, descrizione, categoria, icona e codice aftv con bottoni.`, { reply_markup: { inline_keyboard: [[{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]] } });
         return;
     }
     if (data === 'a:logout') {

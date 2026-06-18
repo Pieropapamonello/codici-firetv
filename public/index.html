@@ -2013,16 +2013,17 @@ bash ~/tunnel.sh</div>
 
   window.resetUploadModal = function() {
     uploadSelectedFile = null;
-    document.getElementById('upload-step-form').style.display = 'block';
-    document.getElementById('upload-step-success').style.display = 'none';
-    document.getElementById('upload-progress').style.display = 'none';
-    document.getElementById('upload-error').style.display = 'none';
-    document.getElementById('upload-file-name').textContent = 'Tocca per scegliere un APK';
-    document.getElementById('upload-file-size').textContent = '';
-    ['upload-name','upload-desc','upload-icon','upload-category'].forEach(id => document.getElementById(id).value = '');
-    const btn = document.getElementById('upload-submit-btn');
-    btn.disabled = false;
-    btn.innerHTML = '⬆️ Carica';
+    const hide = (id) => { const el = document.getElementById(id); if (el) el.style.display = 'none'; };
+    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    hide('upload-step-success');
+    hide('upload-progress');
+    hide('upload-error');
+    setText('upload-file-name', 'Tocca per scegliere un APK');
+    setText('upload-file-size', '');
+    ['upload-name','upload-desc','upload-icon','upload-category','appName','appCode','appDesc','appIcon','appCategory','editingKey'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.value = '';
+    });
+    const btn = document.getElementById('upload-submit-btn'); if (btn) { btn.disabled = false; btn.innerHTML = '⬆️ Carica'; }
   };
 
   window.onUploadFileSelected = function(input) {
