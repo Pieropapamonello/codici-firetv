@@ -23,6 +23,29 @@ async function tg(chatId, text, extra = {}) {
     });
 }
 
+function resolveAppUrl(app) {
+    const code = app.code || '';
+    if (/^https?:\/\//i.test(code)) return code;
+    if (/^\d+$/.test(code)) return `https://aftv.news/${code}`;
+    if (/^[a-z0-9]{3,12}$/i.test(code)) return `${PUBLIC()}/d/${code}`;
+    return code;
+}
+
+function buildAppButtons(apps, maxPerRow = 1) {
+    const rows = [];
+    for (const app of apps) {
+        const url = resolveAppUrl(app);
+        if (!url || !url.startsWith('http')) continue;
+        const label = `📥 ${app.name.substring(0, 50)}`;
+        rows.push([{ text: label, url }]);
+    }
+    return { inline_keyboard: rows };
+}
+
+function escapeMd(s) {
+    return (s || '').replace(/([_*\[\]()~`>#+=|{}.!\\-])/g, '\\$1');
+}
+
 async function isAdmin(chatId, token) {
     const r = await fetch(`${DB_URL()}/telegram_admins/${chatId}.json?auth=${token}`);
     const d = await r.json();
@@ -56,7 +79,7 @@ async function handleCommand(text, chatId, msg, token) {
             method: 'PUT', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chatId, firstName: msg.from?.first_name || 'Utente', username: msg.from?.username || null, apps: ['all'], joinedAt: Date.now() })
         });
-        await tg(chatId, `🎉 *Benvenuto!*\nSei iscritto alle notifiche.\n\nComandi:\n/status — la tua iscrizione\n/stop — disiscriviti\n/apps — n. app nel catalogo\n/myid — il tuo chat ID${adminFlag ? '\n\n👑 Sei admin. /help per comandi admin' : ''}`);
+        await tg(chatId, `🎉 *Benvenuto!*\nSei iscritto alle notifiche.\n\n*📥 Cerca e scarica app:*\n/apps — ultime app aggiunte (con link)\n/search <nome> — cerca app per nome\n/cat <categoria> — esplora per categoria\n/cats — lista categorie\n\n*⚙️ Iscrizione:*\n/status — la tua iscrizione\n/stop — disiscriviti\n/myid — il tuo chat ID\n\n*🔐 Admin:*\n/admin <password> — login amministratore${adminFlag ? '\n\n👑 *Sei admin*. /help per comandi admin' : ''}`);
         return;
     }
 
@@ -75,8 +98,41 @@ async function handleCommand(text, chatId, msg, token) {
     }
 
     if (cmd === '/apps') {
-        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}&shallow=true`)).json();
-        await tg(chatId, `📱 *${Object.keys(apps || {}).length}* app nel catalogo.\n🌐 ${PUBLIC()}`);
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const list = Object.values(apps).filter(a => a.name).sort((a,b) => (b.timestamp||0) - (a.timestamp||0)).slice(0, 15);
+        if (list.length === 0) { await tg(chatId, 'Catalogo vuoto'); return; }
+        const text = `📱 *Ultime ${list.length} app* (${Object.keys(apps).length} totali)\n\nTap su un bottone per scaricare:`;
+        await tg(chatId, text, { reply_markup: buildAppButtons(list) });
+        return;
+    }
+
+    if (cmd === '/search') {
+        if (!rest) { await tg(chatId, 'Uso: /search <nome>\nEs: /search stremio'); return; }
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const q = rest.toLowerCase();
+        const found = Object.values(apps).filter(a => a.name?.toLowerCase().includes(q)).slice(0, 20);
+        if (found.length === 0) { await tg(chatId, `🔍 Nessun risultato per "${rest}"`); return; }
+        await tg(chatId, `🔍 *${found.length} risultati per "${rest}"*\n\nTap per scaricare:`, { reply_markup: buildAppButtons(found) });
+        return;
+    }
+
+    if (cmd === '/cats') {
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const counts = {};
+        Object.values(apps).forEach(a => { if (a.name) { const c = a.category || 'Altro'; counts[c] = (counts[c] || 0) + 1; } });
+        const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+        const text = sorted.map(([c, n]) => `• \`/cat ${c}\` — *${n}* app`).join('\n');
+        await tg(chatId, `📁 *Categorie*\n\n${text}`);
+        return;
+    }
+
+    if (cmd === '/cat') {
+        if (!rest) { await tg(chatId, 'Uso: /cat <categoria>\nUsa /cats per vedere tutte le categorie'); return; }
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const target = rest.toLowerCase();
+        const found = Object.values(apps).filter(a => a.name && (a.category || '').toLowerCase() === target).slice(0, 20);
+        if (found.length === 0) { await tg(chatId, `📂 Nessuna app nella categoria "${rest}". Usa /cats per vedere le categorie disponibili.`); return; }
+        await tg(chatId, `📂 *${rest}* — ${found.length} app\n\nTap per scaricare:`, { reply_markup: buildAppButtons(found) });
         return;
     }
 
@@ -96,7 +152,7 @@ async function handleCommand(text, chatId, msg, token) {
 
     // ADMIN-ONLY
     if (!adminFlag) {
-        await tg(chatId, `Comandi: /start /status /stop /apps /myid\nAdmin: /admin <password>`);
+        await tg(chatId, `📥 *Cerca/scarica:* /apps /search /cat /cats\n⚙️ *Iscrizione:* /status /stop /myid\n🔐 *Admin:* /admin <password>`);
         return;
     }
 
