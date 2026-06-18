@@ -434,14 +434,18 @@ async function handleDocument(msg, chatId, token) {
         });
         const addData = await addRes.json();
 
-        if (codeSource === 'aftvnews') {
-            await tg(chatId, `✅ *${appName}*\n⚡ Codice aftv: \`${finalCode}\`\n🔗 https://aftv.news/${finalCode}`);
-        } else {
-            await tg(chatId, `✅ *${appName}*\n🔗 Codice interno: \`${code}\`\nURL: \`${PUBLIC().replace(/^https?:\/\//,'')}/d/${code}\`\n\n⚡ Vuoi codice aftv.news? Vai sul menu admin → "🔢 Codice aftv" e seleziona questa app.`, { reply_markup: { inline_keyboard: [
-                [{ text: '🔢 Imposta codice aftv ora', callback_data: `s:${addData.name}` }],
-                [{ text: '👑 Menu Admin', callback_data: 'admin:menu' }]
-            ]}});
-        }
+        const fbKey = addData.name;
+        const codeText = codeSource === 'aftvnews' ? `⚡ aftv: \`${finalCode}\`` : `🔗 codice: \`${code}\``;
+        const downloadUrl = codeSource === 'aftvnews' ? `https://aftv.news/${finalCode}` : `${PUBLIC()}/d/${code}`;
+
+        await tg(chatId, `✅ *APK caricato!*\n\n📝 Nome: *${appName}*\n📁 Categoria: *${category || 'Altro'}*\n📄 Desc: _${desc || 'nessuna'}_\n${codeText}\n🔗 ${downloadUrl}\n\nVuoi modificare nome/descrizione/categoria?`, { reply_markup: { inline_keyboard: [
+            [{ text: '📝 Modifica nome', callback_data: `e:f:name:${fbKey}` }],
+            [{ text: '📄 Modifica descrizione', callback_data: `e:f:desc:${fbKey}` }],
+            [{ text: '📁 Modifica categoria', callback_data: `e:f:category:${fbKey}` }],
+            [{ text: '🖼️ Cerca icona', callback_data: `i:${fbKey}` }, ...(codeSource !== 'aftvnews' ? [{ text: '🔢 Codice aftv', callback_data: `s:${fbKey}` }] : [])],
+            [{ text: '📥 Test download', url: downloadUrl }],
+            [{ text: '✅ Va bene cosi', callback_data: 'admin:menu' }]
+        ]}});
     } catch (e) {
         await tg(chatId, `❌ ${e.message}`);
     }
@@ -650,7 +654,7 @@ async function handleCallback(cb, token) {
         return;
     }
     if (data === 'a:upload_info') {
-        await tg(chatId, `⬆️ *Upload APK*\n\nManda direttamente il file .apk in questa chat (max 20MB).\n\nOpzionale: aggiungi una caption tipo \`Nome App|Descrizione|Categoria\`.\n\nPer file piu' grandi usa il sito: ${PUBLIC()}`, { reply_markup: { inline_keyboard: [[{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]] } });
+        await tg(chatId, `⬆️ *Upload APK*\n\nManda direttamente il file .apk in questa chat (max 20MB).\n\nDopo l'upload potrai compilare nome, descrizione e categoria con bottoni.\n\nPer file piu' grandi (>20MB) usa il sito: ${PUBLIC()}`, { reply_markup: { inline_keyboard: [[{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]] } });
         return;
     }
     if (data === 'a:logout') {
