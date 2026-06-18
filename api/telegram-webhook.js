@@ -1,4 +1,5 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
+import { createAftvCode } from "./utils/aftv.js";
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
 const API = () => `https://api.telegram.org/bot${BOT_TOKEN()}`;
@@ -106,7 +107,7 @@ async function handleCommand(text, chatId, msg, token) {
     }
 
     if (cmd === '/help') {
-        await tg(chatId, `*Comandi admin:*\n\n📋 *Catalogo:*\n/list [N] — ultime N app\n/find <nome>\n/stats\n\n➕ *Aggiungi:*\n/add <nome>|<code>|<desc>|<cat>|<icon>\n📦 Invia file APK con caption opzionale\n\n✏️ *Modifica:*\n/edit <code> <field>=<value>\n   (field: name|desc|category|icon|code)\n/icon <code> — cerca icona da Play Store\n/icons — aggiorna tutte le icone mancanti\n\n🗑️ *Elimina:*\n/delete <code>\n\n🔧 *Manutenzione:*\n/dedup — rimuove duplicati\n/restore list | /restore <nome>\n\n🚪 /logout`);
+        await tg(chatId, `*Comandi admin:*\n\n📋 *Catalogo:*\n/list [N] — ultime N app\n/find <nome>\n/stats\n\n➕ *Aggiungi:*\n/add <nome>|<code>|<desc>|<cat>|<icon>\n📦 Invia file APK con caption opzionale\n\n✏️ *Modifica:*\n/edit <code> <field>=<value>\n   (field: name|desc|category|icon|code)\n/icon <code> — cerca icona da Play Store\n/icons — aggiorna tutte le icone mancanti\n/setaftv <key> <num> — setta codice aftv.news manuale\n\n🗑️ *Elimina:*\n/delete <code>\n\n🔧 *Manutenzione:*\n/dedup — rimuove duplicati\n/restore list | /restore <nome>\n\n🚪 /logout`);
         return;
     }
 
@@ -238,6 +239,23 @@ async function handleCommand(text, chatId, msg, token) {
         return;
     }
 
+    if (cmd === '/setaftv') {
+        const [key, aftvCode] = args;
+        if (!key || !aftvCode || !/^\d{3,10}$/.test(aftvCode)) {
+            await tg(chatId, 'Uso: /setaftv <firebaseKey> <codice_aftv>\n\nEs: /setaftv -O123xyz 7274133');
+            return;
+        }
+        const appRes = await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`);
+        const app = await appRes.json();
+        if (!app) { await tg(chatId, `❌ App con key "${key}" non trovata`); return; }
+        await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: aftvCode })
+        });
+        await tg(chatId, `✅ Codice aggiornato per *${app.name}*\n⚡ \`${aftvCode}\`\n🔗 https://aftv.news/${aftvCode}`);
+        return;
+    }
+
     if (cmd === '/restore') {
         const ignored = await (await fetch(`${DB_URL()}/troypoint_ignored.json?auth=${token}`)).json() || {};
         if (rest === 'list' || !rest) {
@@ -340,12 +358,23 @@ async function handleDocument(msg, chatId, token) {
             body: JSON.stringify({ url: directUrl, createdAt: Date.now(), clicks: 0, appName })
         });
 
-        await fetch(`${DB_URL()}/apps.json?auth=${token}`, {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: appName, code, desc: desc || '', icon: '', category: category || 'Altro', timestamp: Date.now(), order: -1 })
-        });
+        await tg(chatId, `🔢 Genero codice aftv.news (se 2captcha configurato)...`);
+        const aftvResult = await createAftvCode(directUrl);
+        const finalCode = aftvResult.code || code;
+        const codeSource = aftvResult.code ? 'aftvnews' : 'internal';
 
-        await tg(chatId, `✅ *Caricata: ${appName}*\n\n🔢 Codice breve: \`${code}\`\n🔗 ${PUBLIC()}/d/${code}\n\n📺 Su Fire TV Downloader digita:\n\`${PUBLIC().replace(/^https?:\/\//,'')}/d/${code}\``);
+        const addRes = await fetch(`${DB_URL()}/apps.json?auth=${token}`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: appName, code: finalCode, desc: desc || '', icon: '', category: category || 'Altro', timestamp: Date.now(), order: -1, internalCode: code, directUrl })
+        });
+        const addData = await addRes.json();
+        const firebaseKey = addData.name;
+
+        if (codeSource === 'aftvnews') {
+            await tg(chatId, `✅ *Caricata: ${appName}*\n\n⚡ Codice aftv.news: \`${finalCode}\`\n🔗 https://aftv.news/${finalCode}\n\n📺 Digita questo nel Downloader Fire TV.`);
+        } else {
+            await tg(chatId, `✅ *Caricata: ${appName}*\n\n🔗 Codice interno: \`${code}\`\nURL: \`${PUBLIC().replace(/^https?:\/\//,'')}/d/${code}\`\n\n⚡ *Per ottenere codice numerico aftv.news:*\n1. Apri https://aftv.news/\n2. Incolla questo link: ${directUrl}\n3. Risolvi captcha → ottieni codice\n4. Mandami: \`/setaftv ${firebaseKey} <codice>\``);
+        }
     } catch (e) {
         await tg(chatId, `❌ Errore: ${e.message}`);
     }

@@ -33,6 +33,7 @@ import telegramBotInfoHandler from './api/telegram-bot-info.js';
 import adminStatsHandler from './api/admin-stats.js';
 import uploadApkHandler from './api/upload-apk.js';
 import shortRedirectHandler from './api/short-redirect.js';
+import updateAftvCodeHandler from './api/update-aftv-code.js';
 
 app.all('/api/check-stremio', (req, res) => checkStremioHandler(req, res));
 app.all('/api/check-paramount', (req, res) => checkParamountHandler(req, res));
@@ -53,6 +54,7 @@ app.all('/api/telegram-bot-info', (req, res) => telegramBotInfoHandler(req, res)
 app.all('/api/admin-stats', (req, res) => adminStatsHandler(req, res));
 app.post('/api/upload-apk', (req, res) => uploadApkHandler(req, res));
 app.get('/d/:code', (req, res) => shortRedirectHandler(req, res));
+app.post('/api/update-aftv-code', (req, res) => updateAftvCodeHandler(req, res));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

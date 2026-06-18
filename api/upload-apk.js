@@ -1,4 +1,5 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
+import { createAftvCode } from "./utils/aftv.js";
 
 async function verifyAdminToken(req) {
     const apiKey = process.env.FIREBASE_API_KEY;
@@ -54,42 +55,51 @@ export default async function handler(req, res) {
         const dbUrl = process.env.FIREBASE_DATABASE_URL;
         const adminToken = await getAdminToken();
 
+        // 1. Genera sempre nostro codice (fallback / sempre disponibile)
         let code, exists = true, attempts = 0;
         while (exists && attempts < 8) {
             code = genShortCode();
             const r = await fetch(`${dbUrl}/short_links/${code}.json?auth=${adminToken}`);
-            const d = await r.json();
-            exists = !!d;
+            exists = !!(await r.json());
             attempts++;
         }
         if (!code) return res.status(500).json({ error: 'Impossibile generare codice univoco' });
 
         await fetch(`${dbUrl}/short_links/${code}.json?auth=${adminToken}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: directUrl, shareUrl, dropboxPath, createdAt: Date.now(), clicks: 0, appName: name })
         });
 
+        // 2. Prova a creare codice aftv.news (se 2captcha configurato)
+        const aftvResult = await createAftvCode(directUrl);
+        const finalCode = aftvResult.code || code;
+        const codeSource = aftvResult.code ? 'aftvnews' : 'internal';
+
         const appData = {
             name,
-            code,
+            code: finalCode,
             desc: desc || '',
             icon: icon || '',
             category: category || 'Altro',
             timestamp: Date.now(),
-            order: -1
+            order: -1,
+            internalCode: code,
+            directUrl
         };
         const addRes = await fetch(`${dbUrl}/apps.json?auth=${adminToken}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(appData)
         });
         const addData = await addRes.json();
 
         return res.status(200).json({
             success: true,
-            code,
-            shortUrl: `${process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com'}/d/${code}`,
+            code: finalCode,
+            internalCode: code,
+            codeSource,
+            aftvError: aftvResult.error,
+            shortUrl: aftvResult.code ? `https://aftv.news/${aftvResult.code}` : `${process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com'}/d/${code}`,
+            internalUrl: `${process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com'}/d/${code}`,
             directUrl,
             firebaseKey: addData.name
         });

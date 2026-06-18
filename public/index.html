@@ -882,13 +882,34 @@ bash ~/tunnel.sh</div>
     <div id="upload-step-success" style="display:none;text-align:center;padding:10px 0;">
       <div style="font-size:48px;margin-bottom:10px;">✅</div>
       <h3 style="color:var(--neon-cyan);">Caricato!</h3>
-      <p style="color:var(--text-muted);font-size:13px;margin-bottom:8px;">Codice breve generato:</p>
-      <div onclick="copyToClipboard(document.getElementById('upload-result-code').textContent, event)" id="upload-result-code-wrap" style="background:rgba(34,211,238,0.12);border:1px solid var(--neon-cyan);padding:14px;border-radius:12px;margin-bottom:14px;cursor:pointer;">
-        <div style="font-size:11px;color:var(--text-muted);">Codice (click per copiare)</div>
-        <div id="upload-result-code" style="font-size:24px;font-weight:800;color:var(--neon-cyan);font-family:monospace;letter-spacing:2px;"></div>
+
+      <div id="upload-source-badge" style="display:inline-block;font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;"></div>
+
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:6px;">Codice breve:</p>
+      <div onclick="copyToClipboard(document.getElementById('upload-result-code').textContent, event)" style="background:rgba(34,211,238,0.12);border:1px solid var(--neon-cyan);padding:14px;border-radius:12px;margin-bottom:10px;cursor:pointer;">
+        <div style="font-size:11px;color:var(--text-muted);">Click per copiare</div>
+        <div id="upload-result-code" style="font-size:32px;font-weight:800;color:var(--neon-cyan);font-family:monospace;letter-spacing:3px;"></div>
       </div>
-      <p style="font-size:12px;color:var(--text-muted);">Su Fire TV Downloader digita:<br><strong id="upload-result-url" style="color:#fff;font-size:13px;word-break:break-all;"></strong></p>
-      <button onclick="resetUploadModal()" class="form-btn" style="margin-top:14px;">⬆️ Carica un altro</button>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">Su Fire TV Downloader digita:<br><strong id="upload-result-url" style="color:#fff;font-size:12px;word-break:break-all;"></strong></p>
+
+      <!-- Manual aftv flow (shown only if automatic failed) -->
+      <div id="upload-aftv-manual" style="display:none;background:rgba(255,193,7,0.08);border:1px solid rgba(255,193,7,0.3);border-radius:12px;padding:14px;margin-bottom:14px;text-align:left;">
+        <p style="font-size:12px;color:#ffc107;margin-bottom:8px;">⚡ <strong>Vuoi un codice numerico aftv.news?</strong> (es. <code>7274133</code>, piu' veloce nel Downloader)</p>
+        <ol style="font-size:11px;color:var(--text-muted);padding-left:20px;line-height:1.5;">
+          <li>Click "<strong>📋 Copia link</strong>" sotto</li>
+          <li>Click "<strong>🔗 Apri aftv.news</strong>", incolla link, risolvi captcha</li>
+          <li>Torna qui, incolla il codice numerico e click "Salva"</li>
+        </ol>
+        <div style="display:flex;gap:6px;margin:8px 0;flex-wrap:wrap;">
+          <button onclick="copyDropboxLink()" class="form-btn" style="flex:1;font-size:12px;padding:8px;min-width:120px;">📋 Copia link</button>
+          <button onclick="window.open('https://aftv.news/', '_blank')" class="form-btn" style="flex:1;font-size:12px;padding:8px;background:rgba(243,118,35,0.15);border-color:rgba(243,118,35,0.4);min-width:120px;">🔗 aftv.news</button>
+        </div>
+        <input type="text" id="upload-aftv-code-input" class="form-input" placeholder="Codice aftv.news (es. 7274133)" style="width:100%;box-sizing:border-box;margin:6px 0;font-family:monospace;text-align:center;font-size:18px;letter-spacing:2px;" inputmode="numeric">
+        <button onclick="submitAftvCode()" class="form-btn" style="width:100%;font-size:13px;">💾 Sostituisci con codice aftv</button>
+        <div id="upload-aftv-msg" style="font-size:12px;text-align:center;margin-top:6px;"></div>
+      </div>
+
+      <button onclick="resetUploadModal()" class="form-btn" style="margin-top:6px;">⬆️ Carica un altro</button>
     </div>
 
     <button onclick="document.getElementById('upload-modal').classList.remove('active')" class="close-modal">Chiudi</button>
@@ -1772,6 +1793,22 @@ bash ~/tunnel.sh</div>
         document.getElementById('upload-step-success').style.display = 'block';
         document.getElementById('upload-result-code').textContent = d.code;
         document.getElementById('upload-result-url').textContent = d.shortUrl.replace(/^https?:\/\//, '');
+
+        const badge = document.getElementById('upload-source-badge');
+        const manual = document.getElementById('upload-aftv-manual');
+        if (d.codeSource === 'aftvnews') {
+          badge.textContent = '⚡ Codice aftv.news (numerico)';
+          badge.style.background = 'rgba(243,118,35,0.15)';
+          badge.style.color = '#f37623';
+          manual.style.display = 'none';
+        } else {
+          badge.textContent = '🔗 Codice interno';
+          badge.style.background = 'rgba(168,85,247,0.15)';
+          badge.style.color = 'var(--neon-purple)';
+          manual.style.display = 'block';
+          window._uploadDirectUrl = d.directUrl;
+          window._uploadFirebaseKey = d.firebaseKey;
+        }
       }, 400);
     } catch (e) {
       progress.style.display = 'none';
@@ -1779,6 +1816,52 @@ bash ~/tunnel.sh</div>
       err.style.display = 'block';
       btn.disabled = false;
       btn.innerHTML = '⬆️ Carica';
+    }
+  };
+
+  window.copyDropboxLink = function() {
+    if (!window._uploadDirectUrl) return;
+    navigator.clipboard.writeText(window._uploadDirectUrl).then(() => {
+      const msg = document.getElementById('upload-aftv-msg');
+      msg.style.color = '#10b981';
+      msg.textContent = '✅ Link copiato negli appunti';
+      setTimeout(() => msg.textContent = '', 2500);
+    });
+  };
+
+  window.submitAftvCode = async function() {
+    const codeInput = document.getElementById('upload-aftv-code-input');
+    const msg = document.getElementById('upload-aftv-msg');
+    const code = codeInput.value.trim();
+    if (!/^\d{3,10}$/.test(code)) {
+      msg.style.color = '#ef4444';
+      msg.textContent = '⚠️ Codice non valido (solo numeri, 3-10 cifre)';
+      return;
+    }
+    try {
+      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
+      const user = auth.currentUser;
+      if (!user) throw new Error('Sessione admin scaduta');
+      const token = await user.getIdToken();
+      const r = await fetch('/api/update-aftv-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ firebaseKey: window._uploadFirebaseKey, aftvCode: code })
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      msg.style.color = '#10b981';
+      msg.textContent = '✅ Codice aggiornato!';
+      document.getElementById('upload-result-code').textContent = code;
+      document.getElementById('upload-result-url').textContent = `aftv.news/${code}`;
+      document.getElementById('upload-aftv-manual').style.display = 'none';
+      const badge = document.getElementById('upload-source-badge');
+      badge.textContent = '⚡ Codice aftv.news (numerico)';
+      badge.style.background = 'rgba(243,118,35,0.15)';
+      badge.style.color = '#f37623';
+    } catch (e) {
+      msg.style.color = '#ef4444';
+      msg.textContent = '❌ ' + e.message;
     }
   };
 
