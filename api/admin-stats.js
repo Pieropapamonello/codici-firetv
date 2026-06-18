@@ -1,24 +1,24 @@
+import { checkTelegramSession } from "./telegram-auth.js";
+
 export default async function handler(req, res) {
     const dbUrl = process.env.FIREBASE_DATABASE_URL;
     const apiKey = process.env.FIREBASE_API_KEY;
 
-    // Auth: richiede ID token Firebase nell'header
     const authHeader = req.headers?.authorization || '';
     const userToken = authHeader.replace(/^Bearer\s+/i, '');
-    if (!userToken) {
-        return res.status(401).json({ error: 'Token mancante' });
-    }
+    if (!userToken) return res.status(401).json({ error: 'Token mancante' });
 
     try {
-        // Verifica che l'utente sia loggato (qualsiasi utente Firebase autenticato)
-        const verifyRes = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idToken: userToken })
-        });
-        const verifyData = await verifyRes.json();
-        if (!verifyData.users || verifyData.users.length === 0) {
-            return res.status(401).json({ error: 'Token non valido' });
+        // Try Telegram session first
+        const sess = await checkTelegramSession(req);
+        if (!sess || !sess.isAdmin) {
+            // Fallback Firebase token
+            const verifyRes = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idToken: userToken })
+            });
+            const verifyData = await verifyRes.json();
+            if (!verifyData.users || verifyData.users.length === 0) return res.status(401).json({ error: 'Token non valido' });
         }
 
         // Usa il token admin per leggere il DB

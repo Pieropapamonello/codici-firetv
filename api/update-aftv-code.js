@@ -1,12 +1,15 @@
 // Aggiorna il codice di un'app con quello creato manualmente su aftv.news
 
+import { checkTelegramSession } from "./telegram-auth.js";
+
 async function verifyAdminToken(req) {
     const apiKey = process.env.FIREBASE_API_KEY;
     const auth = (req.headers?.authorization || '').replace(/^Bearer\s+/i, '');
     if (!auth) return null;
+    const sess = await checkTelegramSession(req);
+    if (sess && sess.isAdmin) return { telegramUser: sess.userId };
     const r = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ idToken: auth })
     });
     const d = await r.json();

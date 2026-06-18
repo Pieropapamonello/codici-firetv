@@ -14,6 +14,7 @@
 <link rel="apple-touch-icon" href="assets/nello.png">
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root {
   --neon-purple: #a855f7;
@@ -160,6 +161,13 @@ header h1 {
   backdrop-filter: blur(10px);
 }
 .bookmark-hint strong { color: #fff; }
+
+/* Admin Modal Tabs */
+.tab-btn { flex:1; background: transparent; border: none; color: var(--text-muted); padding: 10px 8px; font-size: 13px; cursor: pointer; font-family: inherit; border-bottom: 2px solid transparent; transition: all 0.2s; font-weight: 600; }
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--neon-cyan); border-bottom-color: var(--neon-cyan); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
 
 /* Advanced Guides */
 .advanced-guides { max-width: 900px; margin: 40px auto; padding: 0 20px; scroll-margin-top: 20px; }
@@ -755,27 +763,7 @@ bash ~/tunnel.sh</div>
   </details>
 </div>
 
-<div class="add-app-section admin-only admin-only-block">
-  <h3>➕ Gestione Applicazioni</h3>
-  <div class="form-group">
-      <input type="hidden" id="editingKey">
-      <input type="text" id="appName" class="form-input" placeholder="Nome App (es. MyApp)">
-      <input type="text" id="appCode" class="form-input" placeholder="Codice / URL (es. 123456)">
-  </div>
-  <div class="form-group">
-      <input type="text" id="appDesc" class="form-input" placeholder="Descrizione breve">
-      <div style="display: flex; gap: 10px; width: 100%;">
-          <input type="text" id="appIcon" class="form-input" placeholder="URL Icona (opzionale)" style="flex: 1;">
-          <button onclick="searchIcon()" class="form-btn" style="width: auto; padding: 0 15px; font-size: 14px;" title="Cerca icona in base al nome">🔍 Cerca</button>
-      </div>
-      <input type="text" id="appCategory" class="form-input" placeholder="Categoria (es. Streaming)" list="categoryList">
-      <datalist id="categoryList"></datalist>
-  </div>
-  <div style="display: flex; gap: 10px; margin-top: 15px;">
-      <button id="submitAppBtn" onclick="addApp()" class="form-btn" style="flex: 2;">Aggiungi Scheda</button>
-      <button onclick="updateAllIcons()" class="form-btn" style="flex: 1; background: rgba(34, 211, 238, 0.2); border-color: rgba(34, 211, 238, 0.5);" title="Cerca e aggiorna le icone mancanti per tutte le app">🔄 Aggiorna Tutte le Icone</button>
-  </div>
-</div>
+<datalist id="categoryList"></datalist>
 
 <div style="text-align: center; margin-top: 40px;">
   <div class="bookmark-hint">
@@ -845,13 +833,19 @@ bash ~/tunnel.sh</div>
   </div>
 </div>
 
-<!-- Upload APK Modal -->
+<!-- Admin Modal (Upload / Manuale / Tools) -->
 <div id="upload-modal" class="modal">
-  <div class="modal-content" style="max-width: 480px; max-height: 90vh; overflow-y: auto;">
-    <h3>📤 Carica APK</h3>
-    <p style="color:var(--text-muted);font-size:13px;text-align:center;margin-top:-8px;margin-bottom:16px;">L'APK viene caricato su Dropbox e aggiunto al catalogo con codice breve.</p>
+  <div class="modal-content" style="max-width: 520px; max-height: 92vh; overflow-y: auto;">
+    <h3 id="admin-modal-title">👑 Pannello Admin</h3>
 
-    <div id="upload-step-form">
+    <div style="display:flex;gap:6px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:0;">
+      <button class="tab-btn active" data-tab="upload" onclick="switchTab('upload')">📤 Upload APK</button>
+      <button class="tab-btn" data-tab="manual" onclick="switchTab('manual')">➕ Manuale</button>
+      <button class="tab-btn" data-tab="tools" onclick="switchTab('tools')">🛠️ Tools</button>
+    </div>
+
+    <!-- TAB: Upload -->
+    <div class="tab-pane" id="tab-upload">
       <label style="display:block;background:rgba(168,85,247,0.1);border:2px dashed var(--neon-purple);border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;margin-bottom:14px;transition:all 0.2s;" onmouseover="this.style.background='rgba(168,85,247,0.18)'" onmouseout="this.style.background='rgba(168,85,247,0.1)'">
         <div style="font-size:36px;margin-bottom:6px;">📦</div>
         <strong id="upload-file-name" style="color:var(--neon-cyan);font-size:14px;">Tocca per scegliere un APK</strong>
@@ -910,6 +904,32 @@ bash ~/tunnel.sh</div>
       </div>
 
       <button onclick="resetUploadModal()" class="form-btn" style="margin-top:6px;">⬆️ Carica un altro</button>
+    </div>
+    </div>
+    <!-- /tab-upload -->
+
+    <!-- TAB: Manuale -->
+    <div class="tab-pane" id="tab-manual">
+      <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-bottom:14px;">Aggiungi un'app con codice/URL gia' esistente (es. codice aftvnews 7274133 o link Dropbox diretto).</p>
+      <input type="hidden" id="editingKey">
+      <input type="text" id="appName" class="form-input" placeholder="Nome App *" style="width:100%;box-sizing:border-box;margin-bottom:8px;">
+      <input type="text" id="appCode" class="form-input" placeholder="Codice o URL *" style="width:100%;box-sizing:border-box;margin-bottom:8px;">
+      <input type="text" id="appDesc" class="form-input" placeholder="Descrizione breve" style="width:100%;box-sizing:border-box;margin-bottom:8px;">
+      <div style="display:flex;gap:6px;margin-bottom:8px;">
+        <input type="text" id="appIcon" class="form-input" placeholder="URL Icona (opz.)" style="flex:1;">
+        <button onclick="searchIcon()" class="form-btn" style="width:auto;padding:0 14px;font-size:13px;">🔍</button>
+      </div>
+      <input type="text" id="appCategory" class="form-input" placeholder="Categoria" list="categoryList" style="width:100%;box-sizing:border-box;margin-bottom:12px;">
+      <button id="submitAppBtn" onclick="addApp()" class="form-btn">💾 Salva scheda</button>
+    </div>
+
+    <!-- TAB: Tools -->
+    <div class="tab-pane" id="tab-tools">
+      <p style="color:var(--text-muted);font-size:12px;text-align:center;margin-bottom:14px;">Operazioni batch sull'intero catalogo.</p>
+      <button onclick="updateAllIcons()" class="form-btn" style="width:100%;margin-bottom:10px;background:rgba(34,211,238,0.15);border-color:rgba(34,211,238,0.4);">🔄 Aggiorna tutte le icone mancanti</button>
+      <button onclick="runDedup()" class="form-btn" style="width:100%;margin-bottom:10px;background:rgba(168,85,247,0.15);border-color:rgba(168,85,247,0.4);">🧹 Rimuovi duplicati (dedup)</button>
+      <button onclick="openStatsModal()" class="form-btn" style="width:100%;margin-bottom:10px;background:rgba(236,72,153,0.12);border-color:rgba(236,72,153,0.4);">📊 Apri Statistiche</button>
+      <div id="tools-msg" style="font-size:12px;text-align:center;margin-top:10px;color:var(--text-muted);"></div>
     </div>
 
     <button onclick="document.getElementById('upload-modal').classList.remove('active')" class="close-modal">Chiudi</button>
@@ -1685,6 +1705,85 @@ bash ~/tunnel.sh</div>
     }).catch(() => alert('Copiato: ' + text));
   });
 
+  // --- Auth helper: usa sessione Telegram o Firebase ---
+  window.getAuthToken = async function() {
+    const tgSess = sessionStorage.getItem('tg_session');
+    if (tgSess) return tgSess;
+    try {
+      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
+      const user = auth.currentUser;
+      if (user) return await user.getIdToken();
+    } catch (_) {}
+    return null;
+  };
+
+  // --- Tab switching nel modal admin ---
+  window.switchTab = function(name) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+  };
+
+  // --- Tools: dedup ---
+  window.runDedup = async function() {
+    if (!confirm('Vuoi rimuovere i duplicati dal DB? Tiene solo la versione piu\' recente per ogni app.')) return;
+    const msg = document.getElementById('tools-msg');
+    msg.textContent = '⏳ Dedup in corso...';
+    try {
+      const r = await fetch('/api/fix-db?mode=dedup');
+      const d = await r.json();
+      msg.style.color = '#10b981';
+      msg.textContent = `✅ Rimossi ${d.removed || 0} duplicati`;
+    } catch (e) {
+      msg.style.color = '#ef4444';
+      msg.textContent = '❌ Errore: ' + e.message;
+    }
+  };
+
+  // --- Telegram WebApp auto-login ---
+  (async () => {
+    if (!window.Telegram?.WebApp) return;
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+    if (!tg.initData) return;
+    try {
+      const r = await fetch('/api/telegram-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ initData: tg.initData })
+      });
+      const d = await r.json();
+      if (d.success) {
+        sessionStorage.setItem('tg_session', d.sessionId);
+        sessionStorage.setItem('tg_user', JSON.stringify(d.user));
+        if (d.isAdmin) {
+          document.body.classList.add('is-admin');
+          document.body.classList.add('is-tg-admin');
+          setTimeout(() => window.openUploadModal && window.openUploadModal(), 500);
+        }
+      }
+    } catch (_) {}
+  })();
+
+  // --- Onboarding tour (prima visita) ---
+  if (!localStorage.getItem('tour_done')) {
+    setTimeout(() => {
+      if (window.Telegram?.WebApp?.initData) return; // skip dentro Telegram
+      const steps = [
+        '👋 Benvenuto in Il Covo di Nello!\n\nTrovi qui APK e codici Downloader per Fire TV e Android TV.',
+        '🔍 Usa la barra in alto per cercare app o filtra per categoria.\nIl bottone 📚 in alto a destra apre le guide.',
+        '🔔 Tocca la campana per iscriverti alle notifiche (email o Telegram) — ricevi avviso quando esce una nuova versione delle tue app preferite.'
+      ];
+      let i = 0;
+      const showNext = () => {
+        if (i >= steps.length) { localStorage.setItem('tour_done', '1'); return; }
+        if (confirm(steps[i] + '\n\nContinua?')) { i++; showNext(); }
+        else localStorage.setItem('tour_done', '1');
+      };
+      showNext();
+    }, 1500);
+  }
+
   // --- Upload APK Modal ---
   let uploadSelectedFile = null;
 
@@ -1753,10 +1852,8 @@ bash ~/tunnel.sh</div>
     text.textContent = 'Lettura file...';
 
     try {
-      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
-      const user = auth.currentUser;
-      if (!user) throw new Error('Non sei loggato come admin');
-      const token = await user.getIdToken();
+      const token = await window.getAuthToken();
+      if (!token) throw new Error('Non sei loggato come admin');
 
       bar.style.width = '15%';
       text.textContent = 'Conversione base64...';
@@ -1839,10 +1936,8 @@ bash ~/tunnel.sh</div>
       return;
     }
     try {
-      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
-      const user = auth.currentUser;
-      if (!user) throw new Error('Sessione admin scaduta');
-      const token = await user.getIdToken();
+      const token = await window.getAuthToken();
+      if (!token) throw new Error('Sessione admin scaduta');
       const r = await fetch('/api/update-aftv-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
@@ -1873,13 +1968,11 @@ bash ~/tunnel.sh</div>
     content.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-muted);">Caricamento…</div>';
 
     try {
-      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
-      const user = auth.currentUser;
-      if (!user) {
+      const token = await window.getAuthToken();
+      if (!token) {
         content.innerHTML = '<p style="color:#ef4444;text-align:center;">Devi essere loggato come admin.</p>';
         return;
       }
-      const token = await user.getIdToken();
       const r = await fetch('/api/admin-stats', { headers: { 'Authorization': 'Bearer ' + token } });
       const d = await r.json();
       if (!r.ok) {

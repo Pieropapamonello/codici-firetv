@@ -1,10 +1,15 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
+import { checkTelegramSession } from "./telegram-auth.js";
 
 async function verifyAdminToken(req) {
     const apiKey = process.env.FIREBASE_API_KEY;
     const auth = (req.headers?.authorization || '').replace(/^Bearer\s+/i, '');
     if (!auth) return null;
+    // Telegram session check
+    const sess = await checkTelegramSession(req);
+    if (sess && sess.isAdmin) return { telegramUser: sess.userId };
+    // Firebase token check
     const r = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

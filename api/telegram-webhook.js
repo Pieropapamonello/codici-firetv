@@ -62,6 +62,25 @@ function buildAppButtons(apps) {
     return { inline_keyboard: apps.filter(a => { const u = resolveAppUrl(a); return u && u.startsWith('http'); }).map(a => [{ text: `📥 ${a.name.substring(0, 50)}`, url: resolveAppUrl(a) }]) };
 }
 
+async function sendAppCard(chatId, app) {
+    const url = resolveAppUrl(app);
+    if (!url || !url.startsWith('http')) return;
+    const caption = `*${app.name}*\n${app.desc || ''}\n📁 ${app.category || '?'} · 🔢 \`${app.code}\``;
+    const photo = app.icon && app.icon.startsWith('http') ? app.icon : null;
+    const kb = { inline_keyboard: [[{ text: '📥 Scarica', url }]] };
+
+    if (photo) {
+        try {
+            const r = await fetch(`${API()}/sendPhoto`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, photo, caption, parse_mode: 'Markdown', reply_markup: kb })
+            });
+            if ((await r.json()).ok) return;
+        } catch (_) {}
+    }
+    await tg(chatId, caption, { reply_markup: kb });
+}
+
 function genShortCode(len = 5) {
     const chars = 'abcdefghjkmnpqrstuvwxyz23456789';
     let out = ''; for (let i = 0; i < len; i++) out += chars[Math.floor(Math.random() * chars.length)];
@@ -71,6 +90,7 @@ function genShortCode(len = 5) {
 // ---------- Menus ----------
 function mainMenuPublic(adminFlag) {
     const kb = [
+        [{ text: '🌐 Apri Il Covo (full)', web_app: { url: PUBLIC() + '/' } }],
         [{ text: '📥 Ultime app', callback_data: 'apps:latest' }, { text: '🔍 Cerca', callback_data: 'apps:search' }],
         [{ text: '📁 Categorie', callback_data: 'apps:cats' }],
         [{ text: '⚙️ La mia iscrizione', callback_data: 'sub:status' }]
@@ -201,9 +221,10 @@ async function handleStateInput(msg, chatId, token, state) {
         case 'search': {
             await clearState(chatId, token);
             const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
-            const found = Object.values(apps).filter(a => a.name?.toLowerCase().includes(text.toLowerCase())).slice(0, 20);
-            if (found.length === 0) await tg(chatId, `🔍 Nessun risultato per "${text}"`);
-            else await tg(chatId, `🔍 *${found.length} risultati per "${text}"*`, { reply_markup: buildAppButtons(found) });
+            const found = Object.values(apps).filter(a => a.name?.toLowerCase().includes(text.toLowerCase())).slice(0, 8);
+            if (found.length === 0) { await tg(chatId, `🔍 Nessun risultato per "${text}"`); return; }
+            await tg(chatId, `🔍 *${found.length} risultati per "${text}"*`);
+            for (const app of found) await sendAppCard(chatId, app);
             return;
         }
 
@@ -688,7 +709,21 @@ export default async function handler(req, res) {
                 method: 'PUT', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chatId, firstName: msg.from?.first_name || 'Utente', username: msg.from?.username || null, apps: ['all'], joinedAt: Date.now() })
             });
-            await tg(chatId, `🎉 *Benvenuto in Il Covo di Nello!*\n\nIl bot ora usa un'interfaccia grafica. Tap sui bottoni:`, { reply_markup: mainMenuPublic(adminFlag) });
+            // Manda foto logo con benvenuto
+            try {
+                await fetch(`${API()}/sendPhoto`, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        photo: `${PUBLIC()}/assets/nello.png`,
+                        caption: `🏴‍☠️ *Il Covo di Nello*\n\nIl bot ora usa un'interfaccia grafica. Tap sui bottoni:`,
+                        parse_mode: 'Markdown',
+                        reply_markup: mainMenuPublic(adminFlag)
+                    })
+                });
+            } catch (_) {
+                await tg(chatId, `🏴‍☠️ *Il Covo di Nello*\n\nTap sui bottoni:`, { reply_markup: mainMenuPublic(adminFlag) });
+            }
             return res.status(200).json({ ok: true });
         }
         if (text === '/cancel') { await clearState(chatId, token); await tg(chatId, '❌ Annullato.'); await showMainMenu(chatId, token, adminFlag); return res.status(200).json({ ok: true }); }
