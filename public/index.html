@@ -845,7 +845,7 @@ bash ~/tunnel.sh</div>
     </div>
 
     <!-- TAB: Upload -->
-    <div class="tab-pane" id="tab-upload">
+    <div class="tab-pane active" id="tab-upload">
       <label style="display:block;background:rgba(168,85,247,0.1);border:2px dashed var(--neon-purple);border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;margin-bottom:14px;transition:all 0.2s;" onmouseover="this.style.background='rgba(168,85,247,0.18)'" onmouseout="this.style.background='rgba(168,85,247,0.1)'">
         <div style="font-size:36px;margin-bottom:6px;">📦</div>
         <strong id="upload-file-name" style="color:var(--neon-cyan);font-size:14px;">Tocca per scegliere un APK</strong>
@@ -1846,8 +1846,9 @@ bash ~/tunnel.sh</div>
   // --- Upload APK Modal ---
   let uploadSelectedFile = null;
 
-  window.openUploadModal = function() {
+  window.openUploadModal = function(initialTab = 'upload') {
     resetUploadModal();
+    if (window.switchTab) window.switchTab(initialTab);
     document.getElementById('upload-modal').classList.add('active');
   };
 
