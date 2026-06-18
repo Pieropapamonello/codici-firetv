@@ -491,6 +491,7 @@ body.lite-mode.light-theme .search-box input {
     <button class="icon-btn" onclick="toggleTheme()" title="Cambia Tema">🌓</button>
     <button id="notify-bell-btn" class="icon-btn" onclick="openNotifyModal()" title="Notifiche Aggiornamenti App">🔔</button>
     <button id="login-btn" class="icon-btn" onclick="document.getElementById('login-modal').classList.add('active')" title="Accesso Amministratore">🔐</button>
+    <button class="icon-btn admin-only" onclick="openUploadModal()" title="Upload APK">📤</button>
     <button class="icon-btn admin-only" onclick="openStatsModal()" title="Statistiche">📊</button>
     <button id="logout-btn" class="icon-btn admin-only" onclick="logoutAdmin()" title="Esci dall'Amministrazione">🔓</button>
   </div>
@@ -844,6 +845,56 @@ bash ~/tunnel.sh</div>
   </div>
 </div>
 
+<!-- Upload APK Modal -->
+<div id="upload-modal" class="modal">
+  <div class="modal-content" style="max-width: 480px; max-height: 90vh; overflow-y: auto;">
+    <h3>📤 Carica APK</h3>
+    <p style="color:var(--text-muted);font-size:13px;text-align:center;margin-top:-8px;margin-bottom:16px;">L'APK viene caricato su Dropbox e aggiunto al catalogo con codice breve.</p>
+
+    <div id="upload-step-form">
+      <label style="display:block;background:rgba(168,85,247,0.1);border:2px dashed var(--neon-purple);border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;margin-bottom:14px;transition:all 0.2s;" onmouseover="this.style.background='rgba(168,85,247,0.18)'" onmouseout="this.style.background='rgba(168,85,247,0.1)'">
+        <div style="font-size:36px;margin-bottom:6px;">📦</div>
+        <strong id="upload-file-name" style="color:var(--neon-cyan);font-size:14px;">Tocca per scegliere un APK</strong>
+        <div id="upload-file-size" style="font-size:11px;color:var(--text-muted);margin-top:4px;"></div>
+        <input type="file" id="upload-file-input" accept=".apk" style="display:none;" onchange="onUploadFileSelected(this)">
+      </label>
+
+      <input type="text" id="upload-name" class="form-input" placeholder="Nome App *" style="width:100%;box-sizing:border-box;margin-bottom:10px;">
+      <input type="text" id="upload-desc" class="form-input" placeholder="Descrizione breve" style="width:100%;box-sizing:border-box;margin-bottom:10px;">
+
+      <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <input type="text" id="upload-icon" class="form-input" placeholder="URL Icona (opz.)" style="flex:1;">
+        <button onclick="searchUploadIcon()" class="form-btn" style="width:auto;padding:0 16px;font-size:13px;">🔍</button>
+      </div>
+
+      <input type="text" id="upload-category" class="form-input" placeholder="Categoria" list="categoryList" style="width:100%;box-sizing:border-box;margin-bottom:14px;">
+
+      <button onclick="submitUploadApk()" id="upload-submit-btn" class="form-btn">⬆️ Carica</button>
+      <div id="upload-progress" style="display:none;margin-top:14px;">
+        <div style="background:rgba(255,255,255,0.08);height:8px;border-radius:4px;overflow:hidden;">
+          <div id="upload-progress-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--neon-purple),var(--neon-cyan));transition:width 0.3s;"></div>
+        </div>
+        <div id="upload-progress-text" style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:6px;">Preparazione...</div>
+      </div>
+      <div id="upload-error" style="display:none;color:#ef4444;font-size:13px;text-align:center;margin-top:10px;"></div>
+    </div>
+
+    <div id="upload-step-success" style="display:none;text-align:center;padding:10px 0;">
+      <div style="font-size:48px;margin-bottom:10px;">✅</div>
+      <h3 style="color:var(--neon-cyan);">Caricato!</h3>
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:8px;">Codice breve generato:</p>
+      <div onclick="copyToClipboard(document.getElementById('upload-result-code').textContent, event)" id="upload-result-code-wrap" style="background:rgba(34,211,238,0.12);border:1px solid var(--neon-cyan);padding:14px;border-radius:12px;margin-bottom:14px;cursor:pointer;">
+        <div style="font-size:11px;color:var(--text-muted);">Codice (click per copiare)</div>
+        <div id="upload-result-code" style="font-size:24px;font-weight:800;color:var(--neon-cyan);font-family:monospace;letter-spacing:2px;"></div>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);">Su Fire TV Downloader digita:<br><strong id="upload-result-url" style="color:#fff;font-size:13px;word-break:break-all;"></strong></p>
+      <button onclick="resetUploadModal()" class="form-btn" style="margin-top:14px;">⬆️ Carica un altro</button>
+    </div>
+
+    <button onclick="document.getElementById('upload-modal').classList.remove('active')" class="close-modal">Chiudi</button>
+  </div>
+</div>
+
 <!-- Stats Modal -->
 <div id="stats-modal" class="modal">
   <div class="modal-content" style="max-width: 560px; max-height: 85vh; overflow-y: auto;">
@@ -896,12 +947,14 @@ bash ~/tunnel.sh</div>
       const email = document.getElementById('adminEmail').value;
       const pass = document.getElementById('adminPass').value;
       if(!email || !pass) return alert("Inserisci email e password");
-      
+
       signInWithEmailAndPassword(auth, email, pass)
         .then(() => {
           document.getElementById('login-modal').classList.remove('active');
           document.getElementById('adminEmail').value = '';
           document.getElementById('adminPass').value = '';
+          // Apri subito il pannello upload dopo login
+          setTimeout(() => window.openUploadModal && window.openUploadModal(), 300);
         })
         .catch(e => alert("Errore login: Credenziali non valide."));
     };
@@ -1610,6 +1663,124 @@ bash ~/tunnel.sh</div>
       setTimeout(() => el.classList.remove('copied'), 1500);
     }).catch(() => alert('Copiato: ' + text));
   });
+
+  // --- Upload APK Modal ---
+  let uploadSelectedFile = null;
+
+  window.openUploadModal = function() {
+    resetUploadModal();
+    document.getElementById('upload-modal').classList.add('active');
+  };
+
+  window.resetUploadModal = function() {
+    uploadSelectedFile = null;
+    document.getElementById('upload-step-form').style.display = 'block';
+    document.getElementById('upload-step-success').style.display = 'none';
+    document.getElementById('upload-progress').style.display = 'none';
+    document.getElementById('upload-error').style.display = 'none';
+    document.getElementById('upload-file-name').textContent = 'Tocca per scegliere un APK';
+    document.getElementById('upload-file-size').textContent = '';
+    ['upload-name','upload-desc','upload-icon','upload-category'].forEach(id => document.getElementById(id).value = '');
+    const btn = document.getElementById('upload-submit-btn');
+    btn.disabled = false;
+    btn.innerHTML = '⬆️ Carica';
+  };
+
+  window.onUploadFileSelected = function(input) {
+    const f = input.files[0];
+    if (!f) return;
+    uploadSelectedFile = f;
+    document.getElementById('upload-file-name').textContent = f.name;
+    document.getElementById('upload-file-size').textContent = (f.size / 1024 / 1024).toFixed(1) + ' MB';
+    // Auto-suggest name from filename
+    const nameInput = document.getElementById('upload-name');
+    if (!nameInput.value) {
+      nameInput.value = f.name.replace(/\.apk$/i, '').replace(/[._-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    }
+  };
+
+  window.searchUploadIcon = async function() {
+    const name = document.getElementById('upload-name').value.trim();
+    if (!name) return alert('Inserisci prima il nome');
+    const iconInput = document.getElementById('upload-icon');
+    iconInput.placeholder = 'Ricerca in corso...';
+    iconInput.value = '';
+    try {
+      const r = await fetch(`/api/search-icon?name=${encodeURIComponent(name)}`);
+      const d = await r.json();
+      if (d.success && d.icon) iconInput.value = d.icon;
+    } catch(_) {}
+    iconInput.placeholder = 'URL Icona (opz.)';
+  };
+
+  window.submitUploadApk = async function() {
+    const err = document.getElementById('upload-error');
+    err.style.display = 'none';
+
+    if (!uploadSelectedFile) { err.textContent = '⚠️ Scegli un file APK'; err.style.display = 'block'; return; }
+    const name = document.getElementById('upload-name').value.trim();
+    if (!name) { err.textContent = '⚠️ Inserisci il nome'; err.style.display = 'block'; return; }
+
+    const btn = document.getElementById('upload-submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Caricamento...';
+    const progress = document.getElementById('upload-progress');
+    const bar = document.getElementById('upload-progress-bar');
+    const text = document.getElementById('upload-progress-text');
+    progress.style.display = 'block';
+    bar.style.width = '5%';
+    text.textContent = 'Lettura file...';
+
+    try {
+      const auth = (await import("https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js")).getAuth();
+      const user = auth.currentUser;
+      if (!user) throw new Error('Non sei loggato come admin');
+      const token = await user.getIdToken();
+
+      bar.style.width = '15%';
+      text.textContent = 'Conversione base64...';
+      const fileBase64 = await new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.onload = () => resolve(fr.result.split(',')[1]);
+        fr.onerror = reject;
+        fr.readAsDataURL(uploadSelectedFile);
+      });
+
+      bar.style.width = '30%';
+      text.textContent = 'Upload su Dropbox + Firebase...';
+
+      const r = await fetch('/api/upload-apk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({
+          fileBase64,
+          filename: uploadSelectedFile.name,
+          name,
+          desc: document.getElementById('upload-desc').value.trim(),
+          icon: document.getElementById('upload-icon').value.trim(),
+          category: document.getElementById('upload-category').value.trim()
+        })
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'Errore upload');
+
+      bar.style.width = '100%';
+      text.textContent = 'Completato!';
+
+      setTimeout(() => {
+        document.getElementById('upload-step-form').style.display = 'none';
+        document.getElementById('upload-step-success').style.display = 'block';
+        document.getElementById('upload-result-code').textContent = d.code;
+        document.getElementById('upload-result-url').textContent = d.shortUrl.replace(/^https?:\/\//, '');
+      }, 400);
+    } catch (e) {
+      progress.style.display = 'none';
+      err.textContent = '❌ ' + e.message;
+      err.style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = '⬆️ Carica';
+    }
+  };
 
   // --- Admin Stats Modal ---
   window.openStatsModal = async function() {
