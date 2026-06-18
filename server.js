@@ -102,7 +102,7 @@ app.listen(PORT, '0.0.0.0', () => {
 
     // Auto-register Telegram webhook
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const publicUrl = process.env.PUBLIC_URL || 'https://codici-firetv.onrender.com';
+    const publicUrl = process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com';
     if (botToken) {
         const webhookUrl = `${publicUrl}/api/telegram-webhook`;
         fetch(`https://api.telegram.org/bot${botToken}/setWebhook?url=${encodeURIComponent(webhookUrl)}`)

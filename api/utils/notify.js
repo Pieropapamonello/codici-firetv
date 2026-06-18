@@ -120,7 +120,7 @@ export async function sendEmailNotification(appName, version, downloadUrl, iconU
         if (emails.length === 0) return;
 
         function buildHtml(recipientEmail) {
-            const base = process.env.PUBLIC_URL || 'https://codici-firetv.onrender.com';
+            const base = process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com';
             const unsub = `${base}/api/unsubscribe?email=${encodeURIComponent(recipientEmail)}`;
             return `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
