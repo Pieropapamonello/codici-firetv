@@ -26,3 +26,4 @@ Pannello admin protetto, cron job automatici per aggiornamenti, notifiche email/
 - **Auth**: Firebase Authentication
 - **Hosting**: Hugging Face Spaces (Docker)
 - **Cron**: node-cron (in-process)
+
