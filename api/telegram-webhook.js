@@ -106,7 +106,151 @@ async function handleCommand(text, chatId, msg, token) {
     }
 
     if (cmd === '/help') {
-        await tg(chatId, `*Comandi admin:*\n/list [N] — ultime N app (default 10)\n/find <nome>\n/delete <code>\n/stats\n/logout\n\n📦 Invia file APK per upload`);
+        await tg(chatId, `*Comandi admin:*\n\n📋 *Catalogo:*\n/list [N] — ultime N app\n/find <nome>\n/stats\n\n➕ *Aggiungi:*\n/add <nome>|<code>|<desc>|<cat>|<icon>\n📦 Invia file APK con caption opzionale\n\n✏️ *Modifica:*\n/edit <code> <field>=<value>\n   (field: name|desc|category|icon|code)\n/icon <code> — cerca icona da Play Store\n/icons — aggiorna tutte le icone mancanti\n\n🗑️ *Elimina:*\n/delete <code>\n\n🔧 *Manutenzione:*\n/dedup — rimuove duplicati\n/restore list | /restore <nome>\n\n🚪 /logout`);
+        return;
+    }
+
+    if (cmd === '/add') {
+        if (!rest) { await tg(chatId, 'Uso:\n/add <nome>|<code>|<desc>|<categoria>|<icon>\n\nSolo nome+code obbligatori. Esempio:\n/add MyApp|123456|App test|Streaming'); return; }
+        const [n, c, d, cat, ic] = rest.split('|').map(s => s?.trim());
+        if (!n || !c) { await tg(chatId, '❌ Nome e codice obbligatori'); return; }
+        const addRes = await fetch(`${DB_URL()}/apps.json?auth=${token}`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: n, code: c, desc: d || '', icon: ic || '', category: cat || 'Altro', timestamp: Date.now(), order: -1 })
+        });
+        const addData = await addRes.json();
+        await tg(chatId, `✅ Aggiunta *${n}*\nCodice: \`${c}\`\nKey: \`${addData.name}\``);
+        return;
+    }
+
+    if (cmd === '/edit') {
+        if (!rest) { await tg(chatId, 'Uso: /edit <code> <field>=<value>\nField: name, desc, category, icon, code'); return; }
+        const [codeArg, ...fields] = rest.split(/\s+/);
+        if (!codeArg || fields.length === 0) { await tg(chatId, '❌ Esempio: /edit abc123 name=Nuovo Nome'); return; }
+
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const entry = Object.entries(apps).find(([,a]) => a.code === codeArg);
+        if (!entry) { await tg(chatId, `❌ App non trovata per code "${codeArg}"`); return; }
+        const [key, app] = entry;
+
+        const fieldStr = fields.join(' ');
+        const fieldMatch = fieldStr.match(/^(name|desc|category|icon|code)=(.+)$/);
+        if (!fieldMatch) { await tg(chatId, '❌ Field deve essere: name|desc|category|icon|code'); return; }
+        const [, field, value] = fieldMatch;
+
+        await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ [field]: value })
+        });
+        await tg(chatId, `✅ *${app.name}*\n${field} → \`${value}\``);
+        return;
+    }
+
+    if (cmd === '/icon') {
+        if (!rest) { await tg(chatId, 'Uso: /icon <code>'); return; }
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const entry = Object.entries(apps).find(([,a]) => a.code === rest);
+        if (!entry) { await tg(chatId, `❌ App non trovata`); return; }
+        const [key, app] = entry;
+
+        try {
+            const gplay = (await import('google-play-scraper')).default;
+            const cleanName = app.name.replace(/craccato|mod|vlc|lite|nuovo|tv|arm/gi, '').trim();
+            const results = await gplay.search({ term: cleanName, num: 1 });
+            if (results && results.length > 0) {
+                await fetch(`${DB_URL()}/apps/${key}/icon.json?auth=${token}`, {
+                    method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(results[0].icon)
+                });
+                await tg(chatId, `✅ Icona aggiornata per *${app.name}*\n${results[0].icon}`);
+            } else {
+                await tg(chatId, `❌ Nessuna icona trovata per "${cleanName}"`);
+            }
+        } catch (e) {
+            await tg(chatId, `❌ Errore: ${e.message}`);
+        }
+        return;
+    }
+
+    if (cmd === '/icons') {
+        await tg(chatId, `⏳ Ricerca massiva icone mancanti in corso...`);
+        try {
+            const gplay = (await import('google-play-scraper')).default;
+            const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+            const updates = {};
+            let updated = 0, skipped = 0;
+            for (const [key, app] of Object.entries(apps)) {
+                if (!app.name) continue;
+                if (app.icon && app.icon.startsWith('http') && !app.icon.includes('nello.png') && !app.icon.includes('downloads.png')) { skipped++; continue; }
+                try {
+                    const cleanName = app.name.replace(/craccato|mod|vlc|lite|nuovo|tv|arm/gi, '').trim();
+                    const r = await gplay.search({ term: cleanName, num: 1 });
+                    if (r && r.length > 0) {
+                        updates[`apps/${key}/icon`] = r[0].icon;
+                        updated++;
+                    }
+                } catch (_) {}
+            }
+            if (Object.keys(updates).length > 0) {
+                await fetch(`${DB_URL()}/.json?auth=${token}`, {
+                    method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updates)
+                });
+            }
+            await tg(chatId, `✅ *Icone aggiornate*\n\n📥 Trovate: *${updated}*\n⏭️ Saltate (gia' valide): *${skipped}*`);
+        } catch (e) {
+            await tg(chatId, `❌ Errore: ${e.message}`);
+        }
+        return;
+    }
+
+    if (cmd === '/dedup') {
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        function baseName(name) { return name.replace(/\b\d+[\d.]+\b/g, '').replace(/\s+/g, ' ').trim().toLowerCase(); }
+        function extractVersion(name) { const m = name.match(/\b(\d+)\.(\d+)(?:\.(\d+))?\b/); return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3]||0)] : null; }
+        const groups = {};
+        for (const [key, a] of Object.entries(apps)) {
+            if (!a.name) continue;
+            const b = baseName(a.name);
+            if (!groups[b]) groups[b] = [];
+            groups[b].push({ key, app: a });
+        }
+        const toDelete = [];
+        for (const entries of Object.values(groups)) {
+            if (entries.length <= 1) continue;
+            entries.sort((a,b) => {
+                const va = extractVersion(a.app.name), vb = extractVersion(b.app.name);
+                if (va && vb) { for (let i=0;i<3;i++) { const d = (vb[i]||0)-(va[i]||0); if (d) return d; } }
+                return (b.app.timestamp||0) - (a.app.timestamp||0);
+            });
+            toDelete.push(...entries.slice(1));
+        }
+        if (toDelete.length > 0) {
+            const patch = {};
+            for (const e of toDelete) patch[e.key] = null;
+            await fetch(`${DB_URL()}/apps.json?auth=${token}`, {
+                method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(patch)
+            });
+        }
+        const names = toDelete.map(e => `• ${e.app.name}`).slice(0, 15).join('\n');
+        await tg(chatId, `🧹 *Dedup completato*\n\nRimossi: *${toDelete.length}*\n${names ? '\n' + names : ''}${toDelete.length > 15 ? `\n_...e altri ${toDelete.length-15}_` : ''}`);
+        return;
+    }
+
+    if (cmd === '/restore') {
+        const ignored = await (await fetch(`${DB_URL()}/troypoint_ignored.json?auth=${token}`)).json() || {};
+        if (rest === 'list' || !rest) {
+            const list = Object.values(ignored).map(e => `• ${e.name}`).join('\n');
+            if (!list) { await tg(chatId, `📂 Nessuna app blacklistata`); return; }
+            await tg(chatId, `📂 *App blacklistate (scraper TroyPoint le ignora):*\n\n${list}\n\nPer rimuovere dalla blacklist:\n/restore <nome esatto>`);
+            return;
+        }
+        const targetName = rest.toLowerCase().trim();
+        const entry = Object.entries(ignored).find(([, e]) => (e.name || '').toLowerCase().trim() === targetName);
+        if (!entry) { await tg(chatId, `❌ "${rest}" non e' nella blacklist. Usa /restore list per vedere`); return; }
+        await fetch(`${DB_URL()}/troypoint_ignored/${entry[0]}.json?auth=${token}`, { method: 'DELETE' });
+        await tg(chatId, `✅ "${rest}" rimossa dalla blacklist. Sara' ri-aggiunta al prossimo scraping TroyPoint.`);
         return;
     }
 
