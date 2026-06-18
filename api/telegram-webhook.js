@@ -89,15 +89,15 @@ function genShortCode(len = 5) {
 
 // ---------- Menus ----------
 function mainMenuPublic(adminFlag) {
-    const url = PUBLIC();
     const kb = [
-        [{ text: '🌐 Apri Il Covo', web_app: { url: `${url}/` } }],
-        [{ text: '📥 Sfoglia app', web_app: { url: `${url}/?view=apps` } }, { text: '🔍 Cerca', web_app: { url: `${url}/?view=search` } }],
-        [{ text: '📁 Categorie', web_app: { url: `${url}/?view=cats` } }, { text: '📚 Guide', web_app: { url: `${url}/?view=guides` } }],
-        [{ text: '🔔 Notifiche', web_app: { url: `${url}/?view=notify` } }]
+        [{ text: '📥 Ultime app', callback_data: 'apps:latest' }, { text: '🔍 Cerca app', callback_data: 'apps:search' }],
+        [{ text: '📁 Categorie', callback_data: 'apps:cats' }, { text: '📚 Guide', callback_data: 'guides:list' }],
+        [{ text: '🔔 La mia iscrizione', callback_data: 'sub:status' }]
     ];
-    if (adminFlag) kb.push([{ text: '👑 Pannello Admin', web_app: { url: `${url}/?view=admin` } }, { text: '📊 Dashboard', web_app: { url: `${url}/dashboard` } }]);
+    if (adminFlag) kb.push([{ text: '👑 Pannello Admin', callback_data: 'admin:menu' }, { text: '📊 Dashboard', callback_data: 'admin:dashboard' }]);
     else kb.push([{ text: '🔐 Login admin', callback_data: 'admin:login' }]);
+    // Bottone opzionale per aprire il sito full
+    kb.push([{ text: '🌐 Apri sito completo', web_app: { url: PUBLIC() + '/' } }]);
     return { inline_keyboard: kb };
 }
 
@@ -133,10 +133,14 @@ async function showAdminMenu(chatId, token) {
     await tg(chatId, `👑 *Menu Admin*\n\nGestisci il catalogo:`, { reply_markup: adminMenu() });
 }
 
-async function listLatest(chatId, token, n = 15) {
+async function listLatest(chatId, token, n = 12) {
     const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
     const list = Object.values(apps).filter(a => a.name).sort((a,b) => (b.timestamp||0) - (a.timestamp||0)).slice(0, n);
-    await tg(chatId, `📥 *Ultime ${list.length} app* (${Object.keys(apps).length} totali)\n\nTap per scaricare:`, { reply_markup: buildAppButtons(list) });
+    await tg(chatId, `📥 *Ultime ${list.length} app* (${Object.keys(apps).length} totali)`, { reply_markup: buildAppButtons(list) });
+    await tg(chatId, `Vuoi vedere le card complete con icona?`, { reply_markup: { inline_keyboard: [
+        [{ text: '🎴 Mostra card', callback_data: 'apps:cards' }],
+        [{ text: '⬅️ Menu', callback_data: 'menu' }]
+    ]}});
 }
 
 async function showCategories(chatId, token) {
@@ -465,6 +469,42 @@ async function handleCallback(cb, token) {
     }
 
     if (data === 'apps:latest') { await listLatest(chatId, token); return; }
+    if (data === 'apps:cards') {
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const list = Object.values(apps).filter(a => a.name).sort((a,b) => (b.timestamp||0) - (a.timestamp||0)).slice(0, 8);
+        for (const app of list) await sendAppCard(chatId, app);
+        return;
+    }
+    if (data === 'guides:list') {
+        await tg(chatId, `📚 *Guide disponibili*\n\nTap per aprire sul sito:`, { reply_markup: { inline_keyboard: [
+            [{ text: '🎬 Vimu / Stremio 4K', url: `${PUBLIC()}/?view=guides` }],
+            [{ text: '🇮🇹 Lingua Kodi italiana', url: `${PUBLIC()}/?view=guides` }],
+            [{ text: '📺 Kodi + WLTV', url: `${PUBLIC()}/?view=guides` }],
+            [{ text: '🔋 Disabilita risparmio EasyProxy', url: `${PUBLIC()}/?view=guides` }],
+            [{ text: '🌐 Cloudflare Tunnel (4 parti)', url: `${PUBLIC()}/?view=guides` }],
+            [{ text: '📶 IP/DNS manuale Fire TV', url: `${PUBLIC()}/?view=guides` }],
+            [{ text: '⬅️ Menu', callback_data: 'menu' }]
+        ]}});
+        return;
+    }
+    if (data === 'admin:dashboard') {
+        if (!adminFlag) { await tg(chatId, '❌ Solo admin'); return; }
+        const [appsR, subsR, telR, shortsR] = await Promise.all([
+            fetch(`${DB_URL()}/apps.json?auth=${token}&shallow=true`),
+            fetch(`${DB_URL()}/subscribers.json?auth=${token}&shallow=true`),
+            fetch(`${DB_URL()}/telegram_users.json?auth=${token}&shallow=true`),
+            fetch(`${DB_URL()}/short_links.json?auth=${token}&shallow=true`)
+        ]);
+        const apps = await appsR.json() || {};
+        const subs = await subsR.json() || {};
+        const tel = await telR.json() || {};
+        const shorts = await shortsR.json() || {};
+        await tg(chatId, `📊 *Dashboard*\n\n📱 App: *${Object.keys(apps).length}*\n🔗 Short links: *${Object.keys(shorts).length}*\n📧 Email: *${Object.keys(subs).length}*\n📲 Telegram: *${Object.keys(tel).length}*\n\nPer grafici completi:`, { reply_markup: { inline_keyboard: [
+            [{ text: '📈 Apri Dashboard completa', web_app: { url: `${PUBLIC()}/dashboard` } }],
+            [{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]
+        ]}});
+        return;
+    }
     if (data === 'apps:cats') { await showCategories(chatId, token); return; }
     if (data === 'apps:search') {
         await setState(chatId, { action: 'search' }, token);
