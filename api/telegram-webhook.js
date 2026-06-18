@@ -477,6 +477,28 @@ async function handleCallback(cb, token) {
         else await tg(chatId, '❌ Non iscritto');
         return;
     }
+    if (data.startsWith('mute:')) {
+        const appNameToMute = decodeURIComponent(data.substring(5));
+        const userRes = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`);
+        const user = await userRes.json();
+        if (user) {
+            let apps = user.apps || [];
+            if (apps.includes('all')) {
+                // espandi 'all' alle app correnti senza la mutata
+                const allApps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+                apps = Object.values(allApps).map(a => a.name).filter(n => n && n.toLowerCase() !== appNameToMute.toLowerCase());
+            } else {
+                apps = apps.filter(a => a.toLowerCase() !== appNameToMute.toLowerCase());
+            }
+            await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
+                method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(apps)
+            });
+            await tg(chatId, `🔕 Non riceverai piu' aggiornamenti per *${appNameToMute}*`);
+        }
+        return;
+    }
+
     if (data === 'sub:stop') {
         await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, { method: 'DELETE' });
         await tg(chatId, '👋 Disiscritto. Usa /start per re-iscriverti.');

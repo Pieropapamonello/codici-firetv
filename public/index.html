@@ -162,6 +162,30 @@ header h1 {
 }
 .bookmark-hint strong { color: #fff; }
 
+/* Live activity banner */
+.activity-banner { max-width: 1200px; margin: 0 auto 20px; padding: 10px 20px; background: rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.25); border-radius: 50px; display:flex; align-items:center; gap:12px; font-size:13px; color:var(--text); backdrop-filter: blur(10px); overflow:hidden; }
+.activity-banner .pulse { width:8px; height:8px; background:var(--neon-cyan); border-radius:50%; box-shadow:0 0 12px var(--neon-cyan); animation: pulseGlow 2s infinite; flex-shrink:0; }
+.activity-banner .items { display:flex; gap:24px; overflow:hidden; white-space:nowrap; flex:1; mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent); }
+.activity-banner .items > span { animation: tickerScroll 25s linear infinite; }
+@keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.activity-banner .items strong { color: var(--neon-cyan); }
+.activity-banner .items .age { color: var(--text-muted); font-size: 11px; }
+
+/* Featured section */
+.featured-section { max-width: 1200px; margin: 0 auto 24px; padding: 0 20px; }
+.featured-section h2 { font-family:'Orbitron', sans-serif; font-size:16px; color:var(--neon-pink); margin: 0 0 14px; letter-spacing:1px; display:flex; align-items:center; gap:10px; }
+.featured-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; }
+.featured-card { background: linear-gradient(135deg, rgba(236,72,153,0.12), rgba(168,85,247,0.12)); border:1px solid rgba(236,72,153,0.3); border-radius:18px; padding:14px; cursor:pointer; transition: all 0.3s; position: relative; }
+.featured-card:hover { transform: translateY(-4px); border-color: var(--neon-pink); box-shadow: 0 0 30px rgba(236,72,153,0.25); }
+.featured-card .featured-tag { position:absolute; top:-8px; right:12px; background: var(--neon-pink); color:#fff; font-size:9px; padding:3px 8px; border-radius:10px; font-weight:700; letter-spacing:1px; box-shadow:0 0 10px var(--neon-pink); }
+.featured-card .featured-icon { width:48px; height:48px; border-radius:10px; background:rgba(0,0,0,0.4); padding:6px; box-sizing:border-box; margin-bottom:10px; }
+.featured-card .featured-icon img { width:100%; height:100%; object-fit:contain; }
+.featured-card h4 { margin:0 0 4px; font-size:14px; color:#fff; }
+.featured-card .featured-meta { font-size:11px; color:var(--text-muted); }
+
+/* Card variant count badge (grouping) */
+.card .variant-badge { position:absolute; top:8px; right:8px; background: rgba(34,211,238,0.2); color: var(--neon-cyan); border:1px solid var(--neon-cyan); font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 700; }
+
 /* Admin Modal Tabs */
 .tab-btn { flex:1; background: transparent; border: none; color: var(--text-muted); padding: 10px 8px; font-size: 13px; cursor: pointer; font-family: inherit; border-bottom: 2px solid transparent; transition: all 0.2s; font-weight: 600; }
 .tab-btn:hover { color: var(--text); }
@@ -524,6 +548,16 @@ body.lite-mode.light-theme .search-box input {
   </div>
 </div>
 
+<div id="activity-banner" class="activity-banner" style="display:none;">
+  <div class="pulse"></div>
+  <div class="items"><span id="activity-items"></span></div>
+</div>
+
+<div id="featured-section" class="featured-section" style="display:none;">
+  <h2>✨ IN EVIDENZA</h2>
+  <div id="featured-grid" class="featured-grid"></div>
+</div>
+
 <main id="main-content">
   <div id="loading-msg" style="width:100%;text-align:center;padding:40px;color:var(--text-muted);font-size:18px;">Caricamento App...</div>
 </main>
@@ -808,6 +842,19 @@ bash ~/tunnel.sh</div>
       </div>
       <button onclick="submitNotifySubscription()" class="form-btn" id="notify-submit-btn">✅ Iscriviti</button>
       <div id="notify-step2-msg" style="font-size:13px;margin-top:8px;display:none;text-align:center;"></div>
+
+      <details style="margin-top:14px;background:rgba(0,136,204,0.08);border:1px solid rgba(0,136,204,0.25);border-radius:10px;padding:10px;">
+        <summary style="cursor:pointer;color:#22d3ee;font-size:12px;font-weight:600;list-style:none;">🔗 Collega Telegram per ricevere notifiche anche sul bot</summary>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted);">
+          1. Vai su @nellofirebot su Telegram<br>
+          2. Manda <code>/myid</code> al bot — copia il numero<br>
+          3. Incollalo qui sotto:
+          <input type="text" id="notify-chatid" class="form-input" placeholder="Es. 123456789" style="width:100%;box-sizing:border-box;margin-top:8px;" inputmode="numeric">
+          <button onclick="linkTelegram()" class="form-btn" style="width:100%;margin-top:6px;font-size:12px;padding:8px;background:rgba(0,136,204,0.15);border-color:rgba(0,136,204,0.4);">🔗 Collega</button>
+          <div id="notify-link-msg" style="font-size:11px;text-align:center;margin-top:6px;"></div>
+        </div>
+      </details>
+
       <button onclick="goToNotifyStep1()" class="close-modal" style="margin-top:8px;">← Indietro</button>
     </div>
     <!-- Step 3: Success -->
@@ -1010,12 +1057,71 @@ bash ~/tunnel.sh</div>
     let softwareData = {};
     let currentCategory = 'Tutte';
 
+    function renderActivityBanner(apps) {
+      // Top 5 app aggiornate piu' di recente (entro 14gg)
+      const recent = apps.filter(a => a.timestamp && Date.now() - a.timestamp < 14 * 86400000)
+                         .sort((a,b) => b.timestamp - a.timestamp).slice(0, 5);
+      const banner = document.getElementById('activity-banner');
+      const itemsEl = document.getElementById('activity-items');
+      if (recent.length === 0) { banner.style.display = 'none'; return; }
+      function timeAgoShort(ts) { const d = Math.floor((Date.now()-ts)/86400000); if (d===0) return 'oggi'; if (d===1) return 'ieri'; return d+'g fa'; }
+      const html = recent.map(a => `<strong>${escapeHtml(a.name)}</strong> <span class="age">${timeAgoShort(a.timestamp)}</span>`).join(' &nbsp;·&nbsp; ');
+      itemsEl.innerHTML = html + ' &nbsp;·&nbsp; ' + html; // duplicato per loop infinito
+      banner.style.display = 'flex';
+    }
+
+    function renderFeatured(apps) {
+      // Featured = ultime 3 app o piu' cliccate
+      const featured = [...apps].sort((a,b) => {
+        const sa = (b.clicks||0) - (a.clicks||0);
+        if (sa !== 0) return sa;
+        return (b.timestamp||0) - (a.timestamp||0);
+      }).slice(0, 4);
+      const section = document.getElementById('featured-section');
+      const grid = document.getElementById('featured-grid');
+      if (featured.length === 0) { section.style.display = 'none'; return; }
+      grid.innerHTML = featured.map(a => {
+        const icon = a.icon || 'assets/nello.png';
+        const url = (a.code && a.code.startsWith('http')) ? a.code : (a.code && /^\d+$/.test(a.code) ? `https://aftv.news/${a.code}` : (a.code && /^[a-z0-9]{3,12}$/i.test(a.code) ? `/d/${a.code}` : a.code));
+        return `<div class="featured-card" onclick="window.open('${url}','_blank')">
+          <span class="featured-tag">${(a.clicks||0) > 0 ? '🔥 TOP' : '🆕 NUOVA'}</span>
+          <div class="featured-icon"><img src="${escapeHtml(icon)}" onerror="this.src='assets/nello.png'" alt="${escapeHtml(a.name)}"></div>
+          <h4>${escapeHtml(a.name)}</h4>
+          <div class="featured-meta">${escapeHtml(a.category||'?')} · ${a.clicks||0} download</div>
+        </div>`;
+      }).join('');
+      section.style.display = 'block';
+    }
+
+    function groupVariants(apps) {
+      // Stripping versione/varianti per trovare nome base
+      function baseName(name) { return name.toLowerCase().replace(/\b(v?\d+[\d.]*|\d+[a-z]+)\b/g, '').replace(/\b(beta|rc|stable|mod|lite|arm|tv|cell|android|ios|apk|bundle|us|eu|fork)\b/g, '').replace(/[^a-z]/g, ' ').trim().replace(/\s+/g, ' '); }
+      const groups = {};
+      for (const a of apps) {
+        const b = baseName(a.name);
+        if (!b || b.length < 3) { groups['_' + a.id] = [a]; continue; }
+        if (!groups[b]) groups[b] = [];
+        groups[b].push(a);
+      }
+      // Restituisce sempre la lista piatta, ma marca la primary di ogni gruppo con .variantCount
+      const flat = [];
+      for (const arr of Object.values(groups)) {
+        if (arr.length === 1) { flat.push(arr[0]); continue; }
+        // Ordina: clicks desc, timestamp desc
+        arr.sort((a,b) => (b.clicks||0)-(a.clicks||0) || (b.timestamp||0)-(a.timestamp||0));
+        const primary = { ...arr[0], variantCount: arr.length, variantIds: arr.map(v => v.id) };
+        flat.push(primary);
+        // Le altre varianti rimangono nascoste (filtri/ricerca le pescano comunque dalla data originale)
+      }
+      return flat;
+    }
+
     function mergeAndRender() {
       const loading = document.getElementById('loading-msg');
       if(loading) loading.style.display = 'none';
 
       const appsArray = Object.entries(appsData).map(([key, val]) => ({
-          id: key, 
+          id: key,
           type: 'apps',
           ...val
       }));
@@ -1041,7 +1147,16 @@ bash ~/tunnel.sh</div>
 
       allAppsData = [...appsArray, ...softwareArray].sort((a,b) => (a.order || 0) - (b.order || 0));
       window._notifyAppsData = allAppsData; // Expose for notify modal
-      
+      window._allAppsRaw = allAppsData;
+
+      // Featured + activity banner (su tutti i dati, prima del grouping)
+      renderActivityBanner(allAppsData);
+      renderFeatured(allAppsData);
+
+      // Applica grouping varianti (Stremio 1.10 / 1.9 / Beta → 1 card)
+      allAppsData = groupVariants(allAppsData);
+      window._notifyAppsData = allAppsData;
+
       updateCategoryFilters();
       renderApps();
     }
@@ -1133,6 +1248,7 @@ bash ~/tunnel.sh</div>
         isLoadingMore = true;
         const batch = currentFiltered.slice(renderedCount, renderedCount + PAGE_SIZE);
         batch.forEach(app => {
+            window._currentApp = app;
             createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
         });
         renderedCount += batch.length;
@@ -1429,8 +1545,13 @@ bash ~/tunnel.sh</div>
       // Se è un codice numerico, mostriamo "Scarica" (che apre il link)
       const actionBtnHtml = `<a class="btn" href="${link}" target="_blank">Scarica</a>`;
 
+      // Variant count badge (se >1 versione raggruppata)
+      const variantBadge = (window._currentApp && window._currentApp.variantCount > 1)
+        ? `<div class="variant-badge">${window._currentApp.variantCount} versioni</div>` : '';
+
       newCard.innerHTML = `
         ${badgeHtml}
+        ${variantBadge}
         ${controlsHtml}
         <div class="icon-container"><img src="${escapeHtml(finalIcon)}" loading="lazy" onerror="this.src='assets/nello.png'" alt="${escapeHtml(name)}"></div>
         <div class="card-text">
@@ -1640,6 +1761,27 @@ bash ~/tunnel.sh</div>
     chips.forEach(c => allSelected ? c.classList.remove('selected') : c.classList.add('selected'));
   };
 
+  window.linkTelegram = async function() {
+    const email = document.getElementById('notify-email').value.trim();
+    const chatId = document.getElementById('notify-chatid').value.trim();
+    const msg = document.getElementById('notify-link-msg');
+    if (!email) { msg.style.color = '#ef4444'; msg.textContent = '⚠️ Inserisci prima l\'email'; return; }
+    if (!/^\d{5,15}$/.test(chatId)) { msg.style.color = '#ef4444'; msg.textContent = '⚠️ Chat ID non valido'; return; }
+    try {
+      const r = await fetch('/api/link-telegram', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, telegramChatId: chatId })
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      msg.style.color = '#10b981';
+      msg.textContent = '✅ Collegato! Riceverai notifiche su email + Telegram';
+    } catch (e) {
+      msg.style.color = '#ef4444';
+      msg.textContent = '❌ ' + e.message;
+    }
+  };
+
   window.submitNotifySubscription = async function() {
     const email = document.getElementById('notify-email').value.trim();
     const selectedChips = document.querySelectorAll('#app-chips-container .app-chip.selected');
@@ -1809,6 +1951,23 @@ bash ~/tunnel.sh</div>
       } catch (_) {}
     });
     observer.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['class'] });
+
+    // MainButton sticky in basso, contestuale
+    function updateMainButton() {
+      try {
+        const isAdmin = document.body.classList.contains('is-admin');
+        if (isAdmin) {
+          tg.MainButton.setText('⬆️ Carica APK').setParams({ color: '#a855f7', text_color: '#ffffff' }).show();
+          tg.MainButton.onClick(() => window.openUploadModal && window.openUploadModal('upload'));
+        } else {
+          tg.MainButton.setText('🔔 Iscriviti alle notifiche').setParams({ color: '#22d3ee', text_color: '#0a0a0f' }).show();
+          tg.MainButton.onClick(() => window.openNotifyModal && window.openNotifyModal());
+        }
+      } catch (_) {}
+    }
+    setTimeout(updateMainButton, 1500);
+    // Re-update se admin login cambia
+    new MutationObserver(() => updateMainButton()).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   })();
 
   // Deep-link anche per browser non-Telegram

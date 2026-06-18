@@ -31,16 +31,18 @@ export default async function handler(req, res) {
         if (!adminAuth.idToken) return res.status(500).json({ error: 'Auth fallita' });
         const adminToken = adminAuth.idToken;
 
-        // Fetch dati in parallelo
-        const [appsR, subsR, telegramR] = await Promise.all([
+        const [appsR, subsR, telegramR, dailyR] = await Promise.all([
             fetch(`${dbUrl}/apps.json?auth=${adminToken}`),
             fetch(`${dbUrl}/subscribers.json?auth=${adminToken}&shallow=true`),
-            fetch(`${dbUrl}/telegram_users.json?auth=${adminToken}&shallow=true`)
+            fetch(`${dbUrl}/telegram_users.json?auth=${adminToken}&shallow=true`),
+            fetch(`${dbUrl}/daily_stats.json?auth=${adminToken}&orderBy="date"&limitToLast=30`)
         ]);
 
         const apps = (await appsR.json()) || {};
         const subs = (await subsR.json()) || {};
         const telegram = (await telegramR.json()) || {};
+        const dailyRaw = (await dailyR.json()) || {};
+        const daily = Object.values(dailyRaw).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
 
         const appsArr = Object.entries(apps)
             .filter(([, a]) => a.name)
@@ -82,6 +84,7 @@ export default async function handler(req, res) {
             topClicked,
             newApps,
             categoryCounts,
+            daily,
             generatedAt: new Date().toISOString()
         });
     } catch (e) {

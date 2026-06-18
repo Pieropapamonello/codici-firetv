@@ -102,6 +102,10 @@ th { color:var(--neon-pink); font-size:11px; text-transform:uppercase; }
     </div>
 
     <div class="charts">
+      <div class="card"><h3>📈 Trend ultimi 30 giorni</h3><canvas id="chartTrend"></canvas></div>
+    </div>
+
+    <div class="charts">
       <div class="card"><h3>🔥 Top 10 piu' cliccate</h3><canvas id="chartTop"></canvas></div>
       <div class="card"><h3>📁 Distribuzione categorie</h3><canvas id="chartCat"></canvas></div>
     </div>
@@ -117,6 +121,32 @@ th { color:var(--neon-pink); font-size:11px; text-transform:uppercase; }
       </div>
     </div>
   `;
+
+  // Trend chart
+  const daily = stats.daily || [];
+  if (daily.length === 0) {
+    document.getElementById('chartTrend').parentElement.innerHTML += '<div style="color:var(--muted);text-align:center;padding:20px;font-size:13px;">⏳ Nessun dato storico ancora. I trend appariranno dopo qualche giorno.</div>';
+  } else {
+    new Chart(document.getElementById('chartTrend'), {
+      type: 'line',
+      data: {
+        labels: daily.map(d => d.date.substring(5)),
+        datasets: [
+          { label: 'Click totali', data: daily.map(d => d.clicks), borderColor: '#22d3ee', backgroundColor: 'rgba(34,211,238,0.15)', tension: 0.3, fill: true, yAxisID: 'y' },
+          { label: 'App nel catalogo', data: daily.map(d => d.apps), borderColor: '#a855f7', backgroundColor: 'rgba(168,85,247,0.1)', tension: 0.3, fill: false, yAxisID: 'y1' },
+          { label: 'Iscritti TG', data: daily.map(d => d.telegramSubs), borderColor: '#0088CC', tension: 0.3, fill: false, yAxisID: 'y1' }
+        ]
+      },
+      options: {
+        plugins: { legend: { labels: { color: '#f0f0f0' } } },
+        scales: {
+          x: { ticks: { color: '#f0f0f0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { position: 'left', ticks: { color: '#22d3ee' }, grid: { color: 'rgba(255,255,255,0.05)' }, title: { display:true, text:'Click', color:'#22d3ee' } },
+          y1: { position: 'right', ticks: { color: '#a855f7' }, grid: { display: false }, title: { display:true, text:'App / Iscritti', color:'#a855f7' } }
+        }
+      }
+    });
+  }
 
   // Top 10 chart
   new Chart(document.getElementById('chartTop'), {

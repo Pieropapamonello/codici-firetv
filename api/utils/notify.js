@@ -46,10 +46,16 @@ export async function sendTelegramNotification(appName, version, downloadUrl, ic
             if (!match) continue;
 
             try {
+                const inlineKb = {
+                    inline_keyboard: [[
+                        { text: '📥 Scarica', url: downloadUrl },
+                        { text: '🔕 Mute questa app', callback_data: `mute:${encodeURIComponent(appName).substring(0, 50)}` }
+                    ]]
+                };
                 const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown', disable_web_page_preview: true })
+                    body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown', disable_web_page_preview: true, reply_markup: inlineKb })
                 });
                 if (res.ok) sent++;
             } catch (_) {}
@@ -122,6 +128,7 @@ export async function sendEmailNotification(appName, version, downloadUrl, iconU
         function buildHtml(recipientEmail) {
             const base = process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com';
             const unsub = `${base}/api/unsubscribe?email=${encodeURIComponent(recipientEmail)}`;
+            const mute = `${base}/api/app-action?email=${encodeURIComponent(recipientEmail)}&app=${encodeURIComponent(appName)}&action=mute`;
             return `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
                     <h2 style="color: #a855f7; text-align: center;">Nuovo Aggiornamento Disponibile!</h2>
@@ -135,7 +142,8 @@ export async function sendEmailNotification(appName, version, downloadUrl, iconU
                     </div>
                     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
                     <p style="color: #666; font-size: 12px; text-align: center;">Ricevi questa email perché ti sei iscritto alle notifiche sul nostro sito.<br>
-                    <a href="${unsub}" style="color: #a855f7;">Disiscriviti</a></p>
+                    <a href="${mute}" style="color: #6b7280; margin-right:14px;">🔕 Non mostrarmi piu' ${appName}</a>
+                    <a href="${unsub}" style="color: #a855f7;">Disiscriviti da tutto</a></p>
                 </div>
             `;
         }

@@ -35,6 +35,8 @@ import uploadApkHandler from './api/upload-apk.js';
 import shortRedirectHandler from './api/short-redirect.js';
 import updateAftvCodeHandler from './api/update-aftv-code.js';
 import telegramAuthHandler from './api/telegram-auth.js';
+import linkTelegramHandler from './api/link-telegram.js';
+import appActionHandler from './api/app-action.js';
 
 app.all('/api/check-stremio', (req, res) => checkStremioHandler(req, res));
 app.all('/api/check-paramount', (req, res) => checkParamountHandler(req, res));
@@ -57,6 +59,8 @@ app.post('/api/upload-apk', (req, res) => uploadApkHandler(req, res));
 app.get('/d/:code', (req, res) => shortRedirectHandler(req, res));
 app.post('/api/update-aftv-code', (req, res) => updateAftvCodeHandler(req, res));
 app.post('/api/telegram-auth', (req, res) => telegramAuthHandler(req, res));
+app.post('/api/link-telegram', (req, res) => linkTelegramHandler(req, res));
+app.all('/api/app-action', (req, res) => appActionHandler(req, res));
 
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
@@ -106,6 +110,30 @@ cron.schedule('0 14 * * *', () => {
 cron.schedule('0 15 * * *', () => {
     console.log('[CRON] Running check-windows-tools...');
     callHandler(checkWindowsToolsHandler, 'check-windows-tools');
+});
+
+// Daily snapshot per dashboard trends — mezzanotte UTC
+cron.schedule('0 0 * * *', async () => {
+    console.log('[CRON] Running daily stats snapshot...');
+    try {
+        const apiKey = process.env.FIREBASE_API_KEY;
+        const dbUrl = process.env.FIREBASE_DATABASE_URL;
+        const auth = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: process.env.FIREBASE_ADMIN_EMAIL, password: process.env.FIREBASE_ADMIN_PASSWORD, returnSecureToken: true })
+        });
+        const t = (await auth.json()).idToken;
+        const apps = await (await fetch(`${dbUrl}/apps.json?auth=${t}`)).json() || {};
+        const subs = await (await fetch(`${dbUrl}/subscribers.json?auth=${t}&shallow=true`)).json() || {};
+        const tg = await (await fetch(`${dbUrl}/telegram_users.json?auth=${t}&shallow=true`)).json() || {};
+        const totalClicks = Object.values(apps).reduce((s,a) => s + (a.clicks || 0), 0);
+        const today = new Date().toISOString().split('T')[0];
+        await fetch(`${dbUrl}/daily_stats/${today}.json?auth=${t}`, {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ date: today, apps: Object.keys(apps).length, clicks: totalClicks, emailSubs: Object.keys(subs).length, telegramSubs: Object.keys(tg).length, savedAt: Date.now() })
+        });
+        console.log(`[CRON] Snapshot ${today} salvato`);
+    } catch (e) { console.error('Snapshot fail:', e.message); }
 });
 
 app.listen(PORT, '0.0.0.0', () => {
