@@ -545,8 +545,73 @@ async function handleCallback(cb, token) {
     }
     if (data === 'sub:status') {
         const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json();
-        if (sub) await tg(chatId, `✅ Iscritto\nApp: ${sub.apps?.includes('all') ? 'Tutte' : (sub.apps || []).join(', ')}`, { reply_markup: { inline_keyboard: [[{ text: '🛑 Disiscriviti', callback_data: 'sub:stop' }],[{ text: '⬅️ Menu', callback_data: 'menu' }]] } });
-        else await tg(chatId, '❌ Non iscritto');
+        if (!sub) { await tg(chatId, '❌ Non iscritto. Usa /start per iscriverti.'); return; }
+        const isAll = sub.apps?.includes('all');
+        const count = isAll ? 'Tutte le app' : `${(sub.apps || []).length} app selezionate`;
+        await tg(chatId, `🔔 *La tua iscrizione*\n\nRicevi notifiche per: *${count}*`, { reply_markup: { inline_keyboard: [
+            [{ text: (isAll ? '✅' : '⬜') + ' Tutte le app', callback_data: 'sub:setall' }],
+            [{ text: '📝 Scegli app specifiche', callback_data: 'sub:choose:0' }],
+            [{ text: '🛑 Disiscriviti completamente', callback_data: 'sub:stop' }],
+            [{ text: '⬅️ Menu', callback_data: 'menu' }]
+        ]}});
+        return;
+    }
+    if (data === 'sub:setall') {
+        await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(['all'])
+        });
+        await tg(chatId, '✅ Iscritto a *tutte* le app');
+        return;
+    }
+    if (data === 'noop') return;
+    if (data.startsWith('sub:choose:')) {
+        const page = parseInt(data.substring(11)) || 0;
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json() || {};
+        const userApps = sub.apps || [];
+        const isAll = userApps.includes('all');
+
+        const list = Object.values(apps).filter(a => a.name).sort((a,b) => a.name.localeCompare(b.name));
+        const perPage = 8;
+        const totalPages = Math.max(1, Math.ceil(list.length / perPage));
+        const safePage = Math.min(Math.max(0, page), totalPages - 1);
+        const slice = list.slice(safePage * perPage, (safePage + 1) * perPage);
+
+        const kb = slice.map((a, i) => {
+            const checked = isAll || userApps.includes(a.name);
+            const globalIdx = safePage * perPage + i;
+            return [{ text: `${checked ? '✅' : '⬜'} ${a.name.substring(0, 42)}`, callback_data: `sub:tgl:${safePage}:${globalIdx}` }];
+        });
+
+        const nav = [];
+        if (safePage > 0) nav.push({ text: '⬅️ Prec', callback_data: `sub:choose:${safePage-1}` });
+        nav.push({ text: `${safePage+1}/${totalPages}`, callback_data: 'noop' });
+        if (safePage < totalPages - 1) nav.push({ text: 'Succ ➡️', callback_data: `sub:choose:${safePage+1}` });
+        kb.push(nav);
+        kb.push([{ text: '⬅️ Iscrizione', callback_data: 'sub:status' }]);
+
+        await tg(chatId, `📝 *Scegli app per notifiche*\n\n✅ = iscritto · ⬜ = no\nTap per attivare/disattivare`, { reply_markup: { inline_keyboard: kb } });
+        return;
+    }
+    if (data.startsWith('sub:tgl:')) {
+        const parts = data.split(':');
+        const page = parseInt(parts[2]);
+        const idx = parseInt(parts[3]);
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json() || {};
+        let userApps = sub.apps || [];
+        const list = Object.values(apps).filter(a => a.name).sort((a,b) => a.name.localeCompare(b.name));
+        const target = list[idx];
+        if (!target) { await tg(chatId, 'App non trovata'); return; }
+        if (userApps.includes('all')) userApps = list.map(a => a.name);
+        if (userApps.includes(target.name)) userApps = userApps.filter(n => n !== target.name);
+        else userApps.push(target.name);
+        await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userApps)
+        });
+        await handleCallback({ ...cb, data: `sub:choose:${page}` }, token);
         return;
     }
     if (data.startsWith('mute:')) {
@@ -577,7 +642,28 @@ async function handleCallback(cb, token) {
         return;
     }
 
-    if (data.startsWith('cat:')) { await showCategory(chatId, token, data.substring(4)); return; }
+    if (data.startsWith('cat:')) {
+        const raw = data.substring(4);
+        const pipeIdx = raw.lastIndexOf('|');
+        const catName = pipeIdx > 0 ? raw.substring(0, pipeIdx) : raw;
+        const page = pipeIdx > 0 ? parseInt(raw.substring(pipeIdx + 1)) || 0 : 0;
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const found = Object.values(apps).filter(a => a.name && (a.category || '') === catName);
+        if (found.length === 0) { await tg(chatId, `Nessuna app in "${catName}"`); return; }
+        const perPage = 15;
+        const totalPages = Math.max(1, Math.ceil(found.length / perPage));
+        const safePage = Math.min(Math.max(0, page), totalPages - 1);
+        const slice = found.slice(safePage * perPage, (safePage + 1) * perPage);
+        const kb = buildAppButtons(slice).inline_keyboard;
+        const nav = [];
+        if (safePage > 0) nav.push({ text: '⬅️ Prec', callback_data: `cat:${catName}|${safePage-1}` });
+        if (totalPages > 1) nav.push({ text: `${safePage+1}/${totalPages}`, callback_data: 'noop' });
+        if (safePage < totalPages - 1) nav.push({ text: 'Succ ➡️', callback_data: `cat:${catName}|${safePage+1}` });
+        if (nav.length > 0) kb.push(nav);
+        kb.push([{ text: '⬅️ Categorie', callback_data: 'apps:cats' }]);
+        await tg(chatId, `📂 *${catName}* — ${found.length} app${totalPages > 1 ? ` · pagina ${safePage+1}/${totalPages}` : ''}\n\nTap per scaricare:`, { reply_markup: { inline_keyboard: kb } });
+        return;
+    }
 
     if (!adminFlag) { await tg(chatId, '❌ Solo admin'); return; }
 
