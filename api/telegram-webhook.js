@@ -115,7 +115,7 @@ function cancelKb() {
     return { inline_keyboard: [[{ text: '❌ Annulla', callback_data: 'cancel' }]] };
 }
 
-const FIELDS = { name: '📝 Nome', desc: '📄 Descrizione', category: '📁 Categoria', icon: '🖼️ Icona', code: '🔢 Codice' };
+const FIELDS = { name: '📝 Nome', desc: '📄 Descrizione', category: '📁 Categoria', icon: '🖼️ Icona', code: '🔢 Codice', link: '🔗 Link APK' };
 function editFieldsKb(key) {
     const rows = Object.entries(FIELDS).map(([f, label]) => [{ text: label, callback_data: `e:f:${f}:${key}` }]);
     rows.push([{ text: '⬅️ Menu Admin', callback_data: 'admin:menu' }]);
@@ -287,6 +287,65 @@ async function handleStateInput(msg, chatId, token, state) {
 
         case 'edit_value': {
             const { field, key, appName } = state;
+
+            if (field === 'link') {
+                // Valida URL
+                if (!/^https?:\/\//i.test(text)) {
+                    await tg(chatId, '❌ Il link deve iniziare con http:// o https://', { reply_markup: cancelKb() });
+                    return;
+                }
+                const app = await (await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`)).json();
+                if (!app) { await clearState(chatId, token); await tg(chatId, '❌ App non trovata'); return; }
+                const code = app.code || '';
+
+                let summary = '';
+                if (/^https?:\/\//i.test(code)) {
+                    // Code era gia' un URL → aggiorna direttamente code
+                    await fetch(`${DB_URL()}/apps/${key}/code.json?auth=${token}`, {
+                        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(text)
+                    });
+                    summary = `Link aggiornato`;
+                } else if (/^[a-z0-9]{3,12}$/i.test(code)) {
+                    // Short code nostro → aggiorna short_links/{code}/url
+                    const short = await (await fetch(`${DB_URL()}/short_links/${code}.json?auth=${token}`)).json();
+                    if (short) {
+                        await fetch(`${DB_URL()}/short_links/${code}/url.json?auth=${token}`, {
+                            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(text)
+                        });
+                        summary = `Codice \`${code}\` → ora punta al nuovo link`;
+                    } else {
+                        // Nessun short link entry → metti URL nel code
+                        await fetch(`${DB_URL()}/apps/${key}/code.json?auth=${token}`, {
+                            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(text)
+                        });
+                        summary = `Codice sostituito con link diretto`;
+                    }
+                } else if (/^\d+$/.test(code)) {
+                    // Codice aftvnews numerico → sostituisci code con URL diretto
+                    await fetch(`${DB_URL()}/apps/${key}/code.json?auth=${token}`, {
+                        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(text)
+                    });
+                    summary = `Codice aftvnews \`${code}\` sostituito con link diretto`;
+                } else {
+                    // Caso default: aggiorna code
+                    await fetch(`${DB_URL()}/apps/${key}/code.json?auth=${token}`, {
+                        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(text)
+                    });
+                    summary = `Code aggiornato`;
+                }
+
+                await clearState(chatId, token);
+                await tg(chatId, `✅ *${appName}*\n${summary}\n\n🔗 ${text}`);
+                const updated = await (await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`)).json();
+                if (updated) await showAppDetail(chatId, token, key, updated);
+                return;
+            }
+
             await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`, {
                 method: 'PATCH', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ [field]: text })
@@ -810,7 +869,23 @@ async function handleCallback(cb, token) {
         const app = await (await fetch(`${DB_URL()}/apps/${key}.json?auth=${token}`)).json();
         if (!app) return;
         await setState(chatId, { action: 'edit_value', field, key, appName: app.name }, token);
-        await tg(chatId, `${FIELDS[field]} per *${app.name}*\nValore attuale: \`${app[field] || '_vuoto_'}\`\n\nMandami il nuovo valore (o /cancel):`, { reply_markup: cancelKb() });
+
+        let currentValue = app[field] || '_vuoto_';
+        let hint = '';
+        if (field === 'link') {
+            const code = app.code || '';
+            if (/^https?:\/\//i.test(code)) currentValue = code;
+            else if (/^[a-z0-9]{3,12}$/i.test(code)) {
+                const short = await (await fetch(`${DB_URL()}/short_links/${code}.json?auth=${token}`)).json();
+                currentValue = short?.url || `${PUBLIC()}/d/${code}`;
+                hint = `\n💡 Il codice \`${code}\` rimane invariato, cambio solo dove punta.`;
+            } else if (/^\d+$/.test(code)) {
+                currentValue = `https://aftv.news/${code}`;
+                hint = `\n⚠️ Sostituendo il link, il codice aftvnews \`${code}\` verra' rimpiazzato dall'URL diretto.`;
+            }
+        }
+
+        await tg(chatId, `${FIELDS[field]} per *${app.name}*\nValore attuale: \`${currentValue}\`${hint}\n\nMandami il nuovo valore (o /cancel):`, { reply_markup: cancelKb() });
         return;
     }
 
