@@ -69,8 +69,9 @@ export default async function handler(req, res) {
             Object.entries(apps).forEach(([key, app]) => {
                 if (app.name === appName || app.code === link) {
                     exists = true;
-                } else if (app.name && app.name.toLowerCase().startsWith('stremio')) {
-                    // Vecchie versioni di Stremio da rimuovere
+                } else if (app.name && /^stremio\s+\d+\.\d+(\.\d+)?\s+arm\s+tv$/i.test(app.name)) {
+                    // Rimuovi SOLO le vecchie versioni ARM TV ufficiali (es. "Stremio 1.9.12 ARM TV")
+                    // NON tocca: Mod, Beta, Mobile, 32/64BIT, etc.
                     oldStremioKeys.push(key);
                 }
             });
