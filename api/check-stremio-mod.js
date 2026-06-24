@@ -26,8 +26,10 @@ export default async function handler(req, res) {
 
         for (const v of VARIANTS) {
             try {
-                const relRes = await fetch(`https://api.github.com/repos/stremiomod/Stremio_APK/releases/tags/${v.tag}`);
-                if (!relRes.ok) { results.push({ tag: v.tag, error: 'release not found' }); continue; }
+                const relRes = await fetch(`https://api.github.com/repos/stremiomod/Stremio_APK/releases/tags/${v.tag}`, {
+                    headers: { 'User-Agent': 'ilcovodinello-bot', 'Accept': 'application/vnd.github+json' }
+                });
+                if (!relRes.ok) { results.push({ tag: v.tag, error: `github ${relRes.status}` }); continue; }
                 const rel = await relRes.json();
                 const asset = (rel.assets || []).find(a => v.assetMatch.test(a.name) && a.name.endsWith('.apk'));
                 if (!asset) { results.push({ tag: v.tag, error: 'no apk asset' }); continue; }
