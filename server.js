@@ -29,6 +29,7 @@ import healthHandler from './api/health.js';
 import unsubscribeHandler from './api/unsubscribe.js';
 import telegramWebhookHandler from './api/telegram-webhook.js';
 import checkStremioBetaHandler from './api/check-stremio-beta.js';
+import checkStremioModHandler from './api/check-stremio-mod.js';
 import telegramBotInfoHandler from './api/telegram-bot-info.js';
 import adminStatsHandler from './api/admin-stats.js';
 import uploadApkHandler from './api/upload-apk.js';
@@ -53,6 +54,7 @@ app.all('/api/health', (req, res) => healthHandler(req, res));
 app.all('/api/unsubscribe', (req, res) => unsubscribeHandler(req, res));
 app.post('/api/telegram-webhook', (req, res) => telegramWebhookHandler(req, res));
 app.all('/api/check-stremio-beta', (req, res) => checkStremioBetaHandler(req, res));
+app.all('/api/check-stremio-mod', (req, res) => checkStremioModHandler(req, res));
 app.all('/api/telegram-bot-info', (req, res) => telegramBotInfoHandler(req, res));
 app.all('/api/admin-stats', (req, res) => adminStatsHandler(req, res));
 app.post('/api/upload-apk', (req, res) => uploadApkHandler(req, res));
@@ -91,9 +93,10 @@ cron.schedule('0 8 * * *', () => {
 });
 
 cron.schedule('0 12 * * *', () => {
-    console.log('[CRON] Running check-stremio + check-stremio-beta...');
+    console.log('[CRON] Running check-stremio + check-stremio-beta + check-stremio-mod...');
     callHandler(checkStremioHandler, 'check-stremio');
     callHandler(checkStremioBetaHandler, 'check-stremio-beta');
+    callHandler(checkStremioModHandler, 'check-stremio-mod');
 });
 
 cron.schedule('0 13 * * *', () => {
