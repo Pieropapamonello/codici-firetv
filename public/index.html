@@ -1437,18 +1437,23 @@ bash ~/tunnel.sh</div>
             alert("Questa app è gestita automaticamente dagli script. Modificala tramite backend o script.");
             return;
         }
-        document.getElementById('appName').value = name;
-        document.getElementById('appCode').value = code;
-        document.getElementById('appDesc').value = desc || '';
-        document.getElementById('appIcon').value = icon || '';
-        document.getElementById('appCategory').value = category || '';
-        document.getElementById('editingKey').value = key;
-        
-        const btn = document.getElementById('submitAppBtn');
-        btn.innerText = "💾 Salva Modifiche";
-        btn.style.background = "#eab308";
-        
-        document.querySelector('.add-app-section').scrollIntoView({behavior: 'smooth'});
+        // Apri il modal admin sulla tab Manuale
+        if (window.openUploadModal) window.openUploadModal('manual');
+
+        // Compila campi (il modal e' gia' aperto col reset, ora compiliamo)
+        setTimeout(() => {
+            document.getElementById('appName').value = name;
+            document.getElementById('appCode').value = code;
+            document.getElementById('appDesc').value = desc || '';
+            document.getElementById('appIcon').value = icon || '';
+            document.getElementById('appCategory').value = category || '';
+            document.getElementById('editingKey').value = key;
+            const btn = document.getElementById('submitAppBtn');
+            if (btn) {
+                btn.innerText = "💾 Salva Modifiche";
+                btn.style.background = "#eab308";
+            }
+        }, 100);
     };
 
     function resetForm() {
