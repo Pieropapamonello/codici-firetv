@@ -62,10 +62,36 @@ function buildAppButtons(apps) {
     return { inline_keyboard: apps.filter(a => { const u = resolveAppUrl(a); return u && u.startsWith('http'); }).map(a => [{ text: `📥 ${a.name.substring(0, 50)}`, url: resolveAppUrl(a) }]) };
 }
 
-async function sendAppCard(chatId, app) {
+async function resolveDirectUrl(app, token) {
+    // 1. Se gia' salvato come directUrl, usa quello
+    if (app.directUrl && app.directUrl.startsWith('http')) return app.directUrl;
+    // 2. Se code e' un URL diretto
+    if (app.code && /^https?:\/\//i.test(app.code)) return app.code;
+    // 3. Se code e' nostro short code, lookup
+    if (app.code && /^[a-z0-9]{3,12}$/i.test(app.code) && !/^\d+$/.test(app.code)) {
+        try {
+            const sl = await (await fetch(`${DB_URL()}/short_links/${app.code}.json?auth=${token}`)).json();
+            if (sl && sl.url) return sl.url;
+        } catch (_) {}
+    }
+    // 4. aftvnews numerico → mostra il redirect
+    if (app.code && /^\d+$/.test(app.code)) return `https://aftv.news/${app.code}`;
+    return null;
+}
+
+async function sendAppCard(chatId, app, token = null) {
     const url = resolveAppUrl(app);
     if (!url || !url.startsWith('http')) return;
-    const caption = `*${app.name}*\n${app.desc || ''}\n📁 ${app.category || '?'} · 🔢 \`${app.code}\``;
+    if (!token) token = await fbAdminToken();
+
+    const directUrl = await resolveDirectUrl(app, token);
+    const desc = app.desc || '';
+    const cat = `📁 ${app.category || '?'} · 🔢 \`${app.code}\``;
+    // Telegram photo caption max 1024 char; metto link estesi sotto
+    let caption = `*${app.name}*\n${desc}\n${cat}`;
+    if (directUrl) caption += `\n\n🔗 Link APK:\n\`${directUrl}\``;
+    if (caption.length > 1020) caption = caption.substring(0, 1017) + '...';
+
     const photo = app.icon && app.icon.startsWith('http') ? app.icon : null;
     const kb = { inline_keyboard: [[{ text: '📥 Scarica', url }]] };
 
