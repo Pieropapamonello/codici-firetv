@@ -3,6 +3,16 @@ import { getDatabase, ref, get } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { isAppEnabled, normalizeAppKey } from "./notification-prefs.js";
 
+let notificationLogin;
+async function ensureNotificationAuth(auth) {
+    if (auth.currentUser?.email === process.env.FIREBASE_ADMIN_EMAIL) return;
+    if (!notificationLogin) {
+        notificationLogin = signInWithEmailAndPassword(auth, process.env.FIREBASE_ADMIN_EMAIL, process.env.FIREBASE_ADMIN_PASSWORD)
+            .finally(() => { notificationLogin = null; });
+    }
+    await notificationLogin;
+}
+
 export async function sendTelegramNotification(appName, version, downloadUrl, iconUrl) {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     if (!botToken) {
@@ -25,7 +35,7 @@ export async function sendTelegramNotification(appName, version, downloadUrl, ic
         const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const auth = getAuth(app);
-        await signInWithEmailAndPassword(auth, process.env.FIREBASE_ADMIN_EMAIL, process.env.FIREBASE_ADMIN_PASSWORD);
+        await ensureNotificationAuth(auth);
 
         const snapshot = await get(ref(db, 'telegram_users'));
         if (!snapshot.exists()) {
@@ -87,7 +97,7 @@ export async function sendEmailNotification(appName, version, downloadUrl, iconU
         const db = getDatabase(app);
         const auth = getAuth(app);
 
-        await signInWithEmailAndPassword(auth, process.env.FIREBASE_ADMIN_EMAIL, process.env.FIREBASE_ADMIN_PASSWORD);
+        await ensureNotificationAuth(auth);
 
         const subscribersRef = ref(db, 'subscribers');
         const snapshot = await get(subscribersRef);
