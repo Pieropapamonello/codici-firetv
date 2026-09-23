@@ -494,6 +494,69 @@ body.lite-mode.light-theme .search-box input {
     background: rgba(255,255,255,0.9) !important;
     color: #0f172a !important;
 }
+/* Keep dialogs usable on small screens and avoid expensive scrolling effects. */
+.modal { padding: 16px; box-sizing: border-box; backdrop-filter: none; overflow-y: auto; }
+.modal-content { box-sizing: border-box; width: 100%; max-height: calc(100dvh - 32px); overflow-y: auto; padding: 24px; }
+#upload-modal .modal-content { max-width: 560px !important; max-height: calc(100dvh - 32px) !important; }
+#upload-modal .form-input { min-width: 0; }
+#upload-modal .tab-pane { width: 100%; }
+#upload-modal .tab-btn { min-height: 44px; }
+#upload-modal label.field-label { display: block; font-size: 13px; margin: 12px 0 6px; color: var(--text); }
+body:has(.modal.active) { overflow: hidden; }
+.card, .guide-card, .adv-guide { backdrop-filter: none; -webkit-backdrop-filter: none; }
+body::before, body::after, .particle, header h1, .badge-new { animation: none; }
+.particles { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media (max-width: 480px) {
+  .modal { padding: 10px; }
+  .modal-content { padding: 20px 16px; border-radius: 16px; }
+  .modal-content h3 { font-size: 20px; }
+}
+/* Toolbox: a quiet background, clear hierarchy and one primary action. */
+:root { --dark-bg: #101820; --card-bg: #19242f; --card-border: #334351; --neon-purple: #58b6fa; --neon-cyan: #66d7bb; --text-muted: #aebdcc; }
+body.light-theme { --dark-bg: #f3f6f8; --card-bg: #fff; --card-border: #d8e1e8; --text-muted: #526475; }
+body::before, body::after { display: none; }
+header { max-width: 1140px; margin: auto; padding: 30px 24px 12px; text-align: left; }
+header > img { width: 56px; height: 56px; border-radius: 14px; box-shadow: none; border: none; }
+header h1 { font-family: 'Inter', sans-serif; font-size: clamp(24px, 4vw, 36px); color: var(--text); text-shadow: none; letter-spacing: -1px; margin: 12px 0; background: none; -webkit-text-fill-color: currentColor; }
+.header-actions { position: static; float: right; flex-wrap: wrap; max-width: 65%; justify-content: flex-end; }
+.icon-btn { border-radius: 10px; box-shadow: none; backdrop-filter: none; }
+.catalog-intro { max-width: 1140px; margin: 0 auto; padding: 16px 24px 24px; }
+.catalog-intro h2 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; letter-spacing: -1.4px; }
+.catalog-intro p { color: var(--text-muted); max-width: 660px; line-height: 1.7; margin: 0; }
+.catalog-help { margin-top: 20px; padding: 14px 18px; border-left: 3px solid var(--neon-cyan); background: var(--card-bg); border-radius: 0 8px 8px 0; font-size: 14px; line-height: 1.7; }
+.controls-bar { max-width: 1140px; margin: 0 auto; padding: 16px 24px; gap: 14px; }
+.search-box { flex: 1; min-width: 230px; max-width: none; }
+.search-box input { border-radius: 10px; box-shadow: none; min-height: 48px; backdrop-filter: none; }
+.sort-select { border-radius: 10px; min-height: 46px; }
+.category-filters { width: 100%; justify-content: flex-start; gap: 8px; }
+.filter-btn { border-radius: 8px; min-height: 40px; backdrop-filter: none; box-shadow: none; }
+.filter-btn.active { background: #1677b8; color: white; border-color: #1677b8; box-shadow: none; }
+#activity-banner, #featured-section { display: none !important; }
+main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.card { width: auto; min-width: 0; box-sizing: border-box; flex-direction: column; align-items: stretch; gap: 14px; padding: 24px 20px 40px; border-radius: 12px; box-shadow: none; transition: border-color 160ms ease; }
+.card:hover { transform: none; box-shadow: none; border-color: #58b6fa; }
+.icon-container { width: 80px; height: 80px; margin: 0 auto; border-radius: 18px; background: #fff; padding: 12px; box-shadow: none; }
+.icon-container img { filter: none; }
+.card-text { text-align: center; }
+.card-text h4 { font-size: 17px; line-height: 1.45; color: var(--text); -webkit-line-clamp: unset; }
+.card-text span { font-size: 13px; line-height: 1.6; }
+.app-category { color: var(--neon-cyan); font-size: 11px; letter-spacing: .6px; text-transform: uppercase; margin: 0 0 8px; }
+.downloader-code { margin-top: 14px; padding: 10px; border: 1px solid var(--card-border); border-radius: 8px; }
+.downloader-code strong { display: block; font-size: 21px; letter-spacing: 2px; color: var(--text); }
+.card .actions { margin-top: auto; }
+.card .btn, body.light-theme .card .btn { display: block; text-align: center; background: #1475b5; color: #fff; border: none; border-radius: 8px; padding: 13px 16px; box-shadow: none; }
+.card .btn:hover { background: #0f6096; transform: none; box-shadow: none; }
+.time-badge { bottom: 12px; left: 20px; }
+.click-counter { bottom: 12px; right: 20px; }
+.modal-content h3, .advanced-guides h2 { font-family: 'Inter', sans-serif; }
+:focus-visible { outline: 3px solid #58b6fa; outline-offset: 4px; }
+#loading-msg { grid-column: 1 / -1; }
+@media (max-width: 1000px) { main { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 720px) { main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; } .card { padding: 20px 14px 40px; } }
+@media (max-width: 420px) { main { grid-template-columns: 1fr; } .catalog-intro, .controls-bar, header { padding-left: 16px; padding-right: 16px; } }
 </style>
 </head>
 <body>
@@ -530,6 +593,12 @@ body.lite-mode.light-theme .search-box input {
   <img src="assets/nello.png" alt="Nello">
   <h1>Il Covo di Nello</h1>
 </header>
+
+<section class="catalog-intro" aria-labelledby="catalog-title">
+  <h2 id="catalog-title">Le tue app. Pronte da installare.</h2>
+  <p>Il catalogo per Fire TV e Android TV. Cerca un'app, scegli la categoria e scarica quello che ti serve.</p>
+  <div class="catalog-help"><strong>Su Fire TV?</strong> Apri Downloader e inserisci il codice riportato nella scheda.<br>Da telefono o computer, usa il pulsante <strong>Scarica</strong>.</div>
+</section>
 
 <div class="controls-bar">
   <div class="search-box">
@@ -893,6 +962,7 @@ bash ~/tunnel.sh</div>
 
     <!-- TAB: Upload -->
     <div class="tab-pane active" id="tab-upload">
+      <div id="upload-step-form">
       <label style="display:block;background:rgba(168,85,247,0.1);border:2px dashed var(--neon-purple);border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;margin-bottom:14px;transition:all 0.2s;" onmouseover="this.style.background='rgba(168,85,247,0.18)'" onmouseout="this.style.background='rgba(168,85,247,0.1)'">
         <div style="font-size:36px;margin-bottom:6px;">📦</div>
         <strong id="upload-file-name" style="color:var(--neon-cyan);font-size:14px;">Tocca per scegliere un APK</strong>
@@ -1005,6 +1075,40 @@ bash ~/tunnel.sh</div>
 </div>
 
 <!-- Firebase SDKs -->
+<script>
+function appFallbackIcon(name, category = '') {
+  const value = String(name || '').toLowerCase();
+  if (/stremio/.test(value)) return 'assets/stremio.png';
+  if (/kodi/.test(value)) return 'assets/kodi.png';
+  if (/youtube|smart\s*tube/.test(value)) return 'assets/youtube-play.png';
+  if (/launcher/.test(value)) return 'assets/launcher.png';
+  if (/vpn|wireshark|proxy|wireguard/.test(value)) return 'assets/proxy.png';
+  if (/player|vlc|video|iptv/.test(value)) return 'assets/video.png';
+  if (/tools|amlogic|adb|strument/i.test(value + ' ' + category)) return 'assets/tv-settings.png';
+  return 'assets/android-os.png';
+}
+function resolveAppIcon(icon, name, category) {
+  if (!icon || /(?:nello|downloads)\.png(?:\?.*)?$/.test(icon)) return appFallbackIcon(name, category);
+  return icon;
+}
+function recoverAppIcon(img) {
+  img.onerror = null;
+  img.src = appFallbackIcon(img.alt);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#upload-modal input:not([type="hidden"]):not([type="file"])').forEach(input => {
+    const label = document.createElement('label');
+    label.className = 'field-label';
+    label.htmlFor = input.id;
+    label.textContent = input.placeholder;
+    if (input.id === 'appIcon' || input.id === 'upload-icon') input.parentElement.before(label);
+    else input.before(label);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') document.querySelectorAll('.modal.active').forEach(modal => modal.classList.remove('active'));
+  });
+});
+</script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -1084,11 +1188,11 @@ bash ~/tunnel.sh</div>
       const grid = document.getElementById('featured-grid');
       if (featured.length === 0) { section.style.display = 'none'; return; }
       grid.innerHTML = featured.map(a => {
-        const icon = a.icon || 'assets/nello.png';
+        const icon = resolveAppIcon(a.icon, a.name, a.category);
         const url = (a.code && a.code.startsWith('http')) ? a.code : (a.code && /^\d+$/.test(a.code) ? `https://aftv.news/${a.code}` : (a.code && /^[a-z0-9]{3,12}$/i.test(a.code) ? `/d/${a.code}` : a.code));
         return `<div class="featured-card" onclick="window.open('${url}','_blank')">
           <span class="featured-tag">${(a.clicks||0) > 0 ? '🔥 TOP' : '🆕 NUOVA'}</span>
-          <div class="featured-icon"><img src="${escapeHtml(icon)}" onerror="this.src='assets/nello.png'" alt="${escapeHtml(a.name)}"></div>
+          <div class="featured-icon"><img src="${escapeHtml(icon)}" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(a.name)}"></div>
           <h4>${escapeHtml(a.name)}</h4>
           <div class="featured-meta">${escapeHtml(a.category||'?')} · ${a.clicks||0} download</div>
         </div>`;
@@ -1513,7 +1617,7 @@ bash ~/tunnel.sh</div>
       newCard.setAttribute('data-type', type);
       newCard.setAttribute('data-icon', iconPath || '');
       
-      const finalIcon = iconPath || 'assets/nello.png';
+      const finalIcon = resolveAppIcon(iconPath, name, category);
       
       const displayCode = (code.startsWith('http') || code.startsWith('/')) ? '' : code;
       const displayDesc = [displayCode, desc].filter(Boolean).join(' — ');
@@ -1554,7 +1658,7 @@ bash ~/tunnel.sh</div>
       `;
       
       // Se è un codice numerico, mostriamo "Scarica" (che apre il link)
-      const actionBtnHtml = `<a class="btn" href="${link}" target="_blank">Scarica</a>`;
+      const actionBtnHtml = `<a class="btn" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">↓ Scarica</a>`;
 
       // Variant count badge (se >1 versione raggruppata)
       const variantBadge = (window._currentApp && window._currentApp.variantCount > 1)
@@ -1564,10 +1668,12 @@ bash ~/tunnel.sh</div>
         ${badgeHtml}
         ${variantBadge}
         ${controlsHtml}
-        <div class="icon-container"><img src="${escapeHtml(finalIcon)}" loading="lazy" onerror="this.src='assets/nello.png'" alt="${escapeHtml(name)}"></div>
+        <div class="icon-container"><img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}"></div>
         <div class="card-text">
+          <div class="app-category">${escapeHtml(category || 'App e strumenti')}</div>
           <h4>${escapeHtml(name)}</h4>
-          <span>${escapeHtml(displayDesc)}</span>
+          <span>${escapeHtml(desc || 'Download per il tuo dispositivo')}</span>
+          ${displayCode ? `<div class="downloader-code"><span>Codice Downloader</span><strong>${escapeHtml(displayCode)}</strong></div>` : ''}
         </div>
         <div class="actions">${actionBtnHtml}</div>
         ${clickHtml}
@@ -1755,10 +1861,10 @@ bash ~/tunnel.sh</div>
       const chip = document.createElement('div');
       chip.className = 'app-chip';
       chip.dataset.name = app.name;
-      const icon = app.icon || 'assets/nello.png';
+      const icon = resolveAppIcon(app.icon, app.name, app.category);
       chip.innerHTML = `
         <div class="chip-check">✓</div>
-        <img src="${escapeHtml(icon)}" loading="lazy" onerror="this.src='assets/nello.png'" alt="${escapeHtml(app.name)}">
+        <img src="${escapeHtml(icon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(app.name)}">
         <span class="chip-name">${escapeHtml(app.name)}</span>
       `;
       chip.addEventListener('click', () => chip.classList.toggle('selected'));
@@ -2027,6 +2133,7 @@ bash ~/tunnel.sh</div>
     const hide = (id) => { const el = document.getElementById(id); if (el) el.style.display = 'none'; };
     const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
     hide('upload-step-success');
+    document.getElementById('upload-step-form').style.display = 'block';
     hide('upload-progress');
     hide('upload-error');
     setText('upload-file-name', 'Tocca per scegliere un APK');
