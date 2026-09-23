@@ -6,6 +6,7 @@ export default async function handler(req, res) {
 
     let appCount = null;
     let dbStatus = 'unknown';
+    let databaseError = null;
     let cronStatus = { timezone: 'UTC', state: 'unavailable' };
 
     try {
@@ -31,6 +32,7 @@ export default async function handler(req, res) {
             }
         } else {
             dbStatus = 'auth_failed';
+            databaseError = authData.error?.message?.split(' : ')[0] || 'AUTH_FAILED';
         }
     } catch (e) {
         dbStatus = 'error: ' + e.message;
@@ -45,6 +47,7 @@ export default async function handler(req, res) {
         uptime: `${uptimeH}h ${uptimeM}m`,
         uptimeMs,
         database: dbStatus,
+        databaseError,
         cron: cronStatus,
         appCount,
         env: {
