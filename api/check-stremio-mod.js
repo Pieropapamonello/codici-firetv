@@ -6,23 +6,41 @@ async function getAdminToken() {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: process.env.FIREBASE_ADMIN_EMAIL, password: process.env.FIREBASE_ADMIN_PASSWORD, returnSecureToken: true })
     });
-    return (await r.json()).idToken;
+    const data = await r.json();
+    if (!r.ok || !data.idToken) throw new Error('Firebase authentication failed');
+    return data.idToken;
 }
 
 const VARIANTS = [
-    { tag: 'tv', appName: 'Stremio TV Mod', desc: 'Stremio Mod per Fire TV / Android TV (ARM)', category: 'Film & Serie TV', assetMatch: /TV_ARM/i },
+    { tag: 'tv', appName: 'Stremio TV Mod', desc: 'Stremio Mod per Fire TV / Android TV (ARM 32-bit)', category: 'Film & Serie TV', assetMatch: /TV_ARM_/i },
+    { tag: 'tv', appName: 'Stremio TV Mod ARM64', desc: 'Stremio Mod per Android TV (ARM 64-bit)', category: 'Film & Serie TV', assetMatch: /TV_ARM64_/i },
     { tag: 'mobile', appName: 'Stremio Mobile Mod', desc: 'Stremio Mod per cellulare (ARM 32-bit)', category: 'Film & Serie TV', assetMatch: /MOBILE_ARM_/i },
     { tag: 'mobile64', appName: 'Stremio Mobile Mod 64bit', desc: 'Stremio Mod per cellulare (ARM 64-bit)', category: 'Film & Serie TV', assetMatch: /MOBILE_ARM64/i }
 ];
 
+export function newestApk(assets, pattern) {
+    return assets.filter(a => pattern.test(a.name) && /\.apk$/i.test(a.name))
+        .sort((a, b) => {
+            const version = asset => (asset.name.match(/_V([\d.]+)\.apk$/i)?.[1] || '0').split('.').map(Number);
+            const av = version(a), bv = version(b);
+            for (let i = 0; i < Math.max(av.length, bv.length); i++) {
+                const diff = (bv[i] || 0) - (av[i] || 0);
+                if (diff) return diff;
+            }
+            return Date.parse(b.updated_at) - Date.parse(a.updated_at);
+        })[0];
+}
+
 export default async function handler(req, res) {
     console.log('Check Stremio Mod releases...');
     const dbUrl = process.env.FIREBASE_DATABASE_URL;
-    const token = await getAdminToken();
     const results = [];
 
     try {
-        const apps = await (await fetch(`${dbUrl}/apps.json?auth=${token}`)).json() || {};
+        const token = await getAdminToken();
+        const appsResponse = await fetch(`${dbUrl}/apps.json?auth=${token}`);
+        if (!appsResponse.ok) throw new Error('Firebase catalog read failed');
+        const apps = await appsResponse.json() || {};
 
         for (const v of VARIANTS) {
             try {
@@ -31,16 +49,18 @@ export default async function handler(req, res) {
                 const relRes = await fetch(`https://api.github.com/repos/stremiomod/Stremio_APK/releases/tags/${v.tag}`, { headers: ghHeaders });
                 if (!relRes.ok) { results.push({ tag: v.tag, error: `github ${relRes.status}` }); continue; }
                 const rel = await relRes.json();
-                const asset = (rel.assets || []).find(a => v.assetMatch.test(a.name) && a.name.endsWith('.apk'));
-                if (!asset) { results.push({ tag: v.tag, error: 'no apk asset' }); continue; }
+                const asset = newestApk(rel.assets || [], v.assetMatch);
+                if (!asset) { results.push({ app: v.appName, skipped: 'architecture not published' }); continue; }
                 const apkUrl = asset.browser_download_url;
+                const version = asset.name.match(/_V([\d.]+)\.apk$/i)?.[1] || asset.name;
+                const fingerprint = asset.digest || `${asset.id}:${asset.updated_at}:${asset.size}`;
 
                 // Trova entry esistente per nome
                 const entry = Object.entries(apps).find(([, a]) => a.name && a.name.toLowerCase() === v.appName.toLowerCase());
                 const existingCode = entry ? entry[1].code : null;
 
                 // Se gia' presente e URL non e' cambiato, salta
-                if (entry && entry[1].directUrl === apkUrl) {
+                if (entry && entry[1].directUrl === apkUrl && entry[1].assetFingerprint === fingerprint) {
                     results.push({ tag: v.tag, app: v.appName, skipped: 'already up to date' });
                     continue;
                 }
@@ -50,8 +70,8 @@ export default async function handler(req, res) {
                 let finalCode;
                 if (aftvResult.code) {
                     finalCode = aftvResult.code;
-                } else if (existingCode && /^\d+$/.test(existingCode)) {
-                    // Tieni il vecchio codice aftvnews se esiste (anche se ora punta a URL vecchio)
+                } else if (existingCode && /^\d+$/.test(existingCode) && entry[1].directUrl === apkUrl) {
+                    // Reuse a code only when its destination has not changed.
                     finalCode = existingCode;
                 } else {
                     finalCode = apkUrl; // URL diretto come fallback
@@ -64,26 +84,33 @@ export default async function handler(req, res) {
                     category: v.category,
                     timestamp: Date.now(),
                     directUrl: apkUrl,
-                    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stremio_Icon.svg/512px-Stremio_Icon.svg.png'
+                    version,
+                    assetFingerprint: fingerprint,
+                    icon: 'assets/stremio.png'
                 };
 
                 if (entry) {
                     // Update
-                    await fetch(`${dbUrl}/apps/${entry[0]}.json?auth=${token}`, {
+                    const saved = await fetch(`${dbUrl}/apps/${entry[0]}.json?auth=${token}`, {
                         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
+                    if (!saved.ok) throw new Error('Firebase update failed');
                     results.push({ tag: v.tag, app: v.appName, updated: true, code: finalCode, aftvSource: aftvResult.code ? 'auto' : (aftvResult.error || 'fallback') });
-                    await notifyAll(v.appName, rel.tag_name, apkUrl, data.icon);
+                    // Baseline migration of unchanged URLs must not resend notifications.
+                    if (entry[1].directUrl !== apkUrl || (entry[1].assetFingerprint && entry[1].assetFingerprint !== fingerprint)) {
+                        await notifyAll(v.appName, version, apkUrl, data.icon);
+                    }
                 } else {
                     // New
                     data.order = -1;
-                    await fetch(`${dbUrl}/apps.json?auth=${token}`, {
+                    const saved = await fetch(`${dbUrl}/apps.json?auth=${token}`, {
                         method: 'POST', headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
+                    if (!saved.ok) throw new Error('Firebase creation failed');
                     results.push({ tag: v.tag, app: v.appName, created: true, code: finalCode, aftvSource: aftvResult.code ? 'auto' : (aftvResult.error || 'fallback') });
-                    await notifyAll(v.appName, rel.tag_name, apkUrl, data.icon);
+                    await notifyAll(v.appName, version, apkUrl, data.icon);
                 }
             } catch (e) {
                 results.push({ tag: v.tag, error: e.message });
