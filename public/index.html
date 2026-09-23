@@ -595,6 +595,20 @@ main { display: flex; flex-direction: column; flex-wrap: nowrap; max-width: 600p
 .form-btn { color: #073b94; }
 .advanced-guides { color: #30343b; }
 @media(max-width: 650px) { main { margin-left: 16px; margin-right: 16px; padding: 14px; } .controls-bar { padding: 12px 16px; } .download-row { font-size: 15px; gap: 12px; } }
+/* One family per frame: variants remain visible and keyboard accessible. */
+main { border: 0; padding: 0; max-width: 640px; gap: 26px; }
+.app-family { border: 3px solid #181818; padding: 18px 26px; background: #fff; }
+.app-family h3 { margin: 0 0 16px; color: #30343b; font: 800 20px 'Inter',sans-serif; }
+.family-apps { display: flex; flex-direction: column; gap: 14px; }
+.family-guide { width: 100%; margin: 16px 0 0; padding: 10px; border: 2px solid #073b94; background: #fff; color: #006ca8; font: 700 16px 'Inter',sans-serif; cursor: pointer; }
+body.is-admin .card { cursor: default; }
+.adv-guide { border: 1px solid #ced8e3; border-radius: 12px; box-shadow: none; }
+.adv-guide summary { min-height: 56px; box-sizing: border-box; display: list-item; padding: 18px 22px; line-height: 1.5; }
+.advanced-guides h2 { color: #073b94; text-shadow: none; }
+.guides-group-title { font-family: 'Inter',sans-serif; color: #526475; letter-spacing: 0; }
+.guide-body { font-size: 16px; line-height: 1.8; }
+a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible, input:focus-visible, select:focus-visible { outline: 4px solid #e79b00 !important; outline-offset: 4px; box-shadow: 0 0 0 7px #fff !important; }
+@media(max-width: 650px) { .app-family { padding: 16px; } }
 </style>
 </head>
 <body>
@@ -670,6 +684,7 @@ main { display: flex; flex-direction: column; flex-wrap: nowrap; max-width: 600p
 <main id="main-content">
   <div id="loading-msg" style="width:100%;text-align:center;padding:40px;color:var(--text-muted);font-size:18px;">Caricamento App...</div>
 </main>
+<button id="catalog-more" class="catalog-guide-link" hidden>Mostra altre app</button>
 <button class="catalog-guide-link" onclick="const guides = document.getElementById('catalog-guides'); guides.open = true; guides.scrollIntoView({block: 'start'});">▶ Come installare le app</button>
 
 
@@ -1117,6 +1132,19 @@ bash ~/tunnel.sh</div>
 
 <!-- Firebase SDKs -->
 <script>
+function catalogFamily(name) {
+  const lower = String(name || '').toLowerCase();
+  for (const [pattern, label] of [[/stremio/, 'Stremio'], [/nuvio/, 'Nuvio'], [/kodi/, 'Kodi'], [/smart\s*tube/, 'SmartTube'], [/paramount/, 'Paramount+'], [/wireshark/, 'Wireshark'], [/amlogic.*burning/, 'Amlogic USB Burning Tool']]) {
+    if (pattern.test(lower)) return label;
+  }
+  return String(name || 'Altre app').replace(/\bv?\d+(?:\.\d+)+(?:[-.]rc[.-]?\d+)?\b/gi, '').replace(/\s+/g, ' ').trim();
+}
+function openFamilyGuide(family) {
+  const container = document.getElementById('catalog-guides');
+  container.open = true;
+  const guide = [...container.querySelectorAll('.adv-guide')].find(el => el.querySelector('summary').textContent.toLowerCase().includes(family.toLowerCase()));
+  if (guide) { guide.open = true; guide.querySelector('summary').focus(); guide.scrollIntoView({block:'center'}); }
+}
 function appFallbackIcon(name, category = '') {
   const value = String(name || '').toLowerCase();
   if (/stremio/.test(value)) return 'assets/stremio.png';
@@ -1142,6 +1170,26 @@ function recoverAppIcon(img) {
   img.src = appFallbackIcon(img.alt);
 }
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.code-snippet, .inline-code').forEach(el => {
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', 'Copia: ' + el.textContent.trim());
+    el.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); el.click(); }
+    });
+  });
+  document.addEventListener('keydown', event => {
+    if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+    const active = document.activeElement;
+    if (active?.matches('input, textarea, select, [contenteditable="true"]')) return;
+    const scope = document.querySelector('.modal.active') || document;
+    const items = [...scope.querySelectorAll('a[href],button:not([disabled]),summary,input:not([type="hidden"]),select,[tabindex="0"]')]
+      .filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden');
+    const index = items.indexOf(active);
+    const delta = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1;
+    const next = items[index < 0 ? 0 : index + delta];
+    if (next) { event.preventDefault(); next.focus(); next.scrollIntoView({block:'nearest'}); }
+  });
   const labels = ['Guide', 'Veloce', 'Tema', 'Notifiche', 'Admin', 'Aggiungi app', 'Statistiche', 'Esci'];
   document.querySelectorAll('.header-actions .icon-btn').forEach((button, index) => { if (labels[index]) button.textContent = labels[index]; });
   document.querySelector('.header-actions button').onclick = () => {
@@ -1317,7 +1365,11 @@ document.addEventListener('DOMContentLoaded', () => {
       renderFeatured(allAppsData);
 
       // Applica grouping varianti (Stremio 1.10 / 1.9 / Beta → 1 card)
-      allAppsData = groupVariants(allAppsData);
+      // Keep every architecture/version visible; group visually without discarding entries.
+      allAppsData.sort((a, b) => {
+        const af = catalogFamily(a.name), bf = catalogFamily(b.name);
+        return (af === bf ? 0 : af === 'Stremio' ? -1 : bf === 'Stremio' ? 1 : af.localeCompare(bf, 'it')) || a.name.localeCompare(b.name, 'it', { numeric: true });
+      });
       window._notifyAppsData = allAppsData;
 
       updateCategoryFilters();
@@ -1393,6 +1445,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const main = document.getElementById('main-content');
         main.innerHTML = '';
         renderedCount = 0;
+        document.getElementById('catalog-more').hidden = true;
 
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 
@@ -1421,8 +1474,14 @@ document.addEventListener('DOMContentLoaded', () => {
             createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
         });
         renderedCount += batch.length;
+        document.getElementById('catalog-more').hidden = renderedCount >= currentFiltered.length;
         isLoadingMore = false;
     }
+    document.getElementById('catalog-more').onclick = () => {
+        const previous = renderedCount;
+        loadMoreCards();
+        document.querySelectorAll('#main-content .download-row')[previous]?.focus();
+    };
 
     window.addEventListener('scroll', () => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 600) {
@@ -1672,7 +1731,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const main = document.getElementById('main-content');
       const newCard = document.createElement('div');
       newCard.className = 'card';
-      newCard.draggable = true;
+      newCard.draggable = false;
       newCard.setAttribute('data-key', firebaseKey);
       newCard.setAttribute('data-type', type);
       newCard.setAttribute('data-icon', iconPath || '');
@@ -1736,7 +1795,28 @@ document.addEventListener('DOMContentLoaded', () => {
         ${timeBadgeHtml}
       `;
       
-      main.appendChild(newCard);
+      const family = catalogFamily(name);
+      let frame = [...main.querySelectorAll('.app-family')].find(el => el.dataset.family === family);
+      if (!frame) {
+          frame = document.createElement('section');
+          frame.className = 'app-family';
+          frame.dataset.family = family;
+          frame.setAttribute('aria-label', family);
+          const heading = document.createElement('h3');
+          heading.textContent = family;
+          const list = document.createElement('div');
+          list.className = 'family-apps';
+          frame.append(heading, list);
+          if (['Stremio', 'Kodi'].includes(family)) {
+              const tutorial = document.createElement('button');
+              tutorial.className = 'family-guide';
+              tutorial.textContent = '▶ Guida ' + family;
+              tutorial.onclick = () => openFamilyGuide(family);
+              frame.append(tutorial);
+          }
+          main.append(frame);
+      }
+      frame.querySelector('.family-apps').append(newCard);
       
       newCard.addEventListener('click', (e)=>{ 
         if(e.target.closest('button') || e.target.closest('a')) return;
@@ -1755,6 +1835,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       newCard.addEventListener('dragstart', (e) => {
+          e.preventDefault(); return; // Grouped catalog is ordered by app family.
           if(!document.body.classList.contains('is-admin')) { e.preventDefault(); return; }
           newCard.classList.add('dragging');
       });

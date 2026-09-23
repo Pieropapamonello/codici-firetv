@@ -100,6 +100,7 @@ export default async function handler(req, res) {
 
     // Inizializza updates con i codici statici per assicurarci che siano sempre presenti/aggiornati
     const updates = { ...staticCodes };
+    const notifications = [];
     const log = ["Codici statici accodati per l'aggiornamento."];
 
     try {
@@ -143,7 +144,7 @@ export default async function handler(req, res) {
                         log.push(`Trovato aggiornamento per ${config.name}: ${version} -> ${asset.name}`);
                         
                         // Invia notifica
-                        await notifyAll(config.name, version, asset.browser_download_url, config.icon);
+                        notifications.push([config.name, version, asset.browser_download_url, config.icon]);
                     } else {
                         log.push(`Nessun aggiornamento per ${config.name}. Versione attuale: ${version}`);
                     }
@@ -161,6 +162,7 @@ export default async function handler(req, res) {
 
         if (Object.keys(updates).length > 0) {
             await update(ref(db), updates);
+            for (const args of notifications) await notifyAll(...args);
             log.push("Database aggiornato.");
         } else {
             log.push("Nessun aggiornamento necessario.");

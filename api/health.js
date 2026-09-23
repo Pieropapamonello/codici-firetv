@@ -6,6 +6,7 @@ export default async function handler(req, res) {
 
     let appCount = null;
     let dbStatus = 'unknown';
+    let cronStatus = { timezone: 'UTC', state: 'unavailable' };
 
     try {
         const authRes = await fetch(
@@ -19,6 +20,15 @@ export default async function handler(req, res) {
             const apps = await appsRes.json();
             appCount = apps ? Object.keys(apps).length : 0;
             dbStatus = 'connected';
+            const cronRes = await fetch(`${dbUrl}/cron_state.json?auth=${authData.idToken}`);
+            if (cronRes.ok) {
+                const jobs = await cronRes.json() || {};
+                cronStatus = { timezone: 'UTC', state: 'available', jobs: Object.fromEntries(
+                    Object.entries(jobs).filter(([key]) => key !== '_lease').map(([key, value]) => [key, {
+                        status: value.status, completedSlot: value.completedSlot || null, finishedAt: value.finishedAt || null, retryAt: value.retryAt || null
+                    }])
+                ) };
+            }
         } else {
             dbStatus = 'auth_failed';
         }
@@ -35,6 +45,7 @@ export default async function handler(req, res) {
         uptime: `${uptimeH}h ${uptimeM}m`,
         uptimeMs,
         database: dbStatus,
+        cron: cronStatus,
         appCount,
         env: {
             firebase: !!process.env.FIREBASE_DATABASE_URL,

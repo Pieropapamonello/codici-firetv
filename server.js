@@ -1,5 +1,6 @@
 import express from 'express';
 import cron from 'node-cron';
+import { createCronRunner } from './api/utils/cron-runner.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -39,6 +40,13 @@ import telegramAuthHandler from './api/telegram-auth.js';
 import linkTelegramHandler from './api/link-telegram.js';
 import appActionHandler from './api/app-action.js';
 
+// Catalog writers run only through the serialized scheduler, never public GETs.
+app.use((req, res, next) => {
+    if (/^\/api\/(check-(stremio(?:-beta|-mod)?|paramount(?:-tv)?|revanced|windows-tools)|cron-troypoint)\/?$/.test(req.path)) {
+        return res.status(403).json({ error: 'Controllo gestito automaticamente dal cron.' });
+    }
+    next();
+});
 app.all('/api/check-stremio', (req, res) => checkStremioHandler(req, res));
 app.all('/api/check-paramount', (req, res) => checkParamountHandler(req, res));
 app.all('/api/check-paramount-tv', (req, res) => checkParamountTvHandler(req, res));
@@ -73,50 +81,21 @@ app.get('*', (req, res) => {
 });
 
 // --- Cron Jobs ---
-function callHandler(handler, label) {
-    const req = { method: 'GET', headers: {}, query: {} };
-    const res = {
-        statusCode: 200,
-        setHeader() {},
-        status(code) { this.statusCode = code; return this; },
-        json(data) { console.log(`[CRON ${label}] ${this.statusCode}:`, JSON.stringify(data).slice(0, 200)); return this; },
-        send(data) { console.log(`[CRON ${label}] ${this.statusCode}:`, data); return this; },
-        end() { return this; },
-        redirect(code, url) { console.log(`[CRON ${label}] redirect ${code} -> ${url}`); return this; }
-    };
-    handler(req, res).catch(err => console.error(`[CRON ${label}] Error:`, err.message));
-}
-
-cron.schedule('0 8 * * *', () => {
-    console.log('[CRON] Running cron-troypoint...');
-    callHandler(cronTroypointHandler, 'cron-troypoint');
-});
-
-cron.schedule('0 12 * * *', () => {
-    console.log('[CRON] Running check-stremio + check-stremio-beta + check-stremio-mod...');
-    callHandler(checkStremioHandler, 'check-stremio');
-    callHandler(checkStremioBetaHandler, 'check-stremio-beta');
-    callHandler(checkStremioModHandler, 'check-stremio-mod');
-});
-
-cron.schedule('0 13 * * *', () => {
-    console.log('[CRON] Running check-paramount & check-paramount-tv...');
-    callHandler(checkParamountHandler, 'check-paramount');
-    callHandler(checkParamountTvHandler, 'check-paramount-tv');
-});
-
-cron.schedule('0 14 * * *', () => {
-    console.log('[CRON] Running check-revanced...');
-    callHandler(checkRevancedHandler, 'check-revanced');
-});
-
-cron.schedule('0 15 * * *', () => {
-    console.log('[CRON] Running check-windows-tools...');
-    callHandler(checkWindowsToolsHandler, 'check-windows-tools');
-});
+const tickCrons = createCronRunner([
+    { name: 'troypoint', hour: 8, handler: cronTroypointHandler },
+    { name: 'stremio', hour: 12, handler: checkStremioHandler },
+    { name: 'stremio-beta', hour: 12, handler: checkStremioBetaHandler },
+    { name: 'stremio-mod', hour: 12, handler: checkStremioModHandler },
+    { name: 'paramount', hour: 13, handler: checkParamountHandler },
+    { name: 'paramount-tv', hour: 13, handler: checkParamountTvHandler },
+    { name: 'revanced', hour: 14, handler: checkRevancedHandler },
+    { name: 'windows-tools', hour: 15, handler: checkWindowsToolsHandler },
+    { name: 'daily-stats', hour: 0, handler: saveDailyStats }
+]);
+cron.schedule('*/5 * * * *', tickCrons, { timezone: 'UTC' });
 
 // Daily snapshot per dashboard trends — mezzanotte UTC
-cron.schedule('0 0 * * *', async () => {
+async function saveDailyStats() {
     console.log('[CRON] Running daily stats snapshot...');
     try {
         const apiKey = process.env.FIREBASE_API_KEY;
@@ -126,22 +105,25 @@ cron.schedule('0 0 * * *', async () => {
             body: JSON.stringify({ email: process.env.FIREBASE_ADMIN_EMAIL, password: process.env.FIREBASE_ADMIN_PASSWORD, returnSecureToken: true })
         });
         const t = (await auth.json()).idToken;
+        if (!auth.ok || !t) throw new Error('Snapshot authentication failed');
         const apps = await (await fetch(`${dbUrl}/apps.json?auth=${t}`)).json() || {};
         const subs = await (await fetch(`${dbUrl}/subscribers.json?auth=${t}&shallow=true`)).json() || {};
         const tg = await (await fetch(`${dbUrl}/telegram_users.json?auth=${t}&shallow=true`)).json() || {};
         const totalClicks = Object.values(apps).reduce((s,a) => s + (a.clicks || 0), 0);
         const today = new Date().toISOString().split('T')[0];
-        await fetch(`${dbUrl}/daily_stats/${today}.json?auth=${t}`, {
+        const saved = await fetch(`${dbUrl}/daily_stats/${today}.json?auth=${t}`, {
             method: 'PUT', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ date: today, apps: Object.keys(apps).length, clicks: totalClicks, emailSubs: Object.keys(subs).length, telegramSubs: Object.keys(tg).length, savedAt: Date.now() })
         });
+        if (!saved.ok) throw new Error('Snapshot write failed');
         console.log(`[CRON] Snapshot ${today} salvato`);
-    } catch (e) { console.error('Snapshot fail:', e.message); }
-});
+    } catch (e) { console.error('Snapshot failed'); throw e; }
+}
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
     console.log('Cron jobs scheduled.');
+    void tickCrons();
 
     // Auto-register Telegram webhook
     const botToken = process.env.TELEGRAM_BOT_TOKEN;

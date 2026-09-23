@@ -3,6 +3,7 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getDatabase, ref, get, update, push } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { notifyAll } from "./utils/notify.js";
+import { extractVersion, compareVersions } from './utils/app-version.js';
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -205,10 +206,11 @@ async function scrapeTroypoint() {
         }
 
         console.log(`TroyPoint scraped: ${rawApps.length} raw, ${apps.length} dedup`);
+        if (!apps.length) throw new Error('TroyPoint catalog empty or parsing failed');
         return apps;
     } catch (e) {
         console.error("Scrape failed:", e);
-        return [];
+        throw e;
     }
 }
 
@@ -240,13 +242,9 @@ export default async function handler(req, res) {
         const notifications = [];
         
         function baseName(name) {
-            return name.toLowerCase().replace(/\b(v?\d+[\d.]*)\b/g, '').replace(/\b(stable|release|beta|arm|apk|bundle|for fire tv|for android tv|android tv boxes|most|latest|new)\b/gi, '').replace(/[^a-z]/g, '').trim();
+            return name.toLowerCase().replace(/\b(?:v\d+(?:\.\d+)*|\d+(?:\.\d+)+)\b/g, '').replace(/\b(stable|release|apk|for fire tv|for android tv|android tv boxes|most|latest|new)\b/gi, '').replace(/[^a-z0-9]/g, '').trim();
         }
 
-        function extractVersion(name) {
-            const match = String(name || '').match(/\bv?(\d+(?:\.\d+){0,3}(?:[-.]?(?:rc|beta|alpha)\d*)?)\b/i);
-            return match ? match[1].toLowerCase() : null;
-        }
 
         // 1. Process Scraped Data (Add new or Update existing links)
         for (const scraped of scrapedApps) {
@@ -268,7 +266,9 @@ export default async function handler(req, res) {
             let existingApp = null;
 
             // Trova per nome esatto O per nome base (fuzzy match)
-            for (const [key, val] of Object.entries(existingApps)) {
+            const entries = Object.entries(existingApps).sort(([, a], [, b]) =>
+                Number(b.name?.toLowerCase().trim() === scrapedNameNorm) - Number(a.name?.toLowerCase().trim() === scrapedNameNorm));
+            for (const [key, val] of entries) {
                 if (!val.name) continue;
                 const valNorm = val.name.toLowerCase().trim();
                 if (valNorm === scrapedNameNorm || baseName(val.name) === scrapedBase) {
@@ -281,19 +281,22 @@ export default async function handler(req, res) {
             if (foundKey) {
                 const previousVersion = extractVersion(existingApp.name);
                 const scrapedVersion = extractVersion(scraped.name);
-                const versionChanged = previousVersion && scrapedVersion && previousVersion !== scrapedVersion;
+                // Dedicated release checkers own these entries, including their download codes.
+                if (existingApp.directUrl || /stremio|paramount/i.test(existingApp.name)) continue;
+                if (previousVersion && scrapedVersion && compareVersions(scrapedVersion, previousVersion) < 0) continue;
+                const versionChanged = previousVersion && scrapedVersion && compareVersions(scrapedVersion, previousVersion) > 0;
 
                 // I link TroyPoint possono cambiare senza che cambi la versione.
                 // Aggiorna il download silenziosamente e notifica solo una versione realmente diversa.
                 if (existingApp.code !== scraped.code) {
                     updates[`apps/${foundKey}/code`] = scraped.code;
-                    updates[`apps/${foundKey}/timestamp`] = Date.now();
                 }
                 if (versionChanged) {
                     updates[`apps/${foundKey}/name`] = scraped.name;
                     updates[`apps/${foundKey}/timestamp`] = Date.now();
                     notifications.push({ name: scraped.name, version: scrapedVersion, link: scraped.code, icon: existingApp.icon });
                 }
+                existingApps[foundKey] = { ...existingApp, code: scraped.code, ...(versionChanged ? { name: scraped.name } : {}) };
                 // Aggiungi/correggi desc se vuota o placeholder
                 if (!existingApp.desc || existingApp.desc === "Imported from TroyPoint") {
                     updates[`apps/${foundKey}/desc`] = generateDesc(existingApp.name, existingApp.category);
@@ -319,6 +322,7 @@ export default async function handler(req, res) {
                     icon: icon,
                     timestamp: Date.now()
                 };
+                existingApps[newRef.key] = updates[`apps/${newRef.key}`];
                 notifications.push({ name: scraped.name, version: "Nuova App", link: scraped.code, icon: icon });
             }
         }

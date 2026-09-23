@@ -151,6 +151,7 @@ export default async function handler(req, res) {
     const auth = getAuth(app);
 
     const updates = {};
+    const notifications = [];
     const log = [];
 
     try {
@@ -248,7 +249,7 @@ export default async function handler(req, res) {
                         };
                         
                         // Invia notifica
-                        await notifyAll(config.name, version, downloadUrl, config.icon);
+                        notifications.push([config.name, version, downloadUrl, config.icon]);
                     } else {
                         log.push(`Nessun aggiornamento per ${config.name}. Versione attuale: ${version}`);
                     }
@@ -263,6 +264,7 @@ export default async function handler(req, res) {
         // Scrittura batch su Firebase
         if (Object.keys(updates).length > 0) {
             await update(ref(db), updates);
+            for (const args of notifications) await notifyAll(...args);
             log.push("Database aggiornato con successo.");
         } else {
             log.push("Nessun aggiornamento da salvare.");
