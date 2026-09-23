@@ -1,5 +1,6 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
+import { normalizeAppKey } from "./utils/notification-prefs.js";
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
 const API = () => `https://api.telegram.org/bot${BOT_TOKEN()}`;
@@ -632,7 +633,10 @@ async function handleCallback(cb, token) {
         const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json();
         if (!sub) { await tg(chatId, '❌ Non iscritto. Usa /start per iscriverti.'); return; }
         const isAll = sub.apps?.includes('all');
-        const count = isAll ? 'Tutte le app' : `${(sub.apps || []).length} app selezionate`;
+        const mutedCount = (sub.mutedApps || []).length;
+        const count = isAll
+            ? `Tutte le app${mutedCount ? `, eccetto ${mutedCount} silenziate` : ''}`
+            : `${(sub.apps || []).length} app selezionate`;
         await tg(chatId, `🔔 *La tua iscrizione*\n\nRicevi notifiche per: *${count}*`, { reply_markup: { inline_keyboard: [
             [{ text: (isAll ? '✅' : '⬜') + ' Tutte le app', callback_data: 'sub:setall' }],
             [{ text: '📝 Scegli app specifiche', callback_data: 'sub:choose:0' }],
@@ -642,9 +646,9 @@ async function handleCallback(cb, token) {
         return;
     }
     if (data === 'sub:setall') {
-        await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
-            method: 'PUT', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(['all'])
+        await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ apps: ['all'], mutedApps: null })
         });
         await tg(chatId, '✅ Iscritto a *tutte* le app');
         return;
@@ -655,6 +659,7 @@ async function handleCallback(cb, token) {
         const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
         const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json() || {};
         const userApps = sub.apps || [];
+        const mutedApps = new Set((sub.mutedApps || []).map(normalizeAppKey));
         const isAll = userApps.includes('all');
 
         const list = Object.values(apps).filter(a => a.name).sort((a,b) => a.name.localeCompare(b.name));
@@ -664,7 +669,7 @@ async function handleCallback(cb, token) {
         const slice = list.slice(safePage * perPage, (safePage + 1) * perPage);
 
         const kb = slice.map((a, i) => {
-            const checked = isAll || userApps.includes(a.name);
+            const checked = isAll ? !mutedApps.has(normalizeAppKey(a.name)) : userApps.some(n => normalizeAppKey(n) === normalizeAppKey(a.name));
             const globalIdx = safePage * perPage + i;
             return [{ text: `${checked ? '✅' : '⬜'} ${a.name.substring(0, 42)}`, callback_data: `sub:tgl:${safePage}:${globalIdx}` }];
         });
@@ -689,34 +694,43 @@ async function handleCallback(cb, token) {
         const list = Object.values(apps).filter(a => a.name).sort((a,b) => a.name.localeCompare(b.name));
         const target = list[idx];
         if (!target) { await tg(chatId, 'App non trovata'); return; }
-        if (userApps.includes('all')) userApps = list.map(a => a.name);
-        if (userApps.includes(target.name)) userApps = userApps.filter(n => n !== target.name);
-        else userApps.push(target.name);
-        await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
-            method: 'PUT', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userApps)
-        });
+        if (userApps.includes('all')) {
+            const key = normalizeAppKey(target.name);
+            const mutedApps = new Set((sub.mutedApps || []).map(normalizeAppKey));
+            if (mutedApps.has(key)) mutedApps.delete(key);
+            else mutedApps.add(key);
+            await fetch(`${DB_URL()}/telegram_users/${chatId}/mutedApps.json?auth=${token}`, {
+                method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify([...mutedApps])
+            });
+        } else {
+            const targetKey = normalizeAppKey(target.name);
+            if (userApps.some(n => normalizeAppKey(n) === targetKey)) userApps = userApps.filter(n => normalizeAppKey(n) !== targetKey);
+            else userApps.push(target.name);
+            await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
+                method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userApps)
+            });
+        }
         await handleCallback({ ...cb, data: `sub:choose:${page}` }, token);
         return;
     }
     if (data.startsWith('mute:')) {
-        const appNameToMute = decodeURIComponent(data.substring(5));
+        const rawMuteValue = data.substring(5);
+        let decodedMuteValue = rawMuteValue;
+        // Compatibilita' con i pulsanti creati prima di questa correzione.
+        try { decodedMuteValue = decodeURIComponent(rawMuteValue); } catch (_) {}
+        const appKeyToMute = normalizeAppKey(decodedMuteValue);
         const userRes = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`);
         const user = await userRes.json();
         if (user) {
-            let apps = user.apps || [];
-            if (apps.includes('all')) {
-                // espandi 'all' alle app correnti senza la mutata
-                const allApps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
-                apps = Object.values(allApps).map(a => a.name).filter(n => n && n.toLowerCase() !== appNameToMute.toLowerCase());
-            } else {
-                apps = apps.filter(a => a.toLowerCase() !== appNameToMute.toLowerCase());
-            }
-            await fetch(`${DB_URL()}/telegram_users/${chatId}/apps.json?auth=${token}`, {
+            const mutedApps = new Set((user.mutedApps || []).map(normalizeAppKey));
+            mutedApps.add(appKeyToMute);
+            await fetch(`${DB_URL()}/telegram_users/${chatId}/mutedApps.json?auth=${token}`, {
                 method: 'PUT', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(apps)
+                body: JSON.stringify([...mutedApps])
             });
-            await tg(chatId, `🔕 Non riceverai piu' aggiornamenti per *${appNameToMute}*`);
+            await tg(chatId, `🔕 Notifiche disattivate per questa app e per le sue versioni future.`);
         }
         return;
     }
@@ -1027,9 +1041,12 @@ export default async function handler(req, res) {
 
         // Commands
         if (text === '/start' || text === '/menu') {
-            await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, {
-                method: 'PUT', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chatId, firstName: msg.from?.first_name || 'Utente', username: msg.from?.username || null, apps: ['all'], joinedAt: Date.now() })
+            const userUrl = `${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`;
+            const existingUser = await (await fetch(userUrl)).json();
+            const profile = { chatId, firstName: msg.from?.first_name || 'Utente', username: msg.from?.username || null };
+            await fetch(userUrl, {
+                method: existingUser ? 'PATCH' : 'PUT', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(existingUser ? profile : { ...profile, apps: ['all'], joinedAt: Date.now() })
             });
             // Manda foto logo con benvenuto
             try {

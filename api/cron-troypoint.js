@@ -243,6 +243,11 @@ export default async function handler(req, res) {
             return name.toLowerCase().replace(/\b(v?\d+[\d.]*)\b/g, '').replace(/\b(stable|release|beta|arm|apk|bundle|for fire tv|for android tv|android tv boxes|most|latest|new)\b/gi, '').replace(/[^a-z]/g, '').trim();
         }
 
+        function extractVersion(name) {
+            const match = String(name || '').match(/\bv?(\d+(?:\.\d+){0,3}(?:[-.]?(?:rc|beta|alpha)\d*)?)\b/i);
+            return match ? match[1].toLowerCase() : null;
+        }
+
         // 1. Process Scraped Data (Add new or Update existing links)
         for (const scraped of scrapedApps) {
             const scrapedNameNorm = scraped.name.toLowerCase().trim();
@@ -274,11 +279,20 @@ export default async function handler(req, res) {
             }
 
             if (foundKey) {
-                // Check updates
+                const previousVersion = extractVersion(existingApp.name);
+                const scrapedVersion = extractVersion(scraped.name);
+                const versionChanged = previousVersion && scrapedVersion && previousVersion !== scrapedVersion;
+
+                // I link TroyPoint possono cambiare senza che cambi la versione.
+                // Aggiorna il download silenziosamente e notifica solo una versione realmente diversa.
                 if (existingApp.code !== scraped.code) {
                     updates[`apps/${foundKey}/code`] = scraped.code;
                     updates[`apps/${foundKey}/timestamp`] = Date.now();
-                    notifications.push({ name: scraped.name, version: "Aggiornata", link: scraped.code, icon: existingApp.icon });
+                }
+                if (versionChanged) {
+                    updates[`apps/${foundKey}/name`] = scraped.name;
+                    updates[`apps/${foundKey}/timestamp`] = Date.now();
+                    notifications.push({ name: scraped.name, version: scrapedVersion, link: scraped.code, icon: existingApp.icon });
                 }
                 // Aggiungi/correggi desc se vuota o placeholder
                 if (!existingApp.desc || existingApp.desc === "Imported from TroyPoint") {

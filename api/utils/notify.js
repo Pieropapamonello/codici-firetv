@@ -1,6 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { isAppEnabled, normalizeAppKey } from "./notification-prefs.js";
 
 export async function sendTelegramNotification(appName, version, downloadUrl, iconUrl) {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
@@ -33,23 +34,16 @@ export async function sendTelegramNotification(appName, version, downloadUrl, ic
         }
 
         const users = snapshot.val();
-        const appNameLower = appName.toLowerCase();
-        const appBaseName = appNameLower.split(' ')[0];
         let sent = 0;
 
         for (const [chatId, user] of Object.entries(users)) {
-            if (!user.apps) continue;
-            const match = user.apps.includes('all') || user.apps.some(a => {
-                const aLower = a.toLowerCase();
-                return aLower === appNameLower || (aLower.split(' ')[0] === appBaseName && appBaseName.length > 2);
-            });
-            if (!match) continue;
+            if (!isAppEnabled(user, appName)) continue;
 
             try {
                 const inlineKb = {
                     inline_keyboard: [[
                         { text: '📥 Scarica', url: downloadUrl },
-                        { text: '🔕 Mute questa app', callback_data: `mute:${encodeURIComponent(appName).substring(0, 50)}` }
+                        { text: '🔕 Mute questa app', callback_data: `mute:${normalizeAppKey(appName)}` }
                     ]]
                 };
                 const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
