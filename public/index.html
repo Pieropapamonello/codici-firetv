@@ -571,6 +571,30 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
 .advanced-guides > summary { cursor: pointer; font-size: 20px; font-weight: 700; padding: 20px 0; }
 .bookmark-hint { display: none; }
 @media(max-width: 600px) { .header-actions { max-width: 100%; float: none; margin-bottom: 18px; justify-content: flex-start; } .controls-bar { flex-direction: column; align-items: stretch; } .search-box { width: 100%; min-width: 0; } }
+/* Reference layout: white page and a framed, single-column download list. */
+:root, body.light-theme { --dark-bg: #fff; --card-bg: #fff; --card-border: #d4dce5; --text: #30343b; --text-muted: #586575; --neon-purple: #073b94; --neon-cyan: #007ab8; }
+body { background: #fff; color: #30343b; }
+header { max-width: 1100px; padding-bottom: 8px; }
+header h1 { font-size: 24px; letter-spacing: 0; }
+.catalog-intro { max-width: 1100px; padding-top: 12px; text-align: center; }
+.catalog-intro h2 { font-size: 25px; letter-spacing: 0; text-transform: uppercase; padding-bottom: 10px; border-bottom: 3px solid #073b94; }
+.catalog-intro p { margin: 0 auto; }
+.catalog-help { margin: 18px auto 0; background: #f3f7fb; text-align: left; }
+.controls-bar { max-width: 600px; box-sizing: border-box; padding: 12px 0; }
+.catalog-count { text-align: center; padding: 10px 16px; }
+main { display: flex; flex-direction: column; flex-wrap: nowrap; max-width: 600px; box-sizing: border-box; margin: 16px auto 32px; border: 3px solid #111; padding: 16px 28px; gap: 15px; }
+.card, body.lite-mode .card, body.light-theme .card { display: block; width: 100%; background: transparent; padding: 0; border: none; border-radius: 0; box-shadow: none; }
+.download-row { display: flex; align-items: center; gap: 16px; box-sizing: border-box; min-height: 86px; padding: 15px; border: 3px solid #0088c4; border-radius: 10px; background: #073b94; color: white; text-decoration: none; font-size: 17px; font-weight: 800; line-height: 1.5; }
+.download-row:hover, .download-row:focus-visible { background: #052c70; color: white; }
+.download-row img { width: 48px; height: 48px; flex: 0 0 48px; object-fit: contain; }
+.download-row .download-label { min-width: 0; overflow-wrap: anywhere; }
+.download-row small { display: block; font-size: 12px; font-weight: 400; color: #dceeff; margin-top: 3px; }
+.catalog-guide-link { display: block; max-width: 600px; box-sizing: border-box; margin: 0 auto 28px; padding: 10px; border: 2px solid #073b94; color: #007ab8; background: white; text-align: center; font: 700 17px 'Inter', sans-serif; cursor: pointer; width: calc(100% - 32px); }
+.modal-content { color: var(--text); }
+.form-input { color: #30343b; background: #fff; border-color: #b8c6d4; }
+.form-btn { color: #073b94; }
+.advanced-guides { color: #30343b; }
+@media(max-width: 650px) { main { margin-left: 16px; margin-right: 16px; padding: 14px; } .controls-bar { padding: 12px 16px; } .download-row { font-size: 15px; gap: 12px; } }
 </style>
 </head>
 <body>
@@ -609,8 +633,8 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
 </header>
 
 <section class="catalog-intro" aria-labelledby="catalog-title">
-  <h2 id="catalog-title">Quale app vuoi scaricare?</h2>
-  <p>Scrivi il nome qui sotto, poi premi Scarica.</p>
+  <h2 id="catalog-title">App per Fire TV e Android TV</h2>
+  <p>Premi sul pulsante blu con il nome dell’app per scaricarla.</p>
   <div class="catalog-help"><strong>Su Fire TV?</strong> Apri Downloader e inserisci il codice riportato nella scheda.<br>Da telefono o computer, usa il pulsante <strong>Scarica</strong>.</div>
 </section>
 
@@ -646,6 +670,7 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
 <main id="main-content">
   <div id="loading-msg" style="width:100%;text-align:center;padding:40px;color:var(--text-muted);font-size:18px;">Caricamento App...</div>
 </main>
+<button class="catalog-guide-link" onclick="const guides = document.getElementById('catalog-guides'); guides.open = true; guides.scrollIntoView({block: 'start'});">▶ Come installare le app</button>
 
 
 
@@ -1411,6 +1436,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.setCategory = function(cat) {
         currentCategory = cat;
+        document.getElementById('catalog-title').textContent = cat === 'Tutte' ? 'App per Fire TV e Android TV' : cat;
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.classList.toggle('active', btn.innerText === cat);
         });
@@ -1702,14 +1728,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ${badgeHtml}
         ${variantBadge}
         ${controlsHtml}
-        <div class="icon-container"><img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}"></div>
-        <div class="card-text">
-          <div class="app-category">${escapeHtml(category || 'App e strumenti')}</div>
-          <h4>${escapeHtml(name)}</h4>
-          <span>${escapeHtml(desc || 'Download per il tuo dispositivo')}</span>
-          ${displayCode ? `<div class="downloader-code"><span>Codice Downloader</span><strong>${escapeHtml(displayCode)}</strong></div>` : ''}
-        </div>
-        <div class="actions">${actionBtnHtml}</div>
+        <a class="download-row" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">
+          <img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}">
+          <span class="download-label">${escapeHtml(name)}${displayCode ? `<small>Codice Downloader: ${escapeHtml(displayCode)}</small>` : ''}</span>
+        </a>
         ${clickHtml}
         ${timeBadgeHtml}
       `;
