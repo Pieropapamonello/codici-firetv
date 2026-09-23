@@ -557,6 +557,20 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
 @media (max-width: 1000px) { main { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 720px) { main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; } .card { padding: 20px 14px 40px; } }
 @media (max-width: 420px) { main { grid-template-columns: 1fr; } .catalog-intro, .controls-bar, header { padding-left: 16px; padding-right: 16px; } }
+/* Simplified catalog controls. */
+.header-actions .icon-btn { width: auto; min-width: 42px; padding: 0 12px; font-size: 13px; font-weight: 600; }
+.header-actions button[onclick="toggleLiteMode()"], .header-actions button[onclick="toggleTheme()"] { display: none; }
+.catalog-intro h2 { font-size: clamp(26px, 4vw, 36px); }
+.catalog-help { max-width: 650px; }
+.category-filters { display: none !important; }
+.catalog-category { min-height: 48px; max-width: 100%; padding: 10px 14px; border: 1px solid var(--card-border); border-radius: 10px; background: var(--card-bg); color: var(--text); font: inherit; }
+.sort-select { display: none; }
+.catalog-count { max-width: 1140px; margin: 8px auto 0; padding: 0 24px; color: var(--text-muted); font-size: 14px; }
+.card .time-badge, .card .click-counter, .card .variant-badge { display: none; }
+.card { padding-bottom: 20px; }
+.advanced-guides > summary { cursor: pointer; font-size: 20px; font-weight: 700; padding: 20px 0; }
+.bookmark-hint { display: none; }
+@media(max-width: 600px) { .header-actions { max-width: 100%; float: none; margin-bottom: 18px; justify-content: flex-start; } .controls-bar { flex-direction: column; align-items: stretch; } .search-box { width: 100%; min-width: 0; } }
 </style>
 </head>
 <body>
@@ -595,8 +609,8 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
 </header>
 
 <section class="catalog-intro" aria-labelledby="catalog-title">
-  <h2 id="catalog-title">Le tue app. Pronte da installare.</h2>
-  <p>Il catalogo per Fire TV e Android TV. Cerca un'app, scegli la categoria e scarica quello che ti serve.</p>
+  <h2 id="catalog-title">Quale app vuoi scaricare?</h2>
+  <p>Scrivi il nome qui sotto, poi premi Scarica.</p>
   <div class="catalog-help"><strong>Su Fire TV?</strong> Apri Downloader e inserisci il codice riportato nella scheda.<br>Da telefono o computer, usa il pulsante <strong>Scarica</strong>.</div>
 </section>
 
@@ -615,7 +629,9 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
   <div class="category-filters" id="categoryFilters">
     <button class="filter-btn active" onclick="setCategory('Tutte')">Tutte</button>
   </div>
+  <select id="catalogCategory" class="catalog-category" aria-label="Categoria" onchange="setCategory(this.value)"><option value="Tutte">Tutte le categorie</option></select>
 </div>
+<p id="catalog-count" class="catalog-count" role="status" aria-live="polite"></p>
 
 <div id="activity-banner" class="activity-banner" style="display:none;">
   <div class="pulse"></div>
@@ -634,7 +650,8 @@ main { max-width: 1140px; padding: 20px 24px 40px; display: grid; grid-template-
 
 
 <div id="guides-anchor"></div>
-<div class="advanced-guides">
+<details class="advanced-guides" id="catalog-guides">
+  <summary>Hai bisogno di aiuto? Apri le guide</summary>
   <h2>📚 GUIDE</h2>
   <p style="text-align:center;color:var(--text-muted);font-size:13px;margin-top:-12px;margin-bottom:24px;">Clicca su una guida per espanderla. Codici e comandi si copiano con un click.</p>
 
@@ -864,8 +881,7 @@ bash ~/tunnel.sh</div>
       </ul>
     </div>
   </details>
-</div>
-
+</details>
 <datalist id="categoryList"></datalist>
 
 <div style="text-align: center; margin-top: 40px;">
@@ -1081,21 +1097,33 @@ function appFallbackIcon(name, category = '') {
   if (/stremio/.test(value)) return 'assets/stremio.png';
   if (/kodi/.test(value)) return 'assets/kodi.png';
   if (/youtube|smart\s*tube/.test(value)) return 'assets/youtube-play.png';
-  if (/launcher/.test(value)) return 'assets/launcher.png';
-  if (/vpn|wireshark|proxy|wireguard/.test(value)) return 'assets/proxy.png';
-  if (/player|vlc|video|iptv/.test(value)) return 'assets/video.png';
-  if (/tools|amlogic|adb|strument/i.test(value + ' ' + category)) return 'assets/tv-settings.png';
-  return 'assets/android-os.png';
+  return appMonogram(name);
+}
+function appMonogram(name) {
+  const words = String(name || 'App').replace(/[^a-zA-Z0-9 ]/g, ' ').trim().split(/\s+/);
+  const initials = words.slice(0, 2).map(word => word[0] || '').join('').toUpperCase() || 'APP';
+  let hash = 0;
+  for (const char of String(name)) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  const hue = hash % 360;
+  return 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="20" fill="hsl(${hue},55%,30%)"/><text x="48" y="50" dominant-baseline="middle" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="32" fill="white">${initials}</text></svg>`);
 }
 function resolveAppIcon(icon, name, category) {
-  if (!icon || /(?:nello|downloads)\.png(?:\?.*)?$/.test(icon)) return appFallbackIcon(name, category);
+  if (!icon || /(?:nello|downloads|android-os|tv-settings|proxy|video)\.png(?:\?.*)?$/.test(icon)) return appFallbackIcon(name, category);
   return icon;
 }
 function recoverAppIcon(img) {
-  img.onerror = null;
+  if (img.dataset.recovered) { img.onerror = null; img.src = appMonogram(img.alt); return; }
+  img.dataset.recovered = 'true';
   img.src = appFallbackIcon(img.alt);
 }
 document.addEventListener('DOMContentLoaded', () => {
+  const labels = ['Guide', 'Veloce', 'Tema', 'Notifiche', 'Admin', 'Aggiungi app', 'Statistiche', 'Esci'];
+  document.querySelectorAll('.header-actions .icon-btn').forEach((button, index) => { if (labels[index]) button.textContent = labels[index]; });
+  document.querySelector('.header-actions button').onclick = () => {
+    const guides = document.getElementById('catalog-guides');
+    guides.open = true;
+    guides.scrollIntoView({ block: 'start' });
+  };
   document.querySelectorAll('#upload-modal input:not([type="hidden"]):not([type="file"])').forEach(input => {
     const label = document.createElement('label');
     label.className = 'field-label';
@@ -1305,6 +1333,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         const filterContainer = document.getElementById('categoryFilters');
+        const categorySelect = document.getElementById('catalogCategory');
+        categorySelect.replaceChildren(new Option('Tutte le categorie', 'Tutte'));
+        Array.from(categories).sort().forEach(cat => categorySelect.add(new Option(cat, cat)));
+        categorySelect.value = currentCategory;
         filterContainer.innerHTML = `<button class="filter-btn ${currentCategory === 'Tutte' ? 'active' : ''}" onclick="setCategory('Tutte')">Tutte</button>`;
         
         const datalist = document.getElementById('categoryList');
@@ -1346,10 +1378,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if(currentFiltered.length === 0) {
+            document.getElementById('catalog-count').textContent = 'Nessun risultato. Prova un altro nome o scegli Tutte le categorie.';
             main.innerHTML = '<div style="width:100%;text-align:center;padding:40px;color:var(--text-muted);">Nessuna app trovata.</div>';
             return;
         }
 
+        document.getElementById('catalog-count').textContent = `${currentFiltered.length} app disponibili`;
         loadMoreCards();
     };
 
