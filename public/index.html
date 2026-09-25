@@ -5,17 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Il Covo di Nello — App Fire TV &amp; Android TV</title>
 <meta name="description" content="Il Covo di Nello: catalogo APK aggiornato per Amazon Fire TV Stick e Android TV. Download diretto, aggiornamenti automatici, guide e tutorial.">
-<meta name="theme-color" content="#0a0a0f">
+<meta name="theme-color" content="#073b94">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Covo Nello">
 <meta property="og:title" content="Il Covo di Nello — App Fire TV & Android TV">
 <meta property="og:description" content="Catalogo APK aggiornato per Fire TV Stick e Android TV. Download diretto con codici Downloader.">
 <meta property="og:image" content="assets/nello.png">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="assets/nello.png">
-<link rel="apple-touch-icon" href="assets/nello.png">
+<link rel="icon" type="image/png" href="assets/covo-icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/covo-icon-180.png">
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
+[hidden] { display: none !important; }
 :root {
   --neon-purple: #a855f7;
   --neon-cyan: #22d3ee;
@@ -642,9 +645,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     <a href="/dashboard" class="icon-btn admin-only" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" title="Dashboard">📊</a>
     <button id="logout-btn" class="icon-btn admin-only" onclick="logoutAdmin()" title="Esci dall'Amministrazione">🔓</button>
   </div>
-  <img src="assets/nello.png" alt="Nello">
+  <img src="assets/covo-icon-192.png" alt="Il Covo di Nello">
   <h1>Il Covo di Nello</h1>
 </header>
+<div style="max-width:640px;margin:12px auto;padding:0 16px;text-align:center;">
+  <button id="install-app" class="catalog-guide-link" style="margin-bottom:8px;" hidden>Installa Il Covo di Nello</button>
+  <p id="install-help" style="font-size:14px;color:#526475;" hidden></p>
+</div>
+<script src="/install.js" defer></script>
 
 <section class="catalog-intro" aria-labelledby="catalog-title">
   <h2 id="catalog-title">App per Fire TV e Android TV</h2>
