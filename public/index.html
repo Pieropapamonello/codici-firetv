@@ -1147,6 +1147,27 @@ function catalogFamily(name) {
   }
   return String(name || 'Altre app').replace(/\bv?\d+(?:\.\d+)+(?:[-.]rc[.-]?\d+)?\b/gi, '').replace(/\s+/g, ' ').trim();
 }
+function apkDescription(name, description = '') {
+  if (!/stremio/i.test(name)) return description || 'Apri il download di questa app.';
+  if (/proxy|mpd/i.test(name)) return 'Strumento aggiuntivo per i flussi video: non è l’app Stremio da installare per guardare i contenuti.';
+  const mobile = /mobile/i.test(name);
+  const tv = /\btv\b|fire\s*tv/i.test(name);
+  const mod = /\bmod\b/i.test(name);
+  const beta = /beta|\brc[.\s-]/i.test(name);
+  const bit64 = /arm64|aarch64|64\s*bit|x86_64/i.test(name);
+  const bit32 = !bit64 && /\barm\b|32\s*bit/i.test(name);
+  const knownMod32 = /^(Stremio TV Mod|Stremio Mobile Mod)$/i.test(name.trim());
+  const architecture = bit64 ? '64 bit: richiede un sistema compatibile a 64 bit.'
+      : bit32 || knownMod32 ? 'ARM 32 bit: per dispositivi con supporto alle app ARM a 32 bit.'
+      : 'Controlla l’architettura richiesta nella pagina di download.';
+  const device = mobile ? 'Per smartphone e tablet Android, con comandi touch. Non è la versione per il telecomando.'
+      : tv ? 'Per Android TV / Fire TV compatibili, con interfaccia per telecomando.'
+      : 'Verifica il dispositivo supportato nella pagina di download.';
+  const channel = mod ? 'Mod non ufficiale: build modificata della community, alternativa all’app ufficiale.'
+      : beta ? 'Beta / RC: versione di prova, può avere problemi; scegli la stabile per l’uso quotidiano.'
+      : 'Versione ufficiale stabile per organizzare e riprodurre contenuti tramite componenti aggiuntivi.';
+  return `${device} ${architecture} ${channel}`;
+}
 function openFamilyGuide(family) {
   const container = document.getElementById('catalog-guides');
   container.open = true;
@@ -1375,8 +1396,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Applica grouping varianti (Stremio 1.10 / 1.9 / Beta → 1 card)
       // Keep every architecture/version visible; group visually without discarding entries.
       allAppsData.sort((a, b) => {
-        const af = catalogFamily(a.name), bf = catalogFamily(b.name);
-        return (af === bf ? 0 : af === 'Stremio' ? -1 : bf === 'Stremio' ? 1 : af.localeCompare(bf, 'it')) || a.name.localeCompare(b.name, 'it', { numeric: true });
+        const af = a.category || 'Altro', bf = b.category || 'Altro';
+        return af.localeCompare(bf, 'it') || a.name.localeCompare(b.name, 'it', { numeric: true });
       });
       window._notifyAppsData = allAppsData;
 
@@ -1797,13 +1818,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ${controlsHtml}
         <a class="download-row" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">
           <img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}">
-          <span class="download-label">${escapeHtml(name)}${displayCode ? `<small>Codice Downloader: ${escapeHtml(displayCode)}</small>` : ''}</span>
+          <span class="download-label">${escapeHtml(name)}<small>${escapeHtml(apkDescription(name, desc))}</small>${displayCode ? `<small>Codice Downloader: ${escapeHtml(displayCode)}</small>` : ''}</span>
         </a>
         ${clickHtml}
         ${timeBadgeHtml}
       `;
       
-      const family = catalogFamily(name);
+      const family = category || 'Altro';
       let frame = [...main.querySelectorAll('.app-family')].find(el => el.dataset.family === family);
       if (!frame) {
           frame = document.createElement('section');
@@ -1815,13 +1836,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const list = document.createElement('div');
           list.className = 'family-apps';
           frame.append(heading, list);
-          if (['Stremio', 'Kodi'].includes(family)) {
-              const tutorial = document.createElement('button');
-              tutorial.className = 'family-guide';
-              tutorial.textContent = '▶ Guida ' + family;
-              tutorial.onclick = () => openFamilyGuide(family);
-              frame.append(tutorial);
-          }
           main.append(frame);
       }
       frame.querySelector('.family-apps').append(newCard);
@@ -2245,24 +2259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 800);
   }
 
-  // --- Onboarding tour (prima visita) ---
-  if (!localStorage.getItem('tour_done')) {
-    setTimeout(() => {
-      if (window.Telegram?.WebApp?.initData) return; // skip dentro Telegram
-      const steps = [
-        '👋 Benvenuto in Il Covo di Nello!\n\nTrovi qui APK e codici Downloader per Fire TV e Android TV.',
-        '🔍 Usa la barra in alto per cercare app o filtra per categoria.\nIl bottone 📚 in alto a destra apre le guide.',
-        '🔔 Tocca la campana per iscriverti alle notifiche (email o Telegram) — ricevi avviso quando esce una nuova versione delle tue app preferite.'
-      ];
-      let i = 0;
-      const showNext = () => {
-        if (i >= steps.length) { localStorage.setItem('tour_done', '1'); return; }
-        if (confirm(steps[i] + '\n\nContinua?')) { i++; showNext(); }
-        else localStorage.setItem('tour_done', '1');
-      };
-      showNext();
-    }, 1500);
-  }
+  // No automatic onboarding: guides open only on request.
 
   // --- Upload APK Modal ---
   let uploadSelectedFile = null;
