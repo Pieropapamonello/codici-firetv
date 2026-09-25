@@ -1240,6 +1240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script type="module">
+import { classifyCatalogEntry } from './catalog-metadata.js';
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -1385,7 +1386,7 @@ document.addEventListener('DOMContentLoaded', () => {
           };
       });
 
-      allAppsData = [...appsArray, ...softwareArray].sort((a,b) => (a.order || 0) - (b.order || 0));
+      allAppsData = [...appsArray, ...softwareArray].map(classifyCatalogEntry).sort((a,b) => (a.order || 0) - (b.order || 0));
       window._notifyAppsData = allAppsData; // Expose for notify modal
       window._allAppsRaw = allAppsData;
 
@@ -1396,7 +1397,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Applica grouping varianti (Stremio 1.10 / 1.9 / Beta → 1 card)
       // Keep every architecture/version visible; group visually without discarding entries.
       allAppsData.sort((a, b) => {
-        const af = a.category || 'Altro', bf = b.category || 'Altro';
+        const af = a.category || 'Da identificare', bf = b.category || 'Da identificare';
+        if (af === 'Da identificare' && bf !== af) return 1;
+        if (bf === 'Da identificare' && af !== bf) return -1;
         return af.localeCompare(bf, 'it') || a.name.localeCompare(b.name, 'it', { numeric: true });
       });
       window._notifyAppsData = allAppsData;
@@ -1578,7 +1581,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const code = document.getElementById('appCode').value;
       const desc = document.getElementById('appDesc').value;
       const icon = document.getElementById('appIcon').value;
-      const category = document.getElementById('appCategory').value || 'Altro';
+      const category = document.getElementById('appCategory').value || 'Da identificare';
       const editingKey = document.getElementById('editingKey').value;
       
       if(!name || !code) return alert("Inserisci almeno Nome e Codice!");
@@ -1741,8 +1744,8 @@ document.addEventListener('DOMContentLoaded', () => {
           {name: "Vimu Installer", code: "3188516", desc: "Installa Vimu", icon: "assets/downloads.png", category: "Strumenti"},
           {name: "Xrom Lite", code: "3271802", desc: "Versione leggera", icon: "assets/android-file.png", category: "Launcher"},
           {name: "Xrom Nuovo", code: "2306309", desc: "Nuova versione", icon: "assets/android-new.png", category: "Launcher"},
-          {name: "Tutti i File", code: "730116", desc: "Archivio completo", icon: "assets/folder-invoices.png", category: "Altro"},
-          {name: "Archivio completo / Altri", code: "250931", desc: "Raccolta link e file", icon: "assets/star.png", category: "Altro"}
+          {name: "Tutti i File", code: "730116", desc: "Archivio completo", icon: "assets/folder-invoices.png", category: "Archivi di download"},
+          {name: "Archivio completo / Altri", code: "250931", desc: "Raccolta link e file", icon: "assets/star.png", category: "Archivi di download"}
       ];
       
       defaults.forEach((app, index) => {
@@ -1824,7 +1827,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ${timeBadgeHtml}
       `;
       
-      const family = category || 'Altro';
+      const family = category || 'Da identificare';
       let frame = [...main.querySelectorAll('.app-family')].find(el => el.dataset.family === family);
       if (!frame) {
           frame = document.createElement('section');
