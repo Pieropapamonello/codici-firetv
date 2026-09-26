@@ -613,6 +613,7 @@ body.is-admin .card { cursor: default; }
 a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible, input:focus-visible, select:focus-visible { outline: 4px solid #e79b00 !important; outline-offset: 4px; box-shadow: 0 0 0 7px #fff !important; }
 @media(max-width: 650px) { .app-family { padding: 16px; } }
 </style>
+<link rel="stylesheet" href="/nello-theme.css">
 </head>
 <body>
 
@@ -645,8 +646,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     <a href="/dashboard" class="icon-btn admin-only" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;" title="Dashboard">📊</a>
     <button id="logout-btn" class="icon-btn admin-only" onclick="logoutAdmin()" title="Esci dall'Amministrazione">🔓</button>
   </div>
-  <img src="assets/covo-icon-192.png" alt="Il Covo di Nello">
+  <img src="assets/nello.png" alt="Nello, il nostro cane con il cappellino arancione" width="264" height="307">
   <h1>Il Covo di Nello</h1>
+  <p class="nello-tagline">Il tuo angolo di app, con la zampa di Nello.</p>
 </header>
 <div style="max-width:640px;margin:12px auto;padding:0 16px;text-align:center;">
   <button id="install-app" class="catalog-guide-link" style="margin-bottom:8px;" hidden>Installa Il Covo di Nello</button>
@@ -656,7 +658,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 
 <section class="catalog-intro" aria-labelledby="catalog-title">
   <h2 id="catalog-title">App per Fire TV e Android TV</h2>
-  <p>Premi sul pulsante blu con il nome dell’app per scaricarla.</p>
+  <p>Scegli un’app per scaricarla. Copia il codice o condividi la sua scheda con un amico.</p>
   <div class="catalog-help"><strong>Su Fire TV?</strong> Apri Downloader e inserisci il codice riportato nella scheda.<br>Da telefono o computer, usa il pulsante <strong>Scarica</strong>.</div>
 </section>
 
@@ -1241,6 +1243,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script type="module">
 import { classifyCatalogEntry } from './catalog-metadata.js';
+import { downloaderCode, attachAppActions } from './app-sharing.js';
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -1481,14 +1484,40 @@ import { classifyCatalogEntry } from './catalog-metadata.js';
 
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 
+        const sharedId = new URL(location.href).searchParams.get('app');
+        let sharedNotice = document.getElementById('shared-app-notice');
+        if (!sharedNotice) {
+            sharedNotice = document.createElement('div');
+            sharedNotice.id = 'shared-app-notice';
+            sharedNotice.className = 'shared-app-notice';
+            main.before(sharedNotice);
+        }
+        sharedNotice.replaceChildren();
+        sharedNotice.hidden = !sharedId;
+        if (sharedId) {
+            const label = document.createElement('p');
+            label.textContent = 'Stai guardando una singola app condivisa.';
+            const back = document.createElement('button');
+            back.className = 'app-action';
+            back.textContent = 'Mostra tutte le app';
+            back.onclick = () => {
+                const url = new URL(location.href); url.searchParams.delete('app');
+                history.replaceState(null, '', url);
+                document.getElementById('searchInput').value = '';
+                currentCategory = 'Tutte';
+                updateCategoryFilters(); renderApps();
+            };
+            sharedNotice.append(label, back);
+        }
         currentFiltered = allAppsData.filter(app => {
+            if (sharedId) return `${app.type}:${app.id}` === sharedId;
             const matchesSearch = app.name.toLowerCase().includes(searchTerm) || (app.desc && app.desc.toLowerCase().includes(searchTerm));
             const matchesCategory = currentCategory === 'Tutte' || app.category === currentCategory;
             return matchesSearch && matchesCategory;
         });
 
         if(currentFiltered.length === 0) {
-            document.getElementById('catalog-count').textContent = 'Nessun risultato. Prova un altro nome o scegli Tutte le categorie.';
+            document.getElementById('catalog-count').textContent = sharedId ? 'Scheda non disponibile o ancora in caricamento. Puoi aprire il catalogo completo.' : 'Nessun risultato. Prova un altro nome o scegli Tutte le categorie.';
             main.innerHTML = '<div style="width:100%;text-align:center;padding:40px;color:var(--text-muted);">Nessuna app trovata.</div>';
             return;
         }
@@ -1754,6 +1783,7 @@ import { classifyCatalogEntry } from './catalog-metadata.js';
   }
 
   function createAppCard(name, code, desc, firebaseKey, iconPath, timestamp, clicks, category, type = 'apps') {
+      code = String(code || '');
       let link = code;
 
       if(code.match(/^\d+$/)) {
@@ -1770,7 +1800,8 @@ import { classifyCatalogEntry } from './catalog-metadata.js';
       
       const finalIcon = resolveAppIcon(iconPath, name, category);
       
-      const displayCode = (code.startsWith('http') || code.startsWith('/')) ? '' : code;
+      const shareApp = { ...window._currentApp, id: firebaseKey, type, name, code, desc: apkDescription(name, desc) };
+      const displayCode = downloaderCode(shareApp);
       const displayDesc = [displayCode, desc].filter(Boolean).join(' — ');
 
       const badgeHtml = '';
@@ -1821,8 +1852,13 @@ import { classifyCatalogEntry } from './catalog-metadata.js';
         ${controlsHtml}
         <a class="download-row" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">
           <img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}">
-          <span class="download-label">${escapeHtml(name)}<small>${escapeHtml(apkDescription(name, desc))}</small>${displayCode ? `<small>Codice Downloader: ${escapeHtml(displayCode)}</small>` : ''}</span>
+          <span class="download-label">${escapeHtml(name)}<small>${escapeHtml(apkDescription(name, desc))}</small><span class="download-hint">↓ Scarica app</span></span>
         </a>
+        <div class="app-actions">
+          ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : '<span class="no-downloader-code">Download tramite link · codice non disponibile</span>'}
+          <button type="button" class="app-action share-app" aria-label="Condividi ${escapeHtml(name)}">↗ Condividi app</button>
+        </div>
+        <p class="app-action-status" role="status" aria-live="polite"></p>
         ${clickHtml}
         ${timeBadgeHtml}
       `;
@@ -1842,6 +1878,7 @@ import { classifyCatalogEntry } from './catalog-metadata.js';
           main.append(frame);
       }
       frame.querySelector('.family-apps').append(newCard);
+      attachAppActions(newCard, shareApp, location.origin);
       
       newCard.addEventListener('click', (e)=>{ 
         if(e.target.closest('button') || e.target.closest('a')) return;

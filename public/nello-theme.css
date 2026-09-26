@@ -1,0 +1,39 @@
+/* Nello: orange cap, charcoal coat and a quiet warm background. */
+:root, body.light-theme { --neon-purple: #a63813; --neon-cyan: #b64019; --text: #262321; --text-muted: #68594f; }
+body, body.light-theme, body.lite-mode { background: #fff9f3; color: #262321; }
+header { box-sizing: border-box; width: calc(100% - 32px); max-width: 780px; margin: 0 auto; padding: 20px 0 4px; text-align: center; }
+.header-actions { position: static; float: none; max-width: none; justify-content: center; margin: 0 auto 22px; }
+header > img, body.lite-mode header > img { width: 142px; height: 165px; object-fit: contain; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+header > img:hover { transform: none; box-shadow: none; }
+header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-serif; font-size: clamp(28px,5vw,40px); text-shadow: none; margin: 8px 0; }
+.nello-tagline { color: #795342; font-size: 15px; margin: 0 0 16px; }
+.catalog-intro { max-width: 780px; box-sizing: border-box; margin-inline: auto; padding: 12px 16px; }
+.catalog-intro h2 { border-color: #dc673d; font-size: clamp(19px,3vw,25px); text-transform: none; }
+.catalog-help { background: #fff0e2; border-left-color: #b64019; }
+.controls-bar { width: calc(100% - 32px); max-width: 740px; margin-inline: auto; padding: 12px 0; }
+#main-content { width: calc(100% - 32px); max-width: 740px; min-width: 0; margin: 20px auto 40px; padding: 0; align-items: stretch; }
+.app-family { box-sizing: border-box; width: 100%; min-width: 0; padding: 22px; border: 1px solid #dfcabc; border-top: 4px solid #ce5730; border-radius: 18px; background: #fff; box-shadow: 0 5px 18px #4b2d1510; }
+.app-family h3 { color: #493022; font-size: 20px; }
+.family-apps { gap: 20px; }
+.download-row { border: 1px solid #403c39; border-left: 5px solid #ef8457; background: #282625; border-radius: 12px; color: #fff; min-height: 110px; padding: 18px; }
+.download-row:hover, .download-row:focus-visible { background: #40332b; }
+.download-row small { color: #eee1d6; font-size: 14px; line-height: 1.6; margin-top: 7px; }
+.download-row img { padding: 3px; background: white; border-radius: 10px; }
+.download-hint { display: block; color: #ffc59b; font-size: 13px; margin-top: 10px; }
+.app-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 10px 0 0; }
+.app-action { min-height: 48px; padding: 10px 14px; border: 1px solid #ae4926; border-radius: 10px; background: #fff5eb; color: #813014; font: 600 14px 'Inter',sans-serif; cursor: pointer; }
+.app-action:hover { background: #ffe3cc; }
+.copy-app-code strong { margin-left: 5px; letter-spacing: 1px; }
+.no-downloader-code { flex: 1 1 180px; color: #77685d; font-size: 12px; }
+.app-action-status { font-size: 13px; color: #295e36; margin: 6px 0 0; }
+.app-action-status:empty { display: none; }
+.shared-app-notice { max-width: 740px; width: calc(100% - 32px); box-sizing: border-box; margin: 16px auto; padding: 16px; text-align: center; border: 1px solid #dfcabc; border-radius: 12px; background: #fff0e2; }
+.shared-app-notice[hidden] { display: none; }
+.share-copy-text { box-sizing: border-box; width: 100%; min-height: 220px; padding: 12px; margin: 12px 0; color: #262321; background: white; font-size: 16px; }
+.catalog-guide-link, .family-guide { color: #813014; border-color: #b64019; background: #fff5eb; }
+.advanced-guides h2 { color: #813014; }
+@media(max-width: 500px) {
+  .app-family { padding: 14px; }
+  .download-row { padding: 13px; gap: 12px; font-size: 16px; }
+  .app-action { flex: 1 1 auto; }
+}
