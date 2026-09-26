@@ -1192,10 +1192,20 @@ function appMonogram(name) {
   return 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><rect width="96" height="96" rx="20" fill="hsl(${hue},55%,30%)"/><text x="48" y="50" dominant-baseline="middle" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="32" fill="white">${initials}</text></svg>`);
 }
 function resolveAppIcon(icon, name, category) {
+  if (window.catalogIconRegistry) return window.catalogIconRegistry.resolve(name);
   if (!icon || /(?:nello|downloads|android-os|tv-settings|proxy|video)\.png(?:\?.*)?$/.test(icon)) return appFallbackIcon(name, category);
   return icon;
 }
 function recoverAppIcon(img) {
+  if (window.catalogIconRegistry) {
+    window.catalogIconRegistry.fail(img.alt);
+    document.querySelectorAll('img[onerror]').forEach(other => {
+      if (window.catalogIconFamily(other.alt) !== window.catalogIconFamily(img.alt)) return;
+      other.onerror = null;
+      other.src = window.catalogIconRegistry.resolve(other.alt);
+    });
+    return;
+  }
   if (img.dataset.recovered) { img.onerror = null; img.src = appMonogram(img.alt); return; }
   img.dataset.recovered = 'true';
   img.src = appFallbackIcon(img.alt);
@@ -1243,6 +1253,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script type="module">
 import { classifyCatalogEntry } from './catalog-metadata.js';
+import { createIconRegistry, iconFamily } from './catalog-icons.js';
+window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -1390,6 +1402,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       });
 
       allAppsData = [...appsArray, ...softwareArray].map(classifyCatalogEntry).sort((a,b) => (a.order || 0) - (b.order || 0));
+      window.catalogIconRegistry = createIconRegistry(allAppsData);
       window._notifyAppsData = allAppsData; // Expose for notify modal
       window._allAppsRaw = allAppsData;
 
