@@ -20,6 +20,10 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 .app-family { box-sizing: border-box; width: 100%; min-width: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 .app-family h3 { color: #493022; font-size: 20px; }
 .family-apps { gap: 14px; }
+.variant-field { margin-top: 16px; }
+.variant-field label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #493022; }
+.variant-select { box-sizing: border-box; width: 100%; min-height: 50px; padding: 12px; border: 1px solid #bfa38f; border-radius: 8px; color: #262321; background: #fff9f3; font: 14px 'Inter',sans-serif; text-overflow: ellipsis; }
+#main-content .variant-pending .app-actions, #main-content .variant-pending .admin-controls { display: none !important; }
 #main-content .card, body.lite-mode #main-content .card, body.light-theme #main-content .card { box-sizing: border-box; padding: 20px; border: 1px solid #e4d9cf !important; border-radius: 14px; background: #fff !important; box-shadow: none !important; transform: none !important; backdrop-filter: none; cursor: default; }
 .download-row { align-items: flex-start; border: 0; background: transparent; border-radius: 0; color: #262321; min-height: 0; padding: 0; }
 .download-row:hover { background: transparent; color: #262321; }

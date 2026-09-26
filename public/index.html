@@ -1266,6 +1266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 import { classifyCatalogEntry } from './catalog-metadata.js';
 import { variantDescription } from './app-variants.js';
 import { catalogAliases } from './catalog-aliases.js';
+import { groupCatalog, appGroupKey } from './catalog-groups.js';
 import { createIconRegistry, iconFamily } from './catalog-icons.js';
 window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
@@ -1537,12 +1538,14 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
             };
             sharedNotice.append(label, back);
         }
-        currentFiltered = allAppsData.filter(app => {
-            if (sharedId) return `${app.type}:${app.id}` === sharedId;
+        const sharedApp = allAppsData.find(app => `${app.type}:${app.id}` === sharedId);
+        const matchingApps = allAppsData.filter(app => {
+            if (sharedId) return sharedApp && appGroupKey(app) === appGroupKey(sharedApp);
             const matchesSearch = app.name.toLowerCase().includes(searchTerm) || (app.desc && app.desc.toLowerCase().includes(searchTerm));
             const matchesCategory = currentCategory === 'Tutte' || app.category === currentCategory;
             return matchesSearch && matchesCategory;
         });
+        currentFiltered = groupCatalog(matchingApps).map(group => ({ ...group, selectedId: sharedId }));
 
         if(currentFiltered.length === 0) {
             document.getElementById('catalog-count').textContent = sharedId ? 'Scheda non disponibile o ancora in caricamento. Puoi aprire il catalogo completo.' : 'Nessun risultato. Prova un altro nome o scegli Tutte le categorie.';
@@ -1550,7 +1553,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
             return;
         }
 
-        document.getElementById('catalog-count').textContent = `${currentFiltered.length} app disponibili`;
+        document.getElementById('catalog-count').textContent = `${currentFiltered.length} app · ${matchingApps.length} versioni disponibili`;
         loadMoreCards();
     };
 
@@ -1558,10 +1561,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
         if (isLoadingMore || renderedCount >= currentFiltered.length) return;
         isLoadingMore = true;
         const batch = currentFiltered.slice(renderedCount, renderedCount + PAGE_SIZE);
-        batch.forEach(app => {
-            window._currentApp = app;
-            createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
-        });
+        batch.forEach(group => renderAppGroup(group));
         renderedCount += batch.length;
         document.getElementById('catalog-more').hidden = renderedCount >= currentFiltered.length;
         isLoadingMore = false;
@@ -1569,7 +1569,8 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
     document.getElementById('catalog-more').onclick = () => {
         const previous = renderedCount;
         loadMoreCards();
-        document.querySelectorAll('#main-content .app-download')[previous]?.focus();
+        const card = document.querySelectorAll('#main-content .card')[previous];
+        (card?.querySelector('.variant-select') || card?.querySelector('.app-download'))?.focus();
     };
 
     window.addEventListener('scroll', () => {
@@ -1810,6 +1811,44 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       });
   }
 
+  function renderAppGroup(group) {
+      let currentCard;
+      const multiple = group.variants.length > 1;
+      const initial = group.variants.find(app => `${app.type}:${app.id}` === group.selectedId);
+      const draw = (selected, restoreFocus = false) => {
+          const app = selected || group.variants[0];
+          window._currentApp = app;
+          const card = createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
+          if (multiple) {
+              card.querySelector('.download-label strong').textContent = group.name;
+              const field = document.createElement('div');
+              field.className = 'variant-field';
+              const label = document.createElement('label');
+              label.textContent = `Scegli la versione (${group.variants.length} disponibili)`;
+              const select = document.createElement('select');
+              select.className = 'variant-select';
+              select.id = `variant-${app.type}-${group.variants[0].id}`;
+              label.htmlFor = select.id;
+              const placeholder = new Option('Seleziona dispositivo, versione e architettura…', '');
+              placeholder.disabled = true;
+              select.append(placeholder);
+              group.variants.forEach(variant => select.append(new Option(variant.name, `${variant.type}:${variant.id}`)));
+              select.value = selected ? `${selected.type}:${selected.id}` : '';
+              if (!selected) {
+                  card.classList.add('variant-pending');
+                  card.querySelector('.download-label small').textContent = 'Tutte le varianti in una sola scheda. Scegli quella compatibile con il tuo dispositivo per vedere dettagli, download e codice.';
+              }
+              select.addEventListener('change', () => draw(group.variants.find(variant => `${variant.type}:${variant.id}` === select.value), true));
+              field.append(label, select);
+              card.querySelector('.download-row').after(field);
+          }
+          if (currentCard) currentCard.replaceWith(card);
+          currentCard = card;
+          if (restoreFocus) card.querySelector('.variant-select')?.focus();
+      };
+      draw(initial || (multiple ? null : group.variants[0]));
+  }
+
   function createAppCard(name, code, desc, firebaseKey, iconPath, timestamp, clicks, category, type = 'apps') {
       code = String(code || '');
       let link = code;
@@ -1919,6 +1958,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
           newCard.classList.remove('dragging');
           if(document.body.classList.contains('is-admin')) window.saveOrder();
       });
+      return newCard;
   }
   
   const mainContainer = document.getElementById('main-content');
