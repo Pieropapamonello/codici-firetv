@@ -649,7 +649,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
   <img src="assets/nello.png" alt="Nello, il nostro cane con il cappellino arancione" width="264" height="307">
   <h1>Il Covo di Nello</h1>
   <p class="nello-tagline">Il tuo angolo di app, con la zampa di Nello.</p>
+  <button id="bookmark-site" type="button" class="app-action" aria-expanded="false" aria-controls="bookmark-site-help">☆ Aggiungi ai preferiti</button>
+  <div id="bookmark-site-help" class="bookmark-site-help" hidden>
+    <p>Il browser richiede che sia tu a confermare il salvataggio:</p>
+    <ul>
+      <li><strong>Computer:</strong> premi Ctrl + D (su Mac, ⌘ + D).</li>
+      <li><strong>Telefono:</strong> apri il menu del browser o Condividi e scegli «Aggiungi ai preferiti» o «Aggiungi segnalibro».</li>
+      <li><strong>Fire TV / Downloader:</strong> usa l’opzione per aggiungere ai preferiti nel menu del browser, se disponibile.</li>
+    </ul>
+    <p>Per ritrovare il Covo in Downloader: <strong>7274133</strong>.</p>
+  </div>
 </header>
+<script src="/bookmark-site.js" defer></script>
 <div style="max-width:640px;margin:12px auto;padding:0 16px;text-align:center;">
   <button id="install-app" class="catalog-guide-link" style="margin-bottom:8px;" hidden>Installa Il Covo di Nello</button>
   <p id="install-help" style="font-size:14px;color:#526475;" hidden></p>
