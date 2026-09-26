@@ -44,7 +44,7 @@ export async function copyAppText(text) {
     label.textContent = 'Copia automatica non disponibile. Seleziona e copia questo testo:';
     const area = document.createElement('textarea');
     area.className = 'share-copy-text';
-    area.setAttribute('aria-label', 'Nome, descrizione, codice e link dell’app');
+    area.setAttribute('aria-label', 'Testo da copiare');
     area.readOnly = true;
     area.value = text;
     const close = document.createElement('button');
@@ -75,15 +75,6 @@ export function attachAppActions(card, app, origin) {
     if (await copyAppText(text)) status.textContent = 'Copiati nome, descrizione, codice e link.';
   });
   card.querySelector('.share-app').addEventListener('click', async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: app.name, text });
-        status.textContent = 'Condivisione completata.';
-        return;
-      } catch (error) {
-        if (error.name === 'AbortError') return;
-      }
-    }
-    if (await copyAppText(text)) status.textContent = 'Link e dettagli copiati: incollali nella chat del tuo amico.';
+    if (await copyAppText(appShareUrl(app, origin))) status.textContent = 'Link copiato.';
   });
 }

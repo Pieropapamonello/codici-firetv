@@ -12,16 +12,19 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 .catalog-help { background: #fff0e2; border-left-color: #b64019; }
 .controls-bar { width: calc(100% - 32px); max-width: 740px; margin-inline: auto; padding: 12px 0; }
 #main-content { width: calc(100% - 32px); max-width: 740px; min-width: 0; margin: 20px auto 40px; padding: 0; align-items: stretch; }
-.app-family { box-sizing: border-box; width: 100%; min-width: 0; padding: 22px; border: 1px solid #dfcabc; border-top: 4px solid #ce5730; border-radius: 18px; background: #fff; box-shadow: 0 5px 18px #4b2d1510; }
+.app-family { box-sizing: border-box; width: 100%; min-width: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 .app-family h3 { color: #493022; font-size: 20px; }
-.family-apps { gap: 20px; }
-.download-row { border: 1px solid #403c39; border-left: 5px solid #ef8457; background: #282625; border-radius: 12px; color: #fff; min-height: 110px; padding: 18px; }
-.download-row:hover, .download-row:focus-visible { background: #40332b; }
-.download-row small { color: #eee1d6; font-size: 14px; line-height: 1.6; margin-top: 7px; }
+.family-apps { gap: 14px; }
+#main-content .card, body.lite-mode #main-content .card, body.light-theme #main-content .card { box-sizing: border-box; padding: 20px; border: 1px solid #e4d9cf !important; border-radius: 14px; background: #fff !important; box-shadow: none !important; transform: none !important; backdrop-filter: none; cursor: default; }
+.download-row { align-items: flex-start; border: 0; background: transparent; border-radius: 0; color: #262321; min-height: 0; padding: 0; }
+.download-row:hover { background: transparent; color: #262321; }
+.download-row small { color: #625d57; font-size: 14px; line-height: 1.6; margin-top: 6px; }
 .download-row img { padding: 3px; background: white; border-radius: 10px; }
 .download-hint { display: block; color: #ffc59b; font-size: 13px; margin-top: 10px; }
-.app-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 10px 0 0; }
-.app-action { min-height: 48px; padding: 10px 14px; border: 1px solid #ae4926; border-radius: 10px; background: #fff5eb; color: #813014; font: 600 14px 'Inter',sans-serif; cursor: pointer; }
+.app-actions { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 8px; padding: 16px 0 0; }
+.app-action { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; min-height: 48px; padding: 10px 14px; border: 1px solid #d8cec5; border-radius: 8px; background: #fff; color: #44372e; font: 600 14px 'Inter',sans-serif; cursor: pointer; }
+.app-download { background: #aa3c17; border-color: #aa3c17; color: #fff; }
+.app-download:hover { background: #853013 !important; color: #fff; }
 .app-action:hover { background: #ffe3cc; }
 .copy-app-code strong { margin-left: 5px; letter-spacing: 1px; }
 .no-downloader-code { flex: 1 1 180px; color: #77685d; font-size: 12px; }
@@ -33,7 +36,8 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 .catalog-guide-link, .family-guide { color: #813014; border-color: #b64019; background: #fff5eb; }
 .advanced-guides h2 { color: #813014; }
 @media(max-width: 500px) {
-  .app-family { padding: 14px; }
-  .download-row { padding: 13px; gap: 12px; font-size: 16px; }
+  .app-family { padding: 0; }
+  #main-content .card { padding: 16px; }
+  .download-row { padding: 0; gap: 12px; font-size: 16px; }
   .app-action { flex: 1 1 auto; }
 }

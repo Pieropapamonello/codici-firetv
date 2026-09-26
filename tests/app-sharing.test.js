@@ -27,7 +27,7 @@ test('copied payload contains name, full description, code when present and sing
   assert.ok(!appShareText({ ...app, code: '/download/app.apk' }, 'https://example.com').includes('Codice Downloader:'));
 });
 
-test('copy and desktop sharing write complete payload; native cancellation does not copy', async () => {
+test('copy code includes details; share copies only URL and never opens native sharing', async () => {
   const original = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
   const events = {};
   const status = { textContent: '' };
@@ -40,11 +40,13 @@ test('copy and desktop sharing write complete payload; native cancellation does 
     assert.match(copied, /Test\n\nDescrizione\n\nCodice Downloader: 123456/);
     copied = '';
     await events['.share-app']();
-    assert.match(copied, /Scheda app:/);
+    assert.equal(copied, 'https://example.com/?app=apps%3Aabc');
     copied = '';
-    navigator.share = async () => { throw Object.assign(new Error('cancel'), { name: 'AbortError' }); };
+    let nativeCalled = false;
+    navigator.share = async () => { nativeCalled = true; };
     await events['.share-app']();
-    assert.equal(copied, '');
+    assert.equal(copied, 'https://example.com/?app=apps%3Aabc');
+    assert.equal(nativeCalled, false);
   } finally {
     if (original) Object.defineProperty(globalThis, 'navigator', original);
     else delete globalThis.navigator;

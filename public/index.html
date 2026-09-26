@@ -658,7 +658,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 
 <section class="catalog-intro" aria-labelledby="catalog-title">
   <h2 id="catalog-title">App per Fire TV e Android TV</h2>
-  <p>Scegli un’app per scaricarla. Copia il codice o condividi la sua scheda con un amico.</p>
+  <p>Trova la tua app: scaricala oppure copia il link per un amico.</p>
   <div class="catalog-help"><strong>Su Fire TV?</strong> Apri Downloader e inserisci il codice riportato nella scheda.<br>Da telefono o computer, usa il pulsante <strong>Scarica</strong>.</div>
 </section>
 
@@ -1541,7 +1541,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
     document.getElementById('catalog-more').onclick = () => {
         const previous = renderedCount;
         loadMoreCards();
-        document.querySelectorAll('#main-content .download-row')[previous]?.focus();
+        document.querySelectorAll('#main-content .app-download')[previous]?.focus();
     };
 
     window.addEventListener('scroll', () => {
@@ -1850,13 +1850,14 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
         ${badgeHtml}
         ${variantBadge}
         ${controlsHtml}
-        <a class="download-row" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">
+        <div class="download-row">
           <img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}">
-          <span class="download-label">${escapeHtml(name)}<small>${escapeHtml(apkDescription(name, desc))}</small><span class="download-hint">↓ Scarica app</span></span>
-        </a>
+          <span class="download-label"><strong>${escapeHtml(name)}</strong><small>${escapeHtml(apkDescription(name, desc))}</small></span>
+        </div>
         <div class="app-actions">
-          ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : '<span class="no-downloader-code">Download tramite link · codice non disponibile</span>'}
-          <button type="button" class="app-action share-app" aria-label="Condividi ${escapeHtml(name)}">↗ Condividi app</button>
+          <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">Scarica</a>
+          ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : ''}
+          <button type="button" class="app-action share-app" aria-label="Copia link di ${escapeHtml(name)}">Copia link</button>
         </div>
         <p class="app-action-status" role="status" aria-live="polite"></p>
         ${clickHtml}
@@ -1880,21 +1881,6 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       frame.querySelector('.family-apps').append(newCard);
       attachAppActions(newCard, shareApp, location.origin);
       
-      newCard.addEventListener('click', (e)=>{ 
-        if(e.target.closest('button') || e.target.closest('a')) return;
-        
-        // Incrementa contatore click
-        if(firebaseKey) {
-            import("https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js").then(({ getDatabase, ref, runTransaction }) => {
-                const db = getDatabase();
-                runTransaction(ref(db, 'apps/' + firebaseKey + '/clicks'), (currentClicks) => {
-                    return (currentClicks || 0) + 1;
-                });
-            });
-        }
-        
-        window.open(link, '_blank'); 
-      });
 
       newCard.addEventListener('dragstart', (e) => {
           e.preventDefault(); return; // Grouped catalog is ordered by app family.
