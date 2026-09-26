@@ -1264,6 +1264,8 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script type="module">
 import { classifyCatalogEntry } from './catalog-metadata.js';
+import { variantDescription } from './app-variants.js';
+import { catalogAliases } from './catalog-aliases.js';
 import { createIconRegistry, iconFamily } from './catalog-icons.js';
 window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
@@ -1413,6 +1415,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       });
 
       allAppsData = [...appsArray, ...softwareArray].map(classifyCatalogEntry).sort((a,b) => (a.order || 0) - (b.order || 0));
+      allAppsData = allAppsData.map(app => ({ ...app, desc: variantDescription(app, app.desc) }));
       window.catalogIconRegistry = createIconRegistry(allAppsData);
       window._notifyAppsData = allAppsData; // Expose for notify modal
       window._allAppsRaw = allAppsData;
@@ -1508,7 +1511,8 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
 
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
 
-        const sharedId = new URL(location.href).searchParams.get('app');
+        const requestedId = new URL(location.href).searchParams.get('app');
+        const sharedId = catalogAliases[requestedId] || requestedId;
         let sharedNotice = document.getElementById('shared-app-notice');
         if (!sharedNotice) {
             sharedNotice = document.createElement('div');

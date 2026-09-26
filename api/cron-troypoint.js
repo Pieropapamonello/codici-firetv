@@ -6,6 +6,8 @@ import { notifyAll } from "./utils/notify.js";
 import { extractVersion, compareVersions } from './utils/app-version.js';
 import { catalogMetadata } from '../public/catalog-metadata.js';
 import { parseToolbox } from './utils/toolbox-parser.js';
+import { sameDownload } from './utils/catalog-duplicates.js';
+import { nuvioReleaseName } from '../public/app-variants.js';
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -100,6 +102,7 @@ export default async function handler(req, res) {
 
         // 1. Process Scraped Data (Add new or Update existing links)
         for (const scraped of scrapedApps) {
+            scraped.name = nuvioReleaseName(scraped);
             const scrapedNameNorm = scraped.name.toLowerCase().trim();
             const scrapedBase = baseName(scraped.name);
 
@@ -116,6 +119,9 @@ export default async function handler(req, res) {
 
             let foundKey = null;
             let existingApp = null;
+            // Same product and exact artifact: aliases are not new apps.
+            // Do not overwrite its reviewed name/channel with scraper text.
+            if (Object.values(existingApps).some(val => sameDownload(val, scraped))) continue;
 
             // Trova per nome esatto O per nome base (fuzzy match)
             const entries = Object.entries(existingApps).sort(([, a], [, b]) =>

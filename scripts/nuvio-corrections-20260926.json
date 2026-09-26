@@ -1,0 +1,51 @@
+[
+  {
+    "id": "-OmB3ri-JvzvqybXN5sb",
+    "expectedName": "Nuvio TV Beta",
+    "expectedCode": "https://github.com/tapframe/NuvioTV/releases/download/0.4.3-beta/app-armeabi-v7a-release.apk",
+    "name": "Nuvio TV Beta 0.4.3 ARM 32 bit"
+  },
+  {
+    "id": "-OvTtPdABtPXRL_V8F_H",
+    "expectedName": "Nuvio TV Beta 0.2.4 Android Mobile",
+    "expectedCode": "https://github.com/NuvioMedia/NuvioMobile/releases/download/0.3.2/androidApp-full-armeabi-v7a-release.apk",
+    "name": "Nuvio Mobile 0.3.2 ARM 32 bit"
+  },
+  {
+    "id": "-OzVNhMgcwiwVsRIFbr2",
+    "expectedName": "Nuvio Beta 0.4.2 Android Mobile",
+    "expectedCode": "https://github.com/NuvioMedia/NuvioMobile/releases/download/0.4.16/androidApp-full-armeabi-v7a-release.apk",
+    "name": "Nuvio Mobile 0.4.16 ARM 32 bit"
+  },
+  {
+    "id": "-P277FCwNxexBmkKB6tj",
+    "expectedName": "Nuvio Stable 32BIT Android Mobile",
+    "expectedCode": "https://github.com/NuvioMedia/NuvioMobile/releases/download/0.4.26-beta/androidApp-full-armeabi-v7a-release.apk",
+    "name": "Nuvio Mobile Beta 0.4.26 ARM 32 bit"
+  },
+  {
+    "id": "-P277FMHtTkZrt0ohM3f",
+    "expectedName": "Nuvio Stable 64BIT Android Mobile",
+    "expectedCode": "https://github.com/NuvioMedia/NuvioMobile/releases/download/0.4.26-beta/androidApp-full-arm64-v8a-release.apk",
+    "name": "Nuvio Mobile Beta 0.4.26 ARM 64 bit"
+  },
+  {
+    "id": "-P2DLReTIaPxQ0GTCKKA",
+    "expectedName": "Nuvio TV Stable 32BIT Android TV/Fire TV",
+    "expectedCode": "https://github.com/NuvioMedia/NuvioTV/releases/download/1.0.0/app-full-armeabi-v7a-release.apk",
+    "name": "Nuvio TV Stabile 1.0.0 ARM 32 bit"
+  },
+  {
+    "id": "-P2DLRveqsuLR77vf7Vg",
+    "expectedName": "Nuvio TV Stable 64BIT Android TV",
+    "expectedCode": "https://github.com/NuvioMedia/NuvioTV/releases/download/1.0.0/app-full-arm64-v8a-release.apk",
+    "name": "Nuvio TV Stabile 1.0.0 ARM 64 bit"
+  },
+  {
+    "id": "-OvTtPRdcfo5EbhLX2db",
+    "expectedName": "Nuvio TV Beta 0.7.9 32BIT Android TV/Fire TV",
+    "expectedCode": "https://troypoint.com/stremio/",
+    "name": "Nuvio TV Beta 0.7.9 ARM 32 bit",
+    "code": "https://github.com/NuvioMedia/NuvioTV/releases/download/0.7.9-beta/app-full-armeabi-v7a-release.apk"
+  }
+]

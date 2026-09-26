@@ -1,0 +1,82 @@
+[
+  {
+    "remove": "-OmB3rr4cnDoxh8GGzou",
+    "keep": "-P2Rib_XQREWY-kJtxXw",
+    "name": "#1 Ranked TROYPOINT VPNCutting-edge release of Surfshark VPN",
+    "code": "https://downloads.surfshark.com/android/Surfshark.apk",
+    "keepName": "Surfshark VPN Cutting Edge Release",
+    "keepCode": "https://downloads.surfshark.com/android/Surfshark.apk"
+  },
+  {
+    "remove": "-OmB3s2zo2x2ifPf_K_v",
+    "keep": "-OvTtVWbI-yUiNm1O3Q7",
+    "name": "Prime Video for Non Certified Android TV BoxesMouse Toggle Required",
+    "code": "https://www.mediafire.com/file_premium/r5wun001f9kgf2r/com.amazon.avod.thirdpartyclient_3.0.395.1345-395001345_minAPI21%2528armeabi-v7a%2529%2528nodpi%2529.apk/file",
+    "keepName": "Prime Video for Non-Certified Android TV Boxes",
+    "keepCode": "https://www.mediafire.com/file_premium/r5wun001f9kgf2r/com.amazon.avod.thirdpartyclient_3.0.395.1345-395001345_minAPI21%2528armeabi-v7a%2529%2528nodpi%2529.apk/file"
+  },
+  {
+    "remove": "-OmZlWh4y8JiHzoYeaOr",
+    "keep": "-P2Ribm9LlL_e6eLUhuj",
+    "name": "Kodi 21.3 Omega Stable ReleaseFor Fire TV & Most Android TV Boxes",
+    "code": "https://mirrors.kodi.tv/releases/android/arm/kodi-21.3-Omega-armeabi-v7a.apk?https=1",
+    "keepName": "Kodi 21.3 32BIT",
+    "keepCode": "https://mirrors.kodi.tv/releases/android/arm/kodi-21.3-Omega-armeabi-v7a.apk?https=1"
+  },
+  {
+    "remove": "-OmZlX-XDcUWZdFe41oh",
+    "keep": "-OvTtNZG-tXVE2opbsU0",
+    "name": "Kodi 21.3 Omega Stable ReleaseOnly 64BIT Devices",
+    "code": "https://mirrors.kodi.tv/releases/android/arm64-v8a/kodi-21.3-Omega-arm64-v8a.apk?https=1",
+    "keepName": "Kodi 21.3 64BIT",
+    "keepCode": "https://mirrors.kodi.tv/releases/android/arm64-v8a/kodi-21.3-Omega-arm64-v8a.apk?https=1"
+  },
+  {
+    "remove": "-OmZlYmKWnqDJbIdAGE7",
+    "keep": "-P2DLST4i7HLfkkrgd72",
+    "name": "SmartTubeNext Ad-Free YouTube (Latest Beta Release)",
+    "code": "https://github.com/yuliskov/SmartTube/releases/download/latest/smarttube_beta.apk",
+    "keepName": "SmartTubeNext Beta Latest (Ad-Free YouTube)",
+    "keepCode": "https://github.com/yuliskov/SmartTube/releases/download/latest/smarttube_beta.apk"
+  },
+  {
+    "remove": "-OmZlZG18-aZcjYAVJy_",
+    "keep": "-OvTtVQY3sNks4i9cIIo",
+    "name": "Netflix for Non Certified Android TV BoxesMouse Toggle Required",
+    "code": "https://www.mediafire.com/file_premium/cedwn97aox0f1t6/com.netflix.mediaclient_6.26.1_build_15_31696-31696_minAPI21%2528armeabi-v7a%2529%2528nodpi%2529.apk/file",
+    "keepName": "Netflix for Non Certified Android TV Boxes",
+    "keepCode": "https://www.mediafire.com/file_premium/cedwn97aox0f1t6/com.netflix.mediaclient_6.26.1_build_15_31696-31696_minAPI21%2528armeabi-v7a%2529%2528nodpi%2529.apk/file"
+  },
+  {
+    "remove": "-OmZlZ_K6PxnOJ-BXVit",
+    "keep": "-OvTtML6nbvqZjwPeGje",
+    "name": "App Cloner (Latest Version)Use Download Mirror if first Download button doesn&#8217;t work.",
+    "code": "https://android.app-cloner.com/app-cloner.apk",
+    "keepName": "App Cloner Latest Release",
+    "keepCode": "https://android.app-cloner.com/app-cloner.apk"
+  },
+  {
+    "remove": "-OvTtQQEY-Fa0bzTczll",
+    "keep": "-OnuuW2flEA4D_due0ur",
+    "name": "RealStream Latest Version",
+    "code": "https://rstream.app/download/android-tv/latest",
+    "keepName": "RealStream APK",
+    "keepCode": "https://rstream.app/download/android-tv/latest"
+  },
+  {
+    "remove": "-OvTtPXyZ4CoSrthYwQ2",
+    "keep": "-P2DLRveqsuLR77vf7Vg",
+    "name": "Nuvio TV Beta 0.7.9 64BIT Android TV",
+    "code": "https://github.com/NuvioMedia/NuvioTV/releases/download/1.0.0/app-full-arm64-v8a-release.apk",
+    "keepName": "Nuvio TV Stable 64BIT Android TV",
+    "keepCode": "https://github.com/NuvioMedia/NuvioTV/releases/download/1.0.0/app-full-arm64-v8a-release.apk"
+  },
+  {
+    "remove": "-OmZlZmxLluKCu_xbE1b",
+    "keep": "-OvTtMWLUdxNWwDDG2wW",
+    "name": "Launcher Manager 1.0.4 for Android TVFor Android TV Boxes such asOnn Google TV, NVIDIA SHIELD,MECOOL, Chromecast w Google TV",
+    "code": "https://www.mediafire.com/file/no9jjayog4r55og/LM_%2528ATV%2529_-_1.0.4.apk/file",
+    "keepName": "Launcher Manager 1.0.4 for Android TV",
+    "keepCode": "https://www.mediafire.com/file_premium/no9jjayog4r55og/LM_%2528ATV%2529_-_1.0.4.apk/file"
+  }
+]
