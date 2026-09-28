@@ -1,6 +1,7 @@
 import { sourceIcons } from './source-icons.js';
 import { expandedProduct } from './expanded-products.js';
 import { expandedIcons } from './expanded-icons.js';
+import { fullCatalogIcons } from './full-catalog-icons.js';
 // Match product identity, not architecture/release labels or category.
 const products = ['Nuvio', 'Stremio', 'Kodi', 'SmartTube', 'SmartTubeNext', 'TizenTube',
   'DodoStream', 'Lumera', 'Arvio', 'Debrify', 'OnStream', 'MobiFlix', 'SStream',
@@ -62,7 +63,7 @@ function usable(icon) {
 }
 
 export function createIconRegistry(apps) {
-  const selected = new Map(Object.entries({ ...sourceIcons, ...expandedIcons, ...canonical }));
+  const selected = new Map(Object.entries({ ...sourceIcons, ...expandedIcons, ...fullCatalogIcons, ...canonical }));
   // Deterministic across Firebase order, filters and pagination. Every variant
   // gets the same chosen asset; bad imports cannot override canonical logos.
   for (const app of [...apps].sort((a, b) => String(a.icon || '').localeCompare(String(b.icon || '')))) {

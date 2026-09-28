@@ -10,7 +10,7 @@ export function nuvioReleaseName(app) {
 
 export function variantDescription(app, description) {
   const name = String(app.name || '');
-  if (!/^Nuvio\b/i.test(name)) return description;
+  if (!/^Nuvio\b/i.test(name)) return [description,app.downloadNotice].filter(Boolean).join(' ');
   const url = String(app.directUrl || app.code || '');
   const mobile = /NuvioMobile/i.test(url) || /mobile/i.test(name);
   const arch = /arm64|64\s*bit/i.test(url + ' ' + name) ? '64 bit: richiede Android ARM a 64 bit.'

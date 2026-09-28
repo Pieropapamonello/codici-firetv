@@ -1,0 +1,2484 @@
+{
+  "additions": [
+    {
+      "id": "source_14b146278770aadf0e94",
+      "app": {
+        "name": "EZV Player",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.",
+        "source": "https://downloadercodes.com/media-players/",
+        "metadataVerified": true,
+        "code": "https://drslayer.b-cdn.net/ezvplayer/ezvplayerV1.0.7.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/06/ezv-player-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/ezv-player/",
+        "sourceName": "EZV Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://drslayer.b-cdn.net/ezvplayer/ezvplayerV1.0.7.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "3577356",
+        "codeBoundUrl": "https://drslayer.b-cdn.net/ezvplayer/ezvplayerV1.0.7.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_cf2463d227ab419f55fd",
+      "app": {
+        "name": "TDUK APP Killer",
+        "category": "Pulizia e manutenzione Android",
+        "desc": "Strumento per chiudere applicazioni in background su dispositivi compatibili. Controlla i permessi richiesti e non interrompere servizi di sistema.",
+        "source": "https://downloadercodes.com/tools/",
+        "metadataVerified": true,
+        "code": "https://www.techdoctoruk.com/?sdm_process_download=1&download_id=6174",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/tduk-app-killer-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/tduk-app-killer/",
+        "sourceName": "TDUK APP Killer",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.techdoctoruk.com/?sdm_process_download=1&download_id=6174",
+        "downloadNotice": "Il collegamento apre una pagina di download, non un APK diretto.",
+        "downloadKind": "page",
+        "variantNote": "Il collegamento apre una pagina di download, non un APK diretto. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "887091",
+        "codeBoundUrl": "https://www.techdoctoruk.com/?sdm_process_download=1&download_id=6174",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_72cb44a61a58ca713c80",
+      "app": {
+        "name": "Rokkr",
+        "category": "Film e serie · Media center",
+        "desc": "Interfaccia multimediale per aprire e organizzare sorgenti configurate dall’utente. Il solo lettore non garantisce contenuti o abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "code": "https://www.rokkr.net/update/download?app=net.rokkr.browser&platform=android",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2024/09/Rokkr-Logo.png",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/browsers/rokkr/",
+        "sourceName": "Rokkr",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.rokkr.net/update/download?app=net.rokkr.browser&platform=android",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "316812",
+        "codeBoundUrl": "https://www.rokkr.net/update/download?app=net.rokkr.browser&platform=android",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_c953125275f50f8da410",
+      "app": {
+        "name": "Dezor",
+        "category": "Browser Internet",
+        "desc": "Browser per navigare sul web. La compatibilità con telecomando e siti dipende dalla versione; non è un abbonamento a contenuti video.",
+        "source": "https://downloadercodes.com/browsers/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/browsers/dezor/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/dezor-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/browsers/dezor/",
+        "sourceName": "Dezor",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.dezor.net/update/download?app=net.dezor.browser&platform=android",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "400570",
+        "codeBoundUrl": "https://downloadercodes.com/browsers/dezor/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_2a81e48229671d7091f9",
+      "app": {
+        "name": "XCIPTV PLAYER",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/com.nathnetwork_xciptv/xciptv-player-7.0.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/xciptv-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/xciptv/",
+        "sourceName": "XCIPTV PLAYER",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.nathnetwork_xciptv/xciptv-player-7.0.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "4472530",
+        "codeBoundUrl": "https://archive.org/download/com.nathnetwork_xciptv/xciptv-player-7.0.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_5649f013c0d1482893cc",
+      "app": {
+        "name": "VPN Monitor Dot",
+        "category": "VPN e indicatori connessione",
+        "desc": "Mostra un indicatore dello stato della VPN sullo schermo. Non fornisce una VPN e non cifra il traffico da solo.",
+        "source": "https://vpndot.com/",
+        "metadataVerified": true,
+        "code": "https://monitordot.com/monitordot.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/vpn-monitor-dot-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/vpn-monitor-dot/",
+        "sourceName": "VPN Monitor Dot",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://monitordot.com/monitordot.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "912985",
+        "codeBoundUrl": "https://monitordot.com/monitordot.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_d26dcdfc9645b4c78db9",
+      "app": {
+        "name": "ES File Explorer",
+        "category": "Gestione file",
+        "desc": "Esplora cartelle e gestisce file sul dispositivo Android e nelle posizioni di rete supportate.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/com.estrongs.android_pop/esfile-explorer-4.4.2.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/es-file-explorer-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/es-file-explorer/",
+        "sourceName": "ES File Explorer",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.estrongs.android_pop/esfile-explorer-4.4.2.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "3531785",
+        "codeBoundUrl": "https://archive.org/download/com.estrongs.android_pop/esfile-explorer-4.4.2.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_e6ff47b5c0c0fc972500",
+      "app": {
+        "name": "FLauncher",
+        "category": "Launcher e schermata Home",
+        "desc": "Schermata Home alternativa per organizzare e avviare le app. Le funzioni e la compatibilità dipendono dal dispositivo.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://gitlab.com/flauncher/flauncher/-/releases/0.18.0/downloads/flauncher-0.18.0.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/flauncher-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/launchers/flauncher/",
+        "sourceName": "FLauncher",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://gitlab.com/flauncher/flauncher/-/releases/0.18.0/downloads/flauncher-0.18.0.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "765814",
+        "codeBoundUrl": "https://gitlab.com/flauncher/flauncher/-/releases/0.18.0/downloads/flauncher-0.18.0.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_83285f4f7b13a4ea43d1",
+      "app": {
+        "name": "Shamel TV Pro",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://apk.shameltv.com/pro",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/shamel-tv-pro-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/shamel-tv-pro/",
+        "sourceName": "Shamel TV Pro",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://apk.shameltv.com/pro",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "1971589",
+        "codeBoundUrl": "https://apk.shameltv.com/pro",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_c888a5dae1a58ed721a6",
+      "app": {
+        "name": "MYTVOnline+",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://www.dropbox.com/scl/fi/1wuz8c95mcq34igqlukof/molplus-android-10438.apk?rlkey=0y07yp7v2cbrapw6gatjd5yjj&st=vx0ma5ao&dl=1",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/mytvonline-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/mytvonline/",
+        "sourceName": "MYTVOnline+",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.dropbox.com/scl/fi/1wuz8c95mcq34igqlukof/molplus-android-10438.apk?rlkey=0y07yp7v2cbrapw6gatjd5yjj&st=vx0ma5ao&dl=1",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "1955297",
+        "codeBoundUrl": "https://www.dropbox.com/scl/fi/1wuz8c95mcq34igqlukof/molplus-android-10438.apk?rlkey=0y07yp7v2cbrapw6gatjd5yjj&st=vx0ma5ao&dl=1",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_4e4ba35e6e6bf6eaa327",
+      "app": {
+        "name": "LTvLauncher",
+        "category": "Launcher e schermata Home",
+        "desc": "Schermata Home alternativa per organizzare e avviare le app. Le funzioni e la compatibilità dipendono dal dispositivo.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://github.com/LeanBitLab/LtvLauncher/releases/download/v3.2.2/LTvLauncher-universal-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/ltvlauncher-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/ltvlauncher/",
+        "sourceName": "LTvLauncher",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/LeanBitLab/LtvLauncher/releases/download/v3.2.2/LTvLauncher-universal-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "1225186",
+        "codeBoundUrl": "https://github.com/LeanBitLab/LtvLauncher/releases/download/v3.2.2/LTvLauncher-universal-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_6f02ba5c2fd3ffd97dee",
+      "app": {
+        "name": "Jellyfin",
+        "category": "Film e serie · Media center",
+        "desc": "Media center per organizzare e riprodurre la propria libreria e sorgenti configurate. Gli eventuali componenti aggiuntivi si installano separatamente.",
+        "source": "https://kodi.tv/about/",
+        "metadataVerified": true,
+        "code": "https://github.com/jellyfin/jellyfin-androidtv/releases/download/v0.19.7/jellyfin-androidtv-v0.19.7-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/jellyfin-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/jellyfin/",
+        "sourceName": "Jellyfin",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/jellyfin/jellyfin-androidtv/releases/download/v0.19.7/jellyfin-androidtv-v0.19.7-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "7485151",
+        "codeBoundUrl": "https://github.com/jellyfin/jellyfin-androidtv/releases/download/v0.19.7/jellyfin-androidtv-v0.19.7-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_9e334c63bae524b86926",
+      "app": {
+        "name": "OTT Navigator",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "code": "https://app.ott-nav.com/dist/std/latest.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/ott-navigator-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/ott-navigator/",
+        "sourceName": "OTT Navigator",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://app.ott-nav.com/dist/std/latest.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "982469",
+        "codeBoundUrl": "https://app.ott-nav.com/dist/std/latest.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_8f5bf168c30cc3396847",
+      "app": {
+        "name": "iMPlayer",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://www.dl.dropboxusercontent.com/s/tv2rdv8josisdll/implayer.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/implayer-iptv.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/implayer/",
+        "sourceName": "iMPlayer",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.dl.dropboxusercontent.com/s/tv2rdv8josisdll/implayer.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "277069",
+        "codeBoundUrl": "https://www.dl.dropboxusercontent.com/s/tv2rdv8josisdll/implayer.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_79fa61a2154ca0bf87d4",
+      "app": {
+        "name": "BOB Player",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://ibodesk.com/bob.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/bob-player.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/bob-player/",
+        "sourceName": "BOB Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://ibodesk.com/bob.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "624821",
+        "codeBoundUrl": "https://ibodesk.com/bob.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_349c63fe5a3134d4a1fc",
+      "app": {
+        "name": "Brave Browser",
+        "category": "Browser Internet",
+        "desc": "Browser per navigare sul web. La versione Android è progettata soprattutto per telefono e tablet.",
+        "source": "https://brave.com/",
+        "metadataVerified": true,
+        "code": "https://github.com/brave/brave-browser/releases/download/v1.88.136/Bravearm64Universal.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/brave-browser-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/brave/",
+        "sourceName": "Brave Browser",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/brave/brave-browser/releases/download/v1.88.136/Bravearm64Universal.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8403542",
+        "codeBoundUrl": "https://github.com/brave/brave-browser/releases/download/v1.88.136/Bravearm64Universal.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_8d930af9fc93fb5cc5ec",
+      "app": {
+        "name": "Happy Chick",
+        "category": "Giochi ed emulazione",
+        "desc": "Applicazione di emulazione per giochi retro. Verifica compatibilità e controller; usa soltanto giochi che sei autorizzato a utilizzare.",
+        "source": "https://downloadercodes.com/games/",
+        "metadataVerified": true,
+        "code": "https://static.xiaoji001.org/tv/xiaoji_V1.1.9.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/happy-chick-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/games/happy-chick/",
+        "sourceName": "Happy Chick",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://static.xiaoji001.org/tv/xiaoji_V1.1.9.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "170794",
+        "codeBoundUrl": "https://static.xiaoji001.org/tv/xiaoji_V1.1.9.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_40bcbdce592a1b6cf378",
+      "app": {
+        "name": "AdGuard VPN",
+        "category": "VPN",
+        "desc": "Servizio VPN che instrada la connessione attraverso i propri server. Richiede un account e può prevedere limiti o un abbonamento; non fornisce canali TV.",
+        "source": "https://downloadercodes.com/vpn/",
+        "metadataVerified": true,
+        "code": "https://agrd.io/andrtvvpn",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/adguard-vpn-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/adguard-vpn/",
+        "sourceName": "AdGuard VPN",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://agrd.io/andrtvvpn",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "715373",
+        "codeBoundUrl": "https://agrd.io/andrtvvpn",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_15ea09590c664c40b0dd",
+      "app": {
+        "name": "Private Internet Access",
+        "category": "VPN",
+        "desc": "Servizio VPN che instrada la connessione attraverso i propri server. Richiede un account e può prevedere limiti o un abbonamento; non fornisce canali TV.",
+        "source": "https://downloadercodes.com/vpn/",
+        "metadataVerified": true,
+        "code": "https://www.privateinternetaccess.com/installer/download_installer_android",
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/private-internet-access-vpn/",
+        "sourceName": "Private Internet Access",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.privateinternetaccess.com/installer/download_installer_android",
+        "downloadNotice": "Il collegamento apre una pagina di download, non un APK diretto.",
+        "downloadKind": "page",
+        "variantNote": "Il collegamento apre una pagina di download, non un APK diretto. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "48649",
+        "codeBoundUrl": "https://www.privateinternetaccess.com/installer/download_installer_android",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_731f4b1abc9ffdaff0d6",
+      "app": {
+        "name": "APKPure",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo per trovare e scaricare pacchetti Android. Controlla autore, permessi e dispositivo supportato prima dell’installazione.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/apkpure/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/apkpure-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/apkpure/",
+        "sourceName": "APKPure",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://d.apkpure.com/custom/com.apkpure.aegon-latest.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8378407",
+        "codeBoundUrl": "https://downloadercodes.com/apkpure/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_0e3b118661c8216a0390",
+      "app": {
+        "name": "AppStarter",
+        "category": "Launcher e schermata Home",
+        "desc": "Schermata Home alternativa per organizzare e avviare le app. Le funzioni e la compatibilità dipendono dal dispositivo.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://github.com/sphinx02/AppStarter/releases/download/v4.0/AppStarter-v4.0.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/appstarter-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/appstarter/",
+        "sourceName": "AppStarter",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/sphinx02/AppStarter/releases/download/v4.0/AppStarter-v4.0.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "97275",
+        "codeBoundUrl": "https://github.com/sphinx02/AppStarter/releases/download/v4.0/AppStarter-v4.0.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_2f5efd3ee2f2f3117cfb",
+      "app": {
+        "name": "Opera Browser",
+        "category": "Browser Internet",
+        "desc": "Browser per navigare sul web. La compatibilità con telecomando e siti dipende dalla versione; non è un abbonamento a contenuti video.",
+        "source": "https://downloadercodes.com/browsers/",
+        "metadataVerified": true,
+        "code": "https://download.opera.com/download/get/?partner=www&nothanks=yes&product=Android",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/opera-browser-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/browsers/opera/",
+        "sourceName": "Opera Browser",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://download.opera.com/download/get/?partner=www&nothanks=yes&product=Android",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "99187",
+        "codeBoundUrl": "https://download.opera.com/download/get/?partner=www&nothanks=yes&product=Android",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_754fe8f706b8042b6028",
+      "app": {
+        "name": "Url Video Player",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.",
+        "source": "https://downloadercodes.com/media-players/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/info.t4w.vp/urlvideoplayer_3.0.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/url-video-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/url-video-player/",
+        "sourceName": "Url Video Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/info.t4w.vp/urlvideoplayer_3.0.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "7878729",
+        "codeBoundUrl": "https://archive.org/download/info.t4w.vp/urlvideoplayer_3.0.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_7d803754809da55cf3a2",
+      "app": {
+        "name": "Wireless File Manager",
+        "category": "Gestione e trasferimento file",
+        "desc": "Gestisce e trasferisce file tramite rete locale. Usa soltanto reti fidate e disattiva la condivisione quando hai finito.",
+        "source": "https://downloadercodes.com/tools/",
+        "metadataVerified": true,
+        "code": "https://github.com/visnkmr/wfm/releases/latest/download/app-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/wireless-file-manager-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/wireless-file-manager/",
+        "sourceName": "Wireless File Manager",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/visnkmr/wfm/releases/latest/download/app-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "117953",
+        "codeBoundUrl": "https://github.com/visnkmr/wfm/releases/latest/download/app-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_bbda8ba613d2ee97ee13",
+      "app": {
+        "name": "NV Video Player",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.",
+        "source": "https://downloadercodes.com/media-players/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/nv-player/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/10/nv-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/nv-player/",
+        "sourceName": "NV Video Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.acb.nvplayer/nvplayer_1.0.3.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "3450279",
+        "codeBoundUrl": "https://downloadercodes.com/nv-player/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_dd41a46332dab2106895",
+      "app": {
+        "name": "SD Maid 1",
+        "category": "Pulizia e manutenzione Android",
+        "desc": "Analizza l’archiviazione e aiuta a rimuovere file residui. Controlla gli elementi selezionati prima di eliminarli.",
+        "source": "https://github.com/d4rken-org/sdmaid-se",
+        "metadataVerified": true,
+        "code": "https://github.com/d4rken-org/sdmaid/releases/download/v5.6.3/SD_Maid-v5.6.3.50603.-RELEASE-6377352ec.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/sd-maid-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/sd-maid/",
+        "sourceName": "SD Maid 1",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/d4rken-org/sdmaid/releases/download/v5.6.3/SD_Maid-v5.6.3.50603.-RELEASE-6377352ec.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "412267",
+        "codeBoundUrl": "https://github.com/d4rken-org/sdmaid/releases/download/v5.6.3/SD_Maid-v5.6.3.50603.-RELEASE-6377352ec.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_ecd0f44abe14b4cc211f",
+      "app": {
+        "name": "Shamel.tv",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://apk.shameltv.com/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/shamel.tv-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/shamel-tv/",
+        "sourceName": "Shamel.tv",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://apk.shameltv.com/",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "246523",
+        "codeBoundUrl": "https://apk.shameltv.com/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_44fb108e577481c25665",
+      "app": {
+        "name": "TPlayer",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o indirizzi forniti dall’utente. Non è un abbonamento a film o canali TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/teavideo.tvplayer.videoallformat/tplayer_7.4b.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/01/tplayer-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/media-players/tplayer/",
+        "sourceName": "TPlayer",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/teavideo.tvplayer.videoallformat/tplayer_7.4b.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "7346066",
+        "codeBoundUrl": "https://archive.org/download/teavideo.tvplayer.videoallformat/tplayer_7.4b.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_5167b053fd114976541f",
+      "app": {
+        "name": "Launcher Manager Mini",
+        "category": "Launcher e schermata Home",
+        "desc": "Gestisce la scelta e le impostazioni del launcher. Usa la variante indicata per Android TV oppure Fire TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/launcher-manager-mini/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/launcher-manager-mini-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/launcher-manager-mini/",
+        "sourceName": "Launcher Manager Mini",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://xdaforums.com/attachments/launcher-manager-mini-_1-0-apk.6094402/",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "396805",
+        "codeBoundUrl": "https://downloadercodes.com/launcher-manager-mini/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_a690b894a3407d6cfc4c",
+      "app": {
+        "name": "Smart STB",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://www.smart-stb.net/app.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/smart-stb-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/smart-stb/",
+        "sourceName": "Smart STB",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.smart-stb.net/app.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "3804692",
+        "codeBoundUrl": "https://www.smart-stb.net/app.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_f6691910b15964e63da4",
+      "app": {
+        "name": "IPTV Smarters Pro",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/iptv-smarters-pro-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/",
+        "sourceName": "IPTV Smarters Pro",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.iptvsmarters.com/iptv-smarters-5.0.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "6468112",
+        "codeBoundUrl": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_a2a64cc3e560cf420110",
+      "app": {
+        "name": "General TV",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/iptv-players/general-tv/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/general-tv.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/general-tv/",
+        "sourceName": "General TV",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://raw.githubusercontent.com/mrmemo2021/test/refs/heads/main/GENRAL%20TV%20BOX.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "2124797",
+        "codeBoundUrl": "https://downloadercodes.com/iptv-players/general-tv/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_4a6d3dbfcd1ffa198e0b",
+      "app": {
+        "name": "Hot Player",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/hot-player/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/hot-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/hot-player/",
+        "sourceName": "Hot Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://apk.hotplayer.app/",
+        "downloadNotice": "La destinazione del codice differisce dalla pagina: codice da verificare.",
+        "downloadKind": "page",
+        "variantNote": "La destinazione del codice differisce dalla pagina: codice da verificare. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "reportedCode": "395800"
+      }
+    },
+    {
+      "id": "source_a228da56451b85549a5c",
+      "app": {
+        "name": "ASD Player",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.",
+        "source": "https://downloadercodes.com/media-players/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/com.app_mo.splayer/asdplayer_4.3.25.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/asd-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/asd-player/",
+        "sourceName": "ASD Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.app_mo.splayer/asdplayer_4.3.25.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8101802",
+        "codeBoundUrl": "https://archive.org/download/com.app_mo.splayer/asdplayer_4.3.25.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_fecf51a73cfc99c0140f",
+      "app": {
+        "name": "Antstream",
+        "category": "Giochi ed emulazione",
+        "desc": "Servizio di giochi retro in streaming. Richiede una connessione Internet e un account; disponibilità dei giochi e costi dipendono dal servizio.",
+        "source": "https://downloadercodes.com/games/",
+        "metadataVerified": true,
+        "code": "https://downloads.antstream.com/Antstream-live-2.1.2985_.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/antstream-arcade-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/games/antstream/",
+        "sourceName": "Antstream",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://downloads.antstream.com/Antstream-live-2.1.2985_.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "922747",
+        "codeBoundUrl": "https://downloads.antstream.com/Antstream-live-2.1.2985_.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_fae48634647baa41ccfa",
+      "app": {
+        "name": "Nebula Manager",
+        "category": "Launcher e schermata iniziale",
+        "desc": "Organizza scorciatoie per aprire le app installate dalla schermata TV. Non aggiunge contenuti o abbonamenti.",
+        "source": "https://downloadercodes.com/launchers/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/com.zhixin.atvchannel/nebula-manager-1.5.14.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/nebula-manager-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/nebula-manager/",
+        "sourceName": "Nebula Manager",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.zhixin.atvchannel/nebula-manager-1.5.14.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8779719",
+        "codeBoundUrl": "https://archive.org/download/com.zhixin.atvchannel/nebula-manager-1.5.14.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_2351e1a68975b4b82380",
+      "app": {
+        "name": "Easy Fire Tools",
+        "category": "Installazione e comandi ADB",
+        "desc": "Dal telefono Android invia APK e file alla Fire TV attraverso la rete e il debug ADB.",
+        "source": "https://play.google.com/store/apps/details?id=de.agondev.easyfiretools",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/easy-fire-tools-1.1.4_202101/Easy_Fire_Tools_1.1.4.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/easy-fire-tools-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/easy-fire-tools/",
+        "sourceName": "Easy Fire Tools",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/easy-fire-tools-1.1.4_202101/Easy_Fire_Tools_1.1.4.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "2893042",
+        "codeBoundUrl": "https://archive.org/download/easy-fire-tools-1.1.4_202101/Easy_Fire_Tools_1.1.4.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_285931ed1de3a252243d",
+      "app": {
+        "name": "Firefox",
+        "category": "Browser Internet",
+        "desc": "Browser per navigare sul web. La compatibilità con telecomando e siti dipende dalla versione; non è un abbonamento a contenuti video.",
+        "source": "https://downloadercodes.com/browsers/",
+        "metadataVerified": true,
+        "code": "https://archive.mozilla.org/pub/fenix/releases/144.0.1/android/fenix-144.0.1-android/fenix-144.0.1.multi.android-universal.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/firefox-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/browsers/firefox/",
+        "sourceName": "Firefox",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.mozilla.org/pub/fenix/releases/144.0.1/android/fenix-144.0.1-android/fenix-144.0.1.multi.android-universal.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "4697921",
+        "codeBoundUrl": "https://archive.mozilla.org/pub/fenix/releases/144.0.1/android/fenix-144.0.1-android/fenix-144.0.1.multi.android-universal.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_edc5813953edc598f7ac",
+      "app": {
+        "name": "Zen IPTV Player",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://zeniptv.app/releases/zeniptv_fireos.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/03/zen-iptv-player-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/zen-iptv-player/",
+        "sourceName": "Zen IPTV Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://zeniptv.app/releases/zeniptv_fireos.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "473860",
+        "codeBoundUrl": "https://zeniptv.app/releases/zeniptv_fireos.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_3db4d2f3ada552610edb",
+      "app": {
+        "name": "Next Player",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.",
+        "source": "https://downloadercodes.com/media-players/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/next-player/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/next-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/next-player/",
+        "sourceName": "Next Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://apt.izzysoft.de/fdroid/repo/dev.anilbeesetti.nextplayer_40.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "6279584",
+        "codeBoundUrl": "https://downloadercodes.com/next-player/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_fc61035ebf5198029031",
+      "app": {
+        "name": "DefSquid",
+        "category": "Pulizia e manutenzione Android",
+        "desc": "Utility di manutenzione e controllo per Android TV e Fire TV. Verifica le operazioni prima di confermarle; non garantisce la sicurezza dei file scaricati.",
+        "source": "https://downloadercodes.com/tools/",
+        "metadataVerified": true,
+        "code": "http://apk.defsquid.com",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/defsquid-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/defsquid/",
+        "sourceName": "DefSquid",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "http://apk.defsquid.com",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "33479",
+        "codeBoundUrl": "http://apk.defsquid.com",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_5917143a7df2598bce08",
+      "app": {
+        "name": "X-plore File Manager",
+        "category": "Gestione file",
+        "desc": "Esplora e gestisce file locali e posizioni di rete supportate. Le operazioni di cancellazione o spostamento modificano i tuoi dati.",
+        "source": "https://linktr.ee/kpfire",
+        "metadataVerified": true,
+        "code": "https://www.lonelycatgames.com/download/x-plore_4-44-apk?wpdmdl=3349",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/x-plore-file-manager-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/x-plore-file-manager/",
+        "sourceName": "X-plore File Manager",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.lonelycatgames.com/download/x-plore_4-44-apk?wpdmdl=3349",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "7869550",
+        "codeBoundUrl": "https://www.lonelycatgames.com/download/x-plore_4-44-apk?wpdmdl=3349",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_deca99b53004a265b0b0",
+      "app": {
+        "name": "NOVA Video Player",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.",
+        "source": "https://downloadercodes.com/media-players/",
+        "metadataVerified": true,
+        "code": "https://github.com/nova-video-player/aos-AVP/releases/download/v6.4.34/org.courville.nova-2655850-6.4.34-20260404.1941-armeabi-v7a-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/nova-video-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/media-players/nova-video-player/",
+        "sourceName": "NOVA Video Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/nova-video-player/aos-AVP/releases/download/v6.4.34/org.courville.nova-2655850-6.4.34-20260404.1941-armeabi-v7a-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "5067986",
+        "codeBoundUrl": "https://github.com/nova-video-player/aos-AVP/releases/download/v6.4.34/org.courville.nova-2655850-6.4.34-20260404.1941-armeabi-v7a-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_7b449e6d8b07556a9dc8",
+      "app": {
+        "name": "Launcher Manager",
+        "category": "Launcher e schermata Home",
+        "desc": "Gestisce la scelta e le impostazioni del launcher. Usa la variante indicata per Android TV oppure Fire TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/launcher-manager/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/launcher-manager-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/launcher-manager/",
+        "sourceName": "Launcher Manager",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://xdaforums.com/attachments/lm-atv-1-0-4-apk.5498333/",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "814943",
+        "codeBoundUrl": "https://downloadercodes.com/launcher-manager/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_5b89d407066c07de31ca",
+      "app": {
+        "name": "IPTV Extreme",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://iptvextreme.org/public/releases/129/Free/app-universal-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/iptv-extreme.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/iptv-extreme/",
+        "sourceName": "IPTV Extreme",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://iptvextreme.org/public/releases/129/Free/app-universal-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "909462",
+        "codeBoundUrl": "https://iptvextreme.org/public/releases/129/Free/app-universal-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_d94a5f3d64c969a2c5ba",
+      "app": {
+        "name": "GSE Smart IPTV",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://gsesmartiptv.com/apk/GSE_SMART_IPTV_v7.4.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/gse-smart-iptv.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/gse-smart-iptv/",
+        "sourceName": "GSE Smart IPTV",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://gsesmartiptv.com/apk/GSE_SMART_IPTV_v7.4.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "354615",
+        "codeBoundUrl": "https://gsesmartiptv.com/apk/GSE_SMART_IPTV_v7.4.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_aec287ccc3b9e89a06bd",
+      "app": {
+        "name": "HB Player",
+        "category": "Lettori video",
+        "desc": "Lettore per aprire file o indirizzi video. Non include un abbonamento TV; verifica i formati e il dispositivo supportati dalla variante.",
+        "source": "https://linktr.ee/kpfire",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/com.hbplayer.HBvideoplayer/hbplayer_8.0.0.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/10/hb-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/hb-player/",
+        "sourceName": "HB Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.hbplayer.HBvideoplayer/hbplayer_8.0.0.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "5013720",
+        "codeBoundUrl": "https://archive.org/download/com.hbplayer.HBvideoplayer/hbplayer_8.0.0.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_3c04f5c3d3a9edb83849",
+      "app": {
+        "name": "RetroArch",
+        "category": "Giochi ed emulazione",
+        "desc": "Interfaccia per emulatori e motori di gioco tramite core Libretro. Usa giochi e BIOS che sei autorizzato a utilizzare; può essere necessario un gamepad.",
+        "source": "https://www.retroarch.com/",
+        "metadataVerified": true,
+        "code": "https://buildbot.libretro.com/stable/1.22.2/android/RetroArch.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/retroarch-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/games/retroarch/",
+        "sourceName": "RetroArch",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://buildbot.libretro.com/stable/1.22.2/android/RetroArch.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "4361890",
+        "codeBoundUrl": "https://buildbot.libretro.com/stable/1.22.2/android/RetroArch.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_afcce546fac15de629b8",
+      "app": {
+        "name": "Just (Video) Player",
+        "category": "Lettori video",
+        "desc": "Lettore video Android essenziale basato su Media3/ExoPlayer: apre i tuoi file e flussi, senza catalogo di film incluso.",
+        "source": "https://github.com/moneytoo/Player",
+        "metadataVerified": true,
+        "code": "https://github.com/moneytoo/Player/releases/download/v0.203/Just.Player.v0.203.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/01/just-video-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/just-video-player/",
+        "sourceName": "Just (Video) Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/moneytoo/Player/releases/download/v0.203/Just.Player.v0.203.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "2747416",
+        "codeBoundUrl": "https://github.com/moneytoo/Player/releases/download/v0.203/Just.Player.v0.203.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_e7e8cbcbdc6ab5a0d544",
+      "app": {
+        "name": "CyberGhost VPN: VPN Fast & Secure",
+        "category": "VPN e indicatori connessione",
+        "desc": "Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "code": "https://vpn-support.zendesk.com/attachments/token/3u4kwDxLStDCCekuBqhb0pgkf/?name=app-google-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/01/cyberghostvpn-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/cyberghost/",
+        "sourceName": "CyberGhost VPN: VPN Fast & Secure",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://vpn-support.zendesk.com/attachments/token/3u4kwDxLStDCCekuBqhb0pgkf/?name=app-google-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "3560139",
+        "codeBoundUrl": "https://vpn-support.zendesk.com/attachments/token/3u4kwDxLStDCCekuBqhb0pgkf/?name=app-google-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_13de35d6672e06e6d450",
+      "app": {
+        "name": "ADB TV",
+        "category": "Gestione app e strumenti ADB",
+        "desc": "Gestisce applicazioni Android TV tramite ADB, anche per disabilitare o rimuovere pacchetti. Richiede configurazione del debug: evita di rimuovere componenti di sistema.",
+        "source": "https://downloadercodes.com/tools/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/adb-tv/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/adb-tv-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/adb-tv/",
+        "sourceName": "ADB TV",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://adbappcontrol.com/tv/download/?r=latest&lang=en",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "671668",
+        "codeBoundUrl": "https://downloadercodes.com/adb-tv/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_6c91588ce3deef3a4f99",
+      "app": {
+        "name": "AdAway",
+        "category": "Privacy e blocco pubblicità",
+        "desc": "Filtro pubblicitario per Android. La modalità scelta può usare una VPN locale o richiedere root; controlla compatibilità e permessi.",
+        "source": "https://downloadercodes.com/tools/",
+        "metadataVerified": true,
+        "code": "https://app.adaway.org/adaway.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/adaway-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/adaway/",
+        "sourceName": "AdAway",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://app.adaway.org/adaway.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "504109",
+        "codeBoundUrl": "https://app.adaway.org/adaway.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_71a738738a444e40a3e3",
+      "app": {
+        "name": "DuckDuckGo",
+        "category": "Browser Internet",
+        "desc": "Browser per navigare sul web. La compatibilità con telecomando e siti dipende dalla versione; non è un abbonamento a contenuti video.",
+        "source": "https://downloadercodes.com/browsers/",
+        "metadataVerified": true,
+        "code": "https://github.com/duckduckgo/Android/releases/download/5.254.1/duckduckgo-5.254.1-play-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/duckduckgo-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/browsers/duckduckgo/",
+        "sourceName": "DuckDuckGo",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/duckduckgo/Android/releases/download/5.254.1/duckduckgo-5.254.1-play-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8945952",
+        "codeBoundUrl": "https://github.com/duckduckgo/Android/releases/download/5.254.1/duckduckgo-5.254.1-play-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_ec05033e2225aba2ba71",
+      "app": {
+        "name": "Sideload Launcher",
+        "category": "Launcher e schermata Home",
+        "desc": "Schermata Home alternativa per organizzare e avviare le app. Le funzioni e la compatibilità dipendono dal dispositivo.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/launchers/sideload-launcher/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/sideload-launcher-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/launchers/sideload-launcher/",
+        "sourceName": "Sideload Launcher",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://xdaforums.com/attachments/sideloadlauncher-v1-05-apk.3204194/",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8551956",
+        "codeBoundUrl": "https://downloadercodes.com/launchers/sideload-launcher/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_a6a26e6087405a33e9ec",
+      "app": {
+        "name": "VPN Safety Dot",
+        "category": "VPN e indicatori connessione",
+        "desc": "Mostra un indicatore dello stato della VPN sullo schermo. Non fornisce una VPN e non cifra il traffico da solo.",
+        "source": "https://vpndot.com/",
+        "metadataVerified": true,
+        "code": "http://getsafetydot.com",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/vpn-safety-dot-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/vpn-safety-dot/",
+        "sourceName": "VPN Safety Dot",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "http://getsafetydot.com/",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "18051",
+        "codeBoundUrl": "http://getsafetydot.com",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_0d203b502bd92eecd586",
+      "app": {
+        "name": "Blokada",
+        "category": "Privacy e blocco pubblicità",
+        "desc": "Filtra pubblicità e traccianti secondo la configurazione dell’app. Non equivale a un abbonamento VPN; alcune funzioni possono richiedere una licenza.",
+        "source": "https://adguard.com/en/adguard-android/overview.html",
+        "metadataVerified": true,
+        "code": "https://go.blokada.org/apk5",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/blokada-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/blokada/",
+        "sourceName": "Blokada",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://go.blokada.org/apk5",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "15123",
+        "codeBoundUrl": "https://go.blokada.org/apk5",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_d77bd35f908a1a0728fa",
+      "app": {
+        "name": "NetGuard",
+        "category": "Firewall Android",
+        "desc": "Controlla quali app possono accedere a Internet. Usa una VPN locale per il filtraggio: non è un servizio VPN remoto che cambia il paese della connessione.",
+        "source": "https://netguard.me/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/netguard/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/02/netguard-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/netguard/",
+        "sourceName": "NetGuard",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/M66B/NetGuard/releases/download/2.334/NetGuard-v2.334-release.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "9367049",
+        "codeBoundUrl": "https://downloadercodes.com/netguard/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_6729cec6a7858be549a9",
+      "app": {
+        "name": "Telegram",
+        "category": "Messaggi e comunicazione",
+        "desc": "Messaggistica con chat, gruppi, canali e condivisione di file. Richiede un account Telegram.",
+        "source": "https://telegram.org/",
+        "metadataVerified": true,
+        "code": "https://telegram.org/dl/android/apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/04/telegram-logo.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/telegram/",
+        "sourceName": "Telegram",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://telegram.org/dl/android/apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "37598",
+        "codeBoundUrl": "https://telegram.org/dl/android/apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_74afb890b4e94e51963a",
+      "app": {
+        "name": "Perfect Player",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "code": "https://archive.org/download/com.niklabs.pp_1.5.9.2/com.niklabs.pp_1.5.9.2.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/perfect-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/perfect-player/",
+        "sourceName": "Perfect Player",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://archive.org/download/com.niklabs.pp_1.5.9.2/com.niklabs.pp_1.5.9.2.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "392439",
+        "codeBoundUrl": "https://archive.org/download/com.niklabs.pp_1.5.9.2/com.niklabs.pp_1.5.9.2.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_2a174e263fc26eb6f155",
+      "app": {
+        "name": "IPTV",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore di playlist IPTV fornite dall’utente. Non include canali o abbonamenti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://iptvremote.ru/updates/iptv.9.1.15/free/iptv-9.1.15-armv7.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/iptv-by-alexander-sofronov.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/iptv/",
+        "sourceName": "IPTV",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://iptvremote.ru/updates/iptv.9.1.15/free/iptv-9.1.15-armv7.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "8065811",
+        "codeBoundUrl": "https://iptvremote.ru/updates/iptv.9.1.15/free/iptv-9.1.15-armv7.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_e6be30735499380dbeb2",
+      "app": {
+        "name": "Emby",
+        "category": "Film e serie · Media center",
+        "desc": "Media center per organizzare e riprodurre la propria libreria e sorgenti configurate. Gli eventuali componenti aggiuntivi si installano separatamente.",
+        "source": "https://kodi.tv/about/",
+        "metadataVerified": true,
+        "code": "https://github.com/MediaBrowser/Emby.Releases/raw/master/androidtv/app-google-release.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/emby-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/emby/",
+        "sourceName": "Emby",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://github.com/MediaBrowser/Emby.Releases/raw/master/androidtv/app-google-release.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "65418",
+        "codeBoundUrl": "https://github.com/MediaBrowser/Emby.Releases/raw/master/androidtv/app-google-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_04275849ed803102abca",
+      "app": {
+        "name": "9Xtream",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/9xtream/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/9xtream-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/9xtream/",
+        "sourceName": "9Xtream",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://9xtream.net/downloads/9xtream47.apk",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "2870148",
+        "codeBoundUrl": "https://downloadercodes.com/9xtream/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_20e725900858c15f8fbd",
+      "app": {
+        "name": "Windscribe VPN",
+        "category": "VPN",
+        "desc": "Servizio VPN che instrada la connessione attraverso i propri server. Richiede un account e può prevedere limiti o un abbonamento; non fornisce canali TV.",
+        "source": "https://downloadercodes.com/vpn/",
+        "metadataVerified": true,
+        "code": "https://windscribe.com/install/mobile/android-direct-tv",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2024/09/Windscribe-VPN-Logo.png",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/windscribe-vpn/",
+        "sourceName": "Windscribe VPN",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://windscribe.com/install/mobile/android-direct-tv",
+        "downloadNotice": "Il collegamento apre una pagina di download, non un APK diretto.",
+        "downloadKind": "page",
+        "variantNote": "Il collegamento apre una pagina di download, non un APK diretto. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "531458",
+        "codeBoundUrl": "https://windscribe.com/install/mobile/android-direct-tv",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_4f7eeb1de9c3518393bd",
+      "app": {
+        "name": "Televizo",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.",
+        "source": "https://downloadercodes.com/iptv-players/",
+        "metadataVerified": true,
+        "code": "https://files.televizo.net/televizo-default.apk",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/televizo-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/televizo/",
+        "sourceName": "Televizo",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://files.televizo.net/televizo-default.apk",
+        "downloadNotice": "",
+        "downloadKind": "file",
+        "variantNote": "Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "474318",
+        "codeBoundUrl": "https://files.televizo.net/televizo-default.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_31ef1771b3251aca3c60",
+      "app": {
+        "name": "FileSynced",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo o raccolta di pacchetti Android da scaricare. Controlla autore, permessi e compatibilità di ogni APK.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "code": "https://downloadercodes.com/app-stores/filesynced/",
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/filesynced-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/app-stores/filesynced/",
+        "sourceName": "FileSynced",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "publishedDestination": "https://www.filesynced.com/get-app",
+        "downloadNotice": "Download non verificabile al momento: apri la fonte per controllare la disponibilità.",
+        "downloadKind": "page",
+        "variantNote": "Download non verificabile al momento: apri la fonte per controllare la disponibilità. Codice e collegamento pubblicati da DownloaderCodes. Firma, autenticità e compatibilità del pacchetto non verificate.",
+        "downloaderCode": "13792",
+        "codeBoundUrl": "https://downloadercodes.com/app-stores/filesynced/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    }
+  ],
+  "enrichments": [
+    {
+      "id": "-OpMb7UfPyTTLv7Pb8qv",
+      "type": "apps",
+      "expected": {
+        "category": "Launcher e schermata Home",
+        "code": "https://github.com/spocky/miproja1/releases/download/4.68/ProjectivyLauncher-4.68-c82-xda-release.apk",
+        "desc": "Schermata Home alternativa per organizzare e avviare le app. Le funzioni e la compatibilità dipendono dal dispositivo.",
+        "icon": "https://play-lh.googleusercontent.com/6bigO3_72JW9xTdkX7Mpm8fTBiP7ISDCUcI2E3C79P21uwuJC6VWD8pFxH-bXvc-CVZm",
+        "name": "Projectivy Launcher 4.68 (Stable)",
+        "timestamp": 1775291370538,
+        "id": "-OpMb7UfPyTTLv7Pb8qv",
+        "type": "apps",
+        "downloaderCode": "9700771"
+      },
+      "fields": {
+        "downloaderCode": "9700771",
+        "codeBoundUrl": "https://github.com/spocky/miproja1/releases/download/4.68/ProjectivyLauncher-4.68-c82-xda-release.apk",
+        "codeSource": "https://downloadercodes.com/launchers/projectivy-launcher/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "-OmZlXulBPN995LGkLhp",
+      "type": "apps",
+      "expected": {
+        "category": "Film e serie · Media center",
+        "code": "https://syncler.net/d",
+        "desc": "Organizza e riproduce contenuti da sorgenti o servizi configurati dall’utente. Non equivale a un abbonamento con film inclusi.",
+        "icon": "https://play-lh.googleusercontent.com/8GH0RvjdKu8UAx4rBQ5SwSNQkLwz7cZxH6K5yxxZVczAzLEteOJk7G2vHos6j7nNdKA",
+        "name": "Syncler 2.0",
+        "order": 14,
+        "timestamp": 1781856054236,
+        "id": "-OmZlXulBPN995LGkLhp",
+        "type": "apps",
+        "downloaderCode": "88306"
+      },
+      "fields": {
+        "downloaderCode": "88306",
+        "codeBoundUrl": "https://syncler.net/d",
+        "codeSource": "https://downloadercodes.com/syncler/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "-OvTtPkqVZ9k6nkD_wRM",
+      "type": "apps",
+      "expected": {
+        "category": "Film e serie · Media center",
+        "code": "https://weyd.app/d",
+        "desc": "Organizza e riproduce contenuti da sorgenti o servizi configurati dall’utente. Non equivale a un abbonamento con film inclusi.",
+        "icon": "https://play-lh.googleusercontent.com/H99wc2axSV8WxF_Kr7crwgKFcoE24RygL2t7dtLh83f3lW_kFoeQvLqRBweTJJ-LN8kUmqc8Bkm6YX7EKzMXMQ",
+        "name": "Weyd Latest Version",
+        "timestamp": 1781856054839,
+        "id": "-OvTtPkqVZ9k6nkD_wRM",
+        "type": "apps",
+        "downloaderCode": "92773"
+      },
+      "fields": {
+        "downloaderCode": "92773",
+        "codeBoundUrl": "https://weyd.app/d",
+        "codeSource": "https://downloadercodes.com/weyd/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "-OmZlYNMO-hkBmhVx7CZ",
+      "type": "apps",
+      "expected": {
+        "category": "Lettori video",
+        "code": "https://static.wiseplay.tv/files/wiseplay-tv-latest.apk",
+        "desc": "Riproduce file video o indirizzi forniti dall’utente. Non è un abbonamento a film o canali TV.",
+        "icon": "https://play-lh.googleusercontent.com/_SHQjLM1rdpx-5EhldGl8yTLIb5tfBF5p_ELnto0XqON3WjKN07C3pDmKT6sob1ER3A",
+        "name": "Wiseplay",
+        "order": 19,
+        "timestamp": 1781856071634,
+        "id": "-OmZlYNMO-hkBmhVx7CZ",
+        "type": "apps",
+        "downloaderCode": "498189"
+      },
+      "fields": {
+        "downloaderCode": "498189",
+        "codeBoundUrl": "https://static.wiseplay.tv/files/wiseplay-tv-latest.apk",
+        "codeSource": "https://downloadercodes.com/wiseplay/",
+        "codeCheckedAt": "2026-09-28"
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "source": "https://downloadercodes.com/smarttube/",
+      "name": "SmartTube",
+      "code": "28544",
+      "status": "existing",
+      "id": "-OmB3rwk6YiM3Qm5v_gi",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/ezv-player/",
+      "name": "EZV Player",
+      "code": "3577356",
+      "status": "download",
+      "id": "source_14b146278770aadf0e94",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tizentube/",
+      "name": "TizenTube",
+      "code": "5483455",
+      "status": "existing",
+      "id": "source_87cf7788833725adb375",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/tduk-app-killer/",
+      "name": "TDUK APP Killer",
+      "code": "887091",
+      "status": "download-page",
+      "id": "source_cf2463d227ab419f55fd",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/send-files-to-tv/",
+      "name": "Send files to TV",
+      "code": "8960904",
+      "status": "existing",
+      "id": "source_0d80686707221eda104a",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/aida64/",
+      "name": "AIDA64",
+      "code": "6381440",
+      "status": "existing",
+      "id": "source_5661ed68b0858b51afa7",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/rokkr/",
+      "name": "Rokkr",
+      "code": "316812",
+      "status": "download",
+      "id": "source_72cb44a61a58ca713c80",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/dezor/",
+      "name": "Dezor",
+      "code": "400570",
+      "status": "source-fallback",
+      "id": "source_c953125275f50f8da410",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/xciptv/",
+      "name": "XCIPTV PLAYER",
+      "code": "4472530",
+      "status": "download",
+      "id": "source_2a81e48229671d7091f9",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/projectivy-launcher/",
+      "name": "Projectivy Launcher",
+      "code": "9700771",
+      "status": "existing",
+      "id": "-OpMb7UfPyTTLv7Pb8qv",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/vpn-monitor-dot/",
+      "name": "VPN Monitor Dot",
+      "code": "912985",
+      "status": "download",
+      "id": "source_5649f013c0d1482893cc",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/es-file-explorer/",
+      "name": "ES File Explorer",
+      "code": "3531785",
+      "status": "download",
+      "id": "source_d26dcdfc9645b4c78db9",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/flauncher/",
+      "name": "FLauncher",
+      "code": "765814",
+      "status": "download",
+      "id": "source_e6ff47b5c0c0fc972500",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/shamel-tv-pro/",
+      "name": "Shamel TV Pro",
+      "code": "1971589",
+      "status": "download",
+      "id": "source_83285f4f7b13a4ea43d1",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/mytvonline/",
+      "name": "MYTVOnline+",
+      "code": "1955297",
+      "status": "download",
+      "id": "source_c888a5dae1a58ed721a6",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/ltvlauncher/",
+      "name": "LTvLauncher",
+      "code": "1225186",
+      "status": "download",
+      "id": "source_4e4ba35e6e6bf6eaa327",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/jellyfin/",
+      "name": "Jellyfin",
+      "code": "7485151",
+      "status": "download",
+      "id": "source_6f02ba5c2fd3ffd97dee",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/ott-navigator/",
+      "name": "OTT Navigator",
+      "code": "982469",
+      "status": "download",
+      "id": "source_9e334c63bae524b86926",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/implayer/",
+      "name": "iMPlayer",
+      "code": "277069",
+      "status": "download",
+      "id": "source_8f5bf168c30cc3396847",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/bob-player/",
+      "name": "BOB Player",
+      "code": "624821",
+      "status": "download",
+      "id": "source_79fa61a2154ca0bf87d4",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/brave/",
+      "name": "Brave Browser",
+      "code": "8403542",
+      "status": "download",
+      "id": "source_349c63fe5a3134d4a1fc",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/aptoide-tv/",
+      "name": "Aptoide TV",
+      "code": "75880",
+      "status": "existing",
+      "id": "source_459f30926a5867b90c59",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/games/happy-chick/",
+      "name": "Happy Chick",
+      "code": "170794",
+      "status": "download",
+      "id": "source_8d930af9fc93fb5cc5ec",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/proton-vpn/",
+      "name": "Proton VPN: Fast & Secure VPN",
+      "code": "1784104",
+      "status": "existing",
+      "id": "source_5ed9435d35034bd32925",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/nordvpn/",
+      "name": "NordVPN – fast VPN for privacy",
+      "code": "835434",
+      "status": "existing",
+      "id": "source_31c19649d5718d8f1b42",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/adguard-vpn/",
+      "name": "AdGuard VPN",
+      "code": "715373",
+      "status": "download",
+      "id": "source_40bcbdce592a1b6cf378",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/private-internet-access-vpn/",
+      "name": "Private Internet Access",
+      "code": "48649",
+      "status": "download-page",
+      "id": "source_15ea09590c664c40b0dd",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/surfshark/",
+      "name": "Surfshark :Secure VPN service",
+      "code": "46836",
+      "status": "existing",
+      "id": "-P2Rib_XQREWY-kJtxXw",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/ytv-player-pro/",
+      "name": "YTV Player Pro",
+      "code": "7817056",
+      "status": "existing",
+      "id": "source_97e396476113ddb1be09",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/apkpure/",
+      "name": "APKPure",
+      "code": "8378407",
+      "status": "source-fallback",
+      "id": "source_731f4b1abc9ffdaff0d6",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/appstarter/",
+      "name": "AppStarter",
+      "code": "97275",
+      "status": "download",
+      "id": "source_0e3b118661c8216a0390",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/drama-player/",
+      "name": "Drama Player",
+      "code": "3672427",
+      "status": "existing",
+      "id": "source_c56132ac603f1d3be4bb",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/sparkle-tv/",
+      "name": "Sparkle TV",
+      "code": "7090558",
+      "status": "existing",
+      "id": "source_923e6a84be75d0dd92e1",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/opera/",
+      "name": "Opera Browser",
+      "code": "99187",
+      "status": "download",
+      "id": "source_2f5efd3ee2f2f3117cfb",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/url-video-player/",
+      "name": "Url Video Player",
+      "code": "7878729",
+      "status": "download",
+      "id": "source_754fe8f706b8042b6028",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/wireless-file-manager/",
+      "name": "Wireless File Manager",
+      "code": "117953",
+      "status": "download",
+      "id": "source_7d803754809da55cf3a2",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/nv-player/",
+      "name": "NV Video Player",
+      "code": "3450279",
+      "status": "source-fallback",
+      "id": "source_bbda8ba613d2ee97ee13",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/sd-maid/",
+      "name": "SD Maid 1",
+      "code": "412267",
+      "status": "download",
+      "id": "source_dd41a46332dab2106895",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/background-apps-process-list/",
+      "name": "Background Apps & Process List",
+      "code": "1126412",
+      "status": "existing",
+      "id": "source_a0acde9b9a7f148b8119",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/nuviotv/",
+      "name": "NuvioTV",
+      "code": "7042930",
+      "status": "existing",
+      "id": "source_ca566f9af0bbe5b6afd1",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/shamel-tv/",
+      "name": "Shamel.tv",
+      "code": "246523",
+      "status": "download",
+      "id": "source_ecd0f44abe14b4cc211f",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/tplayer/",
+      "name": "TPlayer",
+      "code": "7346066",
+      "status": "download",
+      "id": "source_44fb108e577481c25665",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/launcher-manager-mini/",
+      "name": "Launcher Manager Mini",
+      "code": "396805",
+      "status": "source-fallback",
+      "id": "source_5167b053fd114976541f",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/smart-stb/",
+      "name": "Smart STB",
+      "code": "3804692",
+      "status": "download",
+      "id": "source_a690b894a3407d6cfc4c",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/",
+      "name": "IPTV Smarters Pro",
+      "code": "6468112",
+      "status": "source-fallback",
+      "id": "source_f6691910b15964e63da4",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/general-tv/",
+      "name": "General TV",
+      "code": "2124797",
+      "status": "source-fallback",
+      "id": "source_a2a64cc3e560cf420110",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/hot-player/",
+      "name": "Hot Player",
+      "code": "395800",
+      "status": "source-fallback",
+      "id": "source_4a6d3dbfcd1ffa198e0b",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/asd-player/",
+      "name": "ASD Player",
+      "code": "8101802",
+      "status": "download",
+      "id": "source_a228da56451b85549a5c",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/app-cloner/",
+      "name": "App Cloner",
+      "code": "6332051",
+      "status": "existing",
+      "id": "-OvTtML6nbvqZjwPeGje",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/games/antstream/",
+      "name": "Antstream",
+      "code": "922747",
+      "status": "download",
+      "id": "source_fecf51a73cfc99c0140f",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tivimate/",
+      "name": "TiviMate",
+      "code": "272483",
+      "status": "existing",
+      "id": "-OmB3riwzBtwok5ioXNl",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/syncler/",
+      "name": "Syncler",
+      "code": "88306",
+      "status": "existing",
+      "id": "-OmZlXulBPN995LGkLhp",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/ipvanish/",
+      "name": "IPVanish : VPN Location Changer",
+      "code": "697672",
+      "status": "existing",
+      "id": "source_e4fecc218c0131969675",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/stremio/",
+      "name": "Stremio",
+      "code": "4549600",
+      "status": "existing",
+      "id": "-OvPaYjSMEONAZ9tJQ-K",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/apktime/",
+      "name": "APKTime",
+      "code": "51180",
+      "status": "existing",
+      "id": "source_cf15f61161cc4d00c53e",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/nebula-manager/",
+      "name": "Nebula Manager",
+      "code": "8779719",
+      "status": "download",
+      "id": "source_fae48634647baa41ccfa",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/easy-fire-tools/",
+      "name": "Easy Fire Tools",
+      "code": "2893042",
+      "status": "download",
+      "id": "source_2351e1a68975b4b82380",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/wuffy-player/",
+      "name": "Wuffy Player",
+      "code": "378211",
+      "status": "existing",
+      "id": "source_c2cf4e8d6e7ffed84733",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/firefox/",
+      "name": "Firefox",
+      "code": "4697921",
+      "status": "download",
+      "id": "source_285931ed1de3a252243d",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/unlinked/",
+      "name": "Unlinked",
+      "code": "234753",
+      "status": "existing",
+      "id": "-OmZlZMrzYUvGl4zgSXb",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/zen-iptv-player/",
+      "name": "Zen IPTV Player",
+      "code": "473860",
+      "status": "download",
+      "id": "source_edc5813953edc598f7ac",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/next-player/",
+      "name": "Next Player",
+      "code": "6279584",
+      "status": "source-fallback",
+      "id": "source_3db4d2f3ada552610edb",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/defsquid/",
+      "name": "DefSquid",
+      "code": "33479",
+      "status": "download",
+      "id": "source_fc61035ebf5198029031",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/x-plore-file-manager/",
+      "name": "X-plore File Manager",
+      "code": "7869550",
+      "status": "download",
+      "id": "source_5917143a7df2598bce08",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/plex/",
+      "name": "Plex",
+      "code": "5243082",
+      "status": "existing",
+      "id": "source_6f8112f040666fcbf78f",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tiktok/",
+      "name": "TikTok",
+      "code": "8983283",
+      "status": "existing",
+      "id": "source_2eaf15017e75afaf70a5",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/nova-video-player/",
+      "name": "NOVA Video Player",
+      "code": "5067986",
+      "status": "download",
+      "id": "source_deca99b53004a265b0b0",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/launcher-manager/",
+      "name": "Launcher Manager",
+      "code": "814943",
+      "status": "source-fallback",
+      "id": "source_7b449e6d8b07556a9dc8",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/smart-iptv/",
+      "name": "Smart IPTV",
+      "code": "26604",
+      "status": "existing",
+      "id": "source_655e3530b4d9e1c81d65",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/iptv-extreme/",
+      "name": "IPTV Extreme",
+      "code": "909462",
+      "status": "download",
+      "id": "source_5b89d407066c07de31ca",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/gse-smart-iptv/",
+      "name": "GSE Smart IPTV",
+      "code": "354615",
+      "status": "download",
+      "id": "source_d94a5f3d64c969a2c5ba",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/hb-player/",
+      "name": "HB Player",
+      "code": "5013720",
+      "status": "download",
+      "id": "source_aec287ccc3b9e89a06bd",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/bear-player/",
+      "name": "Bear Player",
+      "code": "6514919",
+      "status": "existing",
+      "id": "source_eb1d1fff8d5037150d51",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/applinked/",
+      "name": "AppLinked",
+      "code": "475057",
+      "status": "existing",
+      "id": "source_432f8cad50ecf93e5201",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/games/retroarch/",
+      "name": "RetroArch",
+      "code": "4361890",
+      "status": "download",
+      "id": "source_3c04f5c3d3a9edb83849",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/just-video-player/",
+      "name": "Just (Video) Player",
+      "code": "2747416",
+      "status": "download",
+      "id": "source_afcce546fac15de629b8",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/cyberghost/",
+      "name": "CyberGhost VPN: VPN Fast & Secure",
+      "code": "3560139",
+      "status": "download",
+      "id": "source_e7e8cbcbdc6ab5a0d544",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/cloudstream/",
+      "name": "CloudStream",
+      "code": "4132632",
+      "status": "existing",
+      "id": "-OmZlY-PjBnkcDm4DLny",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/adguard/",
+      "name": "AdGuard",
+      "code": "442768",
+      "status": "existing",
+      "id": "source_333c53304a773c5c7bfb",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/vlc-media-player/",
+      "name": "VLC",
+      "code": "3834114",
+      "status": "existing",
+      "id": "source_8e23f03912e1d1b83ac9",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/mouse-toggle/",
+      "name": "Mouse Toggle",
+      "code": "324796",
+      "status": "existing",
+      "id": "source_68dfcc847f8fd9ba95a9",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/adb-tv/",
+      "name": "ADB TV",
+      "code": "671668",
+      "status": "source-fallback",
+      "id": "source_13de35d6672e06e6d450",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/adaway/",
+      "name": "AdAway",
+      "code": "504109",
+      "status": "download",
+      "id": "source_6c91588ce3deef3a4f99",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/weyd/",
+      "name": "Weyd",
+      "code": "92773",
+      "status": "existing",
+      "id": "-OvTtPkqVZ9k6nkD_wRM",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/duckduckgo/",
+      "name": "DuckDuckGo",
+      "code": "8945952",
+      "status": "download",
+      "id": "source_71a738738a444e40a3e3",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/wiseplay/",
+      "name": "Wiseplay",
+      "code": "498189",
+      "status": "existing",
+      "id": "-OmZlYNMO-hkBmhVx7CZ",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/sideload-launcher/",
+      "name": "Sideload Launcher",
+      "code": "8551956",
+      "status": "source-fallback",
+      "id": "source_ec05033e2225aba2ba71",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/vpn-safety-dot/",
+      "name": "VPN Safety Dot",
+      "code": "18051",
+      "status": "download",
+      "id": "source_a6a26e6087405a33e9ec",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tools/blokada/",
+      "name": "Blokada",
+      "code": "15123",
+      "status": "download",
+      "id": "source_0d203b502bd92eecd586",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/tv-bro/",
+      "name": "TV Bro",
+      "code": "627360",
+      "status": "existing",
+      "id": "source_3b15accdc8c4c5f08d73",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/netguard/",
+      "name": "NetGuard",
+      "code": "9367049",
+      "status": "source-fallback",
+      "id": "source_d77bd35f908a1a0728fa",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/telegram/",
+      "name": "Telegram",
+      "code": "37598",
+      "status": "download",
+      "id": "source_6729cec6a7858be549a9",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/mx-player/",
+      "name": "MX Player",
+      "code": "894749",
+      "status": "existing",
+      "id": "source_8b39327a7a01ea9bd9db",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/kodi/",
+      "name": "Kodi",
+      "code": "8628413",
+      "status": "existing",
+      "id": "-P2Ribm9LlL_e6eLUhuj",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/perfect-player/",
+      "name": "Perfect Player",
+      "code": "392439",
+      "status": "download",
+      "id": "source_74afb890b4e94e51963a",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/iptv/",
+      "name": "IPTV",
+      "code": "8065811",
+      "status": "download",
+      "id": "source_2a174e263fc26eb6f155",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/ibo-player/",
+      "name": "IBO Player",
+      "code": "511693",
+      "status": "existing",
+      "id": "source_2a88bfdfa6601f7be80a",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/emby/",
+      "name": "Emby",
+      "code": "65418",
+      "status": "download",
+      "id": "source_e6be30735499380dbeb2",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/aurora-store/",
+      "name": "Aurora Store",
+      "code": "631082",
+      "status": "existing",
+      "id": "source_46ba3cd3bf5f1acfeaf5",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/9xtream/",
+      "name": "9Xtream",
+      "code": "2870148",
+      "status": "source-fallback",
+      "id": "source_04275849ed803102abca",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/windscribe-vpn/",
+      "name": "Windscribe VPN",
+      "code": "531458",
+      "status": "download-page",
+      "id": "source_20e725900858c15f8fbd",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/expressvpn/",
+      "name": "ExpressVPN: VPN Fast & Secure",
+      "code": "291587",
+      "status": "existing",
+      "id": "source_e991d2ccb0efca5cd364",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/televizo/",
+      "name": "Televizo",
+      "code": "474318",
+      "status": "download",
+      "id": "source_4f7eeb1de9c3518393bd",
+      "type": "apps"
+    },
+    {
+      "source": "https://downloadercodes.com/app-stores/filesynced/",
+      "name": "FileSynced",
+      "code": "13792",
+      "status": "source-fallback",
+      "id": "source_31ef1771b3251aca3c60",
+      "type": "apps"
+    }
+  ]
+}

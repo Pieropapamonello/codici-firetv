@@ -1,0 +1,628 @@
+{
+  "additions": [
+    {
+      "id": "28544",
+      "app": {
+        "code": "https://github.com/yuliskov/SmartTubeNext/releases/download/latest/smarttube_stable.apk"
+      }
+    },
+    {
+      "id": "3577356",
+      "app": {
+        "code": "https://drslayer.b-cdn.net/ezvplayer/ezvplayerV1.0.7.apk"
+      }
+    },
+    {
+      "id": "5483455",
+      "app": {
+        "code": "https://github.com/reisxd/TizenTubeCobalt/releases/download/v2.0.1/cobalt-arm.apk"
+      }
+    },
+    {
+      "id": "887091",
+      "app": {
+        "code": "https://www.techdoctoruk.com/?sdm_process_download=1&download_id=6174"
+      }
+    },
+    {
+      "id": "8960904",
+      "app": {
+        "code": "https://archive.org/download/com.yablio.sendfilestotv/SFTT_1.4.22.apk"
+      }
+    },
+    {
+      "id": "6381440",
+      "app": {
+        "code": "https://download.aida64.com/aida64-v219.apk"
+      }
+    },
+    {
+      "id": "316812",
+      "app": {
+        "code": "https://www.rokkr.net/update/download?app=net.rokkr.browser&platform=android"
+      }
+    },
+    {
+      "id": "400570",
+      "app": {
+        "code": "https://www.dezor.net/update/download?app=net.dezor.browser&platform=android"
+      }
+    },
+    {
+      "id": "4472530",
+      "app": {
+        "code": "https://archive.org/download/com.nathnetwork_xciptv/xciptv-player-7.0.apk"
+      }
+    },
+    {
+      "id": "9700771",
+      "app": {
+        "code": "https://github.com/spocky/miproja1/releases/download/4.68/ProjectivyLauncher-4.68-c82-xda-release.apk"
+      }
+    },
+    {
+      "id": "912985",
+      "app": {
+        "code": "https://monitordot.com/monitordot.apk"
+      }
+    },
+    {
+      "id": "3531785",
+      "app": {
+        "code": "https://archive.org/download/com.estrongs.android_pop/esfile-explorer-4.4.2.apk"
+      }
+    },
+    {
+      "id": "765814",
+      "app": {
+        "code": "https://gitlab.com/flauncher/flauncher/-/releases/0.18.0/downloads/flauncher-0.18.0.apk"
+      }
+    },
+    {
+      "id": "1971589",
+      "app": {
+        "code": "https://apk.shameltv.com/pro"
+      }
+    },
+    {
+      "id": "1955297",
+      "app": {
+        "code": "https://www.dropbox.com/scl/fi/1wuz8c95mcq34igqlukof/molplus-android-10438.apk?rlkey=0y07yp7v2cbrapw6gatjd5yjj&st=vx0ma5ao&dl=1"
+      }
+    },
+    {
+      "id": "1225186",
+      "app": {
+        "code": "https://github.com/LeanBitLab/LtvLauncher/releases/download/v3.2.2/LTvLauncher-universal-release.apk"
+      }
+    },
+    {
+      "id": "7485151",
+      "app": {
+        "code": "https://github.com/jellyfin/jellyfin-androidtv/releases/download/v0.19.7/jellyfin-androidtv-v0.19.7-release.apk"
+      }
+    },
+    {
+      "id": "982469",
+      "app": {
+        "code": "https://app.ott-nav.com/dist/std/latest.apk"
+      }
+    },
+    {
+      "id": "277069",
+      "app": {
+        "code": "https://www.dl.dropboxusercontent.com/s/tv2rdv8josisdll/implayer.apk"
+      }
+    },
+    {
+      "id": "624821",
+      "app": {
+        "code": "https://ibodesk.com/bob.apk"
+      }
+    },
+    {
+      "id": "8403542",
+      "app": {
+        "code": "https://github.com/brave/brave-browser/releases/download/v1.88.136/Bravearm64Universal.apk"
+      }
+    },
+    {
+      "id": "75880",
+      "app": {
+        "code": "https://tv.aptoide.com/howtoinstall.html"
+      }
+    },
+    {
+      "id": "170794",
+      "app": {
+        "code": "https://static.xiaoji001.org/tv/xiaoji_V1.1.9.apk"
+      }
+    },
+    {
+      "id": "1784104",
+      "app": {
+        "code": "https://github.com/ProtonVPN/android-app/releases/download/5.15.9.4/ProtonVPN-5.15.9.4.605150904.-production-vanilla-direct-release.apk"
+      }
+    },
+    {
+      "id": "835434",
+      "app": {
+        "code": "https://downloads.nordcdn.com/apps/android/generic/nordvpn-sideload/latest/v2/NordVPN_TV.apk"
+      }
+    },
+    {
+      "id": "715373",
+      "app": {
+        "code": "https://agrd.io/andrtvvpn"
+      }
+    },
+    {
+      "id": "48649",
+      "app": {
+        "code": "https://www.privateinternetaccess.com/installer/download_installer_android"
+      }
+    },
+    {
+      "id": "46836",
+      "app": {
+        "code": "https://downloads.surfshark.com/android/Surfshark.apk"
+      }
+    },
+    {
+      "id": "7817056",
+      "app": {
+        "code": "https://raw.githubusercontent.com/yacinetv2/ytv11.0/refs/heads/main/YTVPlayer_12.0.apk"
+      }
+    },
+    {
+      "id": "8378407",
+      "app": {
+        "code": "https://d.apkpure.com/custom/com.apkpure.aegon-latest.apk"
+      }
+    },
+    {
+      "id": "97275",
+      "app": {
+        "code": "https://github.com/sphinx02/AppStarter/releases/download/v4.0/AppStarter-v4.0.apk"
+      }
+    },
+    {
+      "id": "3672427",
+      "app": {
+        "code": "https://archive.org/download/com.drama_simpleplayer/dramaplayer_1.0.5.apk"
+      }
+    },
+    {
+      "id": "7090558",
+      "app": {
+        "code": "https://archive.org/download/se.hedekonsult.sparkle/sparkletv_2.1.3.apk"
+      }
+    },
+    {
+      "id": "99187",
+      "app": {
+        "code": "https://download.opera.com/download/get/?partner=www&nothanks=yes&product=Android"
+      }
+    },
+    {
+      "id": "7878729",
+      "app": {
+        "code": "https://archive.org/download/info.t4w.vp/urlvideoplayer_3.0.apk"
+      }
+    },
+    {
+      "id": "117953",
+      "app": {
+        "code": "https://github.com/visnkmr/wfm/releases/latest/download/app-release.apk"
+      }
+    },
+    {
+      "id": "3450279",
+      "app": {
+        "code": "https://archive.org/download/com.acb.nvplayer/nvplayer_1.0.3.apk"
+      }
+    },
+    {
+      "id": "412267",
+      "app": {
+        "code": "https://github.com/d4rken-org/sdmaid/releases/download/v5.6.3/SD_Maid-v5.6.3.50603.-RELEASE-6377352ec.apk"
+      }
+    },
+    {
+      "id": "1126412",
+      "app": {
+        "code": "https://github.com/visnkmr/backgroundappslist/releases/download/56/app-release.apk"
+      }
+    },
+    {
+      "id": "7042930",
+      "app": {
+        "code": "https://github.com/tapframe/NuvioTV/releases/download/0.4.8-beta/app-universal-release.apk"
+      }
+    },
+    {
+      "id": "246523",
+      "app": {
+        "code": "https://apk.shameltv.com/"
+      }
+    },
+    {
+      "id": "7346066",
+      "app": {
+        "code": "https://archive.org/download/teavideo.tvplayer.videoallformat/tplayer_7.4b.apk"
+      }
+    },
+    {
+      "id": "396805",
+      "app": {
+        "code": "https://xdaforums.com/attachments/launcher-manager-mini-_1-0-apk.6094402/"
+      }
+    },
+    {
+      "id": "3804692",
+      "app": {
+        "code": "https://www.smart-stb.net/app.apk"
+      }
+    },
+    {
+      "id": "6468112",
+      "app": {
+        "code": "https://www.iptvsmarters.com/iptv-smarters-5.0.apk"
+      }
+    },
+    {
+      "id": "2124797",
+      "app": {
+        "code": "https://raw.githubusercontent.com/mrmemo2021/test/refs/heads/main/GENRAL%20TV%20BOX.apk"
+      }
+    },
+    {
+      "id": "395800",
+      "app": {
+        "code": "https://apk.hotiptv.app/"
+      }
+    },
+    {
+      "id": "8101802",
+      "app": {
+        "code": "https://archive.org/download/com.app_mo.splayer/asdplayer_4.3.25.apk"
+      }
+    },
+    {
+      "id": "6332051",
+      "app": {
+        "code": "https://android.app-cloner.com/app-cloner.apk"
+      }
+    },
+    {
+      "id": "922747",
+      "app": {
+        "code": "https://downloads.antstream.com/Antstream-live-2.1.2985_.apk"
+      }
+    },
+    {
+      "id": "272483",
+      "app": {
+        "code": "https://files.tivimate.com/tivimate.apk"
+      }
+    },
+    {
+      "id": "88306",
+      "app": {
+        "code": "https://syncler.net/d"
+      }
+    },
+    {
+      "id": "697672",
+      "app": {
+        "code": "https://www.ipvanish.com/software/android/IPVanishTV.apk"
+      }
+    },
+    {
+      "id": "4549600",
+      "app": {
+        "code": "https://dl.strem.io/android/v1.10.4-androidTV/com.stremio.one-1.10.4-31048580-armeabi-v7a.apk"
+      }
+    },
+    {
+      "id": "51180",
+      "app": {
+        "code": "https://apktime.com/apps/APKTime-v2.2-Original.apk"
+      }
+    },
+    {
+      "id": "8779719",
+      "app": {
+        "code": "https://archive.org/download/com.zhixin.atvchannel/nebula-manager-1.5.14.apk"
+      }
+    },
+    {
+      "id": "2893042",
+      "app": {
+        "code": "https://archive.org/download/easy-fire-tools-1.1.4_202101/Easy_Fire_Tools_1.1.4.apk"
+      }
+    },
+    {
+      "id": "378211",
+      "app": {
+        "code": "https://archive.org/download/wuffy-player-version-3.5.7v-2-universal/WuffyPlayerVersion_3.5.7v2_Universal.apk"
+      }
+    },
+    {
+      "id": "4697921",
+      "app": {
+        "code": "https://archive.mozilla.org/pub/fenix/releases/144.0.1/android/fenix-144.0.1-android/fenix-144.0.1.multi.android-universal.apk"
+      }
+    },
+    {
+      "id": "234753",
+      "app": {
+        "code": "https://dl.unlinked.link"
+      }
+    },
+    {
+      "id": "473860",
+      "app": {
+        "code": "https://zeniptv.app/releases/zeniptv_fireos.apk"
+      }
+    },
+    {
+      "id": "6279584",
+      "app": {
+        "code": "https://apt.izzysoft.de/fdroid/repo/dev.anilbeesetti.nextplayer_40.apk"
+      }
+    },
+    {
+      "id": "33479",
+      "app": {
+        "code": "http://apk.defsquid.com"
+      }
+    },
+    {
+      "id": "7869550",
+      "app": {
+        "code": "https://www.lonelycatgames.com/download/x-plore_4-44-apk?wpdmdl=3349"
+      }
+    },
+    {
+      "id": "5243082",
+      "app": {
+        "code": "https://downloads.plex.tv/Kepler/kepler-armeabi-v7a-googlePlay-10.28.0.3441-367a93b4.apk"
+      }
+    },
+    {
+      "id": "8983283",
+      "app": {
+        "code": "https://sf16-va.tiktokcdn.com/obj/eden-va2/lapshyasbrvarpa_kpvykuh_jnb/ljhwZthlaukjlkulzlp/US/TT-M/TikTok_2023803030.apk"
+      }
+    },
+    {
+      "id": "5067986",
+      "app": {
+        "code": "https://github.com/nova-video-player/aos-AVP/releases/download/v6.4.34/org.courville.nova-2655850-6.4.34-20260404.1941-armeabi-v7a-release.apk"
+      }
+    },
+    {
+      "id": "814943",
+      "app": {
+        "code": "https://xdaforums.com/attachments/lm-atv-1-0-4-apk.5498333/"
+      }
+    },
+    {
+      "id": "26604",
+      "app": {
+        "code": "https://siptv.app/howto/android/files/SmartIPTV.apk"
+      }
+    },
+    {
+      "id": "909462",
+      "app": {
+        "code": "https://iptvextreme.org/public/releases/129/Free/app-universal-release.apk"
+      }
+    },
+    {
+      "id": "354615",
+      "app": {
+        "code": "https://gsesmartiptv.com/apk/GSE_SMART_IPTV_v7.4.apk"
+      }
+    },
+    {
+      "id": "5013720",
+      "app": {
+        "code": "https://archive.org/download/com.hbplayer.HBvideoplayer/hbplayer_8.0.0.apk"
+      }
+    },
+    {
+      "id": "6514919",
+      "app": {
+        "code": "https://archive.org/download/com.player_bear/bear_player_2.20.8.apk"
+      }
+    },
+    {
+      "id": "475057",
+      "app": {
+        "code": "https://applinked.store/api/apk"
+      }
+    },
+    {
+      "id": "4361890",
+      "app": {
+        "code": "https://buildbot.libretro.com/stable/1.22.2/android/RetroArch.apk"
+      }
+    },
+    {
+      "id": "2747416",
+      "app": {
+        "code": "https://github.com/moneytoo/Player/releases/download/v0.203/Just.Player.v0.203.apk"
+      }
+    },
+    {
+      "id": "3560139",
+      "app": {
+        "code": "https://vpn-support.zendesk.com/attachments/token/3u4kwDxLStDCCekuBqhb0pgkf/?name=app-google-release.apk"
+      }
+    },
+    {
+      "id": "4132632",
+      "app": {
+        "code": "https://github.com/recloudstream/cloudstream/releases/download/v4.8.0/4.8.0.apk"
+      }
+    },
+    {
+      "id": "442768",
+      "app": {
+        "code": "https://download.adguard.com/d/135284/adguard_tv.apk"
+      }
+    },
+    {
+      "id": "3834114",
+      "app": {
+        "code": "https://ftp.rnl.tecnico.ulisboa.pt/pub/videolan/vlc-android/3.7.0/VLC-Android-3.7.0-armeabi-v7a.apk"
+      }
+    },
+    {
+      "id": "324796",
+      "app": {
+        "code": "https://archive.org/download/mouse-toggle-v-1.11_20201212/Mouse%20Toggle-v1.11.apk"
+      }
+    },
+    {
+      "id": "671668",
+      "app": {
+        "code": "https://adbappcontrol.com/tv/download/?r=latest&lang=en"
+      }
+    },
+    {
+      "id": "504109",
+      "app": {
+        "code": "https://app.adaway.org/adaway.apk"
+      }
+    },
+    {
+      "id": "92773",
+      "app": {
+        "code": "https://weyd.app/d"
+      }
+    },
+    {
+      "id": "8945952",
+      "app": {
+        "code": "https://github.com/duckduckgo/Android/releases/download/5.254.1/duckduckgo-5.254.1-play-release.apk"
+      }
+    },
+    {
+      "id": "498189",
+      "app": {
+        "code": "https://static.wiseplay.tv/files/wiseplay-tv-latest.apk"
+      }
+    },
+    {
+      "id": "8551956",
+      "app": {
+        "code": "https://xdaforums.com/attachments/sideloadlauncher-v1-05-apk.3204194/"
+      }
+    },
+    {
+      "id": "18051",
+      "app": {
+        "code": "http://getsafetydot.com"
+      }
+    },
+    {
+      "id": "15123",
+      "app": {
+        "code": "https://go.blokada.org/apk5"
+      }
+    },
+    {
+      "id": "627360",
+      "app": {
+        "code": "https://github.com/truefedex/tv-bro/releases/download/v2.0.1/tvbro-generic-2.0.1.armeabi-v7a.apk"
+      }
+    },
+    {
+      "id": "9367049",
+      "app": {
+        "code": "https://github.com/M66B/NetGuard/releases/download/2.334/NetGuard-v2.334-release.apk"
+      }
+    },
+    {
+      "id": "37598",
+      "app": {
+        "code": "https://telegram.org/dl/android/apk"
+      }
+    },
+    {
+      "id": "894749",
+      "app": {
+        "code": "https://f.mxplayer.j2inter.com/download?id=mxplayer&type=arm"
+      }
+    },
+    {
+      "id": "8628413",
+      "app": {
+        "code": "https://mirrors.kodi.tv/releases/android/arm/kodi-21.3-Omega-armeabi-v7a.apk"
+      }
+    },
+    {
+      "id": "392439",
+      "app": {
+        "code": "https://archive.org/download/com.niklabs.pp_1.5.9.2/com.niklabs.pp_1.5.9.2.apk"
+      }
+    },
+    {
+      "id": "8065811",
+      "app": {
+        "code": "https://iptvremote.ru/updates/iptv.9.1.15/free/iptv-9.1.15-armv7.apk"
+      }
+    },
+    {
+      "id": "511693",
+      "app": {
+        "code": "https://iboplayer.com/app_downloads/ibop.apk"
+      }
+    },
+    {
+      "id": "65418",
+      "app": {
+        "code": "https://github.com/MediaBrowser/Emby.Releases/raw/master/androidtv/app-google-release.apk"
+      }
+    },
+    {
+      "id": "631082",
+      "app": {
+        "code": "https://auroraoss.com/downloads/AuroraStore/Latest/latest.apk"
+      }
+    },
+    {
+      "id": "2870148",
+      "app": {
+        "code": "https://9xtream.net/downloads/9xtream47.apk"
+      }
+    },
+    {
+      "id": "531458",
+      "app": {
+        "code": "https://windscribe.com/install/mobile/android-direct-tv"
+      }
+    },
+    {
+      "id": "291587",
+      "app": {
+        "code": "https://www.expressvpn.com/latest/android"
+      }
+    },
+    {
+      "id": "474318",
+      "app": {
+        "code": "https://files.televizo.net/televizo-default.apk"
+      }
+    },
+    {
+      "id": "13792",
+      "app": {
+        "code": "https://www.filesynced.com/get-app"
+      }
+    }
+  ]
+}

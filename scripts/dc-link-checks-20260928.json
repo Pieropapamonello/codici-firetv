@@ -1,0 +1,603 @@
+[
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "28544"
+  },
+  {
+    "host": "dn710105.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "8960904"
+  },
+  {
+    "host": "dn711301.ca.archive.org",
+    "status": 206,
+    "contentType": "application/octet-stream",
+    "id": "4472530",
+    "method": "GET headers"
+  },
+  {
+    "host": "gitlab.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "765814"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "7485151"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "8403542"
+  },
+  {
+    "host": "downloads77-android.nordcdn.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "835434"
+  },
+  {
+    "host": "raw.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "7817056"
+  },
+  {
+    "host": "dn721507.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "7090558"
+  },
+  {
+    "id": "3450279",
+    "status": 0
+  },
+  {
+    "host": "apk.shameltv.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "246523"
+  },
+  {
+    "id": "6468112",
+    "status": 0
+  },
+  {
+    "host": "android.app-cloner.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "6332051"
+  },
+  {
+    "host": "www.ipvanish.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "697672"
+  },
+  {
+    "host": "dn721304.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "2893042"
+  },
+  {
+    "host": "zeniptv.app",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "473860"
+  },
+  {
+    "host": "downloads.plex.tv",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "5243082"
+  },
+  {
+    "host": "siptv.app",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "26604"
+  },
+  {
+    "host": "dn710303.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "6514919"
+  },
+  {
+    "host": "p27.zdusercontent.com",
+    "status": 206,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "3560139",
+    "method": "GET headers"
+  },
+  {
+    "host": "dn721802.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "324796"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "8945952"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "15123"
+  },
+  {
+    "host": "f.mxplayer.j2inter.com",
+    "status": 200,
+    "contentType": "text/html;charset=utf-8",
+    "id": "894749"
+  },
+  {
+    "host": "iboplayer.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "511693"
+  },
+  {
+    "host": "windscribe.com",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "531458"
+  },
+  {
+    "host": "drslayer.b-cdn.net",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "3577356"
+  },
+  {
+    "host": "download.aida64.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "6381440"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "9700771"
+  },
+  {
+    "host": "apk.shameltv.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "1971589"
+  },
+  {
+    "host": "app.ott-nav.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "982469"
+  },
+  {
+    "host": "tv.aptoide.com",
+    "status": 200,
+    "contentType": "text/html",
+    "id": "75880"
+  },
+  {
+    "host": "static.adtidy.net",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "715373"
+  },
+  {
+    "id": "8378407",
+    "status": 0
+  },
+  {
+    "host": "download3.operacdn.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "99187"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "412267"
+  },
+  {
+    "host": "ia600902.us.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "7346066"
+  },
+  {
+    "id": "2124797",
+    "status": 0
+  },
+  {
+    "host": "downloads.antstream.com",
+    "status": 200,
+    "contentType": "application/zip",
+    "id": "922747"
+  },
+  {
+    "host": "dl.strem.io",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "4549600"
+  },
+  {
+    "host": "dn721805.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "378211"
+  },
+  {
+    "id": "6279584",
+    "status": 0
+  },
+  {
+    "host": "sf16-va.tiktokcdn.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "8983283"
+  },
+  {
+    "host": "iptvextreme.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "909462"
+  },
+  {
+    "host": "appl-test.sfo3.digitaloceanspaces.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "475057"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "4132632"
+  },
+  {
+    "id": "671668",
+    "status": 0
+  },
+  {
+    "host": "static.wiseplay.tv",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "498189"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "627360"
+  },
+  {
+    "host": "kodi.mirror.garr.it",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "8628413"
+  },
+  {
+    "host": "raw.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "65418"
+  },
+  {
+    "host": "www.expressvpn.com",
+    "status": 200,
+    "contentType": "text/html",
+    "id": "291587"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "5483455"
+  },
+  {
+    "host": "scdn.rokkr.net",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "316812"
+  },
+  {
+    "host": "monitordot.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "912985"
+  },
+  {
+    "host": "uc13198f87624a14dd037131a334.dl.dropboxusercontent.com",
+    "status": 200,
+    "contentType": "application/json",
+    "id": "1955297"
+  },
+  {
+    "host": "www.dl.dropboxusercontent.com",
+    "status": 200,
+    "contentType": "application/json",
+    "id": "277069"
+  },
+  {
+    "host": "static.xiaoji001.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "170794"
+  },
+  {
+    "host": "www.privateinternetaccess.com",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "48649"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "97275"
+  },
+  {
+    "host": "dn710109.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "7878729"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "1126412"
+  },
+  {
+    "id": "396805",
+    "status": 0
+  },
+  {
+    "host": "cdn.hotiptv.app",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "395800"
+  },
+  {
+    "host": "files.tivimate.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "272483"
+  },
+  {
+    "host": "apktime.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "51180"
+  },
+  {
+    "host": "archive.mozilla.org",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "4697921"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "33479"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "5067986"
+  },
+  {
+    "host": "gsesmartiptv.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "354615"
+  },
+  {
+    "host": "buildbot.libretro.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "4361890"
+  },
+  {
+    "host": "download.adguard.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "442768"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "504109"
+  },
+  {
+    "id": "8551956",
+    "status": 0
+  },
+  {
+    "id": "9367049",
+    "status": 0
+  },
+  {
+    "host": "dn721903.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "392439"
+  },
+  {
+    "host": "auroraoss.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "631082"
+  },
+  {
+    "host": "files.televizo.net",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "474318"
+  },
+  {
+    "host": "www.techdoctoruk.com",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "887091"
+  },
+  {
+    "id": "400570",
+    "status": 0
+  },
+  {
+    "host": "dn710305.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "3531785"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "1225186"
+  },
+  {
+    "host": "ibodesk.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "624821"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "1784104"
+  },
+  {
+    "host": "downloads.surfshark.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "46836"
+  },
+  {
+    "host": "dn721704.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "3672427"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "117953"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "7042930"
+  },
+  {
+    "host": "www.smart-stb.net",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "3804692"
+  },
+  {
+    "host": "dn721506.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "8101802"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 206,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "88306",
+    "method": "GET headers"
+  },
+  {
+    "host": "dn720706.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "8779719"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "234753"
+  },
+  {
+    "host": "www.lonelycatgames.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "7869550"
+  },
+  {
+    "id": "814943",
+    "status": 0
+  },
+  {
+    "host": "dn721502.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "5013720"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "2747416"
+  },
+  {
+    "host": "ftp.rnl.tecnico.ulisboa.pt",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "3834114"
+  },
+  {
+    "host": "weyd.app",
+    "status": 200,
+    "contentType": "application/download",
+    "id": "92773"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "18051"
+  },
+  {
+    "host": "cdn4.telesco.pe",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "37598"
+  },
+  {
+    "host": "iptvremote.ru",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "8065811"
+  },
+  {
+    "id": "2870148",
+    "status": 0
+  },
+  {
+    "id": "13792",
+    "status": 0
+  }
+]

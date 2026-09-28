@@ -1,0 +1,1200 @@
+{
+  "date": "2026-09-28",
+  "scope": "Current app pages reachable from post/page/category sitemaps and same-origin page links. No blog prose, historical releases, advertising widgets or affiliate redirects imported.",
+  "seedCount": 145,
+  "pageCount": 170,
+  "unseen": [],
+  "appCount": 104,
+  "pages": [
+    {
+      "source": "https://downloadercodes.com/blog/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 31
+    },
+    {
+      "source": "https://downloadercodes.com/blog/apktime-shuts-down/",
+      "canonical": null,
+      "title": "APKTime Has Shut Down for Good: Here’s the Best Alternative",
+      "appCode": null,
+      "linkCount": 39
+    },
+    {
+      "source": "https://downloadercodes.com/blog/beetv-apk/",
+      "canonical": null,
+      "title": "How to Install BeeTV APK on Firestick & Android TV",
+      "appCode": null,
+      "linkCount": 45
+    },
+    {
+      "source": "https://downloadercodes.com/",
+      "canonical": null,
+      "title": "Best Downloader Codes for Firestick and Android TV",
+      "appCode": null,
+      "linkCount": 68
+    },
+    {
+      "source": "https://downloadercodes.com/smarttube/",
+      "canonical": null,
+      "title": "SmartTube",
+      "appCode": "28544",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/ezv-player/",
+      "canonical": null,
+      "title": "EZV Player",
+      "appCode": "3577356",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tizentube/",
+      "canonical": null,
+      "title": "TizenTube",
+      "appCode": "5483455",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/tduk-app-killer/",
+      "canonical": null,
+      "title": "TDUK APP Killer",
+      "appCode": "887091",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/send-files-to-tv/",
+      "canonical": null,
+      "title": "Send files to TV",
+      "appCode": "8960904",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/aida64/",
+      "canonical": null,
+      "title": "AIDA64",
+      "appCode": "6381440",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/rokkr/",
+      "canonical": null,
+      "title": "Rokkr",
+      "appCode": "316812",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/dezor/",
+      "canonical": null,
+      "title": "Dezor",
+      "appCode": "400570",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/xciptv/",
+      "canonical": null,
+      "title": "XCIPTV PLAYER",
+      "appCode": "4472530",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/projectivy-launcher/",
+      "canonical": null,
+      "title": "Projectivy Launcher",
+      "appCode": "9700771",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/tools/vpn-monitor-dot/",
+      "canonical": null,
+      "title": "VPN Monitor Dot",
+      "appCode": "912985",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/tools/es-file-explorer/",
+      "canonical": null,
+      "title": "ES File Explorer",
+      "appCode": "3531785",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/flauncher/",
+      "canonical": null,
+      "title": "FLauncher",
+      "appCode": "765814",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/shamel-tv-pro/",
+      "canonical": null,
+      "title": "Shamel TV Pro",
+      "appCode": "1971589",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/mytvonline/",
+      "canonical": null,
+      "title": "MYTVOnline+",
+      "appCode": "1955297",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/ltvlauncher/",
+      "canonical": null,
+      "title": "LTvLauncher",
+      "appCode": "1225186",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/jellyfin/",
+      "canonical": null,
+      "title": "Jellyfin",
+      "appCode": "7485151",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/ott-navigator/",
+      "canonical": null,
+      "title": "OTT Navigator",
+      "appCode": "982469",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/implayer/",
+      "canonical": null,
+      "title": "iMPlayer",
+      "appCode": "277069",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/bob-player/",
+      "canonical": null,
+      "title": "BOB Player",
+      "appCode": "624821",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/brave/",
+      "canonical": null,
+      "title": "Brave Browser",
+      "appCode": "8403542",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/aptoide-tv/",
+      "canonical": null,
+      "title": "Aptoide TV",
+      "appCode": "75880",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/games/happy-chick/",
+      "canonical": null,
+      "title": "Happy Chick",
+      "appCode": "170794",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/proton-vpn/",
+      "canonical": null,
+      "title": "Proton VPN: Fast & Secure VPN",
+      "appCode": "1784104",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/nordvpn/",
+      "canonical": null,
+      "title": "NordVPN – fast VPN for privacy",
+      "appCode": "835434",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/app-stores/",
+      "canonical": null,
+      "title": "Best alternative app stores",
+      "appCode": null,
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/adguard-vpn/",
+      "canonical": null,
+      "title": "AdGuard VPN",
+      "appCode": "715373",
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/private-internet-access-vpn/",
+      "canonical": null,
+      "title": "Private Internet Access",
+      "appCode": "48649",
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/surfshark/",
+      "canonical": null,
+      "title": "Surfshark :Secure VPN service",
+      "appCode": "46836",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/disclaimer/",
+      "canonical": null,
+      "title": "Disclaimer",
+      "appCode": null,
+      "linkCount": 29
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/how-to-guides/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/firestick-tricks/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/adguard-for-android-tv/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 30
+    },
+    {
+      "source": "https://downloadercodes.com/blog/best-downloader-codes-list/",
+      "canonical": null,
+      "title": "Best Downloader Codes List 2026 (Free Movies)",
+      "appCode": null,
+      "linkCount": 74
+    },
+    {
+      "source": "https://downloadercodes.com/blog/how-to-install-adguard-on-firestick/",
+      "canonical": null,
+      "title": "How to Install AdGuard APK on FireStick – 2026 Guide",
+      "appCode": null,
+      "linkCount": 42
+    },
+    {
+      "source": "https://downloadercodes.com/blog/install-kodi-onto-firestick/",
+      "canonical": null,
+      "title": "How to Install Kodi Onto FireStick (January 2025)",
+      "appCode": null,
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/toolbox/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 2
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/ytv-player-pro/",
+      "canonical": null,
+      "title": "YTV Player Pro",
+      "appCode": "7817056",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/apkpure/",
+      "canonical": null,
+      "title": "APKPure",
+      "appCode": "8378407",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/tools/appstarter/",
+      "canonical": null,
+      "title": "AppStarter",
+      "appCode": "97275",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/drama-player/",
+      "canonical": null,
+      "title": "Drama Player",
+      "appCode": "3672427",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/sparkle-tv/",
+      "canonical": null,
+      "title": "Sparkle TV",
+      "appCode": "7090558",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/opera/",
+      "canonical": null,
+      "title": "Opera Browser",
+      "appCode": "99187",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/url-video-player/",
+      "canonical": null,
+      "title": "Url Video Player",
+      "appCode": "7878729",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/wireless-file-manager/",
+      "canonical": null,
+      "title": "Wireless File Manager",
+      "appCode": "117953",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/nv-player/",
+      "canonical": null,
+      "title": "NV Video Player",
+      "appCode": "3450279",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/sd-maid/",
+      "canonical": null,
+      "title": "SD Maid 1",
+      "appCode": "412267",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/background-apps-process-list/",
+      "canonical": null,
+      "title": "Background Apps & Process List",
+      "appCode": "1126412",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/nuviotv/",
+      "canonical": null,
+      "title": "NuvioTV",
+      "appCode": "7042930",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/shamel-tv/",
+      "canonical": null,
+      "title": "Shamel.tv",
+      "appCode": "246523",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/tplayer/",
+      "canonical": null,
+      "title": "TPlayer",
+      "appCode": "7346066",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/launcher-manager-mini/",
+      "canonical": null,
+      "title": "Launcher Manager Mini",
+      "appCode": "396805",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/smart-stb/",
+      "canonical": null,
+      "title": "Smart STB",
+      "appCode": "3804692",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/",
+      "canonical": null,
+      "title": "IPTV Smarters Pro",
+      "appCode": "6468112",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/general-tv/",
+      "canonical": null,
+      "title": "General TV",
+      "appCode": "2124797",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/hot-player/",
+      "canonical": null,
+      "title": "Hot Player",
+      "appCode": "395800",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/asd-player/",
+      "canonical": null,
+      "title": "ASD Player",
+      "appCode": "8101802",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/app-cloner/",
+      "canonical": null,
+      "title": "App Cloner",
+      "appCode": "6332051",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/games/antstream/",
+      "canonical": null,
+      "title": "Antstream",
+      "appCode": "922747",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/firestick/",
+      "canonical": null,
+      "title": "Trending firestick downloader codes",
+      "appCode": null,
+      "linkCount": 52
+    },
+    {
+      "source": "https://downloadercodes.com/tivimate/",
+      "canonical": null,
+      "title": "TiviMate",
+      "appCode": "272483",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/",
+      "canonical": null,
+      "title": "Web browsers",
+      "appCode": null,
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/syncler/",
+      "canonical": null,
+      "title": "Syncler",
+      "appCode": "88306",
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/ipvanish/",
+      "canonical": null,
+      "title": "IPVanish : VPN Location Changer",
+      "appCode": "697672",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/request/",
+      "canonical": null,
+      "title": "Request downloader code",
+      "appCode": null,
+      "linkCount": 25
+    },
+    {
+      "source": "https://downloadercodes.com/faq/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 25
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/sideloading-apps/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/fire-tv/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/blog/downloader-app/",
+      "canonical": null,
+      "title": "Downloader App on Firestick, Android TV, Google TV, & More (2026)",
+      "appCode": null,
+      "linkCount": 40
+    },
+    {
+      "source": "https://downloadercodes.com/blog/install-adguard-on-android-tv/",
+      "canonical": null,
+      "title": "How to install AdGuard APK on Android TV & Google TV (V4.12)",
+      "appCode": null,
+      "linkCount": 38
+    },
+    {
+      "source": "https://downloadercodes.com/blog/how-to-use-downloader-codes/",
+      "canonical": null,
+      "title": "How to Use Downloader Codes on Fire TV & Android",
+      "appCode": null,
+      "linkCount": 46
+    },
+    {
+      "source": "https://downloadercodes.com/stremio/",
+      "canonical": null,
+      "title": "Stremio",
+      "appCode": "4549600",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/apktime/",
+      "canonical": null,
+      "title": "APKTime",
+      "appCode": "51180",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/",
+      "canonical": null,
+      "title": "Top free media & video players",
+      "appCode": null,
+      "linkCount": 41
+    },
+    {
+      "source": "https://downloadercodes.com/nebula-manager/",
+      "canonical": null,
+      "title": "Nebula Manager",
+      "appCode": "8779719",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/tools/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 41
+    },
+    {
+      "source": "https://downloadercodes.com/tools/easy-fire-tools/",
+      "canonical": null,
+      "title": "Easy Fire Tools",
+      "appCode": "2893042",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/wuffy-player/",
+      "canonical": null,
+      "title": "Wuffy Player",
+      "appCode": "378211",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/firefox/",
+      "canonical": null,
+      "title": "Firefox",
+      "appCode": "4697921",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/unlinked/",
+      "canonical": null,
+      "title": "Unlinked",
+      "appCode": "234753",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/zen-iptv-player/",
+      "canonical": null,
+      "title": "Zen IPTV Player",
+      "appCode": "473860",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/next-player/",
+      "canonical": null,
+      "title": "Next Player",
+      "appCode": "6279584",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/defsquid/",
+      "canonical": null,
+      "title": "DefSquid",
+      "appCode": "33479",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/x-plore-file-manager/",
+      "canonical": null,
+      "title": "X-plore File Manager",
+      "appCode": "7869550",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/plex/",
+      "canonical": null,
+      "title": "Plex",
+      "appCode": "5243082",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tiktok/",
+      "canonical": null,
+      "title": "TikTok",
+      "appCode": "8983283",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/nova-video-player/",
+      "canonical": null,
+      "title": "NOVA Video Player",
+      "appCode": "5067986",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/launcher-manager/",
+      "canonical": null,
+      "title": "Launcher Manager",
+      "appCode": "814943",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/smart-iptv/",
+      "canonical": null,
+      "title": "Smart IPTV",
+      "appCode": "26604",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/iptv-extreme/",
+      "canonical": null,
+      "title": "IPTV Extreme",
+      "appCode": "909462",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/gse-smart-iptv/",
+      "canonical": null,
+      "title": "GSE Smart IPTV",
+      "appCode": "354615",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/hb-player/",
+      "canonical": null,
+      "title": "HB Player",
+      "appCode": "5013720",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/bear-player/",
+      "canonical": null,
+      "title": "Bear Player",
+      "appCode": "6514919",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/applinked/",
+      "canonical": null,
+      "title": "AppLinked",
+      "appCode": "475057",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/games/retroarch/",
+      "canonical": null,
+      "title": "RetroArch",
+      "appCode": "4361890",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/search/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/entertainment/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/",
+      "canonical": null,
+      "title": "IPTV players",
+      "appCode": null,
+      "linkCount": 40
+    },
+    {
+      "source": "https://downloadercodes.com/just-video-player/",
+      "canonical": null,
+      "title": "Just (Video) Player",
+      "appCode": "2747416",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/cyberghost/",
+      "canonical": null,
+      "title": "CyberGhost VPN: VPN Fast & Secure",
+      "appCode": "3560139",
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/list/",
+      "canonical": null,
+      "title": "Download Free Downloader Codes List",
+      "appCode": null,
+      "linkCount": 26
+    },
+    {
+      "source": "https://downloadercodes.com/privacy-policy/",
+      "canonical": null,
+      "title": "Privacy Policy",
+      "appCode": null,
+      "linkCount": 29
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/android-tv/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/downloader-app/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 32
+    },
+    {
+      "source": "https://downloadercodes.com/blog/best-vpn-for-android-tv/",
+      "canonical": null,
+      "title": "Best VPN for Firestick and Android TV in 2026 (Tested)",
+      "appCode": null,
+      "linkCount": 50
+    },
+    {
+      "source": "https://downloadercodes.com/blog/how-to-jailbreak-firestick/",
+      "canonical": null,
+      "title": "How to jailbreak Firestick Device in 2025",
+      "appCode": null,
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/blog/how-to-install-wuffy-player-on-firestick/",
+      "canonical": null,
+      "title": "How to Install Wuffy Player on FireStick 2025",
+      "appCode": null,
+      "linkCount": 44
+    },
+    {
+      "source": "https://downloadercodes.com/cloudstream/",
+      "canonical": null,
+      "title": "CloudStream",
+      "appCode": "4132632",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/adguard/",
+      "canonical": null,
+      "title": "AdGuard",
+      "appCode": "442768",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/vlc-media-player/",
+      "canonical": null,
+      "title": "VLC",
+      "appCode": "3834114",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/mouse-toggle/",
+      "canonical": null,
+      "title": "Mouse Toggle",
+      "appCode": "324796",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/adb-tv/",
+      "canonical": null,
+      "title": "ADB TV",
+      "appCode": "671668",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/tools/adaway/",
+      "canonical": null,
+      "title": "AdAway",
+      "appCode": "504109",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/weyd/",
+      "canonical": null,
+      "title": "Weyd",
+      "appCode": "92773",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/browsers/duckduckgo/",
+      "canonical": null,
+      "title": "DuckDuckGo",
+      "appCode": "8945952",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/wiseplay/",
+      "canonical": null,
+      "title": "Wiseplay",
+      "appCode": "498189",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/sideload-launcher/",
+      "canonical": null,
+      "title": "Sideload Launcher",
+      "appCode": "8551956",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tools/vpn-safety-dot/",
+      "canonical": null,
+      "title": "VPN Safety Dot",
+      "appCode": "18051",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/tools/blokada/",
+      "canonical": null,
+      "title": "Blokada",
+      "appCode": "15123",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/tv-bro/",
+      "canonical": null,
+      "title": "TV Bro",
+      "appCode": "627360",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/netguard/",
+      "canonical": null,
+      "title": "NetGuard",
+      "appCode": "9367049",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/telegram/",
+      "canonical": null,
+      "title": "Telegram",
+      "appCode": "37598",
+      "linkCount": 32
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/mx-player/",
+      "canonical": null,
+      "title": "MX Player",
+      "appCode": "894749",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/kodi/",
+      "canonical": null,
+      "title": "Kodi",
+      "appCode": "8628413",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/perfect-player/",
+      "canonical": null,
+      "title": "Perfect Player",
+      "appCode": "392439",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/iptv/",
+      "canonical": null,
+      "title": "IPTV",
+      "appCode": "8065811",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/ibo-player/",
+      "canonical": null,
+      "title": "IBO Player",
+      "appCode": "511693",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/emby/",
+      "canonical": null,
+      "title": "Emby",
+      "appCode": "65418",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/aurora-store/",
+      "canonical": null,
+      "title": "Aurora Store",
+      "appCode": "631082",
+      "linkCount": 37
+    },
+    {
+      "source": "https://downloadercodes.com/9xtream/",
+      "canonical": null,
+      "title": "9Xtream",
+      "appCode": "2870148",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/social/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 30
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/windscribe-vpn/",
+      "canonical": "https://downloadercodes.com/vpn/windscribe-vpn/",
+      "title": "Windscribe VPN",
+      "appCode": "531458",
+      "linkCount": 26
+    },
+    {
+      "source": "https://downloadercodes.com/launchers/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/vpn/expressvpn/",
+      "canonical": null,
+      "title": "ExpressVPN: VPN Fast & Secure",
+      "appCode": "291587",
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/iptv-players/televizo/",
+      "canonical": null,
+      "title": "Televizo",
+      "appCode": "474318",
+      "linkCount": 36
+    },
+    {
+      "source": "https://downloadercodes.com/app-stores/filesynced/",
+      "canonical": null,
+      "title": "FileSynced",
+      "appCode": "13792",
+      "linkCount": 35
+    },
+    {
+      "source": "https://downloadercodes.com/games/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 31
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/apps/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/downloader-codes/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 31
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/kodi/",
+      "canonical": null,
+      "title": "",
+      "appCode": null,
+      "linkCount": 29
+    },
+    {
+      "source": "https://downloadercodes.com/affiliate-disclosure/",
+      "canonical": "https://downloadercodes.com/affiliate-disclosure/",
+      "title": "Affiliate Disclosure",
+      "appCode": null,
+      "linkCount": 24
+    },
+    {
+      "source": "https://downloadercodes.com/blog/best-downloader-codes/",
+      "canonical": "https://downloadercodes.com/blog/best-downloader-codes-list/",
+      "title": "Best Downloader Codes List 2026 (Free Movies)",
+      "appCode": null,
+      "linkCount": 68
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/apk/",
+      "canonical": "https://downloadercodes.com/blog/tag/apk/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 25
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/downloader-by-aftvnews/",
+      "canonical": "https://downloadercodes.com/blog/tag/downloader-by-aftvnews/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 27
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/firestick-tips/",
+      "canonical": "https://downloadercodes.com/blog/tag/firestick-tips/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 28
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/google-tv/",
+      "canonical": "https://downloadercodes.com/blog/tag/google-tv/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 24
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/kodi/",
+      "canonical": "https://downloadercodes.com/kodi/",
+      "title": "Kodi",
+      "appCode": "8628413",
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/author/bichriid/",
+      "canonical": "https://downloadercodes.com/author/bichriid/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 32
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/firestick-tricks/",
+      "canonical": "https://downloadercodes.com/blog/tag/firestick-tricks/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 29
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/downloader-codes/",
+      "canonical": "https://downloadercodes.com/blog/tag/downloader-codes/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 26
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/adguard/",
+      "canonical": "https://downloadercodes.com/blog/tag/adguard/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 25
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/vpn/",
+      "canonical": "https://downloadercodes.com/blog/tag/vpn/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 24
+    },
+    {
+      "source": "https://downloadercodes.com/vpns/",
+      "canonical": "https://downloadercodes.com/vpn/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 33
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/android-tricks/",
+      "canonical": "https://downloadercodes.com/blog/tag/android-tricks/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 27
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/how-to-guide/",
+      "canonical": "https://downloadercodes.com/blog/tag/how-to-guide/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 28
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/fire-tv/",
+      "canonical": "https://downloadercodes.com/blog/tag/fire-tv/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 28
+    },
+    {
+      "source": "https://downloadercodes.com/blog/category/vpn/",
+      "canonical": "https://downloadercodes.com/blog/category/vpn/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 24
+    },
+    {
+      "source": "https://downloadercodes.com/media-players/wuffy-player/",
+      "canonical": "https://downloadercodes.com/wuffy-player/",
+      "title": "Wuffy Player",
+      "appCode": "378211",
+      "linkCount": 34
+    },
+    {
+      "source": "https://downloadercodes.com/contact/",
+      "canonical": "https://downloadercodes.com/contact/",
+      "title": "Get in touch",
+      "appCode": null,
+      "linkCount": 23
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/android-tv/",
+      "canonical": "https://downloadercodes.com/blog/tag/android-tv/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 27
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/sideloading-apps/",
+      "canonical": "https://downloadercodes.com/blog/tag/sideloading-apps/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 29
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/firestick-downloader/",
+      "canonical": "https://downloadercodes.com/blog/tag/firestick-downloader/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 27
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/firestick/",
+      "canonical": "https://downloadercodes.com/blog/tag/firestick/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 24
+    },
+    {
+      "source": "https://downloadercodes.com/blog/tag/wuffy-player/",
+      "canonical": "https://downloadercodes.com/blog/tag/wuffy-player/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 25
+    },
+    {
+      "source": "https://downloadercodes.com/author/bichriid/page/2/",
+      "canonical": "https://downloadercodes.com/author/bichriid/page/2/",
+      "title": "",
+      "appCode": null,
+      "linkCount": 26
+    }
+  ]
+}

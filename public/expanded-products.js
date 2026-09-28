@@ -28,9 +28,25 @@ add('SpotiLOL', 'Musica', 'Client alternativo che integra il web player Spotify.
 add('SpotiFLAC', 'Gestione download audio', 'Strumento per scaricare e organizzare audio in formato FLAC. Utilizzalo soltanto per contenuti che sei autorizzato a scaricare.', 'https://spotiflac.com/');
 add('Spotiduck', 'Musica', 'Client musicale alternativo segnalato da KPFire. Identità della build e compatibilità con il proprio account da controllare; non equivale a una licenza Premium.');
 
+add('EZV Player|Url Video Player|NV Video Player|ASD Player|Next Player|NOVA Video Player', 'Lettori video', 'Riproduce file video o flussi da indirizzi forniti dall’utente. Non include canali o abbonamenti; controlla i formati supportati dalla versione scelta.', 'https://downloadercodes.com/media-players/');
+add('Shamel TV Pro|Shamel.tv|MYTVOnline+|BOB Player|Smart STB|General TV|Hot Player|Zen IPTV Player|IPTV Extreme|GSE Smart IPTV|9Xtream|Televizo', 'TV in diretta · Player IPTV', 'Lettore per i tuoi servizi e playlist IPTV. Richiede una playlist o credenziali di un servizio autorizzato; eventuale licenza del lettore è separata dai contenuti.', 'https://downloadercodes.com/iptv-players/');
+add('IPTV', 'TV in diretta · Player IPTV', 'Lettore di playlist IPTV fornite dall’utente. Non include canali o abbonamenti.', 'https://downloadercodes.com/iptv-players/');
+add('Dezor|Opera Browser|Firefox|DuckDuckGo', 'Browser Internet', 'Browser per navigare sul web. La compatibilità con telecomando e siti dipende dalla versione; non è un abbonamento a contenuti video.', 'https://downloadercodes.com/browsers/');
+add('Private Internet Access|AdGuard VPN|Windscribe VPN', 'VPN', 'Servizio VPN che instrada la connessione attraverso i propri server. Richiede un account e può prevedere limiti o un abbonamento; non fornisce canali TV.', 'https://downloadercodes.com/vpn/');
+add('RetroArch', 'Giochi ed emulazione', 'Interfaccia per emulatori e motori di gioco tramite core Libretro. Usa giochi e BIOS che sei autorizzato a utilizzare; può essere necessario un gamepad.', 'https://www.retroarch.com/');
+add('Happy Chick', 'Giochi ed emulazione', 'Applicazione di emulazione per giochi retro. Verifica compatibilità e controller; usa soltanto giochi che sei autorizzato a utilizzare.', 'https://downloadercodes.com/games/');
+add('Antstream', 'Giochi ed emulazione', 'Servizio di giochi retro in streaming. Richiede una connessione Internet e un account; disponibilità dei giochi e costi dipendono dal servizio.', 'https://downloadercodes.com/games/');
+add('TDUK APP Killer', 'Pulizia e manutenzione Android', 'Strumento per chiudere applicazioni in background su dispositivi compatibili. Controlla i permessi richiesti e non interrompere servizi di sistema.', 'https://downloadercodes.com/tools/');
+add('Wireless File Manager', 'Gestione e trasferimento file', 'Gestisce e trasferisce file tramite rete locale. Usa soltanto reti fidate e disattiva la condivisione quando hai finito.', 'https://downloadercodes.com/tools/');
+add('Nebula Manager', 'Launcher e schermata iniziale', 'Organizza scorciatoie per aprire le app installate dalla schermata TV. Non aggiunge contenuti o abbonamenti.', 'https://downloadercodes.com/launchers/');
+add('DefSquid', 'Pulizia e manutenzione Android', 'Utility di manutenzione e controllo per Android TV e Fire TV. Verifica le operazioni prima di confermarle; non garantisce la sicurezza dei file scaricati.', 'https://downloadercodes.com/tools/');
+add('ADB TV', 'Gestione app e strumenti ADB', 'Gestisce applicazioni Android TV tramite ADB, anche per disabilitare o rimuovere pacchetti. Richiede configurazione del debug: evita di rimuovere componenti di sistema.', 'https://downloadercodes.com/tools/');
+add('AdAway', 'Privacy e blocco pubblicità', 'Filtro pubblicitario per Android. La modalità scelta può usare una VPN locale o richiedere root; controlla compatibilità e permessi.', 'https://downloadercodes.com/tools/');
+
 const longestFirst = [...rows].sort((a,b)=>b.name.length-a.name.length);
 export function expandedProduct(name = '') {
   const normalized = String(name).trim();
   return longestFirst.find(row =>
+    (row.name !== 'IPTV' || /^IPTV(?:$|\s+—)/i.test(normalized)) &&
     normalized.toLowerCase().startsWith(row.name.toLowerCase()) && !/[a-z]/i.test(normalized[row.name.length] || ''));
 }
