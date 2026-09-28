@@ -1,0 +1,24 @@
+[
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_5ed9435d35034bd32925"
+  },
+  {
+    "host": "www.ipvanish.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_e4fecc218c0131969675"
+  },
+  {
+    "host": "www.expressvpn.com",
+    "status": 200,
+    "contentType": "text/html",
+    "id": "source_e991d2ccb0efca5cd364"
+  },
+  {
+    "id": "source_e7e8cbcbdc6ab5a0d544",
+    "status": 0
+  }
+]

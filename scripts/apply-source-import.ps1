@@ -1,11 +1,11 @@
-param([switch]$Apply)
+param([switch]$Apply, [string]$PlanPath = "$PSScriptRoot/source-import-reviewed-20260928.json", [string]$BackupPath = 'C:/Users/vitob/Downloads/codici-firetv-before-source-import-20260928.json')
 $ErrorActionPreference = 'Stop'
-$plan = Get-Content -Raw -Encoding UTF8 "$PSScriptRoot/source-import-reviewed-20260928.json" | ConvertFrom-Json
+$plan = Get-Content -Raw -Encoding UTF8 $PlanPath | ConvertFrom-Json
 if (-not $Apply) {
   Write-Output "Reviewed plan: $($plan.additions.Count) additions, $($plan.enrichments.Count) exact-match code enrichments. No notifications. Use -Apply to execute."
   exit
 }
-$backup = Get-Content -Raw -Encoding UTF8 'C:/Users/vitob/Downloads/codici-firetv-before-source-import-20260928.json' | ConvertFrom-Json
+$backup = Get-Content -Raw -Encoding UTF8 $BackupPath | ConvertFrom-Json
 $config = node -e "require('dotenv').config({quiet:true});console.log(JSON.stringify({key:process.env.FIREBASE_API_KEY,email:process.env.FIREBASE_ADMIN_EMAIL,password:process.env.FIREBASE_ADMIN_PASSWORD,url:process.env.FIREBASE_DATABASE_URL}))" | ConvertFrom-Json
 $owner = 'source-import-' + [guid]::NewGuid().ToString('N')
 $held = $false

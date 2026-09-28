@@ -1,4 +1,6 @@
 import { sourceIcons } from './source-icons.js';
+import { expandedProduct } from './expanded-products.js';
+import { expandedIcons } from './expanded-icons.js';
 // Match product identity, not architecture/release labels or category.
 const products = ['Nuvio', 'Stremio', 'Kodi', 'SmartTube', 'SmartTubeNext', 'TizenTube',
   'DodoStream', 'Lumera', 'Arvio', 'Debrify', 'OnStream', 'MobiFlix', 'SStream',
@@ -30,7 +32,10 @@ export function iconFamily(name = '') {
     .replace(/^XCIP TV\b/i, 'XCIPTV').replace(/^Aida 64\b/i, 'AIDA64')
     .replace(/^Smartube\b/i, 'SmartTube').replace(/^MX-Player-Pro/i, 'MX Player Pro')
     .replace(/^Magellan TV\b/i, 'MagellanTV').replace(/^Sports? Fire\b/i, 'SportsFire')
-    .replace(/^WolfLauncher\b/i, 'Wolf Launcher');
+    .replace(/^WolfLauncher\b/i, 'Wolf Launcher').replace(/^UK Turks\b/i,'UKTurks')
+    .replace(/^Ocean Streamz\b/i,'OceanStreamz').replace(/^LiveNet TV\b/i,'Live Net TV');
+  const expanded = expandedProduct(normalized);
+  if (expanded) return expanded.name === 'Movie Box' ? 'MovieBox' : expanded.name;
   if (/^TROYPOINT.*\bKodi\b/i.test(normalized)) return 'Kodi';
   const product = products.find(p => new RegExp('^' + p + '(?=$|[^a-z])', 'i').test(normalized));
   return product === 'SmartTubeNext' ? 'SmartTube' : product || normalized;
@@ -57,7 +62,7 @@ function usable(icon) {
 }
 
 export function createIconRegistry(apps) {
-  const selected = new Map(Object.entries({ ...sourceIcons, ...canonical }));
+  const selected = new Map(Object.entries({ ...sourceIcons, ...expandedIcons, ...canonical }));
   // Deterministic across Firebase order, filters and pagination. Every variant
   // gets the same chosen asset; bad imports cannot override canonical logos.
   for (const app of [...apps].sort((a, b) => String(a.icon || '').localeCompare(String(b.icon || '')))) {

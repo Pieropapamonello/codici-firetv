@@ -1,0 +1,89 @@
+{
+  "additions": [
+    {
+      "id": "source_5ed9435d35034bd32925",
+      "app": {
+        "name": "Proton VPN: Fast & Secure VPN — codice 1784104",
+        "code": "https://github.com/ProtonVPN/android-app/releases/download/5.15.9.4/ProtonVPN-5.15.9.4.605150904.-production-vanilla-direct-release.apk",
+        "category": "VPN e indicatori connessione",
+        "desc": "Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/proton-vpn-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/proton-vpn/",
+        "sourceName": "Proton VPN: Fast & Secure VPN",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "variantNote": "Codice pubblicato dalla fonte esterna. Versione e compatibilità dichiarate dalla fonte, non verificate sul dispositivo. Autenticità e firma del pacchetto non verificate.",
+        "downloaderCode": "1784104",
+        "codeBoundUrl": "https://github.com/ProtonVPN/android-app/releases/download/5.15.9.4/ProtonVPN-5.15.9.4.605150904.-production-vanilla-direct-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_e991d2ccb0efca5cd364",
+      "app": {
+        "name": "ExpressVPN: VPN Fast & Secure — codice 291587",
+        "code": "https://www.expressvpn.com/latest/android",
+        "category": "VPN e indicatori connessione",
+        "desc": "Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/01/expressvpn-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/expressvpn/",
+        "sourceName": "ExpressVPN: VPN Fast & Secure",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "variantNote": "Codice pubblicato dalla fonte esterna. Versione e compatibilità dichiarate dalla fonte, non verificate sul dispositivo. Autenticità e firma del pacchetto non verificate.",
+        "downloaderCode": "291587",
+        "codeBoundUrl": "https://www.expressvpn.com/latest/android",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_e4fecc218c0131969675",
+      "app": {
+        "name": "IPVanish : VPN Location Changer — codice 697672",
+        "code": "https://www.ipvanish.com/software/android/IPVanishTV.apk",
+        "category": "VPN e indicatori connessione",
+        "desc": "Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/Ipvanish-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/ipvanish/",
+        "sourceName": "IPVanish : VPN Location Changer",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "variantNote": "Codice pubblicato dalla fonte esterna. Versione e compatibilità dichiarate dalla fonte, non verificate sul dispositivo. Autenticità e firma del pacchetto non verificate.",
+        "downloaderCode": "697672",
+        "codeBoundUrl": "https://www.ipvanish.com/software/android/IPVanishTV.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "source_e7e8cbcbdc6ab5a0d544",
+      "app": {
+        "name": "CyberGhost VPN: VPN Fast & Secure — codice 3560139",
+        "code": "https://vpn-support.zendesk.com/attachments/token/3u4kwDxLStDCCekuBqhb0pgkf/?name=app-google-release.apk",
+        "category": "VPN e indicatori connessione",
+        "desc": "Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2026/01/cyberghostvpn-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/cyberghost/",
+        "sourceName": "CyberGhost VPN: VPN Fast & Secure",
+        "sourceLabel": "DownloaderCodes",
+        "importedAt": "2026-09-28",
+        "variantNote": "Codice pubblicato dalla fonte esterna. Versione e compatibilità dichiarate dalla fonte, non verificate sul dispositivo. Autenticità e firma del pacchetto non verificate.",
+        "downloaderCode": "3560139",
+        "codeBoundUrl": "https://vpn-support.zendesk.com/attachments/token/3u4kwDxLStDCCekuBqhb0pgkf/?name=app-google-release.apk",
+        "codeCheckedAt": "2026-09-28"
+      }
+    }
+  ],
+  "enrichments": []
+}

@@ -1,5 +1,5 @@
-param([int]$Batch = 0, [int]$Batches = 4)
-$icons = node "$PSScriptRoot/prepare-source-icons.mjs" | ConvertFrom-Json
+param([int]$Batch = 0, [int]$Batches = 4, [string]$IconPlanPath = '')
+$icons = if ($IconPlanPath) { Get-Content -Raw -Encoding UTF8 $IconPlanPath | ConvertFrom-Json } else { node "$PSScriptRoot/prepare-source-icons.mjs" | ConvertFrom-Json }
 $folder = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../public/assets/catalog'))
 New-Item -ItemType Directory -Force -Path $folder | Out-Null
 for ($i=$Batch; $i -lt $icons.Count; $i+=$Batches) {

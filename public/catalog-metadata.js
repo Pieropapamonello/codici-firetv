@@ -1,3 +1,4 @@
+import { expandedProduct } from './expanded-products.js';
 // Functional classification, shared by the website and the importer.
 // Sources identify products, not the authenticity/safety of third-party APKs.
 // Unknown names must remain explicitly unverified, never guessed from "player"/"file".
@@ -109,7 +110,9 @@ const rules = [
 ];
 
 export function catalogMetadata(name = '') {
-  const normalized = String(name).replaceAll('_', ' ').replace(/^Bee TV\b/i, 'BeeTV').replace(/^Viva TV\b/i, 'VivaTV').replace(/^XCIP TV\b/i, 'XCIPTV');
+  const normalized = String(name).replaceAll('_', ' ').replace(/^Bee TV\b/i, 'BeeTV').replace(/^Viva TV\b/i, 'VivaTV').replace(/^XCIP TV\b/i, 'XCIPTV').replace(/^MX-Player-Pro/i,'MX Player Pro').replace(/^Smartube\b/i,'SmartTube').replace(/^UK Turks\b/i,'UKTurks').replace(/^Ocean Streamz\b/i,'OceanStreamz').replace(/^LiveNet TV\b/i,'Live Net TV');
+  const expanded = expandedProduct(normalized);
+  if (expanded) { const { name: productName, ...metadata } = expanded; return metadata; }
   const rule = rules.find(([pattern]) => pattern.test(normalized));
   if (!rule) return { category: 'Da identificare', desc: 'Identità e funzione non verificate: serve il sito originale o il nome del pacchetto APK. Non presumere la compatibilità con la TV.', metadataVerified: false, source: '' };
   const [, category, desc, source] = rule;
