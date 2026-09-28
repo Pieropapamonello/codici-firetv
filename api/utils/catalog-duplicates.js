@@ -11,6 +11,13 @@ export function downloadIdentity(app) {
   const value = String(app.directUrl || app.code || '');
   try {
     const url = new URL(value);
+    // Repository redirects preserve the exact tag and artifact, not just the app name.
+    if (url.hostname === 'github.com') {
+      url.pathname = url.pathname.replace(/^\/yuliskov\/SmartTubeNext\//i, '/yuliskov/SmartTube/');
+    }
+    // Kodi's mirror transport flag does not identify a different APK.
+    if (url.hostname === 'mirrors.kodi.tv' && url.searchParams.get('https') === '1') url.searchParams.delete('https');
+    if (url.href === 'https://tivimate.com/apk') return 'https://files.tivimate.com/tivimate.apk';
     // Tutorial pages were incorrectly imported by the old scraper. Never
     // deduplicate them: unrelated apps may have inherited the same tutorial.
     if (url.hostname === 'troypoint.com' || url.hostname === 'www.troypoint.com') return null;

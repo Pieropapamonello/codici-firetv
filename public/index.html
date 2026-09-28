@@ -1268,6 +1268,7 @@ import { variantDescription } from './app-variants.js';
 import { catalogAliases } from './catalog-aliases.js';
 import { groupCatalog, appGroupKey } from './catalog-groups.js';
 import { createIconRegistry, iconFamily } from './catalog-icons.js';
+import { appendProvenance } from './catalog-provenance.js';
 window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -1403,6 +1404,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
              description += ` (${date})`;
           }
           return {
+              ...val,
               id: key,
               type: 'software',
               name: val.name,
@@ -1922,7 +1924,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
           <span class="download-label"><strong>${escapeHtml(name)}</strong><small>${escapeHtml(apkDescription(name, desc))}</small></span>
         </div>
         <div class="app-actions">
-          <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="Scarica ${escapeHtml(name)}">Scarica</a>
+          <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="${shareApp.downloadKind === 'page' ? 'Apri pagina di' : 'Scarica'} ${escapeHtml(name)}">${shareApp.downloadKind === 'page' ? 'Apri pagina' : 'Scarica'}</a>
           ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : ''}
           <button type="button" class="app-action share-app" aria-label="Copia link di ${escapeHtml(name)}">Copia link</button>
         </div>
@@ -1947,6 +1949,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       }
       frame.querySelector('.family-apps').append(newCard);
       attachAppActions(newCard, shareApp, location.origin);
+      appendProvenance(newCard, shareApp);
       
 
       newCard.addEventListener('dragstart', (e) => {

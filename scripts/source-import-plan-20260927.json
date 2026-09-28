@@ -1,0 +1,3542 @@
+{
+  "additions": [
+    {
+      "id": "source_97e396476113ddb1be09",
+      "app": {
+        "name": "YTV Player Pro — codice 7817056",
+        "code": "https://raw.githubusercontent.com/yacinetv2/ytv11.0/refs/heads/main/YTVPlayer_12.0.apk",
+        "downloaderCode": "7817056",
+        "category": "Lettori video",
+        "desc": "Apre file o indirizzi video forniti dall’utente o da un’altra app. Non fornisce un abbonamento a contenuti.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/ytv-player-pro-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/ytv-player-pro/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "YTV Player Pro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_6cf02a9107538109a2a2",
+      "app": {
+        "name": "SmartTube — codice 28544",
+        "code": "https://github.com/yuliskov/SmartTubeNext/releases/download/latest/smarttube_stable.apk",
+        "downloaderCode": "28544",
+        "category": "Video e YouTube",
+        "desc": "Riproduzione di video YouTube. SmartTube e TizenTube sono client alternativi, non l’app ufficiale Google.",
+        "source": "https://github.com/yuliskov/SmartTube",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/smarttube/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "SmartTube",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_333c53304a773c5c7bfb",
+      "app": {
+        "name": "AdGuard — codice 442768",
+        "code": "https://download.adguard.com/d/135284/adguard_tv.apk",
+        "downloaderCode": "442768",
+        "category": "Privacy e blocco pubblicità",
+        "desc": "Filtra pubblicità e traccianti secondo la configurazione dell’app. Non equivale a un abbonamento VPN; alcune funzioni possono richiedere una licenza.",
+        "source": "https://adguard.com/en/adguard-android/overview.html",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/adguard-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/adguard/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "AdGuard",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_87cf7788833725adb375",
+      "app": {
+        "name": "TizenTube — codice 5483455",
+        "code": "https://github.com/reisxd/TizenTubeCobalt/releases/download/v2.0.1/cobalt-arm.apk",
+        "downloaderCode": "5483455",
+        "category": "Video e YouTube",
+        "desc": "Client alternativo per YouTube. La variante Cobalt del catalogo è per Android TV; scegli 32 o 64 bit compatibili.",
+        "source": "https://github.com/reisxd/TizenTubeCobalt",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tizentube/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "TizenTube",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_2a81e48229671d7091f9",
+      "app": {
+        "name": "XCIPTV PLAYER — codice 4472530",
+        "code": "https://archive.org/download/com.nathnetwork_xciptv/xciptv-player-7.0.apk",
+        "downloaderCode": "4472530",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/xciptv-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/xciptv/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "XCIPTV PLAYER",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_eb1d1fff8d5037150d51",
+      "app": {
+        "name": "Bear Player — codice 6514919",
+        "code": "https://archive.org/download/com.player_bear/bear_player_2.20.8.apk",
+        "downloaderCode": "6514919",
+        "category": "Lettori video",
+        "desc": "Apre file o indirizzi video forniti dall’utente o da un’altra app. Non fornisce un abbonamento a contenuti.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/bear-player/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Bear Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_5b6b5669ec1a3ab08c56",
+      "app": {
+        "name": "IPTV Smarters Pro — codice 6468112",
+        "code": "https://www.iptvsmarters.com/iptv-smarters-5.0.apk",
+        "downloaderCode": "6468112",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/iptv-smarters-pro-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "IPTV Smarters Pro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_cf15f61161cc4d00c53e",
+      "app": {
+        "name": "APKTime — codice 51180",
+        "code": "https://apktime.com/apps/APKTime-v2.2-Original.apk",
+        "downloaderCode": "51180",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo o raccolta di pacchetti Android da scaricare. Controlla autore, permessi e compatibilità di ogni APK.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/apktime-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/apktime/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "APKTime",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_30112298ad2604be2355",
+      "app": {
+        "name": "Kodi — codice 8628413",
+        "code": "https://mirrors.kodi.tv/releases/android/arm/kodi-21.3-Omega-armeabi-v7a.apk",
+        "downloaderCode": "8628413",
+        "category": "Film e serie · Media center",
+        "desc": "Media center per organizzare e riprodurre la propria libreria e sorgenti configurate. Gli eventuali componenti aggiuntivi si installano separatamente.",
+        "source": "https://kodi.tv/about/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/kodi-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/kodi/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Kodi",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_3b15accdc8c4c5f08d73",
+      "app": {
+        "name": "TV Bro — codice 627360",
+        "code": "https://github.com/truefedex/tv-bro/releases/download/v2.0.1/tvbro-generic-2.0.1.armeabi-v7a.apk",
+        "downloaderCode": "627360",
+        "category": "Browser Internet",
+        "desc": "Browser web per Android TV con navigazione tramite telecomando.",
+        "source": "https://github.com/truefedex/tv-bro",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tv-bro/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "TV Bro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_c56132ac603f1d3be4bb",
+      "app": {
+        "name": "Drama Player — codice 3672427",
+        "code": "https://archive.org/download/com.drama_simpleplayer/dramaplayer_1.0.5.apk",
+        "downloaderCode": "3672427",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o indirizzi forniti dall’utente. Non è un abbonamento a film o canali TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/drama-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/drama-player/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Drama Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_923e6a84be75d0dd92e1",
+      "app": {
+        "name": "Sparkle TV — codice 7090558",
+        "code": "https://archive.org/download/se.hedekonsult.sparkle/sparkletv_2.1.3.apk",
+        "downloaderCode": "7090558",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/sparkle-tv-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/sparkle-tv/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Sparkle TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_2a88bfdfa6601f7be80a",
+      "app": {
+        "name": "IBO Player — codice 511693",
+        "code": "https://iboplayer.com/app_downloads/ibop.apk",
+        "downloaderCode": "511693",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/06/ibo-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/ibo-player/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "IBO Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_af4fa7b136fdd58f4162",
+      "app": {
+        "name": "TiviMate — codice 272483",
+        "code": "https://files.tivimate.com/tivimate.apk",
+        "downloaderCode": "272483",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tivimate/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "TiviMate",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_655e3530b4d9e1c81d65",
+      "app": {
+        "name": "Smart IPTV — codice 26604",
+        "code": "https://siptv.app/howto/android/files/SmartIPTV.apk",
+        "downloaderCode": "26604",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/smart-iptv-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/iptv-players/smart-iptv/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Smart IPTV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_8b39327a7a01ea9bd9db",
+      "app": {
+        "name": "MX Player — codice 894749",
+        "code": "https://f.mxplayer.j2inter.com/download?id=mxplayer&type=arm",
+        "downloaderCode": "894749",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o indirizzi forniti dall’utente. Non è un abbonamento a film o canali TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/mx-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/media-players/mx-player/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "MX Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_8e23f03912e1d1b83ac9",
+      "app": {
+        "name": "VLC — codice 3834114",
+        "code": "https://ftp.rnl.tecnico.ulisboa.pt/pub/videolan/vlc-android/3.7.0/VLC-Android-3.7.0-armeabi-v7a.apk",
+        "downloaderCode": "3834114",
+        "category": "Lettori video",
+        "desc": "Lettore VideoLAN per file audio, video e flussi di rete. Non include un catalogo di film o canali.",
+        "source": "https://www.videolan.org/vlc/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/vlc-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/media-players/vlc-media-player/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "VLC",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_c2cf4e8d6e7ffed84733",
+      "app": {
+        "name": "Wuffy Player — codice 378211",
+        "code": "https://archive.org/download/wuffy-player-version-3.5.7v-2-universal/WuffyPlayerVersion_3.5.7v2_Universal.apk",
+        "downloaderCode": "378211",
+        "category": "Lettori video",
+        "desc": "Apre file o indirizzi video forniti dall’utente o da un’altra app. Non fornisce un abbonamento a contenuti.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/wuffy-player-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/wuffy-player/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Wuffy Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_6f8112f040666fcbf78f",
+      "app": {
+        "name": "Plex — codice 5243082",
+        "code": "https://downloads.plex.tv/Kepler/kepler-armeabi-v7a-googlePlay-10.28.0.3441-367a93b4.apk",
+        "downloaderCode": "5243082",
+        "category": "Film e serie · Media center",
+        "desc": "Media center per organizzare e riprodurre la propria libreria e sorgenti configurate. Gli eventuali componenti aggiuntivi si installano separatamente.",
+        "source": "https://kodi.tv/about/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/plex/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Plex",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ca566f9af0bbe5b6afd1",
+      "app": {
+        "name": "NuvioTV — codice 7042930",
+        "code": "https://github.com/tapframe/NuvioTV/releases/download/0.4.8-beta/app-universal-release.apk",
+        "downloaderCode": "7042930",
+        "category": "Film e serie · Media center",
+        "desc": "Media center con sorgenti e componenti aggiuntivi configurabili. TV si usa col telecomando; Mobile è per telefono e tablet. Non include abbonamenti ai contenuti.",
+        "source": "https://github.com/NuvioMedia/NuvioTV",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/nuviotv/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "NuvioTV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_2eaf15017e75afaf70a5",
+      "app": {
+        "name": "TikTok — codice 8983283",
+        "code": "https://sf16-va.tiktokcdn.com/obj/eden-va2/lapshyasbrvarpa_kpvykuh_jnb/ljhwZthlaukjlkulzlp/US/TT-M/TikTok_2023803030.apk",
+        "downloaderCode": "8983283",
+        "category": "Video e social",
+        "desc": "Piattaforma di video brevi con profili e contenuti degli utenti. La compatibilità con il telecomando dipende dalla variante.",
+        "source": "https://www.tiktok.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tiktok/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "TikTok",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_31c19649d5718d8f1b42",
+      "app": {
+        "name": "NordVPN – fast VPN for privacy — codice 835434",
+        "code": "https://downloads.nordcdn.com/apps/android/generic/nordvpn-sideload/latest/v2/NordVPN_TV.apk",
+        "downloaderCode": "835434",
+        "category": "VPN e indicatori connessione",
+        "desc": "Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/vpn/nordvpn/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "NordVPN – fast VPN for privacy",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_5661ed68b0858b51afa7",
+      "app": {
+        "name": "AIDA64 — codice 6381440",
+        "code": "https://download.aida64.com/aida64-v219.apk",
+        "downloaderCode": "6381440",
+        "category": "Rete e diagnostica",
+        "desc": "Mostra hardware, sistema Android, memoria e caratteristiche del dispositivo. Utile per controllare la piattaforma prima di scegliere un APK.",
+        "source": "https://www.aida64.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/aida64/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "AIDA64",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_a0acde9b9a7f148b8119",
+      "app": {
+        "name": "Background Apps & Process List — codice 1126412",
+        "code": "https://github.com/visnkmr/backgroundappslist/releases/download/56/app-release.apk",
+        "downloaderCode": "1126412",
+        "category": "Avvio e processi Android",
+        "desc": "Elenca le app in background e permette di raggiungere le impostazioni Android per chiuderle. Non aumenta lo spazio disponibile sul disco.",
+        "source": "https://github.com/visnkmr/backgroundappslist",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/background-apps-process-list/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Background Apps & Process List",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_68dfcc847f8fd9ba95a9",
+      "app": {
+        "name": "Mouse Toggle — codice 324796",
+        "code": "https://archive.org/download/mouse-toggle-v-1.11_20201212/Mouse%20Toggle-v1.11.apk",
+        "downloaderCode": "324796",
+        "category": "Telecomando e schermo",
+        "desc": "Aggiunge un cursore controllabile dal telecomando per app pensate per il tocco. Scegli la variante del tuo dispositivo.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/mouse-toggle/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Mouse Toggle",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_0d80686707221eda104a",
+      "app": {
+        "name": "Send files to TV — codice 8960904",
+        "code": "https://archive.org/download/com.yablio.sendfilestotv/SFTT_1.4.22.apk",
+        "downloaderCode": "8960904",
+        "category": "Trasferimento file",
+        "desc": "Trasferisce file tra TV Android, telefono e computer nella stessa rete locale. Installa l’app sui dispositivi coinvolti.",
+        "source": "https://sendfilestotv.app/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/tools/send-files-to-tv/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Send files to TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_459f30926a5867b90c59",
+      "app": {
+        "name": "Aptoide TV — codice 75880",
+        "code": "https://tv.aptoide.com/howtoinstall.html",
+        "downloaderCode": "75880",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo o raccolta di pacchetti Android da scaricare. Controlla autore, permessi e compatibilità di ogni APK.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/aptoidetv-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/aptoide-tv/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Aptoide TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_bfc0193053580447a18f",
+      "app": {
+        "name": "APKPure — codice 8378407",
+        "code": "https://d.apkpure.com/custom/com.apkpure.aegon-latest.apk",
+        "downloaderCode": "8378407",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo per trovare e scaricare pacchetti Android. Controlla autore, permessi e dispositivo supportato prima dell’installazione.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/09/apkpure-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/apkpure/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "APKPure",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_432f8cad50ecf93e5201",
+      "app": {
+        "name": "AppLinked — codice 475057",
+        "code": "https://applinked.store/api/apk",
+        "downloaderCode": "475057",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo per trovare e scaricare pacchetti Android. Controlla autore, permessi e dispositivo supportato prima dell’installazione.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/applinked/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "AppLinked",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_46ba3cd3bf5f1acfeaf5",
+      "app": {
+        "name": "Aurora Store — codice 631082",
+        "code": "https://auroraoss.com/downloads/AuroraStore/Latest/latest.apk",
+        "downloaderCode": "631082",
+        "category": "Store e raccolte APK",
+        "desc": "Client alternativo per cercare e scaricare app presenti su Google Play.",
+        "source": "https://gitlab.com/AuroraOSS/AuroraStore",
+        "metadataVerified": true,
+        "icon": "https://downloadercodes.com/wp-content/uploads/2025/05/aurora-store-downloader-code.webp",
+        "catalogImport": true,
+        "importSource": "https://downloadercodes.com/aurora-store/",
+        "sourceLabel": "DownloaderCodes",
+        "sourceName": "Aurora Store",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_5c6937c7dcdb53e7018a",
+      "app": {
+        "name": "Perfect Player — codice 929878",
+        "code": "https://troypoint.com/perfectplayertb",
+        "downloaderCode": "929878",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Perfect Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_b7f05a2a4e5a1ebc9df4",
+      "app": {
+        "name": "IPTV Pro — codice 899627",
+        "code": "https://archive.org/download/iptv-prowww.dlandroid.com-2/iptv-pro%5Bwww.dlandroid.com%5D%20%282%29.apk",
+        "downloaderCode": "899627",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "IPTV Pro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_b6947ff16e025413bb93",
+      "app": {
+        "name": "iMPlayer — codice 314688",
+        "code": "https://archive.org/download/implayer_20200927/implayer.apk",
+        "downloaderCode": "314688",
+        "category": "TV in diretta · Player IPTV",
+        "desc": "Lettore per i propri canali e liste IPTV. Occorrono una playlist o credenziali del proprio servizio: non include un abbonamento TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "iMPlayer",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_f3df2ad15d5331541bad",
+      "app": {
+        "name": "Paramount Plus USA — codice 7755611",
+        "code": "https://www.apkmirror.com/apk/cbs-interactive-inc/paramount-2/paramount-android-tv-15-1-3-2-release/paramount-android-tv-15-1-3-2-android-apk-download/",
+        "downloaderCode": "7755611",
+        "category": "Servizi streaming con account",
+        "desc": "App del servizio streaming: richiede un account e, dove previsto, un abbonamento. Le varianti non ufficiali/non certificate possono non funzionare su tutti i dispositivi.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Paramount Plus USA",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_97ca451667240b493d36",
+      "app": {
+        "name": "Flix Vision — codice 1504072",
+        "code": "https://github.com/fvision8/fvreleases/releases/download/v3.1.2r/FlixVision_v3.1.2r.apk",
+        "downloaderCode": "1504072",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Flix Vision",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_873b03b3f0abb270a765",
+      "app": {
+        "name": "Cinema HD — codice 985265",
+        "code": "https://cinemahdapkapp.com/dl/v2.5.0_real.apk/",
+        "downloaderCode": "985265",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Cinema HD",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_4c5db8f0b02f73b08539",
+      "app": {
+        "name": "Flixoid — codice 529057",
+        "code": "https://nlt.wtf/nexxus/movie/flixoid-armeabi-v7a%202.0.6.apk",
+        "downloaderCode": "529057",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Flixoid",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_5ec1ec8b1d73623b4533",
+      "app": {
+        "name": "Tea TV — codice 679077",
+        "code": "https://nlt.wtf/nexxus/movie/teatv_10.9.2.apk",
+        "downloaderCode": "679077",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Tea TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_2f693d1bad50a5e8169a",
+      "app": {
+        "name": "FilmPlus — codice 52193",
+        "code": "https://filmplus.app/dl",
+        "downloaderCode": "52193",
+        "category": "Film e serie · App streaming",
+        "desc": "App per cercare e riprodurre contenuti in streaming. Verifica le fonti disponibili e i diritti di accesso; le versioni modificate non sono quelle originali.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "FilmPlus",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_e4942e1d4f43a3cf8264",
+      "app": {
+        "name": "BeeTV — codice 50187",
+        "code": "https://beetvapk.me/",
+        "downloaderCode": "50187",
+        "category": "Film e serie · App streaming",
+        "desc": "App per cercare e riprodurre contenuti in streaming. Verifica le fonti disponibili e i diritti di accesso; le versioni modificate non sono quelle originali.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "BeeTV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_6c56c5078f5e704eccbb",
+      "app": {
+        "name": "CyberFlix TV — codice 60653",
+        "code": "https://cyberflix.me/cf",
+        "downloaderCode": "60653",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "CyberFlix TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_a40f4afc0742316c60a2",
+      "app": {
+        "name": "NovaTV — codice 70064",
+        "code": "https://www1.novatv.app/",
+        "downloaderCode": "70064",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "NovaTV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_7ab2c75eff4ae200e7c6",
+      "app": {
+        "name": "Picasso — codice 197867",
+        "code": "https://picassoapp.tv/",
+        "downloaderCode": "197867",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Picasso",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_e8774f6022b85b681105",
+      "app": {
+        "name": "OnStream — codice 814529",
+        "code": "https://dl.getmenow.click/onstream-tv-latest.apk",
+        "downloaderCode": "814529",
+        "category": "Film e serie · App streaming",
+        "desc": "App per cercare e riprodurre contenuti in streaming. Verifica le fonti disponibili e i diritti di accesso; le versioni modificate non sono quelle originali.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "OnStream",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_82b3ce7ba76a9e819804",
+      "app": {
+        "name": "SStream — codice 959386",
+        "code": "https://github.com/staronecloud/starone/releases/download/Releases/androidtv-12101.apk",
+        "downloaderCode": "959386",
+        "category": "Film e serie · App streaming",
+        "desc": "App per cercare e riprodurre contenuti in streaming. Verifica le fonti disponibili e i diritti di accesso; le versioni modificate non sono quelle originali.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "SStream",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_59683edf09c0267f9304",
+      "app": {
+        "name": "MediaBox — codice 300655",
+        "code": "https://mediaboxhdapk.me/mediaboxhd.apk",
+        "downloaderCode": "300655",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "MediaBox",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_1e55ad937c545af628e4",
+      "app": {
+        "name": "Cuco TV — codice 733069",
+        "code": "https://d.apkpure.com/b/XAPK/com.hamiltoonshows.cocotv?version=latest",
+        "downloaderCode": "733069",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Cuco TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_4b9b10c970bfe78d889c",
+      "app": {
+        "name": "StreamFire — codice 402844",
+        "code": "http://dl.streamfireapp.tv/streamfire1.1.0.apk",
+        "downloaderCode": "402844",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "StreamFire",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_09f5c0aab8eb22b878fc",
+      "app": {
+        "name": "Cartoon HD — codice 707448",
+        "code": "http://cartoonboxhd.com",
+        "downloaderCode": "707448",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Cartoon HD",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_e81df2a9d65261579f38",
+      "app": {
+        "name": "Crackle — codice 970976",
+        "code": "https://www.midian.appboxes.co/APPS1/Movies/Crackle%20%20v7.8.0.3%20Firestick%20Ad-Free.apk",
+        "downloaderCode": "970976",
+        "category": "Servizi streaming con account",
+        "desc": "Client del relativo servizio video. Catalogo, pubblicità, account, eventuale abbonamento e restrizioni territoriali dipendono dal servizio; un APK non li rimuove.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Crackle",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_a16a1f4f7020406a65e5",
+      "app": {
+        "name": "Syncler — codice 65949",
+        "code": "https://syncler.net/",
+        "downloaderCode": "65949",
+        "category": "Film e serie · Media center",
+        "desc": "Organizza e riproduce contenuti da sorgenti o servizi configurati dall’utente. Non equivale a un abbonamento con film inclusi.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Syncler",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_06c4941320f4c3c133f4",
+      "app": {
+        "name": "AppFlix — codice 816017",
+        "code": "https://www.appflixapk.com/",
+        "downloaderCode": "816017",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "AppFlix",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_48c3610392ffe688ffb1",
+      "app": {
+        "name": "Viva TV — codice 82927",
+        "code": "https://www.vivatv.io/",
+        "downloaderCode": "82927",
+        "category": "Film e serie · App streaming",
+        "desc": "App per cercare e riprodurre contenuti in streaming. Verifica le fonti disponibili e i diritti di accesso; le versioni modificate non sono quelle originali.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Viva TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_61228fdc6c0e97383ba7",
+      "app": {
+        "name": "MorpheusTV — codice 30504",
+        "code": "https://morpheustvapkdownload.com/",
+        "downloaderCode": "30504",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "MorpheusTV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_dd87a3b349bcfa5fe663",
+      "app": {
+        "name": "OneBoxHD — codice 352419",
+        "code": "https://www.mediafire.com/file/tsw66lvt8vridk8/One_Box_HD_FireStick.apk/file",
+        "downloaderCode": "352419",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "OneBoxHD",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_6fbecb26ed041187450b",
+      "app": {
+        "name": "Strix — codice 943431",
+        "code": "https://d.apkpure.com/b/APK/com.strix.strix_example?version=latest",
+        "downloaderCode": "943431",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Strix",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_646c08c0d305ab81d5f5",
+      "app": {
+        "name": "CatMouse — codice 979832",
+        "code": "https://catmouseapk.org/",
+        "downloaderCode": "979832",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "CatMouse",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_7f763c09d09cd521483f",
+      "app": {
+        "name": "Weyd — codice 74052",
+        "code": "https://rshor.tk/w",
+        "downloaderCode": "74052",
+        "category": "Film e serie · Media center",
+        "desc": "Organizza e riproduce contenuti da sorgenti o servizi configurati dall’utente. Non equivale a un abbonamento con film inclusi.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Weyd",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_8317bc09196df36085a7",
+      "app": {
+        "name": "Tubi TV — codice 824841",
+        "code": "https://archive.org/download/tubi-tv-v.-4.7.6-adfree/TubiTV_v.4.7.6_adfree.apk",
+        "downloaderCode": "824841",
+        "category": "Servizi streaming con account",
+        "desc": "Client del relativo servizio video. Catalogo, pubblicità, account, eventuale abbonamento e restrizioni territoriali dipendono dal servizio; un APK non li rimuove.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Tubi TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ebbd3c5f509f82720cf3",
+      "app": {
+        "name": "HDO — codice 3475826",
+        "code": "https://nlt.wtf/nexxus/movie/HDO_Box_AF_1.1.6_FirestickZoomFix_Arm7_SpydogMu1tiPa1ch.apk",
+        "downloaderCode": "3475826",
+        "category": "Film e serie · App streaming",
+        "desc": "App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "HDO",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_d671e121a647c7f0b4fa",
+      "app": {
+        "name": "BBC iPlayer — codice 952065",
+        "code": "https://apkcombo.com/bbc-iplayer/bbc.iplayer.android/",
+        "downloaderCode": "952065",
+        "category": "Servizi streaming con account",
+        "desc": "Client del relativo servizio video. Catalogo, pubblicità, account, eventuale abbonamento e restrizioni territoriali dipendono dal servizio; un APK non li rimuove.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "BBC iPlayer",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_798792121a2feeaa24c0",
+      "app": {
+        "name": "DofuStream — codice 350936",
+        "code": "https://www.dofustream.com/",
+        "downloaderCode": "350936",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "DofuStream",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_30d34d78fa55fec7c5ae",
+      "app": {
+        "name": "SportsFire — codice 119368",
+        "code": "http://185.191.126.107/sportsfire2.0.3.apk",
+        "downloaderCode": "119368",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "SportsFire",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ac18116feae6e8c16c64",
+      "app": {
+        "name": "Blink Streamz — codice 267713",
+        "code": "https://dl.streamia.xyz/files/BlinkStreamz-v1.4-update.apk",
+        "downloaderCode": "267713",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Blink Streamz",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_39f305a463787e1d4bd7",
+      "app": {
+        "name": "HD Streamz — codice 59792",
+        "code": "http://hdstreamz.app",
+        "downloaderCode": "59792",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "HD Streamz",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_35d04a35d71a90c0ea5d",
+      "app": {
+        "name": "Live Net TV — codice 324462",
+        "code": "https://aftv.livenettv.so/?1.7",
+        "downloaderCode": "324462",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Live Net TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_27ce400cd0277a73760a",
+      "app": {
+        "name": "Redbox TV — codice 73494",
+        "code": "http://redboxtv.to/",
+        "downloaderCode": "73494",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Redbox TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_b76e25ea8479399639d6",
+      "app": {
+        "name": "HDTV Ultimate — codice 32791",
+        "code": "http://hdtvlive.xyz",
+        "downloaderCode": "32791",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "HDTV Ultimate",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_c791a99b4eae6e2386ed",
+      "app": {
+        "name": "Ola TV — codice 120207",
+        "code": "https://olatv.net/olatv.apk",
+        "downloaderCode": "120207",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Ola TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_fdc61f9ad58cca3085cc",
+      "app": {
+        "name": "USTVGO — codice 83672",
+        "code": "https://ustvgo.tv/",
+        "downloaderCode": "83672",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "USTVGO",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_2194048ba14a67c63574",
+      "app": {
+        "name": "Swift Streamz — codice 704096",
+        "code": "https://archive.org/download/swift-streamz-v-2.4-full-mod-mobile-firesticks/Swift%20Streamz%20v2.4%20(Full%20Mod%20MobileFiresticks).apk",
+        "downloaderCode": "704096",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Swift Streamz",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_277fc414eb9d522c083c",
+      "app": {
+        "name": "Kraken TV — codice 282516",
+        "code": "https://archive.org/download/kraken-tv-1.6.1/KrakenTV1.6.1.apk",
+        "downloaderCode": "282516",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Kraken TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_0879c4de46e4770ed3e1",
+      "app": {
+        "name": "TVTap Pro — codice 258728",
+        "code": "https://archive.org/download/tvtap.-pro-3.2./TVTAP.Pro3.2..apk",
+        "downloaderCode": "258728",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "TVTap Pro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_a4f5133427f0dfea8d93",
+      "app": {
+        "name": "AOS TV — codice 652057",
+        "code": "https://archive.org/download/aos-tv-v-18.1.2-mod-v-2-by-stabiron_20200802/AOS%20TV%20v18.1.2%20%5BMod%20(v2)%20By%20Stabiron%5D.apk",
+        "downloaderCode": "652057",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "AOS TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_a319940c9b0cfea23e62",
+      "app": {
+        "name": "Oreo TV — codice 517118",
+        "code": "https://archive.org/download/oreo-tv-v-2.0.4/Oreo%20TV_v_2.0.4.apk",
+        "downloaderCode": "517118",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Oreo TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ea1ab15a39631ebedd85",
+      "app": {
+        "name": "Rapid Streamz — codice 174927",
+        "code": "https://rapidstreamz.online/download-apk/",
+        "downloaderCode": "174927",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Rapid Streamz",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_408d624b276ec13f2ce6",
+      "app": {
+        "name": "1 Pix Media — codice 791689",
+        "code": "https://1pixmedia.online/apk/1PM3.2.apk",
+        "downloaderCode": "791689",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "1 Pix Media",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_b7f99c6e69820858c5ac",
+      "app": {
+        "name": "STIRR — codice 354939",
+        "code": "https://apkpure.com/stirr-the-new-free-tv/com.sbgtv.stirr/downloading",
+        "downloaderCode": "354939",
+        "category": "Servizi streaming con account",
+        "desc": "Client del relativo servizio video. Catalogo, pubblicità, account, eventuale abbonamento e restrizioni territoriali dipendono dal servizio; un APK non li rimuove.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "STIRR",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_924e597f9896fffb4498",
+      "app": {
+        "name": "Veezie — codice 714914",
+        "code": "https://app.veezie.st/img/app.apk",
+        "downloaderCode": "714914",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o indirizzi forniti dall’utente. Non è un abbonamento a film o canali TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Veezie",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_dcd9498269b74f4aab26",
+      "app": {
+        "name": "Vavoo — codice 706654",
+        "code": "https://archive.org/download/vavoopremium/Vavoo%20PRO%20v2.6.apk",
+        "downloaderCode": "706654",
+        "category": "Film e serie · Media center",
+        "desc": "Interfaccia multimediale per aprire e organizzare sorgenti configurate dall’utente. Il solo lettore non garantisce contenuti o abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Vavoo",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_aa49e5f25c8f8d08b3e6",
+      "app": {
+        "name": "Ludio Player — codice 630999",
+        "code": "https://apkcombo.com/ludio-player/com.mr.ludiop/download/apk",
+        "downloaderCode": "630999",
+        "category": "Lettori video",
+        "desc": "Apre file o indirizzi video forniti dall’utente o da un’altra app. Non fornisce un abbonamento a contenuti.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Ludio Player",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_e8db8d5363ef4cdaacbd",
+      "app": {
+        "name": "Tplayer — codice 311395",
+        "code": "http://firesticktricks.com/tplayer",
+        "downloaderCode": "311395",
+        "category": "Lettori video",
+        "desc": "Riproduce file video o indirizzi forniti dall’utente. Non è un abbonamento a film o canali TV.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Tplayer",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_84539e24e7959cb389e7",
+      "app": {
+        "name": "SportzX — codice 2353596",
+        "code": "https://ffjuck.pages.dev/SportzX_1.9v.apk",
+        "downloaderCode": "2353596",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "SportzX",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_98c5fc1256e65507c42c",
+      "app": {
+        "name": "SportsZone TV — codice 4052922",
+        "code": "https://sportszone.wtf/android/SportsZoneTv.apk",
+        "downloaderCode": "4052922",
+        "category": "TV in diretta · App streaming",
+        "desc": "App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "SportsZone TV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_704e9fe6b5dc60af9807",
+      "app": {
+        "name": "MagellanTV — codice 938332",
+        "code": "https://www.midian.appboxes.co/APPS1/Movies/MagellanTV-v2.1%5BAndriod-TV-Ad-Free%5D.apk",
+        "downloaderCode": "938332",
+        "category": "Servizi streaming con account",
+        "desc": "Client del relativo servizio video. Catalogo, pubblicità, account, eventuale abbonamento e restrizioni territoriali dipendono dal servizio; un APK non li rimuove.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "MagellanTV",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_372cf8c72d56f7b8c97c",
+      "app": {
+        "name": "WolfLauncher — codice 918428",
+        "code": "https://d.apkpure.com/b/APK/com.wolf.firelauncher?version=latest",
+        "downloaderCode": "918428",
+        "category": "Launcher e schermata Home",
+        "desc": "Schermata Home alternativa per organizzare e avviare le app. Le funzioni e la compatibilità dipendono dal dispositivo.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "WolfLauncher",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_268601badc490a4b1c45",
+      "app": {
+        "name": "Fast Task Killer — codice 435347",
+        "code": "https://archive.org/download/FASTTASKKILLER/Fast-task-killer_v3.1.0.apk",
+        "downloaderCode": "435347",
+        "category": "Avvio e processi Android",
+        "desc": "Termina processi in background per liberare memoria. Non aggiunge spazio di archiviazione.",
+        "source": "https://troypoint.com/troypoint-toolbox/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Fast Task Killer",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_adbc3fbd4cc83d73d134",
+      "app": {
+        "name": "SpeedTest — codice 250153",
+        "code": "https://archive.org/download/speedtest.-premium.v-4.6.4mod/Speedtest.Premium.v4.6.4mod.apk",
+        "downloaderCode": "250153",
+        "category": "Rete e diagnostica",
+        "desc": "Misura velocità e latenza della connessione Internet. I risultati dipendono dalla rete, dal dispositivo e dal server di prova.",
+        "source": "https://www.speedtest.net/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "SpeedTest",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_f5ace135e05937266481",
+      "app": {
+        "name": "SD Maid Pro — codice 335193",
+        "code": "https://archive.org/download/sd-maid-pro_202008/SD-Maid-Pro.apk",
+        "downloaderCode": "335193",
+        "category": "Pulizia e manutenzione Android",
+        "desc": "Analizza l’archiviazione e aiuta a rimuovere file residui. Controlla gli elementi selezionati prima di eliminarli.",
+        "source": "https://github.com/d4rken-org/sdmaid-se",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "SD Maid Pro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ad35f065afef0e894ce2",
+      "app": {
+        "name": "ADM Pro — codice 96098",
+        "code": "http://nlt.wtf/nexxus/misc/ADM-Pro-v12.5.1_build_120501-Mod-armeabi-v7a,arm64-v8a,x86,x86_64.apk",
+        "downloaderCode": "96098",
+        "category": "Gestione download",
+        "desc": "Gestore dei file scaricati su Android. Non è un catalogo di film e non sostituisce il codice numerico dell’app Downloader.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "ADM Pro",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_a23c6b4f23b180e44aaa",
+      "app": {
+        "name": "DNS Changer – Lilly — codice 984649",
+        "code": "https://apkpure.com/dns-changer-lilly/com.aykutcevik.dnschanger/downloading",
+        "downloaderCode": "984649",
+        "category": "Rete e diagnostica",
+        "desc": "Cambia i server DNS utilizzati dal dispositivo. Non equivale a una VPN e non rende anonima la connessione.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "DNS Changer – Lilly",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ab266dfc6e4bf371eede",
+      "app": {
+        "name": "Blokada — codice 46288",
+        "code": "https://blokada.org/#download",
+        "downloaderCode": "46288",
+        "category": "Privacy e blocco pubblicità",
+        "desc": "Filtra pubblicità e traccianti secondo la configurazione dell’app. Non equivale a un abbonamento VPN; alcune funzioni possono richiedere una licenza.",
+        "source": "https://adguard.com/en/adguard-android/overview.html",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Blokada",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_6f61ca3114a1671e3a12",
+      "app": {
+        "name": "Puffin — codice 234835",
+        "code": "https://archive.org/download/puffin_201905/Puffin%20Web%20Browser_v7.8.1.40497_apkpure.com.apk",
+        "downloaderCode": "234835",
+        "category": "Browser Internet",
+        "desc": "Browser web. Verifica la variante TV o Mobile e le condizioni del servizio, che possono prevedere un abbonamento.",
+        "source": "https://www.puffin.com/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Puffin",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_7b01615c8f7f4936f3b4",
+      "app": {
+        "name": "TuneIn Radio — codice 30671",
+        "code": "https://nlt.wtf/nexxus/music/TuneIn_Radio_Pro-v27.6_build_265538-armeabi-v7a,arm64-v8a,x86,x86_64.apk",
+        "downloaderCode": "30671",
+        "category": "Musica",
+        "desc": "Ascolto di musica o radio attraverso il relativo servizio. Account, disponibilità dei contenuti e funzioni a pagamento dipendono dal piano.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "TuneIn Radio",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_95d235c4bc111a72d54d",
+      "app": {
+        "name": "Rokkr — codice 35861",
+        "code": "https://www.rokkr.net/download",
+        "downloaderCode": "35861",
+        "category": "Film e serie · Media center",
+        "desc": "Interfaccia multimediale per aprire e organizzare sorgenti configurate dall’utente. Il solo lettore non garantisce contenuti o abbonamenti.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "",
+        "catalogImport": true,
+        "importSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "sourceLabel": "WebAssistanceITA",
+        "sourceName": "Rokkr",
+        "codeCheckedAt": "2026-09-27",
+        "importedAt": "2026-09-27",
+        "variantNote": "Codice della fonte esterna: controlla versione e compatibilità nella pagina di destinazione. Non è una certificazione di sicurezza."
+      }
+    },
+    {
+      "id": "source_ff9db5ea89dfa1cd9a67",
+      "app": {
+        "name": "Downloader 2.0.3",
+        "code": "https://files.catbox.moe/xjwhji.apk",
+        "category": "Installazione APK e bundle",
+        "desc": "Browser e gestore download di AFTVnews: apre URL o codici numerici per scaricare APK. Non include canali o abbonamenti.",
+        "source": "https://www.aftvnews.com/downloader/",
+        "metadataVerified": true,
+        "icon": "https://ugc.production.linktr.ee/vZqH0NoTSWWUWIgiF4nt_undefined",
+        "catalogImport": true,
+        "importSource": "https://linktr.ee/kpfire",
+        "sourceLabel": "KPFire",
+        "sourceName": "Downloader 2.0.3 Jul 12/26",
+        "codeCheckedAt": "",
+        "importedAt": "2026-09-27",
+        "variantNote": "APK da hosting esterno segnalato da KPFire. Versione dichiarata dalla fonte; autenticità e firma non verificate."
+      }
+    },
+    {
+      "id": "source_0d5b588bce68cec7976e",
+      "app": {
+        "name": "Orion Store 1.4.0",
+        "code": "https://files.catbox.moe/ofqjyr.apk",
+        "category": "Store e raccolte APK",
+        "desc": "Catalogo per trovare e scaricare pacchetti Android. Controlla autore, permessi e dispositivo supportato prima dell’installazione.",
+        "source": "https://downloadercodes.com/",
+        "metadataVerified": true,
+        "icon": "https://ugc.production.linktr.ee/2d831647-6860-431a-a1f5-e61c6a05be00_images.jpeg",
+        "catalogImport": true,
+        "importSource": "https://linktr.ee/kpfire",
+        "sourceLabel": "KPFire",
+        "sourceName": "Orion Store 1.4.0 Sep 11/26",
+        "codeCheckedAt": "",
+        "importedAt": "2026-09-27",
+        "variantNote": "APK da hosting esterno segnalato da KPFire. Versione dichiarata dalla fonte; autenticità e firma non verificate."
+      }
+    },
+    {
+      "id": "source_6ad242a1126556812457",
+      "app": {
+        "name": "Spotify TV 1.91.8 Android TV Clone",
+        "code": "https://files.catbox.moe/l4thsg.apk",
+        "category": "Musica",
+        "desc": "Ascolto di musica o radio attraverso il relativo servizio. Account, disponibilità dei contenuti e funzioni a pagamento dipendono dal piano.",
+        "source": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "metadataVerified": true,
+        "icon": "https://ugc.production.linktr.ee/3a683e04-4893-4730-a3f3-8d5532cbf176_image.png",
+        "catalogImport": true,
+        "importSource": "https://linktr.ee/kpfire",
+        "sourceLabel": "KPFire",
+        "sourceName": "Spotify TV 1.91.8 Android TV Clone Sept 22/25",
+        "codeCheckedAt": "",
+        "importedAt": "2026-09-27",
+        "variantNote": "APK da hosting esterno segnalato da KPFire. Versione dichiarata dalla fonte; autenticità e firma non verificate."
+      }
+    }
+  ],
+  "enrichments": [
+    {
+      "type": "apps",
+      "id": "-OvPaYjSMEONAZ9tJQ-K",
+      "expected": {
+        "category": "Film e serie · Media center",
+        "code": "https://dl.strem.io/android/v1.10.4-androidTV/com.stremio.one-1.10.4-31048580-armeabi-v7a.apk",
+        "desc": "Organizza video e cataloghi tramite componenti aggiuntivi. Scegli TV o Mobile e l’architettura del dispositivo; Beta è sperimentale e Mod è una modifica non ufficiale.",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stremio_Icon.svg/512px-Stremio_Icon.svg.png",
+        "name": "Stremio 1.10.4 ARM TV",
+        "order": -1,
+        "timestamp": 1781784001509,
+        "id": "-OvPaYjSMEONAZ9tJQ-K",
+        "type": "apps"
+      },
+      "fields": {
+        "downloaderCode": "4549600",
+        "codeSource": "https://downloadercodes.com/stremio/",
+        "codeCheckedAt": "2026-09-27"
+      }
+    },
+    {
+      "type": "apps",
+      "id": "-OvTtML6nbvqZjwPeGje",
+      "expected": {
+        "category": "Clonazione e isolamento app",
+        "code": "https://android.app-cloner.com/app-cloner.apk",
+        "desc": "Crea copie di app Android per usare configurazioni separate. Non tutte le app supportano la clonazione.",
+        "icon": "https://play-lh.googleusercontent.com/0IvFx92mHxpxV8r7e-TLJ4J5kVyuW9swwwB78jzhgPquq9aUj-nuomaEZWphrw-x5JTQPFiwjSrRRPoXbCGx36E",
+        "name": "App Cloner Latest Release",
+        "timestamp": 1790150444522,
+        "id": "-OvTtML6nbvqZjwPeGje",
+        "type": "apps"
+      },
+      "fields": {
+        "downloaderCode": "6332051",
+        "codeSource": "https://downloadercodes.com/app-cloner/",
+        "codeCheckedAt": "2026-09-27"
+      }
+    },
+    {
+      "type": "apps",
+      "id": "-OmZlY-PjBnkcDm4DLny",
+      "expected": {
+        "category": "Film e serie · App streaming",
+        "code": "https://github.com/recloudstream/cloudstream/releases/download/v4.8.0/4.8.0.apk",
+        "desc": "App per cercare e riprodurre contenuti in streaming. Verifica le fonti disponibili e i diritti di accesso; le versioni modificate non sono quelle originali.",
+        "icon": "https://play-lh.googleusercontent.com/RWCI1ToZHheeHJ9y2IbxXuQayzPS_409FALxfPIRByzUa1d2brfCpi4wYrd_XJ2yow",
+        "name": "CloudStream 4.8.0",
+        "order": 15,
+        "timestamp": 1790168388169,
+        "id": "-OmZlY-PjBnkcDm4DLny",
+        "type": "apps"
+      },
+      "fields": {
+        "downloaderCode": "4132632",
+        "codeSource": "https://downloadercodes.com/cloudstream/",
+        "codeCheckedAt": "2026-09-27"
+      }
+    },
+    {
+      "type": "apps",
+      "id": "-OmZlZMrzYUvGl4zgSXb",
+      "expected": {
+        "category": "Store e raccolte APK",
+        "code": "https://dl.unlinked.link/",
+        "desc": "Catalogo o raccolta di pacchetti Android da scaricare. Controlla autore, permessi e compatibilità di ogni APK.",
+        "icon": "https://play-lh.googleusercontent.com/8GH0RvjdKu8UAx4rBQ5SwSNQkLwz7cZxH6K5yxxZVczAzLEteOJk7G2vHos6j7nNdKA",
+        "name": "Unlinked Latest Release",
+        "order": 29,
+        "timestamp": 1782892802429,
+        "id": "-OmZlZMrzYUvGl4zgSXb",
+        "type": "apps"
+      },
+      "fields": {
+        "downloaderCode": "234753",
+        "codeSource": "https://downloadercodes.com/unlinked/",
+        "codeCheckedAt": "2026-09-27"
+      }
+    },
+    {
+      "type": "apps",
+      "id": "-OmZlZTsqXdJtQe3kp9G",
+      "expected": {
+        "category": "Store e raccolte APK",
+        "code": "https://filesynced.com/get-app",
+        "desc": "Catalogo o raccolta di pacchetti Android da scaricare. Controlla autore, permessi e compatibilità di ogni APK.",
+        "icon": "https://play-lh.googleusercontent.com/Zs0-SVFd7FHABCT6buDhAVmOZHlIJS8Z37LMmWghcJV9N4ryZfpI0dZa0jzejcJ3cQ",
+        "name": "FileSynced Latest Release",
+        "order": 30,
+        "timestamp": 1781856079147,
+        "id": "-OmZlZTsqXdJtQe3kp9G",
+        "type": "apps"
+      },
+      "fields": {
+        "downloaderCode": "27642",
+        "codeSource": "https://www.webassistanceita.com/codici-downloader-firestick/",
+        "codeCheckedAt": "2026-09-27"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "name": "Stremio",
+      "reason": "Download già presente"
+    },
+    {
+      "name": "App Cloner",
+      "reason": "Download già presente"
+    },
+    {
+      "name": "CloudStream",
+      "reason": "Download già presente"
+    },
+    {
+      "name": "Unlinked",
+      "reason": "Download già presente"
+    },
+    {
+      "name": "Smart IPTV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "IPTV Smarters",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "TiviMate",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "MegaboxHD",
+      "reason": "Codice associato a un altro prodotto"
+    },
+    {
+      "name": "RedBox TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Kodi",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Movye",
+      "reason": "Codice associato a un altro prodotto"
+    },
+    {
+      "name": "Plex",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Stremio",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "VLC Player",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "MX Player",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "MX Player PRO",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Wuffy Player",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Sport Fire",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Mouse Toggle (Cursor)",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "AZ Recorder",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "ESFileExplorer",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Adguard",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Aurora Store",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "APKTime",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Aptoide TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Unlinked",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "AppLinked",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "FileSynced",
+      "reason": "Download già presente"
+    },
+    {
+      "name": "TV Bro",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Spotify",
+      "reason": "Codice associato a un altro prodotto"
+    },
+    {
+      "name": "Media Lounge",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Ocean Streamz",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "UK Turks App",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "TikTok",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "SmartTubeNext",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Aurora Store 4.8.3",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "AMPlayer 3.0.6 Ad Free Prem Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "AMPlayer 3.0.6 Ad Free Prem FireStick/Mobile",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Aplayer 3.7.1 Prem 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "B Player 1.3.5 Ad Free 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "B Player 1.3.5 Ad Free 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Bear Player 2.20.28 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "CSPlayer 1.0.6 Official",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Drama Player 1.0.12 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Drama Player 1.0.12 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Fluid Video Player 2.20.39 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "HB Player 1.1.9 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "IMplayer 4.1.4 Android TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "IPTV Pro 9.1.25 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "IPTV Pro 9.1.25 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "IPTV Smarters Pro 5.0 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "IPTV Smarters Pro 5.0 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Kshaw V37 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "M3U IPTV 3.0.6.2 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "MediaON Player 1.1.6 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "MediaON Player 1.1.6 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "MX Player 3.2.4 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "MX-Player-Pro-v1.93.4 Prem Paid Mod 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "MX Player Pro 1.93.4 Prem Paid Mod 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "NV Player 1.1.9 Ad Free 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "NV Player 1.1.9 Ad Free 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Ott Navigator 1.7.4.1 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Sofa Player 2.6 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Sparkle TV Player 2.3.1 Prem Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "STB Emu 2.0.20.01 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "STB Emu 2.0.20.01 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Tivimate 5.3.3",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "TPlayer 8.1c Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "UVX Player Pro 3.9.9 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Viewella 1.1.43 Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "VLC Player 3.6.0 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "VLC Player 3.6.0 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "XCIP TV 7.0 Ad Free 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "XCIP TV 7.0 Ad Free 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "XP Player 4.1.5 Prem 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "XP Player 4.1.5 Prem 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "XTREAM IPTV 2.0.11 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "XTREAM IPTV 2.0.11 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "1 Tap Cleaner Pro 5.23 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Ad Blocker Pro 6.5.1 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Adguard 4.14.1 Prem Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Aida 64 2.22 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "All In One Toolbox 3.1.9 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Analiti 26.08.97457 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Anexplorer Pro 6.0.6 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Antutu Benchmark 10.2.4 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Avast Cleanup 26.12.2 Prem Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "AVG Cleaner 26.16.1 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "AZ Screen Recorder 6.9.2 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "CCleaner 26.16.1 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "ES File Explorer 4.4.3.7 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Malwarebytes 5.25.0 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "MiXplorer 6.71.15 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Mouse Toggle 1.11 Amazon Fire Stick 4K",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "NetGuard 2.335 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "SD Maid Cleaning Tool Pro 5.6.3 Prem Dark Venom",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "SD Maid SE Pro 1.2.0 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Smartube 32.56 Prem Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "SpeedTest 7.0.7 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "VirusTotal 1.18b",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "VirusTotal Mobile 1.18b",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "X-Plore File Manager 4.45.02 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "YouTube Morphe 21.13.164 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "YouTube Revanced Extended 20.40.45 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Anilab 1.0.2 Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Anilili 1.0 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Animo Fanz 1.7.6 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "BeeAnime 2.3",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Arvio 2.0.0 Android TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Bee TV 4.7.4 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Bee TV 4.7.4",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "CineAura V2",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Cinema HD 3.4.1 Official",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Cinema HD 3.4.1 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Cinema HQ 7.9 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Cineplus 1.0.6 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Clip Box 1.6.1",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Cloudstream 4.8.0 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Debridstream 3.7.0",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "DodoStream 0.12.3 Prem 32 Bit Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "DodoStream 0.12.3 Prem 64 Bit Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "DodoStream 0.12.3 Prem Mobile",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "FilmPlus 2.4.9 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Flick 1.4.4",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Flixeon 4.0",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Flixoid 3.1.1 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Flixoid 3.1.1 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Flix Vision 3.8.0 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Flix Vision 3.8.0 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "HDO Box 1.0.3 Ad Free 32 Bit Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "HDO Box  2.1.1 Ad Free 64 Bit Mobile",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Magellan TV 2.1.101 Ad Free Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Magellan TV 2.1.111 Ad Free Mobile",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Mobiflix 1.0.2 Android TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Mobiflix 1.0.2 Mobile",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Moviebase 6.12.4 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Movie Box TV 1.1.19.0820.03 Ad Free Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "MovieBox 4.0.01.0813.02 Ad Free Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Movie HD(GStream) 5.5.6 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "MX Player TV 1.56.0 Prem",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Netfly 3.0.3 Prem Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Nflix 4.0.50",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "NetMirror 1.0 Ad Free Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Nova 2.5.1 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Nuvio 1.0.0 Prem Android TV 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Nuvio 1.0.0 Prem Android TV 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Nuvio 0.4.51 Prem Mobile",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Nxsha 2.1 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Onstream 1.0.0 Firestick",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "OnStream 1.1.1 Ad Free Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "OnStream 1.1.8 Ad Free Mobile",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Phantom Movies 1.4.6 Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "PlayTorrio 1.1.2 Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "PlayTorrio 1.1.5 Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "SeriesGuide 2026.4.3 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Sky Stream 2.7.6 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Sky Stream 2.7.6 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "StreamFlix 1.7.231 Andriod TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "StreamFlix 1.7.231 Mobile",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Stremio 1.10.4 Prem Android 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Stremio 1.10.4 Prem Android 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Stremio 2.1.5 Prem Mobile 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "STRMR 1.1.72 Android TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Syncler 2.0.12.1",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Tea TV 11.1.8 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Tea TV 11.1.8",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "UK Turks 2.0.3 Prem 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "UK Turks 2.0.3 Prem 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Vega Movies 3.4.2 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Viva TV 1.8.1 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "VoltraTV 11.0 Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Weyd 4.0.2 Official(Good app-paid subscription required)",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Wuplay 0.9.2 Android TV",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "AK47 Sports 1.6",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Blink Streamz 2.5",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Football Live HD 1.0 Ad Free Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Football Live HD 1.0 Ad Free Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Football Live HD 2.0 Ad Free Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Football Live HD 2.0-Kixaro Football Mobile Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Football Live HD 3.0 Ad Free Android 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Football Live HD 3.0 Ad Free Mobile 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "HD Streamz 3.16",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Live Football TV 1.0 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "LiveNet TV 5.0.5 Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Live Sports HDTV 5.0.48 Ad Free Android TV 32 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Live Sports HDTV 5.0.48 Ad Free Android TV 64 Bit",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Ocean Streamz 3.5.12 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Ola TV 38.0 Ad Free",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Orbitv 7.0.3 Prem Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "PlayFy 1.7 Ad Free Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Rapid Streamz 4.4.1",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "RBLive77 3.0.320 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "RBTV 3.0.318 Ad Free Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "RBTV 3.0.318 Ad Free Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "RedBull TV 7.1.0.7 Ad Free Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Skystream 2.5.0 32 Bit Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Skystream 2.5.0 64 Bit Android TV",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Sportsfire(Footy) 3.1.0 Prem Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "SportzX 3.2",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "Streamfire 2.1.0 Ad Free Android TV",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Tubi TV 9.37.1",
+      "reason": "Prodotto già coperto: non aggiunto un mirror non confrontabile"
+    },
+    {
+      "name": "TV Mob 3.4 Firestick",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Audiomack 8.4.0 Mod",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "iHeart Radio 10.64.0 Prem Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Media Monkey 2.1.3.1328 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Podcast Addict 2026.7 Prem",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Spotiduck 1.2.1",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "SpotiFLAC 4.9.5 Prem Mobile",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "SpotiLOL 1.1.4 Ad Free",
+      "reason": "Identità da approfondire"
+    },
+    {
+      "name": "Spotify 9.1.60.1970 Prem 32 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "Spotify 9.1.60.1970 Prem 64 Bit",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    },
+    {
+      "name": "TuneIn Radio Pro 40.8 Prem Paid Mod",
+      "reason": "Pacchetto modificato: non importato automaticamente"
+    }
+  ],
+  "icons": {
+    "YTV Player Pro": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/06/ytv-player-pro-downloader-code.webp",
+      "source": "https://downloadercodes.com/ytv-player-pro/"
+    },
+    "Stremio": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/stremio-downloader-code.webp",
+      "source": "https://downloadercodes.com/stremio/"
+    },
+    "AdGuard": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/adguard-downloader-code.webp",
+      "source": "https://downloadercodes.com/tools/adguard/"
+    },
+    "XCIPTV": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/06/xciptv-downloader-code.webp",
+      "source": "https://downloadercodes.com/xciptv/"
+    },
+    "IPTV Smarters": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/iptv-smarters-pro-downloader-code.webp",
+      "source": "https://downloadercodes.com/iptv-players/iptv-smarters-pro/"
+    },
+    "APKTime": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/06/apktime-downloader-code.webp",
+      "source": "https://downloadercodes.com/apktime/"
+    },
+    "Kodi": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/kodi-downloader-code.webp",
+      "source": "https://downloadercodes.com/kodi/"
+    },
+    "Drama Player": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/09/drama-player-downloader-code.webp",
+      "source": "https://downloadercodes.com/drama-player/"
+    },
+    "Sparkle": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/09/sparkle-tv-downloader-code.webp",
+      "source": "https://downloadercodes.com/sparkle-tv/"
+    },
+    "IBO Player": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/06/ibo-player-downloader-code.webp",
+      "source": "https://downloadercodes.com/iptv-players/ibo-player/"
+    },
+    "Smart IPTV": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/smart-iptv-downloader-code.webp",
+      "source": "https://downloadercodes.com/iptv-players/smart-iptv/"
+    },
+    "MX Player": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/09/mx-player-downloader-code.webp",
+      "source": "https://downloadercodes.com/media-players/mx-player/"
+    },
+    "VLC": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/09/vlc-downloader-code.webp",
+      "source": "https://downloadercodes.com/media-players/vlc-media-player/"
+    },
+    "Wuffy": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/09/wuffy-player-downloader-code.webp",
+      "source": "https://downloadercodes.com/wuffy-player/"
+    },
+    "Unlinked": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/unlinked-downloader-code.webp",
+      "source": "https://downloadercodes.com/unlinked/"
+    },
+    "Aptoide": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/aptoidetv-downloader-code.webp",
+      "source": "https://downloadercodes.com/aptoide-tv/"
+    },
+    "APKPure": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/09/apkpure-downloader-code.webp",
+      "source": "https://downloadercodes.com/apkpure/"
+    },
+    "Aurora Store": {
+      "url": "https://downloadercodes.com/wp-content/uploads/2025/05/aurora-store-downloader-code.webp",
+      "source": "https://downloadercodes.com/aurora-store/"
+    },
+    "Downloader": {
+      "url": "https://ugc.production.linktr.ee/vZqH0NoTSWWUWIgiF4nt_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Orion Store": {
+      "url": "https://ugc.production.linktr.ee/2d831647-6860-431a-a1f5-e61c6a05be00_images.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "AMPlayer": {
+      "url": "https://ugc.production.linktr.ee/cc75FnGORe26S2WqutxQ_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Aplayer 3.7.1 Prem 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/pCTYifQySBiZ9So53ybb_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "BPlayer": {
+      "url": "https://ugc.production.linktr.ee/9XnPq0Q0RuGTSGTgMba5_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Bear Player": {
+      "url": "https://ugc.production.linktr.ee/2ffc89ec-481c-4a06-a4f7-a8ba0779a8f7_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "CSPlayer 1.0.6 Official": {
+      "url": "https://ugc.production.linktr.ee/bfe81883-f121-49d7-9401-47f673d1c77e_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Fluid Video Player": {
+      "url": "https://ugc.production.linktr.ee/5f6cdaaa-0510-48ff-8fd9-90f8983adb98_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "HB Player 1.1.9 Prem": {
+      "url": "https://ugc.production.linktr.ee/HtqIJ1EwRIm9eF6squV7_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "iMPlayer": {
+      "url": "https://ugc.production.linktr.ee/fc4326f2-a3c6-40c0-9ef4-3a83f99fc6b6_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "IPTV Pro": {
+      "url": "https://ugc.production.linktr.ee/LbP2NdUXTxucGZv5Ehs5_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Kshaw V37 Prem": {
+      "url": "https://ugc.production.linktr.ee/BcPwDLQwSBanXj28Dx4w_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "M3U IPTV": {
+      "url": "https://ugc.production.linktr.ee/f454991e-4cde-4486-9376-7f28886e595b_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "MediaON Player 1.1.6 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/rcKDBw7QSY2VWZlevrLo_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "MediaON Player 1.1.6 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/1hd8DxaBR06u7qi5CryQ_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "NV Player 1.1.9 Ad Free 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/ed60466c-9466-4b60-83c7-e4449d9bd732_untitled.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "NV Player 1.1.9 Ad Free 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/ec17b353-ab53-421c-be82-e87ebf3afc20_untitled.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Ott Navigator": {
+      "url": "https://ugc.production.linktr.ee/EfB5ZYFQBabgVV4Wgzg3_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Sofa Player 2.6 Prem": {
+      "url": "https://ugc.production.linktr.ee/fff8ffd6-170b-43f9-ae56-043166c27b50_IMG-6100.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "STB Emu": {
+      "url": "https://ugc.production.linktr.ee/59dc1140-8c9d-4ada-9002-61b4c36bea94_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "TiviMate": {
+      "url": "https://ugc.production.linktr.ee/HFasA8nTa2IwL7kxCxKg_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "TPlayer": {
+      "url": "https://ugc.production.linktr.ee/VUC0BwtkSVinN2347u5G_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "UVX Player Pro 3.9.9 Prem": {
+      "url": "https://ugc.production.linktr.ee/6d9f07f3-987b-4c09-8028-d93affb838b8_unnamed--1-.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Viewella 1.1.43 Android TV": {
+      "url": "https://ugc.production.linktr.ee/42868a78-5a9b-4952-b808-dad4ac180c16_ftoi4ze626ug1.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "XP Player 4.1.5 Prem 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/eb7038cc-cee3-4b31-bc18-29e841d0b144_xp-02.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "XP Player 4.1.5 Prem 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/349faeb9-8cc7-4a48-8158-3aceea791688_xp-02.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "XTREAM IPTV": {
+      "url": "https://ugc.production.linktr.ee/cdb085a5-ca1a-478e-8216-420470732d4a_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "1 Tap Cleaner Pro 5.23 Prem": {
+      "url": "https://ugc.production.linktr.ee/CFQWjSITQsOizXvablVW_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Ad Blocker Pro 6.5.1 Prem": {
+      "url": "https://ugc.production.linktr.ee/ee844eef-48c0-484d-a2e3-82e6996d590a_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "AIDA64": {
+      "url": "https://ugc.production.linktr.ee/a7f0a437-0bcf-4c58-ac41-11004607670e_png-transparent-youtube-logo-computer-icons-youtube-trademark-logo-aida-thumbnail.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "All In One Toolbox 3.1.9 Prem": {
+      "url": "https://ugc.production.linktr.ee/SYGi6ioS42sGMMSuvXMg_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Analiti": {
+      "url": "https://ugc.production.linktr.ee/7091129d-7b73-49f0-b075-de08ea834b9d_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Anexplorer Pro 6.0.6 Prem": {
+      "url": "https://ugc.production.linktr.ee/8YFDphtDRMGM0gNeKIJv_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Antutu Benchmark 10.2.4 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/2c1bcbb9-904f-4582-9285-a58366931715_64bfb1517c933-com.antutu.ABenchMark-384x384.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Avast Cleanup 26.12.2 Prem Mobile": {
+      "url": "https://ugc.production.linktr.ee/4cc5f3e5-bf4d-45e7-83a3-ebb50a647f41_5e8675ed2d96f.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "AVG Cleaner 26.16.1 Prem": {
+      "url": "https://ugc.production.linktr.ee/4H6nPRVRXCwmGcUjUmXQ_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "AZ Screen Recorder": {
+      "url": "https://ugc.production.linktr.ee/N13QdB5xSNmLQFhFGf5Q_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "CCleaner 26.16.1 Prem": {
+      "url": "https://ugc.production.linktr.ee/wbO3tydtRi3XCUCb4lsC_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "ES File Explorer": {
+      "url": "https://ugc.production.linktr.ee/eY0ytNHHRTGVqYn1ch3w_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Malwarebytes 5.25.0 Prem": {
+      "url": "https://ugc.production.linktr.ee/zXqIp3Rle3ao24QZnmgc_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "MiXplorer 6.71.15 Prem": {
+      "url": "https://ugc.production.linktr.ee/F5IYJfnVQRC2A8AVmGdS_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Mouse Toggle": {
+      "url": "https://ugc.production.linktr.ee/mAgpfuXISSq93MhMHFr5_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "NetGuard 2.335 Prem": {
+      "url": "https://ugc.production.linktr.ee/cc5576d6-74d9-41b4-9e2a-b771757a41af_untitled.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SD Maid": {
+      "url": "https://ugc.production.linktr.ee/7VyXkRQ8SoWKLjpDO48t_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SD Maid SE": {
+      "url": "https://ugc.production.linktr.ee/b659935b-ec8c-4ba9-89d6-211018e47c84_untitled.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SmartTube": {
+      "url": "https://ugc.production.linktr.ee/db62d7a1-eefe-421c-95e6-09167921d10c_1-oEy9WrLu8yxyzOUGr-z-gg.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SpeedTest": {
+      "url": "https://ugc.production.linktr.ee/Nb0pHLZUS1rMd4drCX3Q_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "VirusTotal": {
+      "url": "https://ugc.production.linktr.ee/vcWq1nEiSdKtb69OHt2D_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "X-Plore File Manager 4.45.02 Prem": {
+      "url": "https://ugc.production.linktr.ee/3Ef2yJUuSGC4UqUT9dMa_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "YouTube Morphe 21.13.164 Prem 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/b626b3bb-ec85-4e61-8a79-909e2476a9f7_images.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "YouTube Revanced Extended 20.40.45 Prem 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/jChoR2pwS6aqBEUyzXun_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Anilab 1.0.2 Android TV": {
+      "url": "https://ugc.production.linktr.ee/a5fd5b07-91c2-4918-bd6e-8a8ac321d924_IMG-5220.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Anilili 1.0 Prem": {
+      "url": "https://ugc.production.linktr.ee/8fdbd5f5-27d9-479a-b974-7bfdfb8c8677_a70293cd-1635-434b-8a46-9f631415a191.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Animo Fanz 1.7.6 Prem": {
+      "url": "https://ugc.production.linktr.ee/2d6fce4b-17e0-4640-9457-8e583fd65574_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "BeeAnime 2.3": {
+      "url": "https://ugc.production.linktr.ee/a62c4390-4dc2-4cdf-b1b8-0e6d8b3cc650_images.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Arvio": {
+      "url": "https://ugc.production.linktr.ee/808cf042-46c6-4f6c-bcf0-591256adf7b1_512x512bb.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "BeeTV": {
+      "url": "https://ugc.production.linktr.ee/LpijlDQgTaKfCs5DN6zM_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "CineAura V2": {
+      "url": "https://ugc.production.linktr.ee/dccfbc51-e95f-4ca8-95a4-581f0d07805c_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Cinema HD": {
+      "url": "https://ugc.production.linktr.ee/NbDcC4RmRHOTzRSrpHsc_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Cinema HQ 7.9 Prem": {
+      "url": "https://ugc.production.linktr.ee/ca27d09f-7869-4583-8571-f1bba11422c9_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Cineplus 1.0.6 Prem": {
+      "url": "https://ugc.production.linktr.ee/eb4a0239-0911-42e1-9f3c-62512ac72a2e_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Clip Box 1.6.1": {
+      "url": "https://ugc.production.linktr.ee/519167cb-2793-42eb-8654-6ce2ccc0df6f_icon.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "CloudStream": {
+      "url": "https://ugc.production.linktr.ee/sSpv6bTYQcKUNySdFxDK_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Debridstream 3.7.0": {
+      "url": "https://ugc.production.linktr.ee/db1a0860-be30-4a78-b849-8a20a3af3073_logo--1-.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "DodoStream": {
+      "url": "https://ugc.production.linktr.ee/cdfff972-d9f7-4edc-a8ba-03b54408d599_251849103.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "FilmPlus": {
+      "url": "https://ugc.production.linktr.ee/157f5d2c-80f6-4116-acb3-0dea815f32d4_untitled.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Flick 1.4.4": {
+      "url": "https://ugc.production.linktr.ee/2a2886e2-e774-47f1-ab64-398403c0a30c_images.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Flixeon 4.0": {
+      "url": "https://ugc.production.linktr.ee/bab58966-2708-4807-98e3-f8a7d9a4f701_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Flixoid": {
+      "url": "https://ugc.production.linktr.ee/DiGyJdgOQ2aNcu98CAWA_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Flix Vision": {
+      "url": "https://ugc.production.linktr.ee/JxnEsnr0RIWGlJZsxAs2_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "HDO": {
+      "url": "https://ugc.production.linktr.ee/ffFL659oSyPIDOvi9Tzg_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "MagellanTV": {
+      "url": "https://ugc.production.linktr.ee/fef06c62-781b-45d1-8a60-e2951cee0d47_untitled.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "MobiFlix": {
+      "url": "https://ugc.production.linktr.ee/32abd896-137a-4062-a4bf-bceef70ba612_images.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Moviebase 6.12.4 Prem": {
+      "url": "https://ugc.production.linktr.ee/VH2f4tifRW2BA8TstEqN_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Movie Box TV 1.1.19.0820.03 Ad Free Android TV": {
+      "url": "https://ugc.production.linktr.ee/870e311a-b411-4dbb-8a8c-2485bc3367e3_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "MovieBox 4.0.01.0813.02 Ad Free Mobile": {
+      "url": "https://ugc.production.linktr.ee/4555aa8c-da48-45e4-bc09-5632701294d4_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Movie HD(GStream) 5.5.6 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/iZCjm3WWTbOmL8ez8k9i_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Netfly 3.0.3 Prem Android TV": {
+      "url": "https://ugc.production.linktr.ee/352f5e26-f937-42f7-9c45-7d27a227c4b0_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Nflix 4.0.50": {
+      "url": "https://ugc.production.linktr.ee/2f91b913-3b4f-46d3-9bca-6c14f6916531_images.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "NetMirror 1.0 Ad Free Android TV": {
+      "url": "https://ugc.production.linktr.ee/4ea79ffd-6944-4889-b2da-afcbb353a305_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Nova 2.5.1 Prem": {
+      "url": "https://ugc.production.linktr.ee/6qMx8nvSESoMjB6sQMcD_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Nuvio": {
+      "url": "https://ugc.production.linktr.ee/6a0655d5-d1dc-442e-9717-ce2b7742361e_images.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Nxsha 2.1 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/0ed117dc-e367-467f-b278-f1ea7b92df3d_IMG-5748.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "OnStream": {
+      "url": "https://ugc.production.linktr.ee/50453c7c-8329-4f04-b1f5-a41dc4f9d5e2_linktree-cropped-BEE7598D-1FC6-4BD2-9215-CA5158FA3BB5.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Phantom Movies 1.4.6 Android TV": {
+      "url": "https://ugc.production.linktr.ee/0b84668a-fd00-4318-a19e-50f720e5776d_132248020.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "PlayTorrio 1.1.2 Android TV": {
+      "url": "https://ugc.production.linktr.ee/074c3dcf-fa45-4472-906a-e92ec56ae873_maxresdefault.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "PlayTorrio 1.1.5 Mobile": {
+      "url": "https://ugc.production.linktr.ee/c4f01806-c041-47ef-a588-fd0c3736bee4_maxresdefault.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SeriesGuide 2026.4.3 Prem": {
+      "url": "https://ugc.production.linktr.ee/NQPzNkoSYq98lbGNMyK6_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Sky Stream 2.7.6 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/e59cfdea-8049-41ca-803e-0e956b3d1329_Sky-Stream.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Sky Stream 2.7.6 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/10ce554c-6f8a-46eb-8313-df07deafd0f6_Sky-Stream.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Streamflix": {
+      "url": "https://ugc.production.linktr.ee/ebafa5ec-394a-4da4-b6eb-38c4795d49d8_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "STRMR": {
+      "url": "https://ugc.production.linktr.ee/8708038c-c644-4561-a01b-505f01a5799a_images.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Syncler": {
+      "url": "https://ugc.production.linktr.ee/zjlD9amDTO6YRkFqgwNr_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Tea TV": {
+      "url": "https://ugc.production.linktr.ee/YBM6gjGGQ66se7kf1Bc2_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "UK Turks 2.0.3 Prem 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/Mj7BBSPzTLWApkBH8UPj_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "UK Turks 2.0.3 Prem 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/4329249f-5a3a-4ca8-80e6-a1a428505aa8_untitled.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Vega Movies 3.4.2 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/61f88ac6-266f-4bc4-99d4-ab0cba10aff1_images.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "VivaTV": {
+      "url": "https://ugc.production.linktr.ee/7biqg3bZRM6FcOcCZ0lw_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "VoltraTV 11.0 Android TV": {
+      "url": "https://ugc.production.linktr.ee/ff3ae8dd-bc49-4dbc-b571-bfdb6b389bc1_images.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Weyd": {
+      "url": "https://ugc.production.linktr.ee/ef67677e-78c0-4095-ae05-c7a4e2d368e3_untitled.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Wuplay": {
+      "url": "https://ugc.production.linktr.ee/7f944abf-0fa5-40b2-bfd7-bb35ef86add5_logo.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "AK47 Sports 1.6": {
+      "url": "https://ugc.production.linktr.ee/5bd25797-ec15-4e83-a464-4678663fd197_ak47-sports-icon.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Blink Streamz": {
+      "url": "https://ugc.production.linktr.ee/aa88bf71-aaf9-42d3-b551-255134245ce0_Blink-Streamz-Image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Football Live HD 1.0 Ad Free Android TV": {
+      "url": "https://ugc.production.linktr.ee/03b8bb4d-4c82-4c67-9043-a49205f7ee6a_unnamed--1-.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Football Live HD 1.0 Ad Free Mobile": {
+      "url": "https://ugc.production.linktr.ee/cd130b22-94ab-4c82-b250-c24d8c6c8401_unnamed--1-.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Football Live HD 2.0 Ad Free Mobile": {
+      "url": "https://ugc.production.linktr.ee/24217ed4-f950-43bf-bc55-9c535d5d831f_untitled.webp",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Football Live HD 2.0-Kixaro Football Mobile Ad Free": {
+      "url": "https://ugc.production.linktr.ee/e518c816-1713-43b0-9f32-0a376d615846_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Football Live HD 3.0 Ad Free Android 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/9TJiD7hSSV4zAYn3LJhN_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Football Live HD 3.0 Ad Free Mobile 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/XobnGFzQWuUfk3y5FnyY_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "HD Streamz": {
+      "url": "https://ugc.production.linktr.ee/5vHHBcsWQjqhKnxkDG9X_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Live Football TV 1.0 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/666d35df-b49c-4fa3-b58d-6e71e579b6a8_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "LiveNet TV 5.0.5 Android TV": {
+      "url": "https://ugc.production.linktr.ee/M09TJtsRSVKoaBBS9R2z_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Live Sports HDTV 5.0.48 Ad Free Android TV 32 Bit": {
+      "url": "https://ugc.production.linktr.ee/3e14a4ec-0f5c-4c71-8e09-060878c258d3_512x512bb.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Live Sports HDTV 5.0.48 Ad Free Android TV 64 Bit": {
+      "url": "https://ugc.production.linktr.ee/4c42d98b-b5eb-4feb-93a0-ddd30c2affdf_512x512bb.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Ocean Streamz 3.5.12 Prem": {
+      "url": "https://ugc.production.linktr.ee/77OysbmXTq6kUhjwRhxn_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Ola TV": {
+      "url": "https://ugc.production.linktr.ee/f736c3e6-9945-4ead-a080-deaf9e425a57_IMG-1925.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Orbitv 7.0.3 Prem Android TV": {
+      "url": "https://ugc.production.linktr.ee/4fabb103-4d3f-4589-93fa-faf0e7ecdc9e_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "PlayFy 1.7 Ad Free Android TV": {
+      "url": "https://ugc.production.linktr.ee/8f7b68a9-e7e3-47dc-b6c2-77ef23896312_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Rapid Streamz": {
+      "url": "https://ugc.production.linktr.ee/cFkoEqGxRMaZr47yRUm5_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "RBLive77 3.0.320 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/12d38702-b4ef-4b1c-ab77-7ee95e815003_RBTV77-APK.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "RBTV 3.0.318 Ad Free Android TV": {
+      "url": "https://ugc.production.linktr.ee/b2ef2508-b215-4339-a36b-9fadfb513f4d_maxresdefault.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "RBTV 3.0.318 Ad Free Mobile": {
+      "url": "https://ugc.production.linktr.ee/04a21cce-d0d4-4bf8-a3e0-d991049061c8_RBTV77-APK.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "RedBull TV 7.1.0.7 Ad Free Android TV": {
+      "url": "https://ugc.production.linktr.ee/ON4mNEjiSkSvogTYqKM0_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Skystream 2.5.0 32 Bit Android TV": {
+      "url": "https://ugc.production.linktr.ee/cdf6c62a-63d0-47da-b95e-728d1f52574f_Sky-Stream-PRIMARY-BLUE-RGB-scaled.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Skystream 2.5.0 64 Bit Android TV": {
+      "url": "https://ugc.production.linktr.ee/62f5807d-c325-4d4a-8371-96cbe096e9f3_Sky-Stream-PRIMARY-BLUE-RGB-scaled.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SportsFire": {
+      "url": "https://ugc.production.linktr.ee/1b3665c2-2f58-4a31-bbed-a1408b6f4560_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SportzX": {
+      "url": "https://ugc.production.linktr.ee/bc4f05e6-9ce0-44fc-837d-be9ab494289a_cropped-logo-1-1024x805.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "StreamFire": {
+      "url": "https://ugc.production.linktr.ee/7d405828-e267-468e-b541-1a31ea8130ff_StreamFire-APK.jpeg",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Tubi TV": {
+      "url": "https://ugc.production.linktr.ee/3hLetN6R4Cs69V5d7nwh_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "TV Mob 3.4 Firestick": {
+      "url": "https://ugc.production.linktr.ee/a6535e70-21dd-494a-a678-4ce26f4403bf_image.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Audiomack 8.4.0 Mod": {
+      "url": "https://ugc.production.linktr.ee/XrccjMTVRJuz37tNmp5c_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "iHeart Radio 10.64.0 Prem Mobile": {
+      "url": "https://ugc.production.linktr.ee/aB1wc2tRNiNdpGlBNUbS_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Media Monkey 2.1.3.1328 Prem": {
+      "url": "https://ugc.production.linktr.ee/edae475e-b748-4d99-bba8-4db9486afa46_unnamed.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Podcast Addict 2026.7 Prem": {
+      "url": "https://ugc.production.linktr.ee/Mi41i4t4QBqOFzz0U1iN_undefined",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Spotiduck 1.2.1": {
+      "url": "https://ugc.production.linktr.ee/4fde8ac9-d553-4590-8097-24f0df5a8890_SpotiDuck-logo-icon.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SpotiFLAC 4.9.5 Prem Mobile": {
+      "url": "https://ugc.production.linktr.ee/ffbe37eb-d189-4e80-ac3e-bff05ea05eea_275997661.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "SpotiLOL 1.1.4 Ad Free": {
+      "url": "https://ugc.production.linktr.ee/f8cfe509-0cf4-4cdf-91a4-80bcc645dc61_logo-small-og.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "Spotify": {
+      "url": "https://ugc.production.linktr.ee/fcdfdf06-4f2f-4f9b-b838-2f0e67ac8bdd_untitled.png",
+      "source": "https://linktr.ee/kpfire"
+    },
+    "TuneIn": {
+      "url": "https://ugc.production.linktr.ee/0vEFzpmnQPaNzCqZHLGE_undefined",
+      "source": "https://linktr.ee/kpfire"
+    }
+  }
+}

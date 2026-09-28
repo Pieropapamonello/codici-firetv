@@ -2,6 +2,28 @@
 // Sources identify products, not the authenticity/safety of third-party APKs.
 // Unknown names must remain explicitly unverified, never guessed from "player"/"file".
 const rules = [
+  [/^Cinema HD|^Flix Vision|^Flixoid|^Tea TV|^CyberFlix|^NovaTV|^Picasso|^MediaBox|^Cuco TV|^Cartoon HD|^AppFlix|^MorpheusTV|^OneBoxHD|^Strix|^CatMouse|^HDO\b|^MediaLounge|^OceanStreamz|^UKTurks/i, 'Film e serie · App streaming', 'App indicata dalla fonte per la ricerca e riproduzione di video in streaming. Disponibilità, diritti sui contenuti e compatibilità vanno verificati; il download non fornisce abbonamenti.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^DofuStream|^Sports?\s?Fire|^SportzX|^SportsZone|^StreamFire|^Blink Streamz|^HD Streamz|^Live Net TV|^Redbox TV|^HDTV Ultimate|^Ola TV|^USTVGO|^Swift Streamz|^Kraken TV|^TVTap Pro|^AOS TV|^Oreo TV|^Rapid Streamz|^1 Pix Media/i, 'TV in diretta · App streaming', 'App indicata dalla fonte per flussi TV in diretta. Verifica disponibilità e autorizzazione delle sorgenti: non sostituisce un abbonamento al relativo canale.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^Crackle|^Tubi TV|^BBC iPlayer|^STIRR|^Magellan\s?TV/i, 'Servizi streaming con account', 'Client del relativo servizio video. Catalogo, pubblicità, account, eventuale abbonamento e restrizioni territoriali dipendono dal servizio; un APK non li rimuove.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^Vavoo|^Rokkr/i, 'Film e serie · Media center', 'Interfaccia multimediale per aprire e organizzare sorgenti configurate dall’utente. Il solo lettore non garantisce contenuti o abbonamenti.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^DNS Changer/i, 'Rete e diagnostica', 'Cambia i server DNS utilizzati dal dispositivo. Non equivale a una VPN e non rende anonima la connessione.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^ADM\b/i, 'Gestione download', 'Gestore dei file scaricati su Android. Non è un catalogo di film e non sostituisce il codice numerico dell’app Downloader.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^Downloader(?:\s|$)/i, 'Installazione APK e bundle', 'Browser e gestore download di AFTVnews: apre URL o codici numerici per scaricare APK. Non include canali o abbonamenti.', 'https://www.aftvnews.com/downloader/'],
+  [/^VLC\b/i, 'Lettori video', 'Lettore VideoLAN per file audio, video e flussi di rete. Non include un catalogo di film o canali.', 'https://www.videolan.org/vlc/'],
+  [/^AIDA\s?64\b/i, 'Rete e diagnostica', 'Mostra hardware, sistema Android, memoria e caratteristiche del dispositivo. Utile per controllare la piattaforma prima di scegliere un APK.', 'https://www.aida64.com/'],
+  [/^AdGuard\b|^Blokada\b/i, 'Privacy e blocco pubblicità', 'Filtra pubblicità e traccianti secondo la configurazione dell’app. Non equivale a un abbonamento VPN; alcune funzioni possono richiedere una licenza.', 'https://adguard.com/en/adguard-android/overview.html'],
+  [/^Background Apps/i, 'Avvio e processi Android', 'Elenca le app in background e permette di raggiungere le impostazioni Android per chiuderle. Non aumenta lo spazio disponibile sul disco.', 'https://github.com/visnkmr/backgroundappslist'],
+  [/^Send files to TV/i, 'Trasferimento file', 'Trasferisce file tra TV Android, telefono e computer nella stessa rete locale. Installa l’app sui dispositivi coinvolti.', 'https://sendfilestotv.app/'],
+  [/^NordVPN|^Proton VPN|^ExpressVPN|^IPVanish|^CyberGhost/i, 'VPN e indicatori connessione', 'Client del relativo servizio VPN per proteggere la connessione. Richiede un account; le condizioni e l’eventuale piano a pagamento dipendono dal servizio.', 'https://downloadercodes.com/'],
+  [/^Smart IPTV|^Perfect Player|^IPTV Pro|^IBO Player|^Ott Navigator|^M3U IPTV|^STB Emu|^XTREAM IPTV/i, 'TV in diretta · Player IPTV', 'Riproduce e organizza le tue playlist o credenziali IPTV. Non include canali o abbonamenti; può richiedere una licenza separata del lettore.', 'https://downloadercodes.com/'],
+  [/^YTV Player|^Bear Player|^Wuffy|^Ludio|^B Player|^Fluid Video Player/i, 'Lettori video', 'Apre file o indirizzi video forniti dall’utente o da un’altra app. Non fornisce un abbonamento a contenuti.', 'https://downloadercodes.com/'],
+  [/^AppLinked|^APKPure|^Orion Store/i, 'Store e raccolte APK', 'Catalogo per trovare e scaricare pacchetti Android. Controlla autore, permessi e dispositivo supportato prima dell’installazione.', 'https://downloadercodes.com/'],
+  [/^SpeedTest/i, 'Rete e diagnostica', 'Misura velocità e latenza della connessione Internet. I risultati dipendono dalla rete, dal dispositivo e dal server di prova.', 'https://www.speedtest.net/'],
+  [/^AZ Screen Recorder/i, 'Registrazione schermo', 'Registra lo schermo Android. I contenuti protetti possono non essere registrabili; l’interfaccia è pensata soprattutto per dispositivi touch.', 'https://azrecorder.com/'],
+  [/^SD Maid/i, 'Pulizia e manutenzione Android', 'Analizza l’archiviazione e aiuta a rimuovere file residui. Controlla gli elementi selezionati prima di eliminarli.', 'https://github.com/d4rken-org/sdmaid-se'],
+  [/^Puffin/i, 'Browser Internet', 'Browser web. Verifica la variante TV o Mobile e le condizioni del servizio, che possono prevedere un abbonamento.', 'https://www.puffin.com/'],
+  [/^Spotify|^TuneIn/i, 'Musica', 'Ascolto di musica o radio attraverso il relativo servizio. Account, disponibilità dei contenuti e funzioni a pagamento dipendono dal piano.', 'https://www.webassistanceita.com/codici-downloader-firestick/'],
+  [/^TikTok/i, 'Video e social', 'Piattaforma di video brevi con profili e contenuti degli utenti. La compatibilità con il telecomando dipende dalla variante.', 'https://www.tiktok.com/'],
   [/vimu installer/i, 'Lettori video', 'Installer di Vimu Media Player, lettore per file e flussi video su Android TV/Fire TV. Non include film o canali.', 'https://www.vimu.tv/'],
   [/castreceiver/i, 'Trasmetti lo schermo alla TV', 'Ricevitore Android per trasmettere contenuti da dispositivi compatibili. La voce Mod indica un pacchetto modificato non verificato.', 'https://play.google.com/store/apps/details?id=com.softmedia.receiver.castapp'],
   [/apkmirror installer/i, 'Installazione APK e bundle', 'Installa file APK e bundle di applicazioni Android, inclusi pacchetti APKM. Non è un catalogo di canali TV.', 'https://www.apkmirror.com/apk/apkmirror/apkmirror-installer-official/'],
@@ -87,7 +109,7 @@ const rules = [
 ];
 
 export function catalogMetadata(name = '') {
-  const normalized = String(name).replaceAll('_', ' ');
+  const normalized = String(name).replaceAll('_', ' ').replace(/^Bee TV\b/i, 'BeeTV').replace(/^Viva TV\b/i, 'VivaTV').replace(/^XCIP TV\b/i, 'XCIPTV');
   const rule = rules.find(([pattern]) => pattern.test(normalized));
   if (!rule) return { category: 'Da identificare', desc: 'Identità e funzione non verificate: serve il sito originale o il nome del pacchetto APK. Non presumere la compatibilità con la TV.', metadataVerified: false, source: '' };
   const [, category, desc, source] = rule;

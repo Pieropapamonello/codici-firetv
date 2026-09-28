@@ -1,0 +1,504 @@
+[
+  {
+    "host": "raw.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_97e396476113ddb1be09"
+  },
+  {
+    "id": "source_2a81e48229671d7091f9",
+    "status": 0
+  },
+  {
+    "host": "mirror.karneval.cz",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_30112298ad2604be2355"
+  },
+  {
+    "host": "iboplayer.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_2a88bfdfa6601f7be80a"
+  },
+  {
+    "host": "ftp.rnl.tecnico.ulisboa.pt",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_8e23f03912e1d1b83ac9"
+  },
+  {
+    "host": "sf16-va.tiktokcdn.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_2eaf15017e75afaf70a5"
+  },
+  {
+    "host": "dn721802.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_68dfcc847f8fd9ba95a9"
+  },
+  {
+    "host": "appl-test.sfo3.digitaloceanspaces.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_432f8cad50ecf93e5201"
+  },
+  {
+    "host": "dn721907.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_b6947ff16e025413bb93"
+  },
+  {
+    "id": "source_4c5db8f0b02f73b08539",
+    "status": 0
+  },
+  {
+    "id": "source_6c56c5078f5e704eccbb",
+    "status": 0
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_82b3ce7ba76a9e819804"
+  },
+  {
+    "id": "source_09f5c0aab8eb22b878fc",
+    "status": 0
+  },
+  {
+    "id": "source_48c3610392ffe688ffb1",
+    "status": 0
+  },
+  {
+    "host": "catmouseapk.org",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "source_646c08c0d305ab81d5f5"
+  },
+  {
+    "host": "apkcombo.com",
+    "status": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "id": "source_d671e121a647c7f0b4fa"
+  },
+  {
+    "host": "hdstreamz.ru",
+    "status": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "id": "source_39f305a463787e1d4bd7"
+  },
+  {
+    "host": "gofile.io",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "source_c791a99b4eae6e2386ed"
+  },
+  {
+    "id": "source_0879c4de46e4770ed3e1",
+    "status": 0
+  },
+  {
+    "host": "1pixmedia.online",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_408d624b276ec13f2ce6"
+  },
+  {
+    "host": "apkcombo.com",
+    "status": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "id": "source_aa49e5f25c8f8d08b3e6"
+  },
+  {
+    "id": "source_704e9fe6b5dc60af9807",
+    "status": 0
+  },
+  {
+    "host": "dn721605.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_f5ace135e05937266481"
+  },
+  {
+    "host": "ia601400.us.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_6f61ca3114a1671e3a12"
+  },
+  {
+    "host": "files.catbox.moe",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_0d5b588bce68cec7976e"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_6cf02a9107538109a2a2"
+  },
+  {
+    "host": "dn710303.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_eb1d1fff8d5037150d51"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_3b15accdc8c4c5f08d73"
+  },
+  {
+    "host": "files.tivimate.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_af4fa7b136fdd58f4162"
+  },
+  {
+    "host": "dn721805.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_c2cf4e8d6e7ffed84733"
+  },
+  {
+    "host": "downloads77-android.nordcdn.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_31c19649d5718d8f1b42"
+  },
+  {
+    "host": "dn710105.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_0d80686707221eda104a"
+  },
+  {
+    "host": "auroraoss.com",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_46ba3cd3bf5f1acfeaf5"
+  },
+  {
+    "id": "source_f3df2ad15d5331541bad",
+    "status": 0
+  },
+  {
+    "id": "source_5ec1ec8b1d73623b4533",
+    "status": 0
+  },
+  {
+    "id": "source_a40f4afc0742316c60a2",
+    "status": 0
+  },
+  {
+    "id": "source_59683edf09c0267f9304",
+    "status": 0
+  },
+  {
+    "id": "source_e81df2a9d65261579f38",
+    "status": 0
+  },
+  {
+    "id": "source_61228fdc6c0e97383ba7",
+    "status": 0
+  },
+  {
+    "host": "weyd.app",
+    "status": 200,
+    "contentType": "application/download",
+    "id": "source_7f763c09d09cd521483f"
+  },
+  {
+    "id": "source_798792121a2feeaa24c0",
+    "status": 0
+  },
+  {
+    "id": "source_35d04a35d71a90c0ea5d",
+    "status": 0
+  },
+  {
+    "id": "source_fdc61f9ad58cca3085cc",
+    "status": 0
+  },
+  {
+    "id": "source_a4f5133427f0dfea8d93",
+    "status": 0
+  },
+  {
+    "id": "source_b7f99c6e69820858c5ac",
+    "status": 0
+  },
+  {
+    "id": "source_e8db8d5363ef4cdaacbd",
+    "status": 0
+  },
+  {
+    "id": "source_372cf8c72d56f7b8c97c",
+    "status": 0
+  },
+  {
+    "id": "source_ad35f065afef0e894ce2",
+    "status": 0
+  },
+  {
+    "id": "source_7b01615c8f7f4936f3b4",
+    "status": 0
+  },
+  {
+    "host": "files.catbox.moe",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_6ad242a1126556812457"
+  },
+  {
+    "host": "download.adguard.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_333c53304a773c5c7bfb"
+  },
+  {
+    "id": "source_5b6b5669ec1a3ab08c56",
+    "status": 0
+  },
+  {
+    "host": "dn721704.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_c56132ac603f1d3be4bb"
+  },
+  {
+    "host": "siptv.app",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_655e3530b4d9e1c81d65"
+  },
+  {
+    "host": "downloads.plex.tv",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_6f8112f040666fcbf78f"
+  },
+  {
+    "host": "download.aida64.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_5661ed68b0858b51afa7"
+  },
+  {
+    "host": "tv.aptoide.com",
+    "status": 200,
+    "contentType": "text/html",
+    "id": "source_459f30926a5867b90c59"
+  },
+  {
+    "host": "download2280.mediafire.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_5c6937c7dcdb53e7018a"
+  },
+  {
+    "id": "source_97ca451667240b493d36",
+    "status": 0
+  },
+  {
+    "id": "source_2f693d1bad50a5e8169a",
+    "status": 0
+  },
+  {
+    "id": "source_7ab2c75eff4ae200e7c6",
+    "status": 0
+  },
+  {
+    "id": "source_1e55ad937c545af628e4",
+    "status": 0
+  },
+  {
+    "host": "syncler.net",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "source_a16a1f4f7020406a65e5"
+  },
+  {
+    "host": "www.mediafire.com",
+    "status": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "id": "source_dd87a3b349bcfa5fe663"
+  },
+  {
+    "host": "dn721805.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_8317bc09196df36085a7"
+  },
+  {
+    "id": "source_30d34d78fa55fec7c5ae",
+    "status": 0
+  },
+  {
+    "id": "source_27ce400cd0277a73760a",
+    "status": 0
+  },
+  {
+    "id": "source_2194048ba14a67c63574",
+    "status": 0
+  },
+  {
+    "host": "ia801507.us.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_a319940c9b0cfea23e62"
+  },
+  {
+    "host": "app.veezie.st",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_924e597f9896fffb4498"
+  },
+  {
+    "id": "source_84539e24e7959cb389e7",
+    "status": 0
+  },
+  {
+    "host": "dn721907.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_268601badc490a4b1c45"
+  },
+  {
+    "id": "source_a23c6b4f23b180e44aaa",
+    "status": 0
+  },
+  {
+    "host": "www.rokkr.net",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "source_95d235c4bc111a72d54d"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_87cf7788833725adb375"
+  },
+  {
+    "host": "apktime.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_cf15f61161cc4d00c53e"
+  },
+  {
+    "host": "dn721507.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_923e6a84be75d0dd92e1"
+  },
+  {
+    "host": "f.mxplayer.j2inter.com",
+    "status": 200,
+    "contentType": "text/html;charset=utf-8",
+    "id": "source_8b39327a7a01ea9bd9db"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_ca566f9af0bbe5b6afd1"
+  },
+  {
+    "host": "release-assets.githubusercontent.com",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_a0acde9b9a7f148b8119"
+  },
+  {
+    "id": "source_bfc0193053580447a18f",
+    "status": 0
+  },
+  {
+    "host": "dn721605.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_b7f05a2a4e5a1ebc9df4"
+  },
+  {
+    "id": "source_873b03b3f0abb270a765",
+    "status": 0
+  },
+  {
+    "id": "source_e4942e1d4f43a3cf8264",
+    "status": 0
+  },
+  {
+    "id": "source_e8774f6022b85b681105",
+    "status": 0
+  },
+  {
+    "id": "source_4b9b10c970bfe78d889c",
+    "status": 0
+  },
+  {
+    "id": "source_06c4941320f4c3c133f4",
+    "status": 0
+  },
+  {
+    "id": "source_6fbecb26ed041187450b",
+    "status": 0
+  },
+  {
+    "id": "source_ebbd3c5f509f82720cf3",
+    "status": 0
+  },
+  {
+    "id": "source_ac18116feae6e8c16c64",
+    "status": 0
+  },
+  {
+    "id": "source_b76e25ea8479399639d6",
+    "status": 0
+  },
+  {
+    "host": "ia601902.us.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_277fc414eb9d522c083c"
+  },
+  {
+    "id": "source_ea1ab15a39631ebedd85",
+    "status": 0
+  },
+  {
+    "host": "dn721901.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_dcd9498269b74f4aab26"
+  },
+  {
+    "host": "sportszone.wtf",
+    "status": 200,
+    "contentType": "application/vnd.android.package-archive",
+    "id": "source_98c5fc1256e65507c42c"
+  },
+  {
+    "host": "dn721805.ca.archive.org",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_adbc3fbd4cc83d73d134"
+  },
+  {
+    "host": "blokada.org",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "id": "source_ab266dfc6e4bf371eede"
+  },
+  {
+    "host": "files.catbox.moe",
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "id": "source_ff9db5ea89dfa1cd9a67"
+  }
+]

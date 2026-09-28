@@ -140,7 +140,7 @@ export default async function handler(req, res) {
                 const previousVersion = extractVersion(existingApp.name);
                 const scrapedVersion = extractVersion(scraped.name);
                 // Dedicated release checkers own these entries, including their download codes.
-                if (existingApp.directUrl || /stremio|paramount/i.test(existingApp.name)) continue;
+                if (existingApp.directUrl || existingApp.catalogImport || /stremio|paramount/i.test(existingApp.name)) continue;
                 if (previousVersion && scrapedVersion && compareVersions(scrapedVersion, previousVersion) < 0) continue;
                 const versionChanged = previousVersion && scrapedVersion && compareVersions(scrapedVersion, previousVersion) > 0;
 

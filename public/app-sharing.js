@@ -1,5 +1,6 @@
 export function downloaderCode(app) {
-  for (const candidate of [app.downloaderCode, app.aftvCode, app.code]) {
+  const boundCode = !app.codeBoundUrl || app.codeBoundUrl === (app.directUrl || app.code) ? app.downloaderCode : '';
+  for (const candidate of [boundCode, app.aftvCode, app.code]) {
     const value = String(candidate ?? '').trim();
     if (/^\d{3,10}$/.test(value)) return value;
     try {
