@@ -713,6 +713,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 <div id="guides-anchor"></div>
 <details class="advanced-guides" id="catalog-guides">
   <summary>Hai bisogno di aiuto? Apri le guide</summary>
+  <details class="adv-guide" id="guide-dublift">
+    <summary>DubLift — installazione e configurazione per Stremio / Nuvio</summary>
+    <div class="guide-body">
+      <p>DubLift è un addon locale e open source che abbina video HTTP(S), MKV/MP4 e HLS, anche 4K, all’audio italiano disponibile. Non ricodifica il video. L’APK include server, FFmpeg, ffprobe e dashboard.</p>
+      <h4>1. Scegli e installa l’APK</h4>
+      <ol>
+        <li>Apri la <a href="https://github.com/joojoooo/DubLiftApp/releases/latest" target="_blank" rel="noopener noreferrer">release più recente di DubLift</a>. Scegli <strong>DubLift-armv7.apk</strong> per Android ARM a 32 bit oppure <strong>DubLift-arm64.apk</strong> per Android ARM a 64 bit. Serve <strong>Android 7.1 o successivo</strong>: conta l’architettura del sistema Android, non soltanto quella del processore.</li>
+        <li>Apri l’APK e autorizza l’app usata per scaricarlo a installare applicazioni, se richiesto. Su Fire TV / Android TV compatibili puoi installarlo direttamente sul dispositivo della TV.</li>
+        <li>Apri DubLift: il server parte automaticamente. Consenti le notifiche e l’esclusione dall’ottimizzazione della batteria quando richiesto.</li>
+        <li>Nella configurazione guidata incolla i <strong>manifest degli addon delle tue sorgenti video</strong>. Devono fornire collegamenti HTTP(S); i torrent diretti non vengono trasformati.</li>
+      </ol>
+      <h4>2. Imposta l’indirizzo del server</h4>
+      <p><strong>DubLift e player sullo stesso dispositivo:</strong> in <strong>Settings → Advanced settings → Public base URL</strong> inserisci <code class="inline-code">http://127.0.0.1:7000</code>. Il manifest da aggiungere al player è <code class="inline-code">http://127.0.0.1:7000/manifest.json</code>.</p>
+      <p><strong>DubLift sul telefono e player sulla TV:</strong> collega entrambi alla stessa rete locale. Trova l’IP del telefono nelle impostazioni Wi-Fi e inserisci, ad esempio, <code>http://192.168.1.50:7000</code> come Public base URL e <code>http://192.168.1.50:7000/manifest.json</code> nel player. <strong>Sostituisci 192.168.1.50 con l’IP reale del telefono</strong>. Lascia telefono e DubLift attivi durante la visione. Usa una rete fidata: il server non ha autenticazione integrata.</p>
+      <h4>3. Aggiungi il manifest al player</h4>
+      <p><strong>Nuvio:</strong> apri la sezione addon, scegli l’aggiunta tramite URL, incolla il manifest scelto al punto 2 e conferma.</p>
+      <p><strong>Stremio:</strong> apri <a href="https://gateniomer.github.io/stremio-addon-manager/" target="_blank" rel="noopener noreferrer">Stremio Addon Manager</a>, accedi al tuo account Stremio, aggiungi il manifest e sincronizza la lista degli addon con l’account. Poi apri Stremio con lo stesso account. Questo passaggio permette di aggiungere il manifest HTTP locale, che Stremio non accetta direttamente. Addon Manager è uno strumento esterno: <a href="https://github.com/gateniomer/stremio-addon-manager" target="_blank" rel="noopener noreferrer">consulta il suo progetto</a> prima di accedere.</p>
+      <h4>4. Avvia la visione e regola l’audio</h4>
+      <p>Scegli un film o episodio e apri un risultato DubLift con la bandiera italiana. Lascia DubLift in esecuzione. La sincronizzazione automatica usa le tracce inglesi come riferimento; se l’audio è fuori tempo, apri nella dashboard <strong>Streams → Adjust audio timing</strong> e correggi il ritardo.</p>
+      <p>L’audio italiano deve essere disponibile e le fonti compatibili. Per il 4K servono una connessione adeguata e un player/dispositivo che supporti codec ed eventuale HDR. Edizioni diverse del video possono richiedere una correzione manuale. Android può interrompere l’app in background anche dopo l’esenzione dalla batteria.</p>
+      <p><a href="https://github.com/joojoooo/DubLiftApp#-usage" target="_blank" rel="noopener noreferrer">Istruzioni del progetto</a> · <a href="https://github.com/joojoooo/DubLiftApp/issues" target="_blank" rel="noopener noreferrer">Segnala un problema</a>: indica dispositivo, player, fonte e cosa succede.</p>
+    </div>
+  </details>
   <h2>📚 GUIDE</h2>
   <p style="text-align:center;color:var(--text-muted);font-size:13px;margin-top:-12px;margin-bottom:24px;">Clicca su una guida per espanderla. Codici e comandi si copiano con un click.</p>
 
@@ -1927,6 +1950,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
           <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="${shareApp.downloadKind === 'page' ? 'Apri pagina di' : 'Scarica'} ${escapeHtml(name)}">${shareApp.downloadKind === 'page' ? 'Apri pagina' : 'Scarica'}</a>
           ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : ''}
           <button type="button" class="app-action share-app" aria-label="Copia link di ${escapeHtml(name)}">Copia link</button>
+          ${/^DubLift\b/i.test(name) ? '<button type="button" class="app-action dublift-guide-link">Come installare</button>' : ''}
         </div>
         <p class="app-action-status" role="status" aria-live="polite"></p>
         ${clickHtml}
@@ -1949,6 +1973,14 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       }
       frame.querySelector('.family-apps').append(newCard);
       attachAppActions(newCard, shareApp, location.origin);
+      newCard.querySelector('.dublift-guide-link')?.addEventListener('click', () => {
+          const guides = document.getElementById('catalog-guides');
+          const guide = document.getElementById('guide-dublift');
+          guides.open = true;
+          guide.open = true;
+          guide.querySelector('summary').focus();
+          guide.scrollIntoView({block: 'start'});
+      });
       appendProvenance(newCard, shareApp);
       
 
