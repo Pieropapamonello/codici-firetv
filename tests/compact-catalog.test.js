@@ -15,6 +15,9 @@ test('category panels have one shared description and compact per-variant downlo
     assert.ok(css.includes('grid-template-columns:80px 145px'));
     assert.ok(css.includes('border:0 !important; border-radius:0 !important'));
     assert.ok(css.includes('margin:0; padding:0;'));
+    assert.ok(css.includes('grid-template-columns:75px 70px 145px'));
+    assert.ok(css.includes('.variant-list { padding-left:0; }'));
+    assert.ok(css.includes('grid-column:2; grid-row:1; width:100%'));
     assert.match(categoryDescription('Browser Internet'),/Browser per navigare/);
     assert.match(categoryDescription('Android su Windows'),/non installare/);
 });

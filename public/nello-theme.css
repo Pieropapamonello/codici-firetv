@@ -30,7 +30,7 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 .app-provenance p { margin: 6px 0; }
 .app-provenance a { color: #94330f; }
 .app-provenance summary:focus-visible { outline: 3px solid #aa3c17; outline-offset: 3px; }
-#main-content .card, body.lite-mode #main-content .card, body.light-theme #main-content .card { box-sizing: border-box; padding: 20px; border: 1px solid #e4d9cf !important; border-radius: 14px; background: #fff !important; box-shadow: none !important; transform: none !important; backdrop-filter: none; cursor: default; }
+#main-content .card, body.lite-mode #main-content .card, body.light-theme #main-content .card { box-sizing: border-box; padding: 20px; border: 0; border-radius: 0; background: transparent; box-shadow: none !important; transform: none !important; backdrop-filter: none; cursor: default; }
 .download-row { align-items: flex-start; border: 0; background: transparent; border-radius: 0; color: #262321; min-height: 0; padding: 0; }
 .download-row:hover { background: transparent; color: #262321; }
 .download-row small { color: #625d57; font-size: 14px; line-height: 1.6; margin-top: 6px; }
@@ -91,9 +91,21 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 .variants-toggle { justify-self:end; padding:7px 10px; border:1px solid #d8cec5; border-radius:7px; color:#813014; font-size:12px; }
 .variants-toggle::after { content:' ▾'; }
 .app-variants[open] .variants-toggle::after { content:' ▴'; }
-.variant-list { padding-left:12px; }
+.variant-list { padding-left:0; }
 @media(max-width:600px) {
   .app-variants > summary { grid-template-columns:24px minmax(0,1fr) 169px; gap:6px; font-size:13px; }
   .app-variants > summary img { width:24px; height:24px; }
   .variant-list { padding-left:0; }
+}
+
+/* Shared columns and icon boxes for plain rows, group headings and variants. */
+#main-content .family-apps .card, #main-content .app-variants > summary { grid-template-columns:28px minmax(0,1fr) 300px; }
+#main-content .card .download-row img, #main-content .app-variants > summary img { box-sizing:border-box; padding:0; }
+#main-content .card .app-actions { grid-template-columns:75px 70px 145px; }
+#main-content .card .app-actions > .app-download { grid-column:1; grid-row:1; }
+#main-content .card .app-actions > .copy-app-code { grid-column:3; grid-row:1; }
+#main-content .card .app-actions > .dublift-guide-link, #main-content .card .app-actions > .stremio-mod-guide-link { grid-column:2; grid-row:1; width:100%; }
+@media(max-width:600px) {
+  #main-content .family-apps .card, #main-content .app-variants > summary { grid-template-columns:24px minmax(0,1fr) 223px; }
+  #main-content .card .app-actions { grid-template-columns:58px 55px 100px; }
 }

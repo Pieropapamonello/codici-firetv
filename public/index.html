@@ -1957,8 +1957,8 @@ import { categoryDescription } from './category-descriptions.js';
         <div class="app-actions">
           <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="${shareApp.downloadKind === 'page' ? 'Apri pagina di' : 'Scarica'} ${escapeHtml(name)}">${shareApp.downloadKind === 'page' ? 'Apri pagina' : 'Scarica'}</a>
           <button type="button" class="app-action copy-app-code" aria-label="${displayCode ? 'Copia codice Downloader e dettagli di' : 'Copia nome, descrizione e link diretto di'} ${escapeHtml(name)}">Copia codice${displayCode ? ` <strong>${escapeHtml(displayCode)}</strong>` : ''}</button>
-          ${/^DubLift\b/i.test(name) ? '<button type="button" class="app-action dublift-guide-link">Come installare</button>' : ''}
-          ${/^Stremio\b.*\bMod\b/i.test(name) ? '<button type="button" class="app-action stremio-mod-guide-link">Guida plugin</button>' : ''}
+          ${/^DubLift\b/i.test(name) ? '<button type="button" class="app-action dublift-guide-link" title="Guida installazione DubLift" aria-label="Guida installazione DubLift">Guida</button>' : ''}
+          ${/^Stremio\b.*\bMod\b/i.test(name) ? '<button type="button" class="app-action stremio-mod-guide-link" title="Guida plugin Stremio Mod" aria-label="Guida plugin Stremio Mod">Guida</button>' : ''}
         </div>
         <p class="app-action-status" role="status" aria-live="polite"></p>
         ${clickHtml}
