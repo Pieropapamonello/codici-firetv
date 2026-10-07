@@ -1966,7 +1966,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
         </div>
         <div class="app-actions">
           <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="${shareApp.downloadKind === 'page' ? 'Apri pagina di' : 'Scarica'} ${escapeHtml(name)}">${shareApp.downloadKind === 'page' ? 'Apri pagina' : 'Scarica'}</a>
-          ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : ''}
+          <button type="button" class="app-action copy-app-code" aria-label="${displayCode ? 'Copia codice Downloader e dettagli di' : 'Copia nome, descrizione e link diretto di'} ${escapeHtml(name)}">Copia codice${displayCode ? ` <strong>${escapeHtml(displayCode)}</strong>` : ''}</button>
           ${/^DubLift\b/i.test(name) ? '<button type="button" class="app-action dublift-guide-link">Come installare</button>' : ''}
           ${/^Stremio\b.*\bMod\b/i.test(name) ? '<button type="button" class="app-action stremio-mod-guide-link">Guida plugin</button>' : ''}
         </div>

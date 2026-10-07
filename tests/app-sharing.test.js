@@ -42,6 +42,11 @@ test('only copy code is bound and includes details plus the direct download', as
     assert.match(copied, /Test\n\nDescrizione\n\nCodice Downloader: 123456/);
     assert.ok(copied.includes('Download: https://go.aftvnews.com/123456'));
     assert.equal(events['.share-app'],undefined);
+    attachAppActions(card, {name:'WSA Builds',desc:'Android su Windows',code:'https://example.com/wsa.7z'}, 'https://example.com');
+    await events['.copy-app-code']();
+    assert.ok(copied.includes('Download: https://example.com/wsa.7z'));
+    assert.ok(!copied.includes('Codice Downloader:'));
+    assert.equal(status.textContent,'Copiati nome, descrizione e link diretto.');
   } finally {
     if (original) Object.defineProperty(globalThis, 'navigator', original);
     else delete globalThis.navigator;

@@ -79,6 +79,8 @@ export function attachAppActions(card, app, origin) {
   const text = appShareText(app, origin);
   const status = card.querySelector('.app-action-status');
   card.querySelector('.copy-app-code')?.addEventListener('click', async () => {
-    if (await copyAppText(text)) status.textContent = 'Copiati nome, descrizione, codice e link.';
+    if (await copyAppText(text)) status.textContent = downloaderCode(app)
+      ? 'Copiati nome, descrizione, codice e link.'
+      : 'Copiati nome, descrizione e link diretto.';
   });
 }
