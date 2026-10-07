@@ -4,7 +4,7 @@ const installHelp = document.getElementById('install-help');
 const standalone = window.matchMedia('(display-mode: standalone)');
 function hideInstall() { installButton.hidden = true; installHelp.hidden = true; }
 if (!standalone.matches && !navigator.standalone) {
-    installHelp.hidden = false;
+    installButton.hidden = false;
     installHelp.textContent = /iPhone|iPad|iPod/.test(navigator.userAgent)
         ? 'Per installare: apri Condividi e scegli Aggiungi alla schermata Home.'
         : 'Per installare, cerca Installa app nel menu del browser. Se non disponibile, puoi usare il sito normalmente.';
@@ -15,7 +15,10 @@ window.addEventListener('beforeinstallprompt', event => {
     if (!standalone.matches) { installButton.hidden = false; installHelp.hidden = true; }
 });
 installButton.addEventListener('click', async () => {
-    if (!installPrompt) return;
+    if (!installPrompt) {
+        installHelp.hidden = !installHelp.hidden;
+        return;
+    }
     const prompt = installPrompt;
     installPrompt = null;
     installButton.hidden = true;
