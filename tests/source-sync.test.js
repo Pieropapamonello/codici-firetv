@@ -2,6 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {planSourceSync,collectSource} from '../api/utils/source-sync.js';
 import {dubLiftUpdates} from '../api/check-dublift.js';
+import {parseSource} from '../scripts/parse-catalog-source.mjs';
+
+test('new Elementor copy buttons expose the exact code and destination',()=>{
+    const parsed=parseSource('<h1>VLC</h1><div><span>1433190</span><a class="js-copy-btn">Copy</a></div><div><p>aftv.news/1433190</p><a class="js-copy-btn">Copy</a></div><div><p>https://example.com/vlc.apk</p><a class="js-copy-btn">Copy</a></div>','https://downloadercodes.com/vlc/');
+    assert.equal(parsed.code,'1433190');assert.equal(parsed.url,'https://example.com/vlc.apk');
+});
 
 test('source sync adds known apps once, stages unknown identities and respects ignored entries',()=>{
     const item={name:'RetroArch',code:'4361890',source:'https://downloadercodes.com/games/retroarch/'};

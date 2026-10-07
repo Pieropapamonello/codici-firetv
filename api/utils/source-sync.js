@@ -52,7 +52,7 @@ export async function collectSource(source,request=fetch) {
             await new Promise(resolve=>setTimeout(resolve,150));
         }
     }));
-    if(!items.length) throw new Error('No catalog entries parsed');
+    if(!items.length || (urls.size>30 && items.length<10)) throw new Error('Too few catalog entries: source markup may have changed');
     return {items,failures,pages:urls.size};
 }
 

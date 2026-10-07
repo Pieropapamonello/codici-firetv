@@ -26,14 +26,16 @@ export function parseSource(html, source) {
   if (new URL(source).pathname === '/') {
     return [...new Set($('h3 a').map((i, el) => $(el).attr('href')).get())];
   }
-  const code = $('.copy-dl, #d-code, #copyCode1').first().text().trim();
+  // Elementor's newer tabs put values next to js-copy-btn instead of the old IDs.
+  const copyValues=$('.js-copy-btn').parent().children('span,p').map((i,e)=>$(e).text().trim()).get();
+  const code = $('.copy-dl, #d-code, #copyCode1').first().text().trim() || copyValues.find(value=>/^\d{3,10}$/.test(value)) || '';
   const name = $('h1').first().text().trim().replace(/\s*Downloader Code.*$/i, '');
   const normalize = text => String(text || '').toLowerCase().replace(/[^a-z0-9]/g, '').replace(/player$/, '');
   const product = normalize(name === 'Private Internet Access' ? 'PIA VPN' : iconFamily(name));
   const icon = $('img').filter((i, el) => product && normalize($(el).attr('alt')).startsWith(product))
     .map((i, el) => $(el).attr('data-src') || $(el).attr('src')).get().find(s => /^https:\/\//i.test(s)) || '';
   return { name,
-    code: /^\d{3,10}$/.test(code) ? code : '', url: $('.copy-dest, #d-link, #copyCode3').first().text().trim(),
+    code: /^\d{3,10}$/.test(code) ? code : '', url: $('.copy-dest, #d-link, #copyCode3').first().text().trim() || copyValues.find(value=>/^https?:\/\//i.test(value)) || '',
     icon, source };
 }
 if (process.argv[1]?.endsWith('parse-catalog-source.mjs')) {
