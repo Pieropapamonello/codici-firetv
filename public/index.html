@@ -675,7 +675,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 
 <div class="controls-bar">
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Cerca un'app..." oninput="filterApps()">
+    <input type="search" enterkeyhint="search" id="searchInput" placeholder="Cerca un'app..." oninput="filterApps()">
     <button class="voice-btn" id="voiceBtn" onclick="startVoiceSearch()" title="Ricerca vocale">🎤</button>
   </div>
   <select class="sort-select" id="sortSelect" onchange="sortApps(this.value)">
@@ -1308,6 +1308,7 @@ import { classifyCatalogEntry } from './catalog-metadata.js';
 import { variantDescription } from './app-variants.js';
 import { catalogAliases } from './catalog-aliases.js';
 import { groupCatalog, appGroupKey } from './catalog-groups.js';
+import { bindSearchNavigation, showSearchResult } from './search-navigation.js';
 import { createIconRegistry, iconFamily } from './catalog-icons.js';
 window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
@@ -1625,6 +1626,7 @@ import { categoryDescription } from './category-descriptions.js';
     window.filterApps = function() {
         renderApps();
     };
+    bindSearchNavigation();
 
     window.setCategory = function(cat) {
         currentCategory = cat;
@@ -2678,7 +2680,7 @@ import { categoryDescription } from './category-descriptions.js';
     recognition.onresult = (e) => {
       const text = e.results[0][0].transcript;
       document.getElementById('searchInput').value = text;
-      filterApps();
+      showSearchResult();
     };
     recognition.onend = () => { btn.classList.remove('listening'); btn.textContent = '🎤'; };
     recognition.onerror = () => { btn.classList.remove('listening'); btn.textContent = '🎤'; };
