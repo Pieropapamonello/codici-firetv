@@ -41,10 +41,13 @@ async function tg(chatId, text, extra = {}) {
     })).json();
 }
 async function tgEdit(chatId, messageId, text, extra = {}) {
-    return (await fetch(`${API()}/editMessageText`, {
+    const result = await (await fetch(`${API()}/editMessageText`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ chat_id: chatId, message_id: messageId, text, parse_mode: 'Markdown', disable_web_page_preview: true, ...extra })
     })).json();
+    if (result.ok || /message is not modified/i.test(result.description || '')) return result;
+    // Welcome menus may belong to a photo caption, not an editable text message.
+    return tg(chatId, text, extra);
 }
 async function tgAnswer(callbackId, text = '') {
     await fetch(`${API()}/answerCallbackQuery`, {
@@ -118,12 +121,10 @@ function genShortCode(len = 5) {
 // ---------- Menus ----------
 function mainMenuPublic(adminFlag) {
     const kb = [
-        [{ text: '📥 Ultime app', callback_data: 'apps:latest' }, { text: '🔍 Cerca app', callback_data: 'apps:search' }],
+        [{ text: '🔍 Cerca app', callback_data: 'apps:search' }],
         [{ text: '📁 Categorie', callback_data: 'apps:cats' }, { text: '📚 Guide', callback_data: 'guides:list' }],
         [{ text: '🔔 La mia iscrizione', callback_data: 'sub:status' }]
     ];
-    if (adminFlag) kb.push([{ text: '👑 Pannello Admin', callback_data: 'admin:menu' }, { text: '📊 Dashboard', callback_data: 'admin:dashboard' }]);
-    else kb.push([{ text: '🔐 Login admin', callback_data: 'admin:login' }]);
     return { inline_keyboard: kb };
 }
 
@@ -548,8 +549,7 @@ async function handleCallback(cb, token) {
     if (data === 'cancel') { await clearState(chatId, token); await tg(chatId, '❌ Annullato.'); if (adminFlag) await showAdminMenu(chatId, token); else await showMainMenu(chatId, token, false); return; }
 
     if (data === 'admin:login') {
-        await setState(chatId, { action: 'login' }, token);
-        await tg(chatId, `🔐 Mandami la *password admin*:`, { reply_markup: cancelKb() });
+        await tg(chatId, 'Per accedere come amministratore scrivi /admin.');
         return;
     }
     if (data === 'admin:menu') {
@@ -1084,6 +1084,16 @@ export default async function handler(req, res) {
         }
 
         // Commands
+        if (/^\/admin(?:@\w+)?$/i.test(text)) {
+            if (msg.chat.type && msg.chat.type !== 'private') {
+                await tg(chatId, 'Apri la chat privata con il bot e scrivi /admin.');
+                return res.status(200).json({ ok: true });
+            }
+            await fetch(`${DB_URL()}/telegram_admins/${chatId}.json?auth=${token}`, { method: 'DELETE' });
+            await setState(chatId, { action: 'login' }, token);
+            await tg(chatId, '🔐 Inserisci la password amministratore. Usa /cancel per annullare.', { reply_markup: cancelKb() });
+            return res.status(200).json({ ok: true });
+        }
         if (text === '/start' || text === '/menu') {
             const userUrl = `${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`;
             const existingUser = await (await fetch(userUrl)).json();

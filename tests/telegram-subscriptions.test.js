@@ -6,15 +6,31 @@ import { isAppEnabled } from '../api/utils/notification-prefs.js';
 test('explicit subscriptions start empty, group variants, edit in place and require all-app confirmation', async () => {
     const originalFetch = global.fetch;
     const previous = process.env.TELEGRAM_BOT_TOKEN;
+    const previousPassword = process.env.FIREBASE_ADMIN_PASSWORD;
     process.env.TELEGRAM_BOT_TOKEN = 'test-token';
+    process.env.FIREBASE_ADMIN_PASSWORD = 'test-password';
+    let photoEdit = false, state = null, admin = null;
     let user = { apps: ['all'], mutedApps: ['nuvio-tv'] };
     const messages = [];
     const apps = { a: {name:'Nuvio TV ARM 32 bit'}, b:{name:'Nuvio TV ARM 64 bit'}, c:{name:'Kodi 21.3'} };
     global.fetch = async (url, options = {}) => {
         const body = options.body ? JSON.parse(options.body) : {};
         if (url.includes('identitytoolkit')) return Response.json({idToken:'admin'});
-        if (url.includes('api.telegram.org')) { messages.push({url,body}); return Response.json({ok:true}); }
-        if (url.includes('/telegram_admins/') || url.includes('/telegram_state/')) return Response.json(null);
+        if (url.includes('api.telegram.org')) {
+            messages.push({url,body});
+            if (photoEdit && url.endsWith('/editMessageText')) return Response.json({ok:false,description:'Bad Request: there is no text in the message to edit'});
+            return Response.json({ok:true});
+        }
+        if (url.includes('/telegram_admins/')) {
+            if(options.method==='DELETE') admin=null;
+            if(options.method==='PUT') admin=body;
+            return Response.json(admin);
+        }
+        if (url.includes('/telegram_state/')) {
+            if(options.method==='PUT') state=body;
+            if(options.method==='DELETE') state=null;
+            return Response.json(state);
+        }
         if (url.includes('/apps.json')) return Response.json(apps);
         if (url.includes('/telegram_users/')) {
             if (options.method === 'PATCH') user = {...user,...body};
@@ -42,8 +58,18 @@ test('explicit subscriptions start empty, group variants, edit in place and requ
         user=null;
         await handler({method:'POST',body:{message:{chat:{id:1},from:{first_name:'Test'},text:'/start'}}},res);
         assert.deepEqual(user.apps,[]);
+        const menu = messages.filter(m=>m.url.endsWith('/sendPhoto')).at(-1).body.reply_markup.inline_keyboard.flat();
+        assert.deepEqual(menu.map(b=>b.callback_data),['apps:search','apps:cats','guides:list','sub:status']);
+        photoEdit=true;
+        await click('sub:status');
+        assert.ok(messages.filter(m=>m.url.endsWith('/sendMessage')).at(-1).body.text.includes('Notifiche app'));
+        const message = text => handler({method:'POST',body:{message:{message_id:8,chat:{id:1,type:'private'},from:{first_name:'Test'},text}}},res);
+        await message('/admin');assert.equal(state.action,'login');assert.equal(admin,null);
+        await message('wrong-password');assert.equal(admin,null);assert.equal(state.action,'login');
+        await message('test-password');assert.ok(admin);assert.equal(state,null);
     } finally {
         global.fetch=originalFetch;
         if(previous===undefined) delete process.env.TELEGRAM_BOT_TOKEN; else process.env.TELEGRAM_BOT_TOKEN=previous;
+        if(previousPassword===undefined) delete process.env.FIREBASE_ADMIN_PASSWORD; else process.env.FIREBASE_ADMIN_PASSWORD=previousPassword;
     }
 });
