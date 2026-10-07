@@ -776,42 +776,28 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     </div>
   </details>
 
-  <details class="adv-guide" id="guide-kodi-lang">
-    <summary>🇮🇹 Impostare lingua Italiana su Kodi</summary>
+  <details class="adv-guide" id="guide-kodi">
+    <summary>📺 Kodi — Italiano, WLTV, Scienziato Pazzo e avvio TV</summary>
     <div class="guide-body">
+      <h4 id="guide-kodi-lang">🇮🇹 Impostare lingua Italiana su Kodi</h4>
       <ol>
         <li><a href="https://go.aftvnews.com/2130077" target="_blank">Installa Kodi</a> (pulsante sopra).</li>
         <li>Kodi → ⚙️ Impostazioni → Interfaccia → <strong>Regional / Regione</strong> → Language → Italiano.</li>
       </ol>
-    </div>
-  </details>
-
-  <details class="adv-guide" id="guide-kodi-wltv">
-    <summary>📺 Configurazione Kodi + WLTV</summary>
-    <div class="guide-body">
+      <h4 id="guide-kodi-wltv">📺 Configurazione Kodi + WLTV</h4>
       <ol>
         <li>Home Kodi → ⚙️ → File → Aggiungi sorgente → URL: <code class="inline-code">http://worldlivetv.github.io/repo/</code> (Nome: <strong>WLTV Repo</strong>).</li>
         <li>Add-ons → Installa da file zip → <code class="inline-code">repository.wltv-1.x.x.zip</code> → Installa da repository → <strong>WLTV Helper</strong>.</li>
         <li>Home → Add-ons → WLTV Helper → Lista → <strong>Sezione TV</strong>.</li>
       </ol>
-    </div>
-  </details>
-
-  <details class="adv-guide" id="guide-kodi-scienziato">
-    <summary>🧪 Scienziato Pazzo su Kodi</summary>
-    <div class="guide-body">
+      <h4 id="guide-kodi-scienziato">🧪 Scienziato Pazzo su Kodi</h4>
       <ol>
         <li>Home Kodi → ⚙️ Ingranaggio</li>
         <li>📁 File → Aggiungi sorgente → <code class="inline-code">http://aandroide.github.io/installer/repo/</code></li>
         <li>📦 Add-ons → Scatola → <strong>Installa da file zip</strong></li>
         <li>📥 Installa da repository</li>
       </ol>
-    </div>
-  </details>
-
-  <details class="adv-guide" id="guide-kodi-startup">
-    <summary>📺 Avvio automatico TV (Kodi)</summary>
-    <div class="guide-body">
+      <h4 id="guide-kodi-startup">📺 Avvio automatico TV (Kodi)</h4>
       Impostazioni → Interfaccia → Altro / Skin → <strong>Startup window</strong> → seleziona <strong>TV</strong> → Riavvia Kodi.
     </div>
   </details>
@@ -1245,11 +1231,13 @@ function openFamilyGuide(family) {
   if (guide) { guide.open = true; guide.querySelector('summary').focus(); guide.scrollIntoView({block:'center'}); }
 }
 function openLinkedGuide() {
-  if (!/^#guide-[a-z-]+$/.test(location.hash) || !document.querySelector(location.hash+'.adv-guide')) return;
+  if (!/^#guide-[a-z-]+$/.test(location.hash)) return;
+  const target = document.querySelector(location.hash);
+  const guide = target?.closest('.adv-guide');
+  if (!guide) return;
   document.getElementById('catalog-guides').open = true;
-  const guide = document.querySelector(location.hash);
   guide.open = true;
-  guide.scrollIntoView({block:'start'});
+  target.scrollIntoView({block:'start'});
 }
 window.addEventListener('hashchange', openLinkedGuide);
 openLinkedGuide();
