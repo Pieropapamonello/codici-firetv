@@ -1312,6 +1312,7 @@ import { createIconRegistry, iconFamily } from './catalog-icons.js';
 import { appendProvenance } from './catalog-provenance.js';
 window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
+import { categoryDescription } from './category-descriptions.js';
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -1610,7 +1611,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
         isLoadingMore = false;
     }
     document.getElementById('catalog-more').onclick = () => {
-        const previous = renderedCount;
+        const previous = document.querySelectorAll('#main-content .card').length;
         loadMoreCards();
         const card = document.querySelectorAll('#main-content .card')[previous];
         (card?.querySelector('.variant-select') || card?.querySelector('.app-download'))?.focus();
@@ -1855,41 +1856,11 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
   }
 
   function renderAppGroup(group) {
-      let currentCard;
-      const multiple = group.variants.length > 1;
-      const initial = group.variants.find(app => `${app.type}:${app.id}` === group.selectedId);
-      const draw = (selected, restoreFocus = false) => {
-          const app = selected || group.variants[0];
+      const selected = group.variants.find(app => `${app.type}:${app.id}` === group.selectedId);
+      for (const app of selected ? [selected] : group.variants) {
           window._currentApp = app;
-          const card = createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
-          if (multiple) {
-              card.querySelector('.download-label strong').textContent = group.name;
-              const field = document.createElement('div');
-              field.className = 'variant-field';
-              const label = document.createElement('label');
-              label.textContent = `Scegli la versione (${group.variants.length} disponibili)`;
-              const select = document.createElement('select');
-              select.className = 'variant-select';
-              select.id = `variant-${app.type}-${group.variants[0].id}`;
-              label.htmlFor = select.id;
-              const placeholder = new Option('Seleziona dispositivo, versione e architettura…', '');
-              placeholder.disabled = true;
-              select.append(placeholder);
-              group.variants.forEach(variant => select.append(new Option(variant.name, `${variant.type}:${variant.id}`)));
-              select.value = selected ? `${selected.type}:${selected.id}` : '';
-              if (!selected) {
-                  card.classList.add('variant-pending');
-                  card.querySelector('.download-label small').textContent = 'Tutte le varianti in una sola scheda. Scegli quella compatibile con il tuo dispositivo per vedere dettagli, download e codice.';
-              }
-              select.addEventListener('change', () => draw(group.variants.find(variant => `${variant.type}:${variant.id}` === select.value), true));
-              field.append(label, select);
-              card.querySelector('.download-row').after(field);
-          }
-          if (currentCard) currentCard.replaceWith(card);
-          currentCard = card;
-          if (restoreFocus) card.querySelector('.variant-select')?.focus();
-      };
-      draw(initial || (multiple ? null : group.variants[0]));
+          createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
+      }
   }
 
   function createAppCard(name, code, desc, firebaseKey, iconPath, timestamp, clicks, category, type = 'apps') {
@@ -1962,7 +1933,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
         ${controlsHtml}
         <div class="download-row">
           <img src="${escapeHtml(finalIcon)}" loading="lazy" decoding="async" onerror="recoverAppIcon(this)" alt="${escapeHtml(name)}">
-          <span class="download-label"><strong>${escapeHtml(name)}</strong><small>${escapeHtml(apkDescription(name, desc))}</small></span>
+          <span class="download-label"><strong>${escapeHtml(name)}</strong></span>
         </div>
         <div class="app-actions">
           <a class="app-action app-download" href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" aria-label="${shareApp.downloadKind === 'page' ? 'Apri pagina di' : 'Scarica'} ${escapeHtml(name)}">${shareApp.downloadKind === 'page' ? 'Apri pagina' : 'Scarica'}</a>
@@ -1984,9 +1955,12 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
           frame.setAttribute('aria-label', family);
           const heading = document.createElement('h3');
           heading.textContent = family;
+          const description = document.createElement('p');
+          description.className = 'category-description';
+          description.textContent = categoryDescription(family);
           const list = document.createElement('div');
           list.className = 'family-apps';
-          frame.append(heading, list);
+          frame.append(heading, description, list);
           main.append(frame);
       }
       frame.querySelector('.family-apps').append(newCard);
