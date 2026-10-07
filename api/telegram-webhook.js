@@ -737,6 +737,27 @@ async function handleCallback(cb, token) {
         await tgEdit(chatId, cb.message.message_id, `📝 *Scegli le tue app*\n\n${userApps.length} selezioni attive. Nessuna app viene aggiunta automaticamente.\nStremio apre la scelta del tipo; le altre voci si attivano con un tocco.`, { reply_markup: { inline_keyboard: kb } });
         return;
     }
+    if (data.startsWith('sub:follow:')) {
+        const key = data.slice('sub:follow:'.length);
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const name = subscriptionChoices(apps).find(n=>subscriptionTypeKey(n)===key);
+        if (!name) { await tg(chatId,'App non trovata: ripeti la ricerca.'); return; }
+        if (name === 'Stremio') {
+            await handleCallback({...cb,data:'sub:types:0'},token);
+            return;
+        }
+        const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json() || {};
+        const selected = sub.apps || [];
+        const next = selected.includes('all') || selected.some(n=>normalizeAppKey(n)===normalizeAppKey(name)) ? selected : [...selected,name];
+        const keys = new Set(Object.values(apps).filter(a=>a?.name && subscriptionChoices({a})[0]===name).map(a=>normalizeAppKey(a.name)));
+        keys.add(normalizeAppKey(name));
+        const muted = (sub.mutedApps || []).filter(n=>!keys.has(normalizeAppKey(n)));
+        const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`,{
+            method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({apps:next,mutedApps:muted})
+        });
+        await tg(chatId,saved.ok ? `🔔 Notifiche attivate per ${name}. Riceverai i prossimi aggiornamenti.` : 'Impossibile salvare. Riprova.',{parse_mode:undefined});
+        return;
+    }
     if (data.startsWith('sub:pick:')) {
         const [, , page, key] = data.split(':');
         const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};

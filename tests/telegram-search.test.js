@@ -7,7 +7,7 @@ test('one compact product result keeps every distinct variant without raw URLs o
     apps.push({...apps[0],name:'Stremio duplicate'});
     const messages=buildSearchMessages(apps,'https://ilcovodinello.onrender.com');
     assert.equal(messages.length,1);
-    assert.equal(messages[0].reply_markup,undefined);
+    assert.match(messages[0].reply_markup.inline_keyboard[0][0].callback_data,/^sub:follow:[a-f0-9]{16}$/);
     assert.equal(load(messages[0].text)('a').filter((i,e)=>load(messages[0].text)(e).text()==='Scarica').length,12);
     assert.ok(!load(messages[0].text).text().includes('https://'));
     assert.equal(messages[0].link_preview_options.is_disabled,true);
@@ -28,7 +28,7 @@ test('copy code contains only digits and WhatsApp shares the selected variant',(
     const shares=$('a').filter((i,e)=>$(e).text()==='WhatsApp').map((i,e)=>new URL($(e).attr('href')).searchParams.get('text')).get();
     assert.ok(shares[0].includes('app=apps%3Aarm32'));assert.ok(!shares[0].includes('arm64'));
     assert.ok(shares[1].includes('app=apps%3Aarm64'));assert.ok(!shares[1].includes('123456'));
-    assert.equal(message.reply_markup,undefined);
+    assert.match(message.reply_markup.inline_keyboard[0][0].text,/Stremio/);
 });
 test('different products stay separate and invalid download links are omitted',()=>{
     const messages=buildSearchMessages([{name:'Kodi',code:'123456'},{name:'DubLift ARM64',code:'https://example.com/dub.apk'},{name:'Unsafe',code:'javascript:alert(1)'}],'https://ilcovodinello.onrender.com');

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import handler from '../api/telegram-webhook.js';
 import { isAppEnabled } from '../api/utils/notification-prefs.js';
+import { subscriptionTypeKey } from '../api/utils/notification-prefs.js';
 
 test('explicit subscriptions start empty, group variants, edit in place and require all-app confirmation', async () => {
     const originalFetch = global.fetch;
@@ -52,6 +53,9 @@ test('explicit subscriptions start empty, group variants, edit in place and requ
         assert.deepEqual(user.apps,['Nuvio']);
         assert.equal(isAppEnabled(user,apps.a.name),true);assert.equal(isAppEnabled(user,apps.b.name),true);
         assert.equal(isAppEnabled(user,apps.c.name),false);
+        await click('sub:follow:'+subscriptionTypeKey('Nuvio'));
+        await click('sub:follow:'+subscriptionTypeKey('Nuvio'));
+        assert.deepEqual(user.apps,['Nuvio']); // Following twice never disables notifications.
         apps.tv={name:'Stremio TV Mod'};
         apps.mobile={name:'Stremio Mobile Mod 64bit'};
         apps.mobile32={name:'Stremio Mobile Mod'};

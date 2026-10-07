@@ -2,6 +2,7 @@ import { iconFamily } from '../../public/catalog-icons.js';
 import { catalogMetadata } from '../../public/catalog-metadata.js';
 import { downloaderCode, appShareUrl } from '../../public/app-sharing.js';
 import { downloadIdentity } from './catalog-duplicates.js';
+import { subscriptionTypeKey } from './notification-prefs.js';
 const escape = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 
 export function buildSearchMessages(entries, origin) {
@@ -32,7 +33,8 @@ export function buildSearchMessages(entries, origin) {
             });
             messages.push({
                 text:`📱 <b>${escape(family)}</b>${offset===0&&desc?'\n'+escape(desc.slice(0,600)):''}\n\n${list.length} versioni disponibili${list.length>15?' · '+(offset+1)+'–'+Math.min(offset+15,list.length):''}\n\n${rows.join('\n\n')}${offset===0?'\n\nTocca un codice per copiarlo; WhatsApp condivide solo la versione scelta.':''}${offset===0&&family==='Stremio'&&list.some(a=>/\bMod\b/i.test(a.name))?'\n<a href="'+escape(new URL('/#guide-stremio-mod',origin).href)+'">Guida Stremio Mod: attivare i plugin</a>':''}`,
-                parse_mode:'HTML',link_preview_options:{is_disabled:true}
+                parse_mode:'HTML',link_preview_options:{is_disabled:true},
+                reply_markup:{inline_keyboard:[[{text:family==='Stremio'?'🔔 Scegli quale Stremio seguire':'🔔 Segui '+family.slice(0,45),callback_data:'sub:follow:'+subscriptionTypeKey(family)}]]}
             });
         }
     }
