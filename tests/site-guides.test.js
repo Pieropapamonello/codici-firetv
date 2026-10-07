@@ -4,8 +4,8 @@ import {siteGuides,findSiteGuide} from '../api/utils/site-guides.js';
 import {load} from 'cheerio';
 
 test('all site guides are available on Telegram with stable IDs and bounded HTML messages',()=>{
-    assert.equal(siteGuides.length,10);
-    assert.equal(new Set(siteGuides.map(g=>g.key)).size,10);
+    assert.equal(siteGuides.length,13);
+    assert.equal(new Set(siteGuides.map(g=>g.key)).size,13);
     for(const guide of siteGuides) {
         assert.ok(guide.key);
         assert.ok(guide.messages.length);
@@ -16,7 +16,9 @@ test('all site guides are available on Telegram with stable IDs and bounded HTML
         }
     }
     for(const key of ['dublift','kodi-scienziato','kodi-startup','battery-app']) assert.ok(findSiteGuide(key));
-    for(const old of ['cf1','cf2','cf3','cf4']) assert.equal(findSiteGuide(old),findSiteGuide('cloudflare'));
+    for(const key of ['cf1','cf2','cf3','cf4']) assert.ok(findSiteGuide(key));
+    assert.equal(findSiteGuide('cloudflare'),findSiteGuide('cf1'));
     assert.equal(findSiteGuide('easyproxy'),findSiteGuide('battery-app'));
-    assert.ok(findSiteGuide('cloudflare').messages.join('').includes('Termux:Boot'));
+    assert.ok(findSiteGuide('cf4').messages.join('').includes('Termux:Boot'));
+    assert.ok(findSiteGuide('cf2').messages.join('').includes('domain.digitalplat.org'));
 });

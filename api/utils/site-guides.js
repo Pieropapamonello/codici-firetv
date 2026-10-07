@@ -35,6 +35,6 @@ export const siteGuides = $('#catalog-guides details.adv-guide').map((index,el)=
 }).get();
 
 export function findSiteGuide(key) {
-    const canonical=key==='easyproxy'?'battery-app':/^cf[1-4]$/.test(key)?'cloudflare':key;
+    const canonical=key==='easyproxy'?'battery-app':key==='cloudflare'?'cf1':key;
     return siteGuides.find(g=>g.key===canonical);
 }
