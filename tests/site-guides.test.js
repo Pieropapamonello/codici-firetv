@@ -4,8 +4,8 @@ import {siteGuides,findSiteGuide,guidePage} from '../api/utils/site-guides.js';
 import {load} from 'cheerio';
 
 test('all site guides are available on Telegram with stable IDs and bounded HTML messages',()=>{
-    assert.equal(siteGuides.length,10);
-    assert.equal(new Set(siteGuides.map(g=>g.key)).size,10);
+    assert.equal(siteGuides.length,7);
+    assert.equal(new Set(siteGuides.map(g=>g.key)).size,7);
     for(const guide of siteGuides) {
         assert.ok(guide.key);
         assert.ok(guide.messages.length);
@@ -21,6 +21,14 @@ test('all site guides are available on Telegram with stable IDs and bounded HTML
     assert.equal(findSiteGuide('easyproxy'),findSiteGuide('battery-app'));
     assert.ok(findSiteGuide('cf4').messages.join('').includes('Termux:Boot'));
     assert.ok(findSiteGuide('cf2').messages.join('').includes('domain.digitalplat.org'));
+});
+
+test('Cloudflare is one guide with the original four parts and references intact',()=>{
+    const guide=findSiteGuide('cloudflare');
+    assert.equal(siteGuides.filter(g=>g.key==='cloudflare').length,1);
+    for(const key of ['cf1','cf2','cf3','cf4']) assert.equal(findSiteGuide(key),guide);
+    const text=guide.messages.join('\n');
+    for(const original of ['Parte 1','Parte 2','Parte 3','Parte 4','domain.digitalplat.org','dash.cloudflare.com','daisy.ns.cloudflare.com','fred.ns.cloudflare.com','Or, run tunnel (manual)','cloudflared tunnel --url http://localhost:7860','Autostart on boot','termux-wake-lock','~/.termux/boot/start-tunnel.sh']) assert.ok(text.includes(original),original);
 });
 
 test('four original Kodi guides retain their instructions in a single guide and old buttons still work',()=>{

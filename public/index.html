@@ -851,9 +851,10 @@ Disattiva Debug ADB se non ti serve. Non esporre la porta ADB su Internet.
     </div>
   </details>
 
-  <details class="adv-guide" id="guide-cf1">
-    <summary>🌐 Esporre EasyProxy su Internet via Cloudflare Tunnel — Parte 1 (link temporaneo)</summary>
+  <details class="adv-guide" id="guide-cloudflare">
+    <summary>🌐 EasyProxy e Cloudflare Tunnel — guida completa</summary>
     <div class="guide-body">
+      <h4 id="guide-cf1">🌐 Esporre EasyProxy su Internet via Cloudflare Tunnel — Parte 1 (link temporaneo)</h4>
       <h4>1. Installa Termux sul telefono</h4>
       <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">f-droid.org/com.termux</a> (NON Play Store)
 
@@ -864,12 +865,7 @@ Disattiva Debug ADB se non ti serve. Non esporre la porta ADB su Internet.
       <div class="code-snippet">cloudflared tunnel --url http://localhost:7860</div>
       ✅ Apparirà un link tipo <code class="inline-code">https://qualcosa-random.trycloudflare.com</code><br>
       ⚠️ Il link cambia ad ogni riavvio
-    </div>
-  </details>
-
-  <details class="adv-guide" id="guide-cf2">
-    <summary>🌐 Cloudflare Tunnel — Parte 2 (link fisso permanente, gratis)</summary>
-    <div class="guide-body">
+      <h4 id="guide-cf2">🌐 Cloudflare Tunnel — Parte 2 (link fisso permanente, gratis)</h4>
       <h4>4. Registra un dominio gratuito</h4>
       <a href="https://domain.digitalplat.org" target="_blank">domain.digitalplat.org</a> → scegli un nome tipo <code class="inline-code">mioproxy.dpdns.org</code>
 
@@ -901,12 +897,7 @@ fred.ns.cloudflare.com</div>
         <li>URL: <code class="inline-code">http://localhost:7860</code></li>
       </ul>
       ✅ Il tuo link fisso sara' <code class="inline-code">https://tuosito.dpdns.org</code> per sempre
-    </div>
-  </details>
-
-  <details class="adv-guide" id="guide-cf3">
-    <summary>⚙️ Cloudflare Tunnel — Parte 3 (gestione manuale)</summary>
-    <div class="guide-body">
+      <h4 id="guide-cf3">⚙️ Cloudflare Tunnel — Parte 3 (gestione manuale)</h4>
       <h4>Salva il comando per avviarlo facilmente</h4>
       <div class="code-snippet">echo "INSERIRE LINK DEL TUNNEL OTTENUTO nel punto 9" > ~/tunnel.sh
 chmod +x ~/tunnel.sh</div>
@@ -921,12 +912,7 @@ source ~/.bashrc</div>
 
       <h4>Stoppare il tunnel</h4>
       Premi <strong>Ctrl+C</strong> su Termux oppure chiudi la sessione Termux
-    </div>
-  </details>
-
-  <details class="adv-guide" id="guide-cf4">
-    <summary>🚀 Cloudflare Tunnel — Parte 4 (avvio automatico al boot del telefono)</summary>
-    <div class="guide-body">
+      <h4 id="guide-cf4">🚀 Cloudflare Tunnel — Parte 4 (avvio automatico al boot del telefono)</h4>
       <p>⚠️ Avviare prima l'app del proxy, scorrere e mettere la spunta su <strong>"Autostart on boot"</strong></p>
 
       <h4>1. Installa Termux:Boot da F-Droid</h4>
