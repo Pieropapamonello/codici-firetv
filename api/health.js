@@ -44,6 +44,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({
         status: 'ok',
+        deployment: process.env.RENDER_GIT_COMMIT || null,
         uptime: `${uptimeH}h ${uptimeM}m`,
         uptimeMs,
         database: dbStatus,

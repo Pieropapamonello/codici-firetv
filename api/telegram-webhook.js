@@ -715,8 +715,9 @@ async function handleCallback(cb, token) {
         await handleCallback({ ...cb, data: `sub:choose:${page}` }, token);
         return;
     }
-    if (data.startsWith('mute:')) {
-        const rawMuteValue = data.substring(5);
+    if (data.startsWith('mute:') || data.startsWith('unmute:')) {
+        const unmute = data.startsWith('unmute:');
+        const rawMuteValue = data.substring(unmute ? 7 : 5);
         let decodedMuteValue = rawMuteValue;
         // Compatibilita' con i pulsanti creati prima di questa correzione.
         try { decodedMuteValue = decodeURIComponent(rawMuteValue); } catch (_) {}
@@ -725,12 +726,21 @@ async function handleCallback(cb, token) {
         const user = await userRes.json();
         if (user) {
             const mutedApps = new Set((user.mutedApps || []).map(normalizeAppKey));
-            mutedApps.add(appKeyToMute);
-            await fetch(`${DB_URL()}/telegram_users/${chatId}/mutedApps.json?auth=${token}`, {
+            if (unmute) mutedApps.delete(appKeyToMute);
+            else mutedApps.add(appKeyToMute);
+            const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}/mutedApps.json?auth=${token}`, {
                 method: 'PUT', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify([...mutedApps])
             });
-            await tg(chatId, `🔕 Notifiche disattivate per questa app e per le sue versioni future.`);
+            if (!saved.ok) { await tg(chatId, 'Impossibile salvare la preferenza. Riprova.'); return; }
+            await tg(chatId, unmute ? '🔔 App rimossa dalle silenziate. Riceverai gli aggiornamenti se è inclusa nella tua iscrizione.' : '🔕 App silenziata, comprese le sue versioni future.', {
+                reply_markup: { inline_keyboard: [
+                    [{ text: unmute ? '🔕 Silenzia di nuovo' : '🔔 Riattiva app', callback_data: `${unmute ? 'mute' : 'unmute'}:${appKeyToMute}` }],
+                    [{ text: '⚙️ Gestisci notifiche', callback_data: 'sub:status' }]
+                ] }
+            });
+        } else {
+            await tg(chatId, 'Non hai un’iscrizione attiva. Usa /start per iscriverti.');
         }
         return;
     }

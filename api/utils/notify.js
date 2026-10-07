@@ -2,6 +2,7 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { isAppEnabled, normalizeAppKey } from "./notification-prefs.js";
+import { buildTelegramNotification } from './telegram-notification.js';
 
 let notificationLogin;
 async function ensureNotificationAuth(auth) {
@@ -19,8 +20,6 @@ export async function sendTelegramNotification(appName, version, downloadUrl, ic
         console.log("TELEGRAM_BOT_TOKEN mancante. Salto notifiche Telegram.");
         return;
     }
-
-    const message = `🚀 *Nuovo Aggiornamento Disponibile!*\n\n📱 *App:* ${appName}\n🔄 *Versione:* ${version}\n\n📥 [Scarica Subito](${downloadUrl})`;
 
     try {
         const firebaseConfig = {
@@ -44,24 +43,30 @@ export async function sendTelegramNotification(appName, version, downloadUrl, ic
         }
 
         const users = snapshot.val();
+        // Enrich only an exact artifact match; variants must keep their own link/code.
+        let entry;
+        try {
+            const catalogs = await Promise.all(['apps', 'software'].map(async type => {
+                const data = await get(ref(db, type));
+                return Object.entries(data.val() || {}).map(([id, value]) => ({ ...value, id, type }));
+            }));
+            entry = catalogs.flat().find(a => (a.directUrl || a.code) === downloadUrl && normalizeAppKey(a.name) === normalizeAppKey(appName));
+        } catch (_) { /* A notification can still be sent without catalog enrichment. */ }
+        const payload = buildTelegramNotification(appName, version, downloadUrl, entry, process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com');
         let sent = 0;
 
         for (const [chatId, user] of Object.entries(users)) {
             if (!isAppEnabled(user, appName)) continue;
 
             try {
-                const inlineKb = {
-                    inline_keyboard: [[
-                        { text: '📥 Scarica', url: downloadUrl },
-                        { text: '🔕 Mute questa app', callback_data: `mute:${normalizeAppKey(appName)}` }
-                    ]]
-                };
                 const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown', disable_web_page_preview: true, reply_markup: inlineKb })
+                    body: JSON.stringify({ chat_id: chatId, ...payload })
                 });
-                if (res.ok) sent++;
+                const result = await res.json();
+                if (res.ok && result.ok) sent++;
+                else console.error('Notifica Telegram non consegnata:', result.error_code || res.status);
             } catch (_) {}
         }
         console.log(`Notifiche Telegram inviate: ${sent}/${Object.keys(users).length}`);
