@@ -640,10 +640,44 @@ async function handleCallback(cb, token) {
         const mutedCount = (sub.mutedApps || []).length;
         await tgEdit(chatId, cb.message.message_id, `🔔 *Notifiche app*\n\n${isAll ? 'Modalità: tutte le app.' + (mutedCount ? `\nApp silenziate: ${mutedCount}.` : '') : (sub.apps || []).length ? `Segui ${(sub.apps || []).length} app.` : 'Notifiche disattivate: nessuna app selezionata.'}\n\nScegli solo le app che ti interessano. Le modifiche vengono salvate subito.`, { reply_markup: { inline_keyboard: [
             [{ text: '📝 Scegli le mie app', callback_data: isAll ? 'sub:custom' : 'sub:choose:0' }],
+            [{ text: '✅ App che seguo', callback_data: 'sub:following:0' }],
             [{ text: '🔔 Voglio tutte le app', callback_data: 'sub:confirmall' }],
             [{ text: '🔕 Disattiva tutte le notifiche', callback_data: 'sub:pause' }],
             [{ text: '⬅️ Menu', callback_data: 'menu' }]
         ]}});
+        return;
+    }
+    if (data.startsWith('sub:following:') || data.startsWith('sub:remove:')) {
+        const [, action, rawPage, key] = data.split(':');
+        const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json();
+        if (!sub) { await tg(chatId,'Non hai un’iscrizione attiva. Usa /start.'); return; }
+        const all = (sub.apps || []).includes('all');
+        let followed = (sub.apps || []).filter(n=>n!=='all');
+        let muted = sub.mutedApps || [];
+        if (all) {
+            const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+            followed = subscriptionChoices(apps).filter(n=>!muted.some(m=>normalizeAppKey(m)===normalizeAppKey(n)));
+        }
+        if (action === 'remove') {
+            const target = followed.find(n=>subscriptionTypeKey(n)===key);
+            if (!target) { await tg(chatId,'La selezione è cambiata: riapri App che seguo.'); return; }
+            const fields = all ? {mutedApps:[...new Set([...muted,normalizeAppKey(target)])]} : {apps:followed.filter(n=>n!==target)};
+            const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`,{
+                method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(fields)
+            });
+            if (!saved.ok) { await tg(chatId,'Impossibile salvare. Riprova.'); return; }
+            followed=followed.filter(n=>n!==target);
+        }
+        const pages=Math.max(1,Math.ceil(followed.length/8));
+        const page=Math.min(Math.max(0,parseInt(rawPage)||0),pages-1);
+        const rows=followed.slice(page*8,page*8+8).map(n=>[{text:'🔕 Disattiva · '+n.replace(/^type:/,'').slice(0,80),callback_data:`sub:remove:${page}:${subscriptionTypeKey(n)}`}]);
+        const navigation=[];
+        if(page>0) navigation.push({text:'⬅️ Prec',callback_data:`sub:following:${page-1}`});
+        if(page<pages-1) navigation.push({text:'Succ ➡️',callback_data:`sub:following:${page+1}`});
+        if(navigation.length) rows.push(navigation);
+        rows.push([{text:'➕ Segui altre app',callback_data:all?'sub:custom':'sub:choose:0'}]);
+        rows.push([{text:'⬅️ Le mie notifiche',callback_data:'sub:status'}]);
+        await tgEdit(chatId,cb.message.message_id,`✅ *App che seguo*\n\n${followed.length ? `${followed.length} selezioni${pages>1?' · pagina '+(page+1)+'/'+pages:''}.\nTocca una voce per disattivarla.` : 'Non segui nessuna app.'}${all?'\nModalità tutte le app: disattivando una voce la silenzi; le nuove app restano incluse.':''}`,{reply_markup:{inline_keyboard:rows}});
         return;
     }
     if (data === 'sub:confirmall') {
@@ -740,6 +774,7 @@ async function handleCallback(cb, token) {
             const removing = selected.includes(value);
             selected = removing ? selected.filter(n=>n!==value) : [...selected,value];
             const keys = new Set(Object.values(apps).filter(a=>a?.name && subscriptionType(a.name)===type).map(a=>normalizeAppKey(a.name)));
+            keys.add('stremio');
             const muted = (sub.mutedApps || []).filter(n=>!keys.has(normalizeAppKey(n)));
             const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`,{
                 method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({apps:selected,...(!removing?{mutedApps:muted}:{})})

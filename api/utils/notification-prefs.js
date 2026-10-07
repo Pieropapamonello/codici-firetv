@@ -43,7 +43,7 @@ export function isAppEnabled(user, appName) {
 
     const key = normalizeAppKey(appName);
     const muted = new Set((user.mutedApps || []).map(normalizeAppKey));
-    if (muted.has(key)) return false;
+    if (muted.has(key) || muted.has(normalizeAppKey(iconFamily(appName)))) return false;
 
     return user.apps.includes('all') || user.apps.some(name => name.startsWith('type:')
         ? subscriptionTypeKey(name.slice(5)) === subscriptionTypeKey(subscriptionType(appName))
