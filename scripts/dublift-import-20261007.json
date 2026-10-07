@@ -1,0 +1,39 @@
+{
+  "additions": [
+    {
+      "id": "github_dublift_armv7",
+      "app": {
+        "name": "DubLift 0.0.7 ARM 32 bit",
+        "code": "https://github.com/joojoooo/DubLiftApp/releases/download/v0.0.7/DubLift-armv7.apk",
+        "category": "Componenti aggiuntivi per Stremio e Nuvio",
+        "desc": "Server addon per Stremio e Nuvio: combina le proprie sorgenti video con audio italiano sincronizzato. Include FFmpeg e dashboard di configurazione; deve restare in esecuzione durante la riproduzione. Richiede Android 7.1 o superiore. Scegli ARM 32 bit o ARM 64 bit secondo il sistema Android del dispositivo.",
+        "icon": "/assets/dublift.png",
+        "source": "https://github.com/joojoooo/DubLiftApp",
+        "metadataVerified": true,
+        "catalogImport": true,
+        "version": "0.0.7",
+        "architecture": "armeabi-v7a",
+        "downloadKind": "file",
+        "importedAt": "2026-10-07"
+      }
+    },
+    {
+      "id": "github_dublift_arm64",
+      "app": {
+        "name": "DubLift 0.0.7 ARM 64 bit",
+        "code": "https://github.com/joojoooo/DubLiftApp/releases/download/v0.0.7/DubLift-arm64.apk",
+        "category": "Componenti aggiuntivi per Stremio e Nuvio",
+        "desc": "Server addon per Stremio e Nuvio: combina le proprie sorgenti video con audio italiano sincronizzato. Include FFmpeg e dashboard di configurazione; deve restare in esecuzione durante la riproduzione. Richiede Android 7.1 o superiore. Scegli ARM 32 bit o ARM 64 bit secondo il sistema Android del dispositivo.",
+        "icon": "/assets/dublift.png",
+        "source": "https://github.com/joojoooo/DubLiftApp",
+        "metadataVerified": true,
+        "catalogImport": true,
+        "version": "0.0.7",
+        "architecture": "arm64-v8a",
+        "downloadKind": "file",
+        "importedAt": "2026-10-07"
+      }
+    }
+  ],
+  "enrichments": []
+}

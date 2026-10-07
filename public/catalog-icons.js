@@ -43,6 +43,7 @@ export function iconFamily(name = '') {
 }
 
 const canonical = {
+  DubLift: '/assets/dublift.png',
   Nuvio: '/assets/nuvio-official.png',
   Stremio: '/assets/stremio.png',
   Kodi: '/assets/kodi.png',
