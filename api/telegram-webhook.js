@@ -252,7 +252,7 @@ async function handleStateInput(msg, chatId, token, state) {
         case 'search': {
             await clearState(chatId, token);
             const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
-            const found = Object.values(apps).filter(a => a.name?.toLowerCase().includes(text.trim().toLowerCase()));
+            const found = Object.entries(apps).map(([id, app]) => ({...app, id, type:'apps'})).filter(a => a.name?.toLowerCase().includes(text.trim().toLowerCase()));
             if (found.length === 0) { await tg(chatId, `🔍 Nessun risultato per "${text}"`); return; }
             const messages = buildSearchMessages(found, PUBLIC());
             if (!messages.length) { await tg(chatId, 'Nessun download disponibile per questa ricerca.'); return; }

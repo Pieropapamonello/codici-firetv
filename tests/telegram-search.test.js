@@ -6,17 +6,27 @@ test('one compact product result keeps every distinct variant without raw URLs o
     apps.push({...apps[0],name:'Stremio duplicate'});
     const messages=buildSearchMessages(apps,'https://ilcovodinello.onrender.com');
     assert.equal(messages.length,1);
-    assert.equal(messages[0].reply_markup.inline_keyboard.length,12);
+    assert.equal(messages[0].reply_markup.inline_keyboard.length,24);
     assert.ok(!messages[0].text.includes('https://'));
-    assert.equal(messages[0].link_preview_options.prefer_small_media,true);
-    assert.ok(messages[0].link_preview_options.url.endsWith('/assets/stremio.png'));
+    assert.equal(messages[0].link_preview_options.is_disabled,true);
 });
-test('long lists retain all downloads and only the first page has artwork',()=>{
+test('long lists retain all downloads without image previews',()=>{
     const apps=Array.from({length:31},(_,i)=>({name:`Nuvio ${i+1}.0 ARM TV`,code:`https://example.com/${i}.apk`}));
     const messages=buildSearchMessages(apps,'https://ilcovodinello.onrender.com');
-    assert.equal(messages.flatMap(m=>m.reply_markup.inline_keyboard).length,31);
-    assert.equal(messages.filter(m=>m.link_preview_options.url).length,1);
+    assert.equal(messages.flatMap(m=>m.reply_markup.inline_keyboard).filter(r=>r[0].text.includes('Scarica')).length,31);
+    assert.equal(messages.filter(m=>m.link_preview_options.url).length,0);
     assert.ok(messages.every(m=>m.text.length<4096));
+});
+test('copy code contains only digits and WhatsApp shares the selected variant',()=>{
+    const apps=[{id:'arm32',name:'Stremio ARM 32 bit',code:'https://example.com/32.apk',downloaderCode:'123456',codeBoundUrl:'https://example.com/32.apk'},
+        {id:'arm64',name:'Stremio ARM 64 bit',code:'https://example.com/64.apk'}];
+    const [message]=buildSearchMessages(apps,'https://ilcovodinello.onrender.com');
+    const buttons=message.reply_markup.inline_keyboard.flat();
+    assert.equal(buttons.find(b=>b.text.startsWith('📋 Copia codice')).copy_text.text,'123456');
+    const shares=buttons.filter(b=>b.text==='WhatsApp ↗').map(b=>new URL(b.url).searchParams.get('text'));
+    assert.ok(shares[0].includes('app=apps%3Aarm32'));assert.ok(!shares[0].includes('arm64'));
+    assert.ok(shares[1].includes('app=apps%3Aarm64'));assert.ok(!shares[1].includes('123456'));
+    assert.ok(buttons.some(b=>b.text==='📋 Copia link'));
 });
 test('different products stay separate and invalid download links are omitted',()=>{
     const messages=buildSearchMessages([{name:'Kodi',code:'123456'},{name:'DubLift ARM64',code:'https://example.com/dub.apk'},{name:'Unsafe',code:'javascript:alert(1)'}],'https://ilcovodinello.onrender.com');
