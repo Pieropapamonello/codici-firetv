@@ -1,6 +1,6 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
-import { normalizeAppKey, subscriptionChoices, subscriptionTypes, subscriptionType } from "./utils/notification-prefs.js";
+import { normalizeAppKey, subscriptionChoices, subscriptionTypes, subscriptionType, subscriptionTypeKey } from "./utils/notification-prefs.js";
 import { buildSearchMessages } from './utils/telegram-search.js';
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
@@ -732,7 +732,7 @@ async function handleCallback(cb, token) {
         const broad = (sub.apps || []).some(n=>normalizeAppKey(n)==='stremio');
         let selected = sub.apps || [];
         if (action === 'type') {
-            const type = types.find(n=>normalizeAppKey(n)===key);
+            const type = types.find(n=>subscriptionTypeKey(n)===key);
             if (!type) { await tg(chatId,'Tipo non trovato: riapri Stremio.'); return; }
             // Replace the old broad Stremio subscription with the explicitly chosen types.
             selected = selected.filter(n=>normalizeAppKey(n)!=='stremio' && n!=='all');
@@ -746,10 +746,10 @@ async function handleCallback(cb, token) {
             });
             if (!saved.ok) { await tg(chatId,'Impossibile salvare. Riprova.'); return; }
         }
-        const rows = types.map(type=>[{text:`${selected.includes('type:'+type)?'✅':'＋'} ${type}`,callback_data:`sub:type:${page}:${normalizeAppKey(type)}`}]);
+        const rows = types.map(type=>[{text:`${selected.includes('type:'+type)?'✅':'＋'} ${type}`,callback_data:`sub:type:${page}:${subscriptionTypeKey(type)}`}]);
         rows.push([{text:'⬅️ Elenco app',callback_data:`sub:choose:${page}`}]);
         rows.push([{text:'✅ Fatto',callback_data:'sub:status'}]);
-        await tgEdit(chatId,cb.message.message_id,`🧩 *Quale Stremio vuoi seguire?*\n\nScegli uno o più tipi. Le nuove versioni dello stesso tipo saranno incluse.${broad && action!=='type'?'\n\nAttualmente segui tutti i tipi di Stremio. Alla prima scelta questa iscrizione verrà sostituita dai soli tipi selezionati.':''}`,{reply_markup:{inline_keyboard:rows}});
+        await tgEdit(chatId,cb.message.message_id,`🧩 *Quale Stremio vuoi seguire?*\n\n${selected.filter(n=>n.startsWith('type:Stremio')).length} tipi selezionati. Puoi sceglierne quanti vuoi.\nTocca ＋ per aggiungere, ✅ per rimuovere. Poi premi Fatto.\nLe nuove versioni dello stesso tipo saranno incluse.${broad && action!=='type'?'\n\nAttualmente segui tutti i tipi di Stremio. Alla prima scelta questa iscrizione verrà sostituita dai soli tipi selezionati.':''}`,{reply_markup:{inline_keyboard:rows}});
         return;
     }
     if (data.startsWith('sub:tgl:')) {

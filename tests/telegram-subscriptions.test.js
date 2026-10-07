@@ -54,6 +54,7 @@ test('explicit subscriptions start empty, group variants, edit in place and requ
         assert.equal(isAppEnabled(user,apps.c.name),false);
         apps.tv={name:'Stremio TV Mod'};
         apps.mobile={name:'Stremio Mobile Mod 64bit'};
+        apps.mobile32={name:'Stremio Mobile Mod'};
         apps.official={name:'Stremio 1.10.4 ARM TV'};
         user.apps.push('Stremio');
         await click('sub:pick:0:stremio');
@@ -65,6 +66,17 @@ test('explicit subscriptions start empty, group variants, edit in place and requ
         assert.equal(isAppEnabled(user,'Stremio TV Mod v4.0'),true);
         assert.equal(isAppEnabled(user,'Stremio Mobile Mod 64bit'),false);
         assert.equal(isAppEnabled(user,'Stremio 1.11.0 ARM TV'),false);
+        const mobileChoices=typeMenu.reply_markup.inline_keyboard.flat().filter(b=>b.text.includes('Mobile Mod'));
+        assert.equal(new Set(mobileChoices.map(b=>b.callback_data)).size,2);
+        for(const choice of mobileChoices) await click(choice.callback_data);
+        assert.equal(user.apps.filter(n=>n.startsWith('type:')).length,3);
+        assert.equal(isAppEnabled(user,'Stremio Mobile Mod'),true);
+        assert.equal(isAppEnabled(user,'Stremio Mobile Mod 64bit'),true);
+        const updated=messages.filter(m=>m.url.endsWith('/editMessageText')).at(-1).body;
+        assert.equal(updated.reply_markup.inline_keyboard.flat().filter(b=>b.text.startsWith('✅ Stremio')).length,3);
+        await click(mobileChoices[0].callback_data);
+        assert.equal(user.apps.filter(n=>n.startsWith('type:')).length,2);
+        for(const choice of mobileChoices.slice(1)) await click(choice.callback_data);
         await click(tvChoice.callback_data);
         assert.deepEqual(user.apps,['Nuvio']);
         await click('sub:confirmall');assert.deepEqual(user.apps,['Nuvio']);

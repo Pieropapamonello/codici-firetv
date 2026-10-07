@@ -1,4 +1,9 @@
 import { iconFamily } from '../../public/catalog-icons.js';
+import { createHash } from 'node:crypto';
+
+export function subscriptionTypeKey(type) {
+    return createHash('sha256').update(String(type).trim().toLowerCase()).digest('hex').slice(0,16);
+}
 
 export function subscriptionChoices(apps) {
     return [...new Set(Object.values(apps || {}).filter(a => a?.name).map(a => iconFamily(a.name)))].sort((a,b) => a.localeCompare(b, 'it'));
@@ -41,6 +46,6 @@ export function isAppEnabled(user, appName) {
     if (muted.has(key)) return false;
 
     return user.apps.includes('all') || user.apps.some(name => name.startsWith('type:')
-        ? normalizeAppKey(name.slice(5)) === normalizeAppKey(subscriptionType(appName))
+        ? subscriptionTypeKey(name.slice(5)) === subscriptionTypeKey(subscriptionType(appName))
         : normalizeAppKey(name) === key || normalizeAppKey(name) === normalizeAppKey(iconFamily(appName)));
 }
