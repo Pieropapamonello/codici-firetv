@@ -1309,7 +1309,6 @@ import { variantDescription } from './app-variants.js';
 import { catalogAliases } from './catalog-aliases.js';
 import { groupCatalog, appGroupKey } from './catalog-groups.js';
 import { createIconRegistry, iconFamily } from './catalog-icons.js';
-import { appendProvenance } from './catalog-provenance.js';
 window.catalogIconFamily = iconFamily;
 import { downloaderCode, attachAppActions } from './app-sharing.js';
 import { categoryDescription } from './category-descriptions.js';
@@ -1980,7 +1979,6 @@ import { categoryDescription } from './category-descriptions.js';
           guide.querySelector('summary').focus();
           guide.scrollIntoView({block: 'start'});
       });
-      appendProvenance(newCard, shareApp);
       
 
       newCard.addEventListener('dragstart', (e) => {

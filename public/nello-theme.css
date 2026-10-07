@@ -62,11 +62,14 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 #main-content .app-family h3 { margin:0 0 6px; font-size:19px; }
 .category-description { margin:0 0 14px; color:#68594f; font-size:13px; line-height:1.5; }
 #main-content .family-apps { display:flex; flex-direction:column; gap:0; }
-#main-content .family-apps .card { display:grid; grid-template-columns:28px minmax(100px,1fr) auto; align-items:center; gap:6px 10px; margin:0; padding:12px 0; border:0; border-top:1px solid #eee3da; border-radius:0; background:transparent; box-shadow:none; }
+#main-content .family-apps .card { display:grid; grid-template-columns:28px minmax(0,1fr) 230px; align-items:center; gap:4px 10px; margin:0 !important; padding:6px 0 !important; min-height:0 !important; border:0 !important; border-radius:0 !important; background:transparent !important; box-shadow:none; }
 #main-content .card .download-row { display:contents; }
 #main-content .card .download-row img { width:28px; height:28px; max-width:28px; flex-basis:28px; border:0; border-radius:6px; }
 #main-content .card .download-label { min-width:0; font-size:14px; line-height:1.4; }
-#main-content .card .app-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:5px; margin:0; }
+#main-content .card .app-actions { display:grid; grid-template-columns:80px 145px; align-items:center; gap:5px; margin:0; padding:0; }
+#main-content .card .download-label { overflow-wrap:anywhere; }
+#main-content .card .app-actions > .app-action { width:100%; }
+#main-content .card .app-actions > .dublift-guide-link, #main-content .card .app-actions > .stremio-mod-guide-link { grid-column:1/-1; justify-self:end; width:auto; }
 #main-content .card .app-action { flex:0 0 auto; min-height:34px; padding:6px 9px; font-size:12px; border-radius:7px; white-space:nowrap; }
 #main-content .card .copy-app-code strong { margin-left:3px; letter-spacing:0; }
 #main-content .card .app-action-status, #main-content .card .app-provenance { grid-column:2/-1; margin:0; font-size:11px; }
@@ -74,10 +77,10 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 #main-content .card .admin-controls { position:static; grid-column:2/-1; justify-content:flex-end; }
 @media(max-width:600px) {
   #main-content .app-family { padding:14px 12px; }
-  #main-content .family-apps .card { grid-template-columns:24px minmax(70px,1fr) auto; gap:6px; }
+  #main-content .family-apps .card { grid-template-columns:24px minmax(0,1fr) 169px; gap:6px; }
   #main-content .card .download-row img { width:24px; height:24px; max-width:24px; }
   #main-content .card .download-label { font-size:13px; }
-  #main-content .card .app-actions { max-width:160px; }
-  #main-content .card .app-action { padding:6px; font-size:11px; }
+  #main-content .card .app-actions { grid-template-columns:64px 100px; max-width:none; }
+  #main-content .card .app-action { padding:5px 3px; font-size:11px; white-space:normal; }
 }
 @media(pointer:coarse) { #main-content .card .app-action { min-height:44px; } }

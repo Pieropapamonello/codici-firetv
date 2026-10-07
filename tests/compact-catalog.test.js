@@ -10,6 +10,11 @@ test('category panels have one shared description and compact per-variant downlo
     assert.ok(!html.includes('<small>${escapeHtml(apkDescription(name, desc))}</small>'));
     assert.ok(html.includes('app-action copy-app-code'));
     assert.ok(html.includes('attachAppActions(newCard, shareApp, location.origin)'));
+    assert.ok(!html.includes('appendProvenance(newCard, shareApp)'));
+    const css=readFileSync(new URL('../public/nello-theme.css',import.meta.url),'utf8');
+    assert.ok(css.includes('grid-template-columns:80px 145px'));
+    assert.ok(css.includes('border:0 !important; border-radius:0 !important'));
+    assert.ok(css.includes('margin:0; padding:0;'));
     assert.match(categoryDescription('Browser Internet'),/Browser per navigare/);
     assert.match(categoryDescription('Android su Windows'),/non installare/);
 });
