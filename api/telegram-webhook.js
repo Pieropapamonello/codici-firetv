@@ -2,6 +2,7 @@ import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
 import { normalizeAppKey, subscriptionChoices, subscriptionTypes, subscriptionType, subscriptionTypeKey } from "./utils/notification-prefs.js";
 import { buildSearchMessages } from './utils/telegram-search.js';
+import { batteryGuide } from './utils/battery-guide.js';
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
 const API = () => `https://api.telegram.org/bot${BOT_TOKEN()}`;
@@ -570,7 +571,7 @@ async function handleCallback(cb, token) {
             [{ text: '🎬 Vimu / Stremio 4K', callback_data: 'g:vimu' }],
             [{ text: '🇮🇹 Lingua Kodi italiana', callback_data: 'g:kodi-lang' }],
             [{ text: '📺 Kodi + WLTV', callback_data: 'g:kodi-wltv' }],
-            [{ text: '🔋 Disabilita risparmio EasyProxy', callback_data: 'g:easyproxy' }],
+            [{ text: '🔋 Risparmio energetico · qualsiasi app', callback_data: 'g:easyproxy' }],
             [{ text: '🌐 Cloudflare Tunnel — Parte 1', callback_data: 'g:cf1' }],
             [{ text: '🌐 Cloudflare Tunnel — Parte 2', callback_data: 'g:cf2' }],
             [{ text: '🌐 Cloudflare Tunnel — Parte 3', callback_data: 'g:cf3' }],
@@ -586,7 +587,7 @@ async function handleCallback(cb, token) {
             'vimu': `🎬 *Riproduzione 4K live — Vimu / Stremio*\n\n1. Installa Vimu Installer: aftv.news/3188516\n2. Inserisci la chiave:\n\`fea63c49-a7f2-441e-be4a-e75cc36b74d8\`\n3. In *Stremio* → Impostazioni → Riproduzione → Player predefinito → *player esterno*\n4. Audio non automatico in italiano: Vimu → Options → Settings → Content → *Preferred Audio Language* → Italiano`,
             'kodi-lang': `🇮🇹 *Lingua Italiana Kodi*\n\n1. Installa Kodi: aftv.news/2130077\n2. Kodi → ⚙️ Impostazioni → Interfaccia → *Regional / Regione* → Language → Italiano`,
             'kodi-wltv': `📺 *Configurazione Kodi + WLTV*\n\n1. Home Kodi → ⚙️ → File → Aggiungi sorgente\n URL: \`http://worldlivetv.github.io/repo/\`\n Nome: *WLTV Repo*\n\n2. Add-ons → Installa da file zip → \`repository.wltv-1.x.x.zip\` → Installa da repository → *WLTV Helper*\n\n3. Home → Add-ons → WLTV Helper → Lista → *Sezione TV*`,
-            'easyproxy': `🔋 *Disabilita risparmio energetico per EasyProxy*\n\n1. *Sblocca Opzioni Sviluppatore*\nImpostazioni → La mia Fire TV → Informazioni → clicca 7 volte su "Numero di serie" → Opzioni Sviluppatore → attiva *Debug ADB* e *Debug ADB di rete*\n\n2. *Trova l'IP della Fire TV*\nImpostazioni → La mia Fire TV → Informazioni → Rete → annota l'IP\n\n3. *Termux* (da F-Droid):\n\`pkg update && pkg install android-tools -y\`\n\n4. *Connettiti*:\n\`adb connect 192.168.1.XX\`\nAccetta il pop-up sulla TV → "Consenti sempre"\n\n5. *Comandi*:\n\`adb shell dumpsys deviceidle whitelist +com.mediaflow.proxy.tv\`\n\`adb shell pm grant com.mediaflow.proxy.tv android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS\``,
+            'easyproxy': batteryGuide,
             'cf1': `🌐 *Cloudflare Tunnel — Parte 1 (temporaneo)*\n\n1. *Installa Termux* da F-Droid\n2. *Installa cloudflared*:\n\`pkg update && pkg install cloudflared -y\`\n3. *Tunnel temporaneo*:\n\`cloudflared tunnel --url http://localhost:7860\`\n\n✅ Apparira' un link tipo \`qualcosa.trycloudflare.com\`\n⚠️ Cambia ad ogni riavvio`,
             'cf2': `🌐 *Cloudflare Tunnel — Parte 2 (fisso, gratis)*\n\n1. *Dominio gratuito*: domain.digitalplat.org → es. \`mioproxy.dpdns.org\`\n2. *Account Cloudflare*: dash.cloudflare.com → + Add → Connect a domain\n3. *Aggiorna nameserver* da DigitalPlat con quelli Cloudflare\n4. *Crea tunnel*: Cloudflare → Networking → Tunnels → Create a Tunnel\n5. *Collega Termux*: OS Debian, ARM64, copia comando "Or, run tunnel (manual)" → incolla su Termux\n6. *Add route* → Public Hostname:\n - Subdomain: vuoto\n - Domain: tuosito.dpdns.org\n - URL: http://localhost:7860`,
             'cf3': `⚙️ *Cloudflare Tunnel — Parte 3 (gestione)*\n\nSalva comando:\n\`echo "COMANDO_TUNNEL" > ~/tunnel.sh\`\n\`chmod +x ~/tunnel.sh\`\n\nAlias rapido:\n\`echo "alias tunnel='bash ~/tunnel.sh'" >> ~/.bashrc\`\n\`source ~/.bashrc\`\n\nAvvio: \`tunnel\` oppure \`bash ~/tunnel.sh\`\nStop: Ctrl+C`,

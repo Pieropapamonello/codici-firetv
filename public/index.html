@@ -818,39 +818,50 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 
   <div class="guides-group-title">🔧 Guide avanzate Fire TV &amp; EasyProxy</div>
 
-  <details class="adv-guide">
-    <summary>🔋 Fire TV — Disabilitare risparmio energetico per EasyProxy</summary>
+  <details class="adv-guide" id="guide-battery-app">
+    <summary>🔋 Fire TV — Risparmio energetico per qualsiasi app</summary>
     <div class="guide-body">
-      <h4>1. Sblocca Opzioni Sviluppatore</h4>
-      Impostazioni → La mia Fire TV → Informazioni → clicca <strong>7 volte su "Numero di serie"</strong> → Opzioni Sviluppatore → attiva <strong>Debug ADB</strong> e <strong>Debug ADB di rete</strong>
-
-      <h4>2. Trova l'IP della Fire TV</h4>
-      Impostazioni → La mia Fire TV → Informazioni → Rete → annota l'IP (es. <code class="inline-code">192.168.1.XX</code>)
-
-      <h4>3. Installa Termux sul telefono</h4>
-      Scarica da F-Droid (NON Play Store): <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">f-droid.org/com.termux</a><br>
-      ⚠️ Telefono e Fire TV devono essere sulla <strong>stessa rete Wi-Fi</strong>
-
-      <h4>4. Installa ADB su Termux</h4>
-      <div class="code-snippet">pkg update && pkg install android-tools -y</div>
-
-      <h4>5. Connettiti alla Fire TV</h4>
-      <div class="code-snippet">adb connect 192.168.1.XX</div>
-      👉 Sostituisci l'IP. Accetta il pop-up sulla TV → "Consenti sempre"
-
-      <h4>6. Esegui i comandi</h4>
-      <div class="code-snippet">adb shell dumpsys deviceidle whitelist +com.mediaflow.proxy.tv</div>
-      <div class="code-snippet">adb shell pm grant com.mediaflow.proxy.tv android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</div>
-
-      <h4>7. Verifica</h4>
-      <div class="code-snippet">adb shell dumpsys deviceidle whitelist</div>
-      ✅ Dovresti vedere <code class="inline-code">com.mediaflow.proxy.tv</code> nell'elenco
-
-      <h4>↩️ Per annullare</h4>
-      <div class="code-snippet">adb shell dumpsys deviceidle whitelist -com.mediaflow.proxy.tv</div>
-      <div class="code-snippet">adb shell pm revoke com.mediaflow.proxy.tv android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</div>
-
-      <p style="margin-top:14px;padding:10px;background:rgba(16,185,129,0.1);border-left:3px solid #10b981;border-radius:6px;">📌 <strong>Permanente ai riavvii.</strong> Si resetta solo con aggiornamenti Fire OS — in quel caso ripeti solo i punti 5 e 6.</p>
+🔋 <strong>Fire TV — risparmio energetico per qualsiasi app</strong><br>
+<br>
+Per Fire TV con Fire OS basato su Android e ADB disponibile. Aiuta le app in background: non risolve APK incompatibili e non garantisce l'avvio automatico o l'esecuzione continua.<br>
+<br>
+1. <strong>Attiva Debug ADB</strong><br>
+Impostazioni → La mia Fire TV (o Dispositivo e software) → Informazioni → premi 7 volte sul nome del dispositivo. Torna indietro → Opzioni sviluppatore → Debug ADB. Le voci possono variare.<br>
+<br>
+2. <strong>Trova l'IP</strong><br>
+Informazioni → Rete. Telefono e Fire TV devono essere sulla stessa rete locale fidata.<br>
+<br>
+3. <strong>Sul telefono Android</strong><br>
+Installa <a href="https://f-droid.org/en/packages/com.termux/" target="_blank" rel="noopener">Termux da F-Droid</a>, poi esegui:<br>
+<div class="code-snippet">pkg update &amp;&amp; pkg install android-tools -y</div><br>
+Connettiti sostituendo l'IP:<br>
+<div class="code-snippet">adb connect 192.168.1.XX:5555</div><br>
+Accetta l'autorizzazione sulla TV. “Consenti sempre” solo per dispositivi tuoi e fidati.<br>
+<br>
+4. <strong>Trova il pacchetto dell'app già installata</strong><br>
+<div class="code-snippet">adb shell pm list packages -3</div><br>
+Mostra le app non di sistema. Per cercare, per esempio:<br>
+<div class="code-snippet">adb shell pm list packages stremio</div><br>
+Il nome del pacchetto può essere diverso dal nome dell'app: se non trovi risultati usa l'elenco completo e controlla con lo sviluppatore. Copia solo il nome dopo “package:”.<br>
+<br>
+5. <strong>Escludi la tua app</strong><br>
+Sostituisci NOME.PACCHETTO con il pacchetto esatto, senza “package:”:<br>
+<div class="code-snippet">adb shell dumpsys deviceidle whitelist +NOME.PACCHETTO</div><br>
+Ripeti per ogni app desiderata. Non incollare il segnaposto letteralmente.<br>
+<br>
+6. <strong>Verifica</strong><br>
+<div class="code-snippet">adb shell dumpsys deviceidle whitelist</div><br>
+Controlla che compaia il tuo pacchetto. Se ottieni un errore o “Permission denied”, l'esenzione non è confermata: non usare comandi casuali per aggirarlo.<br>
+<br>
+↩️ <strong>Annulla solo questa esenzione</strong><br>
+<div class="code-snippet">adb shell dumpsys deviceidle whitelist -NOME.PACCHETTO</div><br>
+<br>
+Non serve pm grant REQUEST_IGNORE_BATTERY_OPTIMIZATIONS: non è un permesso runtime concedibile così. L'esenzione non elimina tutte le restrizioni di Fire OS; dopo riavvii, aggiornamenti o reinstallazioni ricontrollala, senza considerarla garantita per sempre.<br>
+<br>
+Quando hai finito:<br>
+<div class="code-snippet">adb disconnect</div><br>
+Disattiva Debug ADB se non ti serve. Non esporre la porta ADB su Internet.
+<p>Fonti: <a href="https://developer.amazon.com/docs/fire-tv/connecting-adb-to-device.html">Amazon: connessione ADB</a> · <a href="https://developer.android.com/training/monitoring-device-state/doze-standby">Android: esenzioni Doze</a>.</p>
     </div>
   </details>
 
