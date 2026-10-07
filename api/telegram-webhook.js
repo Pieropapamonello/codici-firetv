@@ -566,6 +566,7 @@ async function handleCallback(cb, token) {
     }
     if (data === 'guides:list') {
         await tg(chatId, `📚 *Guide disponibili*\n\nTap per leggerla qui in chat:`, { reply_markup: { inline_keyboard: [
+            [{ text: '🧩 Stremio Mod — Plugin', callback_data: 'g:stremio-mod' }],
             [{ text: '🎬 Vimu / Stremio 4K', callback_data: 'g:vimu' }],
             [{ text: '🇮🇹 Lingua Kodi italiana', callback_data: 'g:kodi-lang' }],
             [{ text: '📺 Kodi + WLTV', callback_data: 'g:kodi-wltv' }],
@@ -581,6 +582,7 @@ async function handleCallback(cb, token) {
     }
     if (data.startsWith('g:')) {
         const guides = {
+            'stremio-mod': `🧩 *Stremio Mod — attivare i plugin*\n\n*Android TV / Fire TV*\n1. Installa la Mod Plugin TV ARM 32 bit con Downloader: \`5853956\` (versione 3.3).\n2. Apri Impostazioni → Generale e imposta *Android TV* come interfaccia.\n3. Riavvia Stremio.\n4. Vai in Addons → Aggiungi addons.\n5. Inserisci esattamente:\n\`https://catalogo.stremio-italia.eu/manifest.json\`\n6. Premi OK / Installa.\n7. Torna in Addons → Installato → *Stremio Italia*.\n8. Scorri fino a *Plugin* e installa quello desiderato.\n\nI flussi video si apriranno tramite l’addon Plugin installato. Se Plugin non compare, controlla di usare la Mod Plugin e riavvia l’app.\n\n*Telefono / tablet Android*\nScegli la release [ARM 32 bit](https://github.com/stremiomod/Stremio_APK/releases/tag/mobile) oppure [ARM 64 bit](https://github.com/stremiomod/Stremio_APK/releases/tag/mobile64). Aggiungi lo stesso manifest e installa il plugin dal catalogo; i menu possono variare.\n\nCodici controllati il 7 ottobre 2026: i vecchi 2688418 e 8782188 puntano a file rimossi. Nessun nuovo codice Mobile confermato.\n[Guida sul sito](${PUBLIC()}/#guide-stremio-mod)`,
             'vimu': `🎬 *Riproduzione 4K live — Vimu / Stremio*\n\n1. Installa Vimu Installer: aftv.news/3188516\n2. Inserisci la chiave:\n\`fea63c49-a7f2-441e-be4a-e75cc36b74d8\`\n3. In *Stremio* → Impostazioni → Riproduzione → Player predefinito → *player esterno*\n4. Audio non automatico in italiano: Vimu → Options → Settings → Content → *Preferred Audio Language* → Italiano`,
             'kodi-lang': `🇮🇹 *Lingua Italiana Kodi*\n\n1. Installa Kodi: aftv.news/2130077\n2. Kodi → ⚙️ Impostazioni → Interfaccia → *Regional / Regione* → Language → Italiano`,
             'kodi-wltv': `📺 *Configurazione Kodi + WLTV*\n\n1. Home Kodi → ⚙️ → File → Aggiungi sorgente\n URL: \`http://worldlivetv.github.io/repo/\`\n Nome: *WLTV Repo*\n\n2. Add-ons → Installa da file zip → \`repository.wltv-1.x.x.zip\` → Installa da repository → *WLTV Helper*\n\n3. Home → Add-ons → WLTV Helper → Lista → *Sezione TV*`,

@@ -31,7 +31,7 @@ export function buildSearchMessages(entries, origin) {
                 return `<b>${escape(label)}</b>\n<a href="${escape(app.url)}">${app.downloadKind==='page'?'Apri pagina':'Scarica'}</a>${code ? ' · Codice: <code>'+escape(code)+'</code>' : ''} · <a href="${escape('https://wa.me/?text='+encodeURIComponent(shareText))}">WhatsApp</a>`;
             });
             messages.push({
-                text:`📱 <b>${escape(family)}</b>${offset===0&&desc?'\n'+escape(desc.slice(0,600)):''}\n\n${list.length} versioni disponibili${list.length>15?' · '+(offset+1)+'–'+Math.min(offset+15,list.length):''}\n\n${rows.join('\n\n')}${offset===0?'\n\nTocca un codice per copiarlo; WhatsApp condivide solo la versione scelta.':''}`,
+                text:`📱 <b>${escape(family)}</b>${offset===0&&desc?'\n'+escape(desc.slice(0,600)):''}\n\n${list.length} versioni disponibili${list.length>15?' · '+(offset+1)+'–'+Math.min(offset+15,list.length):''}\n\n${rows.join('\n\n')}${offset===0?'\n\nTocca un codice per copiarlo; WhatsApp condivide solo la versione scelta.':''}${offset===0&&family==='Stremio'&&list.some(a=>/\bMod\b/i.test(a.name))?'\n<a href="'+escape(new URL('/#guide-stremio-mod',origin).href)+'">Guida Stremio Mod: attivare i plugin</a>':''}`,
                 parse_mode:'HTML',link_preview_options:{is_disabled:true}
             });
         }

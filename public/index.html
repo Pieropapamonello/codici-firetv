@@ -713,6 +713,29 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 <div id="guides-anchor"></div>
 <details class="advanced-guides" id="catalog-guides">
   <summary>Hai bisogno di aiuto? Apri le guide</summary>
+  <details class="adv-guide" id="guide-stremio-mod">
+    <summary>Stremio Mod — installare e attivare i plugin</summary>
+    <div class="guide-body">
+      <h4>1. Installa la variante corretta</h4>
+      <p><strong>Android TV / Fire TV:</strong> apri Downloader e inserisci <code class="inline-code">5853956</code>. Il codice porta a Stremio Mod Plugin TV ARM 32 bit, versione 3.3. <a href="https://github.com/stremiomod/Stremio_APK/releases/tag/tv" target="_blank" rel="noopener noreferrer">Release TV</a>.</p>
+      <p><strong>Telefono / tablet Android:</strong> scegli l’APK della release <a href="https://github.com/stremiomod/Stremio_APK/releases/tag/mobile" target="_blank" rel="noopener noreferrer">Mobile ARM 32 bit</a> oppure <a href="https://github.com/stremiomod/Stremio_APK/releases/tag/mobile64" target="_blank" rel="noopener noreferrer">Mobile ARM 64 bit</a>, secondo il sistema Android del dispositivo. Nessun nuovo codice Mobile confermato: usa questi link.</p>
+      <p>Controllo del 7 ottobre 2026: i vecchi codici 2688418 (TV) e 8782188 (Mobile) puntano a file rimossi. La guida riguarda la Mod con supporto plugin, non l’app ufficiale.</p>
+      <h4>2. Configura l’interfaccia TV e il catalogo addon</h4>
+      <ol>
+        <li>Apri Stremio Mod e vai in <strong>Impostazioni → Generale</strong>.</li>
+        <li>Su Android TV / Fire TV imposta <strong>Android TV</strong> come tipo di interfaccia e riavvia Stremio.</li>
+        <li>Apri <strong>Addons → Aggiungi addons</strong>.</li>
+        <li>Inserisci esattamente <code class="inline-code">https://catalogo.stremio-italia.eu/manifest.json</code> e premi <strong>OK / Installa</strong>.</li>
+      </ol>
+      <h4>3. Installa il plugin</h4>
+      <ol>
+        <li>Torna in <strong>Addons → Installato</strong>.</li>
+        <li>Apri <strong>Stremio Italia</strong> e scorri fino a <strong>Plugin</strong>.</li>
+        <li>Installa il plugin desiderato. I flussi video si apriranno tramite l’addon Plugin installato.</li>
+      </ol>
+      <p>Se la voce Plugin non compare, verifica di aver installato la Mod Plugin corretta, riavvia l’app e controlla che il manifest sia stato aggiunto senza spazi. I nomi dei menu possono variare tra TV e Mobile; sul telefono mantieni l’interfaccia adatta al dispositivo.</p>
+    </div>
+  </details>
   <details class="adv-guide" id="guide-dublift">
     <summary>DubLift — installazione e configurazione per Stremio / Nuvio</summary>
     <div class="guide-body">
@@ -1210,6 +1233,15 @@ function openFamilyGuide(family) {
   const guide = [...container.querySelectorAll('.adv-guide')].find(el => el.querySelector('summary').textContent.toLowerCase().includes(family.toLowerCase()));
   if (guide) { guide.open = true; guide.querySelector('summary').focus(); guide.scrollIntoView({block:'center'}); }
 }
+function openLinkedGuide() {
+  if (!['#guide-stremio-mod', '#guide-dublift'].includes(location.hash)) return;
+  document.getElementById('catalog-guides').open = true;
+  const guide = document.querySelector(location.hash);
+  guide.open = true;
+  guide.scrollIntoView({block:'start'});
+}
+window.addEventListener('hashchange', openLinkedGuide);
+openLinkedGuide();
 function appFallbackIcon(name, category = '') {
   const value = String(name || '').toLowerCase();
   if (/stremio/.test(value)) return 'assets/stremio.png';
@@ -1951,6 +1983,7 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
           ${displayCode ? `<button type="button" class="app-action copy-app-code" aria-label="Copia codice Downloader e dettagli di ${escapeHtml(name)}">Copia codice <strong>${escapeHtml(displayCode)}</strong></button>` : ''}
           <button type="button" class="app-action share-app" aria-label="Copia link di ${escapeHtml(name)}">Copia link</button>
           ${/^DubLift\b/i.test(name) ? '<button type="button" class="app-action dublift-guide-link">Come installare</button>' : ''}
+          ${/^Stremio\b.*\bMod\b/i.test(name) ? '<button type="button" class="app-action stremio-mod-guide-link">Guida plugin</button>' : ''}
         </div>
         <p class="app-action-status" role="status" aria-live="polite"></p>
         ${clickHtml}
@@ -1973,6 +2006,13 @@ import { downloaderCode, attachAppActions } from './app-sharing.js';
       }
       frame.querySelector('.family-apps').append(newCard);
       attachAppActions(newCard, shareApp, location.origin);
+      newCard.querySelector('.stremio-mod-guide-link')?.addEventListener('click', () => {
+          document.getElementById('catalog-guides').open = true;
+          const guide = document.getElementById('guide-stremio-mod');
+          guide.open = true;
+          guide.querySelector('summary').focus();
+          guide.scrollIntoView({block: 'start'});
+      });
       newCard.querySelector('.dublift-guide-link')?.addEventListener('click', () => {
           const guides = document.getElementById('catalog-guides');
           const guide = document.getElementById('guide-dublift');

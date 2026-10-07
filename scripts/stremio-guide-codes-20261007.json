@@ -1,0 +1,28 @@
+{
+  "additions": [],
+  "enrichments": [
+    {
+      "id": "-OvQEr3-qEoUgxviWr5f",
+      "type": "apps",
+      "expected": {
+        "assetFingerprint": "sha256:b29fccd8ba5e58aeb3010026a7a1977a9f554abbce5a76f07a3ccd92d42e8ef5",
+        "category": "Film e serie · Media center",
+        "code": "3009135",
+        "desc": "Organizza video e cataloghi tramite componenti aggiuntivi. Scegli TV o Mobile e l’architettura del dispositivo; Beta è sperimentale e Mod è una modifica non ufficiale.",
+        "directUrl": "https://github.com/stremiomod/Stremio_APK/releases/download/tv/StremioMod_PLUGIN_TV_ARM_V3.3.apk",
+        "icon": "assets/stremio.png",
+        "name": "Stremio TV Mod",
+        "order": 1781794832563,
+        "timestamp": 1790170202232,
+        "version": "3.3"
+      },
+      "fields": {
+        "code": "5853956",
+        "downloaderCode": "5853956",
+        "codeBoundUrl": "https://github.com/stremiomod/Stremio_APK/releases/download/tv/StremioMod_PLUGIN_TV_ARM_V3.3.apk",
+        "codeSource": "https://github.com/stremiomod/Stremio_APK/releases/tag/tv",
+        "codeCheckedAt": "2026-10-07"
+      }
+    }
+  ]
+}
