@@ -6,7 +6,7 @@ failed jobs retry after 30 minutes. Sleeping Render instances catch up on wake.
 
 | Job | UTC | Europe/Rome, summer / winter |
 | --- | --- | --- |
-| DownloaderCodes (all post sitemaps) | 09:00 | 11:00 / 10:00 |
+| DownloaderCodes (page and post sitemaps) | 09:00 | 11:00 / 10:00 |
 | WebAssistanceITA code list | 10:00 | 12:00 / 11:00 |
 | kpfire Linktree supported app sections | 11:00 | 13:00 / 12:00 |
 | DubLift latest stable GitHub release, armv7 and arm64 | 12:00 | 14:00 / 13:00 |

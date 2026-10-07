@@ -11,7 +11,7 @@ export function sourceHandler(source) {
             const plan=planSourceSync(source,collected.items,apps||{},software||{},ignored||{});
             if(Object.keys(plan.updates).length) await db('',plan.updates);
             if(Object.keys(plan.review).length) await db(`source_review/${source}`,plan.review);
-            await db(`source_sync/${source}`,{checkedAt:new Date().toISOString(),pages:collected.pages,failures:collected.failures,...plan.stats});
+            await db(`source_sync/${source}`,{checkedAt:new Date().toISOString(),lastError:null,pages:collected.pages,failures:collected.failures,...plan.stats});
             // External catalog imports/code edits deliberately do not broadcast APK updates.
             return res.status(collected.failures?503:200).json({success:!collected.failures,...plan.stats,pages:collected.pages,failures:collected.failures});
         } catch(error) {

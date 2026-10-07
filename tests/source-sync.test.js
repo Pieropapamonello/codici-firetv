@@ -20,8 +20,9 @@ test('alternate codes do not overwrite a manually managed product or duplicate i
 
 test('DownloaderCodes crawls all post sitemap pages and reports partial failures',async()=>{
     const replies={
-        'https://downloadercodes.com/sitemap_index.xml':'<sitemapindex><sitemap><loc>https://downloadercodes.com/post-sitemap.xml</loc></sitemap></sitemapindex>',
-        'https://downloadercodes.com/post-sitemap.xml':'<urlset><url><loc>https://downloadercodes.com/games/retroarch/</loc></url><url><loc>https://downloadercodes.com/broken/</loc></url></urlset>',
+        'https://downloadercodes.com/sitemap_index.xml':'<sitemapindex><sitemap><loc>https://downloadercodes.com/post-sitemap.xml</loc></sitemap><sitemap><loc>https://downloadercodes.com/page-sitemap.xml</loc></sitemap></sitemapindex>',
+        'https://downloadercodes.com/post-sitemap.xml':'<urlset></urlset>',
+        'https://downloadercodes.com/page-sitemap.xml':'<urlset><url><loc>https://downloadercodes.com/games/retroarch/</loc></url><url><loc>https://downloadercodes.com/broken/</loc></url></urlset>',
         'https://downloadercodes.com/games/retroarch/':'<h1>RetroArch Downloader Code</h1><div id="d-code">4361890</div>'
     };
     const result=await collectSource('downloadercodes',async url=>new Response(replies[url]||'',{status:replies[url]?200:503}));

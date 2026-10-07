@@ -26,11 +26,11 @@ export async function collectSource(source,request=fetch) {
         if(!Array.isArray(items)||!items.length) throw new Error('Source empty or parser changed');
         return {items,failures:0,pages:1};
     }
-    // All post sitemaps, not only the newest links on the home page.
+    // App records are WordPress pages; articles use posts. Crawl both.
     const index=load(await sourceText(origin+'sitemap_index.xml',request),{xmlMode:true});
     const maps=index('sitemap > loc').map((i,e)=>index(e).text()).get()
-        .filter(url=>/^https:\/\/downloadercodes\.com\/post-sitemap(?:\d+)?\.xml$/.test(url));
-    if(!maps.length) throw new Error('Post sitemap missing');
+        .filter(url=>/^https:\/\/downloadercodes\.com\/(?:post|page)-sitemap(?:\d+)?\.xml$/.test(url));
+    if(!maps.length) throw new Error('Catalog sitemaps missing');
     const urls=new Set();
     for(const map of maps) {
         const xml=load(await sourceText(map,request),{xmlMode:true});
