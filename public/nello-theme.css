@@ -111,3 +111,14 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
   #main-content .family-apps .card, #main-content .app-variants > summary { grid-template-columns:24px minmax(0,1fr) 223px; }
   #main-content .card .app-actions { grid-template-columns:58px 55px 100px; }
 }
+
+/* Keep expanded versions visually inside their app, rather than another white list. */
+#main-content .app-variants[open] > summary { background:#fff0e2; }
+#main-content .app-variants > .variant-list { background:#fff9f3; margin-bottom:8px; }
+#main-content .family-apps .variant-list > .card { border-bottom:1px solid #eaded2 !important; }
+#main-content .family-apps .variant-list > .card:nth-child(even) { background:#fff2e6 !important; }
+#main-content .family-apps .variant-list > .card:last-child { border-bottom:0 !important; }
+#main-content .variant-list .download-row img { visibility:hidden; }
+#main-content .variant-list .download-label strong { font-weight:500; }
+#main-content .family-apps > .card:nth-child(even) { background:#fff9f3 !important; }
+#main-content .app-variants > summary:focus-visible { outline:2px solid #aa3c17; outline-offset:2px; }

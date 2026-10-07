@@ -18,6 +18,8 @@ test('category panels have one shared description and compact per-variant downlo
     assert.ok(css.includes('grid-template-columns:75px 70px 145px'));
     assert.ok(css.includes('.variant-list { padding-left:0; }'));
     assert.ok(css.includes('grid-column:2; grid-row:1; width:100%'));
+    assert.ok(css.includes('.variant-list > .card:nth-child(even) { background:#fff2e6 !important; }'));
+    assert.ok(css.includes('.variant-list .download-row img { visibility:hidden; }'));
     assert.match(categoryDescription('Browser Internet'),/Browser per navigare/);
     assert.match(categoryDescription('Android su Windows'),/non installare/);
 });
