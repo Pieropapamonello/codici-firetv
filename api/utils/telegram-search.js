@@ -1,6 +1,6 @@
 import { iconFamily } from '../../public/catalog-icons.js';
 import { catalogMetadata } from '../../public/catalog-metadata.js';
-import { downloaderCode, appShareUrl } from '../../public/app-sharing.js';
+import { downloaderCode } from '../../public/app-sharing.js';
 import { downloadIdentity } from './catalog-duplicates.js';
 import { subscriptionTypeKey } from './notification-prefs.js';
 const escape = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -26,13 +26,11 @@ export function buildSearchMessages(entries, origin) {
         for (let offset=0;offset<list.length;offset+=15) {
             const rows = list.slice(offset,offset+15).map(app=> {
                 const code = downloaderCode(app);
-                const shareUrl = app.id ? appShareUrl(app,origin) : app.url;
                 const label = app.name.replace(/\s*[—–-]\s*codice\s+\d+\s*$/i,'').slice(0,100);
-                const shareText = [app.name, desc.slice(0,600), code ? `Codice Downloader: ${code}` : '', shareUrl].filter(Boolean).join('\n\n');
-                return `<b>${escape(label)}</b>\n<a href="${escape(app.url)}">${app.downloadKind==='page'?'Apri pagina':'Scarica'}</a>${code ? ' · Codice: <code>'+escape(code)+'</code>' : ''} · <a href="${escape('https://wa.me/?text='+encodeURIComponent(shareText))}">WhatsApp</a>`;
+                return `<a href="${escape(app.url)}"><b>${escape(label)}</b></a> <a href="${escape(app.url)}">${app.downloadKind==='page'?'↗️':'⬇️'}</a>${code ? '\nCodice Downloader: <code>'+escape(code)+'</code>' : ''}`;
             });
             messages.push({
-                text:`📱 <b>${escape(family)}</b>${offset===0&&desc?'\n'+escape(desc.slice(0,600)):''}\n\n${list.length} versioni disponibili${list.length>15?' · '+(offset+1)+'–'+Math.min(offset+15,list.length):''}\n\n${rows.join('\n\n')}${offset===0?'\n\nTocca un codice per copiarlo; WhatsApp condivide solo la versione scelta.':''}${offset===0&&family==='Stremio'&&list.some(a=>/\bMod\b/i.test(a.name))?'\n<a href="'+escape(new URL('/#guide-stremio-mod',origin).href)+'">Guida Stremio Mod: attivare i plugin</a>':''}`,
+                text:`📱 <b>${escape(family)}</b>${offset===0&&desc?'\n'+escape(desc.slice(0,600)):''}\n\n${list.length} versioni disponibili${list.length>15?' · '+(offset+1)+'–'+Math.min(offset+15,list.length):''}\n\n${rows.join('\n\n')}${offset===0&&list.some(a=>downloaderCode(a))?'\n\nTocca il codice per copiarlo.':''}${offset===0&&family==='Stremio'&&list.some(a=>/\bMod\b/i.test(a.name))?'\n<a href="'+escape(new URL('/#guide-stremio-mod',origin).href)+'">Guida Stremio Mod: attivare i plugin</a>':''}`,
                 parse_mode:'HTML',link_preview_options:{is_disabled:true},
                 reply_markup:{inline_keyboard:[[{text:family==='Stremio'?'🔔 Scegli quale Stremio seguire':'🔔 Segui '+family.slice(0,45),callback_data:'sub:follow:'+subscriptionTypeKey(family)}]]}
             });
