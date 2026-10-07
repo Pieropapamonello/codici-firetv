@@ -1,3 +1,9 @@
+import { iconFamily } from '../../public/catalog-icons.js';
+
+export function subscriptionChoices(apps) {
+    return [...new Set(Object.values(apps || {}).filter(a => a?.name).map(a => iconFamily(a.name)))].sort((a,b) => a.localeCompare(b, 'it'));
+}
+
 export function normalizeAppKey(name = '') {
     return String(name)
         .normalize('NFD')
@@ -18,5 +24,5 @@ export function isAppEnabled(user, appName) {
     const muted = new Set((user.mutedApps || []).map(normalizeAppKey));
     if (muted.has(key)) return false;
 
-    return user.apps.includes('all') || user.apps.some(name => normalizeAppKey(name) === key);
+    return user.apps.includes('all') || user.apps.some(name => normalizeAppKey(name) === key || normalizeAppKey(name) === normalizeAppKey(iconFamily(appName)));
 }

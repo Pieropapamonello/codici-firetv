@@ -1,6 +1,6 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
-import { normalizeAppKey } from "./utils/notification-prefs.js";
+import { normalizeAppKey, subscriptionChoices } from "./utils/notification-prefs.js";
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
 const API = () => `https://api.telegram.org/bot${BOT_TOKEN()}`;
@@ -634,23 +634,36 @@ async function handleCallback(cb, token) {
         if (!sub) { await tg(chatId, '❌ Non iscritto. Usa /start per iscriverti.'); return; }
         const isAll = sub.apps?.includes('all');
         const mutedCount = (sub.mutedApps || []).length;
-        const count = isAll
-            ? `Tutte le app${mutedCount ? `, eccetto ${mutedCount} silenziate` : ''}`
-            : `${(sub.apps || []).length} app selezionate`;
-        await tg(chatId, `🔔 *La tua iscrizione*\n\nRicevi notifiche per: *${count}*`, { reply_markup: { inline_keyboard: [
-            [{ text: (isAll ? '✅' : '⬜') + ' Tutte le app', callback_data: 'sub:setall' }],
-            [{ text: '📝 Scegli app specifiche', callback_data: 'sub:choose:0' }],
-            [{ text: '🛑 Disiscriviti completamente', callback_data: 'sub:stop' }],
+        await tgEdit(chatId, cb.message.message_id, `🔔 *Notifiche app*\n\n${isAll ? 'Modalità: tutte le app.' + (mutedCount ? `\nApp silenziate: ${mutedCount}.` : '') : (sub.apps || []).length ? `Segui ${(sub.apps || []).length} app.` : 'Notifiche disattivate: nessuna app selezionata.'}\n\nScegli solo le app che ti interessano. Le modifiche vengono salvate subito.`, { reply_markup: { inline_keyboard: [
+            [{ text: '📝 Scegli le mie app', callback_data: isAll ? 'sub:custom' : 'sub:choose:0' }],
+            [{ text: '🔔 Voglio tutte le app', callback_data: 'sub:confirmall' }],
+            [{ text: '🔕 Disattiva tutte le notifiche', callback_data: 'sub:pause' }],
             [{ text: '⬅️ Menu', callback_data: 'menu' }]
         ]}});
         return;
     }
-    if (data === 'sub:setall') {
-        await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, {
-            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ apps: ['all'], mutedApps: null })
+    if (data === 'sub:confirmall') {
+        await tgEdit(chatId, cb.message.message_id, '🔔 *Attivare tutte le app?*\n\nRiceverai aggiornamenti anche per le app aggiunte in futuro. Le app già silenziate resteranno escluse.', { reply_markup: { inline_keyboard: [
+            [{ text: 'Sì, attiva tutte', callback_data: 'sub:setall' }],
+            [{ text: 'Annulla', callback_data: 'sub:status' }]
+        ] } });
+        return;
+    }
+    if (data === 'sub:custom' || data === 'sub:pause') {
+        const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ apps: [] })
         });
-        await tg(chatId, '✅ Iscritto a *tutte* le app');
+        if (!saved.ok) { await tg(chatId, 'Impossibile salvare. Riprova.'); return; }
+        await handleCallback({ ...cb, data: data === 'sub:custom' ? 'sub:choose:0' : 'sub:status' }, token);
+        return;
+    }
+    if (data === 'sub:setall') {
+        const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ apps: ['all'] })
+        });
+        if (!saved.ok) { await tg(chatId, 'Impossibile salvare. Riprova.'); return; }
+        await handleCallback({ ...cb, data: 'sub:status' }, token);
         return;
     }
     if (data === 'noop') return;
@@ -659,19 +672,21 @@ async function handleCallback(cb, token) {
         const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
         const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json() || {};
         const userApps = sub.apps || [];
-        const mutedApps = new Set((sub.mutedApps || []).map(normalizeAppKey));
         const isAll = userApps.includes('all');
 
-        const list = Object.values(apps).filter(a => a.name).sort((a,b) => a.name.localeCompare(b.name));
+        if (isAll) {
+            await handleCallback({ ...cb, data: 'sub:custom' }, token);
+            return;
+        }
+        const list = subscriptionChoices(apps);
         const perPage = 8;
         const totalPages = Math.max(1, Math.ceil(list.length / perPage));
         const safePage = Math.min(Math.max(0, page), totalPages - 1);
         const slice = list.slice(safePage * perPage, (safePage + 1) * perPage);
 
-        const kb = slice.map((a, i) => {
-            const checked = isAll ? !mutedApps.has(normalizeAppKey(a.name)) : userApps.some(n => normalizeAppKey(n) === normalizeAppKey(a.name));
-            const globalIdx = safePage * perPage + i;
-            return [{ text: `${checked ? '✅' : '⬜'} ${a.name.substring(0, 42)}`, callback_data: `sub:tgl:${safePage}:${globalIdx}` }];
+        const kb = slice.map(name => {
+            const checked = userApps.some(n => normalizeAppKey(n) === normalizeAppKey(name));
+            return [{ text: `${checked ? '✅' : '＋'} ${name.substring(0, 42)}`, callback_data: `sub:pick:${safePage}:${normalizeAppKey(name)}` }];
         });
 
         const nav = [];
@@ -679,9 +694,26 @@ async function handleCallback(cb, token) {
         nav.push({ text: `${safePage+1}/${totalPages}`, callback_data: 'noop' });
         if (safePage < totalPages - 1) nav.push({ text: 'Succ ➡️', callback_data: `sub:choose:${safePage+1}` });
         kb.push(nav);
-        kb.push([{ text: '⬅️ Iscrizione', callback_data: 'sub:status' }]);
+        kb.push([{ text: '✅ Fatto · Le mie notifiche', callback_data: 'sub:status' }]);
 
-        await tg(chatId, `📝 *Scegli app per notifiche*\n\n✅ = iscritto · ⬜ = no\nTap per attivare/disattivare`, { reply_markup: { inline_keyboard: kb } });
+        await tgEdit(chatId, cb.message.message_id, `📝 *Scegli le tue app*\n\n${userApps.length} selezionate. Nessuna app viene aggiunta automaticamente.\n＋ Aggiungi · ✅ Rimuovi\nOgni voce comprende le varianti dell’app.`, { reply_markup: { inline_keyboard: kb } });
+        return;
+    }
+    if (data.startsWith('sub:pick:')) {
+        const [, , page, key] = data.split(':');
+        const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
+        const name = subscriptionChoices(apps).find(n => normalizeAppKey(n) === key);
+        if (!name) { await tg(chatId, 'Elenco aggiornato: riapri la scelta app.'); return; }
+        const sub = await (await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`)).json() || {};
+        const selected = (sub.apps || []).filter(n => n !== 'all');
+        const already = selected.some(n => normalizeAppKey(n) === key);
+        const next = already ? selected.filter(n => normalizeAppKey(n) !== key) : [...selected, name];
+        const muted = (sub.mutedApps || []).filter(n => normalizeAppKey(n) !== key && !Object.values(apps).some(a => a?.name && subscriptionChoices({a})[0] === name && normalizeAppKey(a.name) === normalizeAppKey(n)));
+        const saved = await fetch(`${DB_URL()}/telegram_users/${chatId}.json?auth=${token}`, {
+            method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ apps: next, ...(!already ? {mutedApps: muted} : {}) })
+        });
+        if (!saved.ok) { await tg(chatId, 'Impossibile salvare. Riprova.'); return; }
+        await handleCallback({ ...cb, data: `sub:choose:${page}` }, token);
         return;
     }
     if (data.startsWith('sub:tgl:')) {
@@ -1056,7 +1088,7 @@ export default async function handler(req, res) {
             const profile = { chatId, firstName: msg.from?.first_name || 'Utente', username: msg.from?.username || null };
             await fetch(userUrl, {
                 method: existingUser ? 'PATCH' : 'PUT', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(existingUser ? profile : { ...profile, apps: ['all'], joinedAt: Date.now() })
+                body: JSON.stringify(existingUser ? profile : { ...profile, apps: [], joinedAt: Date.now() })
             });
             // Manda foto logo con benvenuto
             try {
@@ -1065,7 +1097,7 @@ export default async function handler(req, res) {
                     body: JSON.stringify({
                         chat_id: chatId,
                         photo: `${PUBLIC()}/assets/nello.png`,
-                        caption: `🏴‍☠️ *Il Covo di Nello*\n\nIl bot ora usa un'interfaccia grafica. Tap sui bottoni:`,
+                        caption: `🐾 *Il Covo di Nello*\n\nCerca e scarica le app con i pulsanti qui sotto.\nPer ricevere aggiornamenti, apri Notifiche e scegli le app che ti interessano.`,
                         parse_mode: 'Markdown',
                         reply_markup: mainMenuPublic(adminFlag)
                     })
