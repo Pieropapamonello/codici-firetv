@@ -27,12 +27,28 @@ test('variant name and adjacent icon link directly to its download, with a copya
     assert.equal($('code').text(),'123456');
     const links=$('a').toArray();
     assert.equal($(links[0]).text(),'Stremio ARM 32 bit');
-    assert.equal($(links[0]).attr('href'),'https://example.com/32.apk');
+    const shared = new URL($(links[0]).attr('href')).searchParams.get('text');
+    assert.ok(shared.includes('Stremio ARM 32 bit'));
+    assert.ok(shared.includes('https://example.com/32.apk'));
+    assert.ok(shared.includes('Codice Downloader: 123456'));
+    assert.ok(shared.includes('app=apps%3Aarm32'));
+    assert.ok(!shared.includes('64.apk'));
     assert.equal($(links[1]).text(),'⬇️');
-    assert.equal($(links[1]).attr('href'),$(links[0]).attr('href'));
-    assert.equal($(links[2]).attr('href'),'https://example.com/64.apk');
+    assert.equal($(links[1]).attr('href'),'https://example.com/32.apk');
+    assert.ok(new URL($(links[2]).attr('href')).searchParams.get('text').includes('https://example.com/64.apk'));
     assert.ok(!$.text().includes('WhatsApp')); assert.ok(!$.text().includes('Scarica'));
     assert.match(message.reply_markup.inline_keyboard[0][0].text,/Stremio/);
+});
+
+test('WhatsApp shares the applicable guide only for the selected app variant',()=>{
+    for(const [name,guide] of [['Stremio TV Mod','stremio-mod'],['DubLift ARM64','dublift']]) {
+        const [message]=buildSearchMessages([{name,code:'https://example.com/app.apk'}],'https://ilcovodinello.onrender.com');
+        const $=load(message.text);
+        const shared=new URL($('a').first().attr('href')).searchParams.get('text');
+        assert.ok(shared.includes('/#guide-'+guide));
+        assert.ok(shared.includes(name));
+        assert.ok(shared.split('\n\n').length>=4);
+    }
 });
 test('different products stay separate and invalid download links are omitted',()=>{
     const messages=buildSearchMessages([{name:'Kodi',code:'123456'},{name:'DubLift ARM64',code:'https://example.com/dub.apk'},{name:'Unsafe',code:'javascript:alert(1)'}],'https://ilcovodinello.onrender.com');

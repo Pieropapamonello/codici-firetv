@@ -1,6 +1,6 @@
 import { iconFamily } from '../../public/catalog-icons.js';
 import { catalogMetadata } from '../../public/catalog-metadata.js';
-import { downloaderCode } from '../../public/app-sharing.js';
+import { downloaderCode, appShareUrl } from '../../public/app-sharing.js';
 import { downloadIdentity } from './catalog-duplicates.js';
 import { subscriptionTypeKey } from './notification-prefs.js';
 const escape = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -27,7 +27,18 @@ export function buildSearchMessages(entries, origin) {
             const rows = list.slice(offset,offset+15).map(app=> {
                 const code = downloaderCode(app);
                 const label = app.name.replace(/\s*[—–-]\s*codice\s+\d+\s*$/i,'').slice(0,100);
-                return `<a href="${escape(app.url)}"><b>${escape(label)}</b></a> <a href="${escape(app.url)}">${app.downloadKind==='page'?'↗️':'⬇️'}</a>${code ? '\nCodice Downloader: <code>'+escape(code)+'</code>' : ''}`;
+                const guide = family==='Stremio' && /\bMod\b/i.test(app.name) ? 'stremio-mod' : family==='DubLift' ? 'dublift' : '';
+                const variantMetadata = catalogMetadata(app.name);
+                const description = variantMetadata.metadataVerified ? variantMetadata.desc : app.desc || desc;
+                const shareText = [
+                    app.name, description,
+                    code ? `Codice Downloader: ${code}` : '',
+                    `${app.downloadKind==='page'?'Pagina':'Download'}: ${app.url}`,
+                    app.id ? `Scheda app: ${appShareUrl(app,origin)}` : '',
+                    guide ? `Guida: ${new URL('/#guide-'+guide,origin).href}` : ''
+                ].filter(Boolean).join('\n\n');
+                const whatsapp = 'https://wa.me/?text='+encodeURIComponent(shareText);
+                return `<a href="${escape(whatsapp)}"><b>${escape(label)}</b></a> <a href="${escape(app.url)}">${app.downloadKind==='page'?'↗️':'⬇️'}</a>${code ? '\nCodice Downloader: <code>'+escape(code)+'</code>' : ''}`;
             });
             messages.push({
                 text:`📱 <b>${escape(family)}</b>${offset===0&&desc?'\n'+escape(desc.slice(0,600)):''}\n\n${list.length} versioni disponibili${list.length>15?' · '+(offset+1)+'–'+Math.min(offset+15,list.length):''}\n\n${rows.join('\n\n')}${offset===0&&list.some(a=>downloaderCode(a))?'\n\nTocca il codice per copiarlo.':''}${offset===0&&family==='Stremio'&&list.some(a=>/\bMod\b/i.test(a.name))?'\n<a href="'+escape(new URL('/#guide-stremio-mod',origin).href)+'">Guida Stremio Mod: attivare i plugin</a>':''}`,
