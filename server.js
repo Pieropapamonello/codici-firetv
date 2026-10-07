@@ -21,6 +21,8 @@ import checkParamountTvHandler from './api/check-paramount-tv.js';
 import checkRevancedHandler from './api/check-revanced.js';
 import checkWindowsToolsHandler from './api/check-windows-tools.js';
 import cronTroypointHandler from './api/cron-troypoint.js';
+import {sourceHandler} from './api/check-catalog-sources.js';
+import checkDubLiftHandler from './api/check-dublift.js';
 import downloadParamountHandler from './api/download-paramount.js';
 import fixDbHandler from './api/fix-db.js';
 import searchIconHandler from './api/search-icon.js';
@@ -83,6 +85,10 @@ app.get('*', (req, res) => {
 // --- Cron Jobs ---
 const tickCrons = createCronRunner([
     { name: 'troypoint', hour: 8, handler: cronTroypointHandler },
+    { name: 'downloadercodes', hour: 9, handler: sourceHandler('downloadercodes') },
+    { name: 'webassistanceita', hour: 10, handler: sourceHandler('webassistanceita') },
+    { name: 'kpfire', hour: 11, handler: sourceHandler('kpfire') },
+    { name: 'dublift', hour: 12, handler: checkDubLiftHandler },
     { name: 'stremio', hour: 12, handler: checkStremioHandler },
     { name: 'stremio-beta', hour: 12, handler: checkStremioBetaHandler },
     { name: 'stremio-mod', hour: 12, handler: checkStremioModHandler },
