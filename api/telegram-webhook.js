@@ -1,6 +1,7 @@
 import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
 import { normalizeAppKey, subscriptionChoices } from "./utils/notification-prefs.js";
+import { buildSearchMessages } from './utils/telegram-search.js';
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
 const API = () => `https://api.telegram.org/bot${BOT_TOKEN()}`;
@@ -251,10 +252,11 @@ async function handleStateInput(msg, chatId, token, state) {
         case 'search': {
             await clearState(chatId, token);
             const apps = await (await fetch(`${DB_URL()}/apps.json?auth=${token}`)).json() || {};
-            const found = Object.values(apps).filter(a => a.name?.toLowerCase().includes(text.toLowerCase())).slice(0, 8);
+            const found = Object.values(apps).filter(a => a.name?.toLowerCase().includes(text.trim().toLowerCase()));
             if (found.length === 0) { await tg(chatId, `🔍 Nessun risultato per "${text}"`); return; }
-            await tg(chatId, `🔍 *${found.length} risultati per "${text}"*`);
-            for (const app of found) await sendAppCard(chatId, app);
+            const messages = buildSearchMessages(found, PUBLIC());
+            if (!messages.length) { await tg(chatId, 'Nessun download disponibile per questa ricerca.'); return; }
+            for (const payload of messages) await tg(chatId, payload.text, { ...payload, disable_web_page_preview: undefined });
             return;
         }
 
