@@ -1856,9 +1856,29 @@ import { categoryDescription } from './category-descriptions.js';
 
   function renderAppGroup(group) {
       const selected = group.variants.find(app => `${app.type}:${app.id}` === group.selectedId);
+      let variantList;
       for (const app of selected ? [selected] : group.variants) {
           window._currentApp = app;
-          createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
+          const card = createAppCard(app.name, app.code, app.desc, app.id, app.icon, app.timestamp, app.clicks, app.category, app.type);
+          if (!selected && group.variants.length > 1) {
+              if (!variantList) {
+                  const details = document.createElement('details');
+                  details.className = 'app-variants';
+                  const summary = document.createElement('summary');
+                  const icon = card.querySelector('.download-row img').cloneNode(true);
+                  const title = document.createElement('strong');
+                  title.textContent = group.name;
+                  const toggle = document.createElement('span');
+                  toggle.className = 'variants-toggle';
+                  toggle.textContent = `Varianti (${group.variants.length})`;
+                  summary.append(icon, title, toggle);
+                  variantList = document.createElement('div');
+                  variantList.className = 'variant-list';
+                  details.append(summary, variantList);
+                  card.before(details);
+              }
+              variantList.append(card);
+          }
       }
   }
 

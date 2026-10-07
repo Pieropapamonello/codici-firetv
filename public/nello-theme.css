@@ -84,3 +84,16 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
   #main-content .card .app-action { padding:5px 3px; font-size:11px; white-space:normal; }
 }
 @media(pointer:coarse) { #main-content .card .app-action { min-height:44px; } }
+.app-variants { margin:0; padding:0; border:0; }
+.app-variants > summary { display:grid; grid-template-columns:28px minmax(0,1fr) 230px; align-items:center; gap:10px; padding:6px 0; cursor:pointer; list-style:none; font-size:14px; }
+.app-variants > summary::-webkit-details-marker { display:none; }
+.app-variants > summary img { width:28px; height:28px; object-fit:contain; border-radius:6px; }
+.variants-toggle { justify-self:end; padding:7px 10px; border:1px solid #d8cec5; border-radius:7px; color:#813014; font-size:12px; }
+.variants-toggle::after { content:' ▾'; }
+.app-variants[open] .variants-toggle::after { content:' ▴'; }
+.variant-list { padding-left:12px; }
+@media(max-width:600px) {
+  .app-variants > summary { grid-template-columns:24px minmax(0,1fr) 169px; gap:6px; font-size:13px; }
+  .app-variants > summary img { width:24px; height:24px; }
+  .variant-list { padding-left:0; }
+}
