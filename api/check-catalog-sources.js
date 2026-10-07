@@ -14,6 +14,12 @@ export function sourceHandler(source) {
             await db(`source_sync/${source}`,{checkedAt:new Date().toISOString(),pages:collected.pages,failures:collected.failures,...plan.stats});
             // External catalog imports/code edits deliberately do not broadcast APK updates.
             return res.status(collected.failures?503:200).json({success:!collected.failures,...plan.stats,pages:collected.pages,failures:collected.failures});
-        } catch(error) {return res.status(500).json({error:error.message});}
+        } catch(error) {
+            try {
+                const db=await catalogDb();
+                await db(`source_sync/${source}`,{lastError:String(error.message).slice(0,200),lastAttempt:new Date().toISOString()});
+            } catch {}
+            return res.status(500).json({error:error.message});
+        }
     };
 }
