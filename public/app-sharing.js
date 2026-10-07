@@ -21,8 +21,14 @@ export function appShareUrl(app, origin) {
 
 export function appShareText(app, origin) {
   const code = downloaderCode(app);
+  let direct = String(app.directUrl || app.code || '');
+  if (/^\d+$/.test(direct)) direct = 'https://go.aftvnews.com/'+direct;
+  try {
+    const url = new URL(direct,origin);
+    direct = ['http:','https:'].includes(url.protocol) ? url.href : '';
+  } catch { direct = ''; }
   return [app.name, app.desc, code ? `Codice Downloader: ${code}` : '',
-    `Scheda app: ${appShareUrl(app, origin)}`].filter(Boolean).join('\n\n');
+    direct ? `Download: ${direct}` : ''].filter(Boolean).join('\n\n');
 }
 
 // Never report success when clipboard permission is denied. On TV/older
@@ -74,8 +80,5 @@ export function attachAppActions(card, app, origin) {
   const status = card.querySelector('.app-action-status');
   card.querySelector('.copy-app-code')?.addEventListener('click', async () => {
     if (await copyAppText(text)) status.textContent = 'Copiati nome, descrizione, codice e link.';
-  });
-  card.querySelector('.share-app').addEventListener('click', async () => {
-    if (await copyAppText(appShareUrl(app, origin))) status.textContent = 'Link copiato.';
   });
 }

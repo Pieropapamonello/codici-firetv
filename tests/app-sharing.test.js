@@ -20,14 +20,16 @@ test('share links identify a single app including its collection and discard cur
   assert.notEqual(a, appShareUrl({ type: 'apps', id: '-test:42' }, url.origin));
 });
 
-test('copied payload contains name, full description, code when present and single-app link', () => {
+test('copied payload contains name, description, code and direct download instead of app card', () => {
   const app = { name: 'Nello & amici', desc: 'Per Android TV, ARM 32 bit.', code: '123456', id: 'abc', type: 'apps' };
   const text = appShareText(app, 'https://example.com');
-  for (const expected of [app.name, app.desc, 'Codice Downloader: 123456', '?app=apps%3Aabc']) assert.ok(text.includes(expected));
+  for (const expected of [app.name, app.desc, 'Codice Downloader: 123456', 'Download: https://go.aftvnews.com/123456']) assert.ok(text.includes(expected));
+  assert.ok(!text.includes('Scheda app:')); assert.ok(!text.includes('?app='));
+  assert.ok(appShareText({...app,directUrl:'https://developer.example/file.apk'},'https://example.com').includes('Download: https://developer.example/file.apk'));
   assert.ok(!appShareText({ ...app, code: '/download/app.apk' }, 'https://example.com').includes('Codice Downloader:'));
 });
 
-test('copy code includes details; share copies only URL and never opens native sharing', async () => {
+test('only copy code is bound and includes details plus the direct download', async () => {
   const original = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
   const events = {};
   const status = { textContent: '' };
@@ -38,15 +40,8 @@ test('copy code includes details; share copies only URL and never opens native s
     attachAppActions(card, { name: 'Test', desc: 'Descrizione', code: '123456', id: 'abc' }, 'https://example.com');
     await events['.copy-app-code']();
     assert.match(copied, /Test\n\nDescrizione\n\nCodice Downloader: 123456/);
-    copied = '';
-    await events['.share-app']();
-    assert.equal(copied, 'https://example.com/?app=apps%3Aabc');
-    copied = '';
-    let nativeCalled = false;
-    navigator.share = async () => { nativeCalled = true; };
-    await events['.share-app']();
-    assert.equal(copied, 'https://example.com/?app=apps%3Aabc');
-    assert.equal(nativeCalled, false);
+    assert.ok(copied.includes('Download: https://go.aftvnews.com/123456'));
+    assert.equal(events['.share-app'],undefined);
   } finally {
     if (original) Object.defineProperty(globalThis, 'navigator', original);
     else delete globalThis.navigator;
