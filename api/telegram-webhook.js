@@ -2,7 +2,7 @@ import { uploadToDropbox } from "./utils/dropbox.js";
 import { createAftvCode } from "./utils/aftv.js";
 import { normalizeAppKey, subscriptionChoices, subscriptionTypes, subscriptionType, subscriptionTypeKey } from "./utils/notification-prefs.js";
 import { buildSearchMessages } from './utils/telegram-search.js';
-import { batteryGuide } from './utils/battery-guide.js';
+import { siteGuides, findSiteGuide } from './utils/site-guides.js';
 
 const BOT_TOKEN = () => process.env.TELEGRAM_BOT_TOKEN;
 const API = () => `https://api.telegram.org/bot${BOT_TOKEN()}`;
@@ -566,36 +566,19 @@ async function handleCallback(cb, token) {
         return;
     }
     if (data === 'guides:list') {
-        await tg(chatId, `📚 *Guide disponibili*\n\nTap per leggerla qui in chat:`, { reply_markup: { inline_keyboard: [
-            [{ text: '🧩 Stremio Mod — Plugin', callback_data: 'g:stremio-mod' }],
-            [{ text: '🎬 Vimu / Stremio 4K', callback_data: 'g:vimu' }],
-            [{ text: '🇮🇹 Lingua Kodi italiana', callback_data: 'g:kodi-lang' }],
-            [{ text: '📺 Kodi + WLTV', callback_data: 'g:kodi-wltv' }],
-            [{ text: '🔋 Risparmio energetico · qualsiasi app', callback_data: 'g:easyproxy' }],
-            [{ text: '🌐 Cloudflare Tunnel — Parte 1', callback_data: 'g:cf1' }],
-            [{ text: '🌐 Cloudflare Tunnel — Parte 2', callback_data: 'g:cf2' }],
-            [{ text: '🌐 Cloudflare Tunnel — Parte 3', callback_data: 'g:cf3' }],
-            [{ text: '🌐 Cloudflare Tunnel — Parte 4', callback_data: 'g:cf4' }],
-            [{ text: '📶 IP/DNS manuale Fire TV', callback_data: 'g:ipdns' }],
-            [{ text: '⬅️ Menu', callback_data: 'menu' }]
+        await tg(chatId, '📚 Guide disponibili — scegli una guida:', {reply_markup:{inline_keyboard:[
+            ...siteGuides.map(g=>[{text:g.title.slice(0,100),callback_data:'g:'+g.key}]),
+            [{text:'⬅️ Menu',callback_data:'menu'}]
         ]}});
         return;
     }
     if (data.startsWith('g:')) {
-        const guides = {
-            'stremio-mod': `🧩 *Stremio Mod — attivare i plugin*\n\n*Android TV / Fire TV*\n1. Installa la Mod Plugin TV ARM 32 bit con Downloader: \`5853956\` (versione 3.3).\n2. Apri Impostazioni → Generale e imposta *Android TV* come interfaccia.\n3. Riavvia Stremio.\n4. Vai in Addons → Aggiungi addons.\n5. Inserisci esattamente:\n\`https://catalogo.stremio-italia.eu/manifest.json\`\n6. Premi OK / Installa.\n7. Torna in Addons → Installato → *Stremio Italia*.\n8. Scorri fino a *Plugin* e installa quello desiderato.\n\nI flussi video si apriranno tramite l’addon Plugin installato. Se Plugin non compare, controlla di usare la Mod Plugin e riavvia l’app.\n\n*Telefono / tablet Android*\nScegli la release [ARM 32 bit](https://github.com/stremiomod/Stremio_APK/releases/tag/mobile) oppure [ARM 64 bit](https://github.com/stremiomod/Stremio_APK/releases/tag/mobile64). Aggiungi lo stesso manifest e installa il plugin dal catalogo; i menu possono variare.\n\nCodici controllati il 7 ottobre 2026: i vecchi 2688418 e 8782188 puntano a file rimossi. Nessun nuovo codice Mobile confermato.\n[Guida sul sito](${PUBLIC()}/#guide-stremio-mod)`,
-            'vimu': `🎬 *Riproduzione 4K live — Vimu / Stremio*\n\n1. Installa Vimu Installer: aftv.news/3188516\n2. Inserisci la chiave:\n\`fea63c49-a7f2-441e-be4a-e75cc36b74d8\`\n3. In *Stremio* → Impostazioni → Riproduzione → Player predefinito → *player esterno*\n4. Audio non automatico in italiano: Vimu → Options → Settings → Content → *Preferred Audio Language* → Italiano`,
-            'kodi-lang': `🇮🇹 *Lingua Italiana Kodi*\n\n1. Installa Kodi: aftv.news/2130077\n2. Kodi → ⚙️ Impostazioni → Interfaccia → *Regional / Regione* → Language → Italiano`,
-            'kodi-wltv': `📺 *Configurazione Kodi + WLTV*\n\n1. Home Kodi → ⚙️ → File → Aggiungi sorgente\n URL: \`http://worldlivetv.github.io/repo/\`\n Nome: *WLTV Repo*\n\n2. Add-ons → Installa da file zip → \`repository.wltv-1.x.x.zip\` → Installa da repository → *WLTV Helper*\n\n3. Home → Add-ons → WLTV Helper → Lista → *Sezione TV*`,
-            'easyproxy': batteryGuide,
-            'cf1': `🌐 *Cloudflare Tunnel — Parte 1 (temporaneo)*\n\n1. *Installa Termux* da F-Droid\n2. *Installa cloudflared*:\n\`pkg update && pkg install cloudflared -y\`\n3. *Tunnel temporaneo*:\n\`cloudflared tunnel --url http://localhost:7860\`\n\n✅ Apparira' un link tipo \`qualcosa.trycloudflare.com\`\n⚠️ Cambia ad ogni riavvio`,
-            'cf2': `🌐 *Cloudflare Tunnel — Parte 2 (fisso, gratis)*\n\n1. *Dominio gratuito*: domain.digitalplat.org → es. \`mioproxy.dpdns.org\`\n2. *Account Cloudflare*: dash.cloudflare.com → + Add → Connect a domain\n3. *Aggiorna nameserver* da DigitalPlat con quelli Cloudflare\n4. *Crea tunnel*: Cloudflare → Networking → Tunnels → Create a Tunnel\n5. *Collega Termux*: OS Debian, ARM64, copia comando "Or, run tunnel (manual)" → incolla su Termux\n6. *Add route* → Public Hostname:\n - Subdomain: vuoto\n - Domain: tuosito.dpdns.org\n - URL: http://localhost:7860`,
-            'cf3': `⚙️ *Cloudflare Tunnel — Parte 3 (gestione)*\n\nSalva comando:\n\`echo "COMANDO_TUNNEL" > ~/tunnel.sh\`\n\`chmod +x ~/tunnel.sh\`\n\nAlias rapido:\n\`echo "alias tunnel='bash ~/tunnel.sh'" >> ~/.bashrc\`\n\`source ~/.bashrc\`\n\nAvvio: \`tunnel\` oppure \`bash ~/tunnel.sh\`\nStop: Ctrl+C`,
-            'cf4': `🚀 *Cloudflare Tunnel — Parte 4 (autostart)*\n\n1. *Termux:Boot* da F-Droid (aprilo almeno una volta)\n2. *Script avvio*:\n\`pkg install nano -y\`\n\`mkdir -p ~/.termux/boot\`\n\`nano ~/.termux/boot/start-tunnel.sh\`\n\n Scrivi nel file:\n\`#!/data/data/com.termux/files/usr/bin/sh\`\n\`termux-wake-lock\`\n\`bash ~/tunnel.sh\`\n\n Salva: Ctrl+X → Y → Invio\n\n3. \`chmod +x ~/.termux/boot/start-tunnel.sh\`\n4. *Disabilita ottimizzazione batteria* per: Termux, Termux:Boot, EasyProxy`,
-            'ipdns': `📶 *IP/DNS manuale Fire TV*\n\nImpostazioni → Rete → seleziona Wi-Fi → tasto *☰* sul telecomando → Avanzate → *Configura IP → Manuale*\n\nInserisci:\n• Indirizzo IP: es. \`192.168.1.50\`\n• Gateway: es. \`192.168.1.1\`\n• Prefisso: \`24\`\n• DNS 1: \`8.8.8.8\`\n• DNS 2: \`8.8.4.4\``
-        };
-        const key = data.substring(2);
-        await tg(chatId, guides[key] || 'Guida non trovata', { reply_markup: { inline_keyboard: [[{ text: '⬅️ Guide', callback_data: 'guides:list' }, { text: '🏠 Menu', callback_data: 'menu' }]] } });
+        const guide=findSiteGuide(data.slice(2));
+        const messages=guide?.messages || ['Guida non trovata'];
+        for (let i=0;i<messages.length;i++) {
+            await tg(chatId,messages[i],{parse_mode:'HTML',link_preview_options:{is_disabled:true},
+                ...(i===messages.length-1?{reply_markup:{inline_keyboard:[[{text:'⬅️ Guide',callback_data:'guides:list'},{text:'🏠 Menu',callback_data:'menu'}]]}}:{})});
+        }
         return;
     }
     if (data === 'admin:dashboard') {

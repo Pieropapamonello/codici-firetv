@@ -764,7 +764,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
 
   <div class="guides-group-title">⚡ Guide rapide Kodi & Stremio</div>
 
-  <details class="adv-guide">
+  <details class="adv-guide" id="guide-vimu">
     <summary>🎬 Riproduzione 4K &amp; live — Vimu / Stremio</summary>
     <div class="guide-body">
       <ol>
@@ -776,7 +776,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     </div>
   </details>
 
-  <details class="adv-guide">
+  <details class="adv-guide" id="guide-kodi-lang">
     <summary>🇮🇹 Impostare lingua Italiana su Kodi</summary>
     <div class="guide-body">
       <ol>
@@ -786,7 +786,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     </div>
   </details>
 
-  <details class="adv-guide">
+  <details class="adv-guide" id="guide-kodi-wltv">
     <summary>📺 Configurazione Kodi + WLTV</summary>
     <div class="guide-body">
       <ol>
@@ -797,7 +797,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     </div>
   </details>
 
-  <details class="adv-guide">
+  <details class="adv-guide" id="guide-kodi-scienziato">
     <summary>🧪 Scienziato Pazzo su Kodi</summary>
     <div class="guide-body">
       <ol>
@@ -809,7 +809,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-v
     </div>
   </details>
 
-  <details class="adv-guide">
+  <details class="adv-guide" id="guide-kodi-startup">
     <summary>📺 Avvio automatico TV (Kodi)</summary>
     <div class="guide-body">
       Impostazioni → Interfaccia → Altro / Skin → <strong>Startup window</strong> → seleziona <strong>TV</strong> → Riavvia Kodi.
@@ -865,120 +865,42 @@ Disattiva Debug ADB se non ti serve. Non esporre la porta ADB su Internet.
     </div>
   </details>
 
-  <details class="adv-guide">
-    <summary>🌐 Esporre EasyProxy su Internet via Cloudflare Tunnel — Parte 1 (link temporaneo)</summary>
+  <details class="adv-guide" id="guide-cloudflare">
+    <summary>🌐 Cloudflare Tunnel — link temporaneo, fisso e avvio automatico</summary>
     <div class="guide-body">
-      <h4>1. Installa Termux sul telefono</h4>
-      <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">f-droid.org/com.termux</a> (NON Play Store)
-
-      <h4>2. Installa cloudflared</h4>
-      <div class="code-snippet">pkg update && pkg install cloudflared -y</div>
-
-      <h4>3. Avvia il tunnel temporaneo</h4>
+      <p>Per pubblicare un servizio HTTP locale da un telefono Android con Termux. Prima verifica che il servizio funzioni: <code>http://localhost:7860</code> è solo un esempio, sostituisci porta e indirizzo con quelli reali. Se il servizio gira sulla TV usa il suo IP locale, non localhost.</p>
+      <p><strong>Sicurezza e limiti:</strong> l'URL espone il servizio a Internet. Configura autenticazione o Cloudflare Access prima di pubblicare dashboard e dati privati; Access può essere incompatibile con alcuni player. Non pubblicare proxy aperti. Per video e file grandi valgono condizioni specifiche: non considerare Tunnel gratuito una soluzione illimitata per streaming.</p>
+      <h4>1. Preparazione e link temporaneo (solo prove)</h4>
+      <p>Installa <a href="https://f-droid.org/en/packages/com.termux/">Termux da F-Droid</a>. Esegui:</p>
+      <div class="code-snippet">pkg update &amp;&amp; pkg install cloudflared nano -y</div>
       <div class="code-snippet">cloudflared tunnel --url http://localhost:7860</div>
-      ✅ Apparirà un link tipo <code class="inline-code">https://qualcosa-random.trycloudflare.com</code><br>
-      ⚠️ Il link cambia ad ogni riavvio
-    </div>
-  </details>
-
-  <details class="adv-guide">
-    <summary>🌐 Cloudflare Tunnel — Parte 2 (link fisso permanente, gratis)</summary>
-    <div class="guide-body">
-      <h4>4. Registra un dominio gratuito</h4>
-      <a href="https://domain.digitalplat.org" target="_blank">domain.digitalplat.org</a> → scegli un nome tipo <code class="inline-code">mioproxy.dpdns.org</code>
-
-      <h4>5. Crea un account Cloudflare gratuito</h4>
-      <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a> → <strong>+ Add</strong> → <strong>Connect a domain</strong> → inserisci il tuo dominio DigitalPlat → Continue
-
-      <h4>6. Copia i nameserver Cloudflare</h4>
-      Cloudflare ti mostrera' 2 nameserver tipo:
-      <div class="code-snippet">daisy.ns.cloudflare.com
-fred.ns.cloudflare.com</div>
-
-      <h4>7. Aggiorna i nameserver su DigitalPlat</h4>
-      DigitalPlat → Domain List → sostituisci i nameserver con quelli di Cloudflare → salva<br>
-      ⏳ Aspetta l'email di conferma da Cloudflare (10 min - 2 ore)
-
-      <h4>8. Crea il tunnel fisso</h4>
-      Cloudflare → menu sinistra → <strong>Networking → Tunnels → Create a Tunnel</strong> → dai un nome (es. pippo) → Save
-
-      <h4>9. Collega Termux al tunnel</h4>
-      Nella pagina del tunnel seleziona: OS <strong>Debian</strong>, Architettura <strong>arm64</strong><br>
-      Copia il comando sotto <strong>"Or, run tunnel (manual)"</strong> e incollalo su Termux<br>
-      ✅ Il tunnel diventera' <strong>Healthy</strong>
-
-      <h4>10. Aggiungi il dominio al tunnel</h4>
-      Cloudflare → Networking → Tunnels → tab <strong>Routes → + Add route → Public Hostname</strong>:
-      <ul>
-        <li>Subdomain: <em>lascia vuoto</em> (o scrivi <code class="inline-code">proxy</code>)</li>
-        <li>Domain: <code class="inline-code">tuosito.dpdns.org</code></li>
-        <li>URL: <code class="inline-code">http://localhost:7860</code></li>
-      </ul>
-      ✅ Il tuo link fisso sara' <code class="inline-code">https://tuosito.dpdns.org</code> per sempre
-    </div>
-  </details>
-
-  <details class="adv-guide">
-    <summary>⚙️ Cloudflare Tunnel — Parte 3 (gestione manuale)</summary>
-    <div class="guide-body">
-      <h4>Salva il comando per avviarlo facilmente</h4>
-      <div class="code-snippet">echo "INSERIRE LINK DEL TUNNEL OTTENUTO nel punto 9" > ~/tunnel.sh
-chmod +x ~/tunnel.sh</div>
-
-      <h4>Aggiungi un alias per avviarlo velocemente</h4>
-      <div class="code-snippet">echo "alias tunnel='bash ~/tunnel.sh'" >> ~/.bashrc
-source ~/.bashrc</div>
-
-      <h4>Avviare il tunnel</h4>
+      <p>Apri l'URL HTTPS trycloudflare.com stampato. Cambia al nuovo avvio; non è un servizio di produzione. Il servizio locale e Termux devono restare attivi.</p>
+      <h4>2. Link fisso (tunnel gestito)</h4>
+      <p>Serve un account Cloudflare e un dominio che controlli configurato su Cloudflare. Il dominio può avere costi; nessuna promessa di dominio gratuito o link eterno. Nel pannello apri Networking → Tunnels, crea un tunnel cloudflared e aggiungi una route pubblica al dominio, con servizio HTTP e indirizzo locale corretto. I nomi dei menu possono variare.</p>
+      <p>Copia il token del connector e sostituisci TOKEN_TUNNEL nel comando seguente. Su Termux usa il pacchetto già installato, non comandi Debian con sudo/systemctl.</p>
+      <div class="code-snippet">cloudflared tunnel --no-autoupdate run --token TOKEN_TUNNEL</div>
+      <p>Controlla che il connector sia Healthy e prova il dominio. Il token è segreto: non inviarlo in chat o pubblicarlo. Se esposto, ruotalo nel pannello.</p>
+      <h4>3. Gestione manuale</h4>
+      <div class="code-snippet">nano ~/tunnel.sh</div>
+      <p>Inserisci il comando completo del punto 2 con il tuo token (oppure quello temporaneo del punto 1). Salva con Ctrl+X, Y, Invio, quindi proteggi lo script:</p>
+      <div class="code-snippet">chmod 700 ~/tunnel.sh</div>
       <div class="code-snippet">bash ~/tunnel.sh</div>
-      oppure semplicemente <code class="inline-code">tunnel</code>
-
-      <h4>Stoppare il tunnel</h4>
-      Premi <strong>Ctrl+C</strong> su Termux oppure chiudi la sessione Termux
-    </div>
-  </details>
-
-  <details class="adv-guide">
-    <summary>🚀 Cloudflare Tunnel — Parte 4 (avvio automatico al boot del telefono)</summary>
-    <div class="guide-body">
-      <p>⚠️ Avviare prima l'app del proxy, scorrere e mettere la spunta su <strong>"Autostart on boot"</strong></p>
-
-      <h4>1. Installa Termux:Boot da F-Droid</h4>
-      <a href="https://f-droid.org/en/packages/com.termux.boot/" target="_blank">f-droid.org/com.termux.boot</a><br>
-      ⚠️ Aprilo almeno una volta dopo l'installazione
-
-      <h4>2. Crea lo script di avvio automatico</h4>
-      <div class="code-snippet">pkg install nano -y
-mkdir -p ~/.termux/boot
+      <p>Per fermarlo premi Ctrl+C nella sessione. Non creare una seconda istanza se il tunnel è già attivo.</p>
+      <h4>4. Avvio automatico sul telefono (facoltativo)</h4>
+      <p>Installa <a href="https://f-droid.org/en/packages/com.termux.boot/">Termux:Boot da F-Droid</a> e aprilo almeno una volta. Crea lo script:</p>
+      <div class="code-snippet">mkdir -p ~/.termux/boot
 nano ~/.termux/boot/start-tunnel.sh</div>
-      Scrivi queste 3 righe nel file:
+      <p>Inserisci queste righe, poi salva:</p>
       <div class="code-snippet">#!/data/data/com.termux/files/usr/bin/sh
 termux-wake-lock
 bash ~/tunnel.sh</div>
-      Salva: <strong>Ctrl+X → Y → Invio</strong>
-
-      <h4>3. Rendi lo script eseguibile</h4>
-      <div class="code-snippet">chmod +x ~/.termux/boot/start-tunnel.sh</div>
-
-      <h4>4. Verifica che il file sia corretto</h4>
-      <div class="code-snippet">cat ~/.termux/boot/start-tunnel.sh</div>
-      ✅ Devono apparire esattamente le 3 righe sopra
-
-      <h4>5. Disabilita ottimizzazione batteria</h4>
-      Impostazioni Android → App → fai <strong>"Nessuna restrizione"</strong> per:
-      <ul style="list-style:none;padding-left:0;">
-        <li>✅ Termux</li>
-        <li>✅ Termux:Boot</li>
-        <li>✅ EasyProxy</li>
-      </ul>
-
-      <p style="margin-top:14px;padding:10px;background:rgba(16,185,129,0.1);border-left:3px solid #10b981;border-radius:6px;">
-      <strong>Risultato finale:</strong> Ad ogni riaccensione del telefono → 🔒 Wake lock attivo (Termux rimane sveglio in background) → 🚀 Tunnel Cloudflare parte automaticamente.<br>
-      📲 EasyProxy va avviata manualmente oppure impostata su "avvia all'avvio" nelle sue impostazioni.</p>
+      <div class="code-snippet">chmod 700 ~/.termux/boot/start-tunnel.sh</div>
+      <p>Nelle impostazioni Android consenti l'attività in background per Termux, Termux:Boot e l'app del servizio. Avvia anche il servizio locale: lo script avvia solo il tunnel. Dopo un riavvio verifica il funzionamento; Android può comunque interrompere i processi. Il wake lock aumenta il consumo.</p>
+      <p>Fonti: <a href="https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/">Quick Tunnels</a> · <a href="https://developers.cloudflare.com/tunnel/reference/tunnel-tokens/">Token</a> · <a href="https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/">Limiti video e file grandi</a>.</p>
     </div>
   </details>
 
-  <details class="adv-guide">
+  <details class="adv-guide" id="guide-ipdns">
     <summary>📶 Fire TV — Configurare IP/DNS manualmente</summary>
     <div class="guide-body">
       <p><strong>Metodo direttamente dalla Fire TV</strong></p>
@@ -1245,7 +1167,7 @@ function openFamilyGuide(family) {
   if (guide) { guide.open = true; guide.querySelector('summary').focus(); guide.scrollIntoView({block:'center'}); }
 }
 function openLinkedGuide() {
-  if (!['#guide-stremio-mod', '#guide-dublift'].includes(location.hash)) return;
+  if (!/^#guide-[a-z-]+$/.test(location.hash) || !document.querySelector(location.hash+'.adv-guide')) return;
   document.getElementById('catalog-guides').open = true;
   const guide = document.querySelector(location.hash);
   guide.open = true;
