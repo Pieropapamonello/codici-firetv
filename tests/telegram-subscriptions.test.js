@@ -52,6 +52,21 @@ test('explicit subscriptions start empty, group variants, edit in place and requ
         assert.deepEqual(user.apps,['Nuvio']);
         assert.equal(isAppEnabled(user,apps.a.name),true);assert.equal(isAppEnabled(user,apps.b.name),true);
         assert.equal(isAppEnabled(user,apps.c.name),false);
+        apps.tv={name:'Stremio TV Mod'};
+        apps.mobile={name:'Stremio Mobile Mod 64bit'};
+        apps.official={name:'Stremio 1.10.4 ARM TV'};
+        user.apps.push('Stremio');
+        await click('sub:pick:0:stremio');
+        assert.ok(user.apps.includes('Stremio')); // Opening the submenu does not change settings.
+        const typeMenu=messages.filter(m=>m.url.endsWith('/editMessageText')).at(-1).body;
+        const tvChoice=typeMenu.reply_markup.inline_keyboard.flat().find(b=>b.text.includes('TV Mod'));
+        await click(tvChoice.callback_data);
+        assert.deepEqual(user.apps,['Nuvio','type:Stremio TV Mod 32 bit']);
+        assert.equal(isAppEnabled(user,'Stremio TV Mod v4.0'),true);
+        assert.equal(isAppEnabled(user,'Stremio Mobile Mod 64bit'),false);
+        assert.equal(isAppEnabled(user,'Stremio 1.11.0 ARM TV'),false);
+        await click(tvChoice.callback_data);
+        assert.deepEqual(user.apps,['Nuvio']);
         await click('sub:confirmall');assert.deepEqual(user.apps,['Nuvio']);
         await click('sub:setall');assert.deepEqual(user.apps,['all']);
         await click('sub:pause');assert.deepEqual(user.apps,[]);
