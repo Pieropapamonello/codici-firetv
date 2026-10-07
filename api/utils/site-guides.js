@@ -38,3 +38,7 @@ export function findSiteGuide(key) {
     const canonical=key==='easyproxy'?'battery-app':key==='cloudflare'?'cf1':key;
     return siteGuides.find(g=>g.key===canonical);
 }
+
+export function guidePage(guide) {
+    return `<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(guide.title)} · Il Covo di Nello</title><style>body{font:17px/1.65 system-ui,sans-serif;color:#292623;background:#fffaf6;margin:0;padding:24px}main{max-width:760px;margin:auto}a{color:#ad3b17}article{background:white;border:1px solid #ead6ca;border-radius:16px;padding:24px;margin-top:20px;white-space:pre-wrap;overflow-wrap:anywhere}code{display:inline-block;max-width:100%;overflow-wrap:anywhere;background:#f4eee9;padding:4px 8px;border-radius:6px;font-size:14px}a:focus-visible{outline:3px solid #ed8c32}</style></head><body><main><a href="/">🐾 Il Covo di Nello — Tutte le app e guide</a><article>${guide.messages.join('\n\n')}</article></main></body></html>`;
+}

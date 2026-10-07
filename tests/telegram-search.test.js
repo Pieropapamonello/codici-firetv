@@ -31,7 +31,7 @@ test('variant name and adjacent icon link directly to its download, with a copya
     assert.ok(shared.includes('Stremio ARM 32 bit'));
     assert.ok(shared.includes('https://example.com/32.apk'));
     assert.ok(shared.includes('Codice Downloader: 123456'));
-    assert.ok(shared.includes('app=apps%3Aarm32'));
+    assert.ok(!shared.includes('Scheda app:'));
     assert.ok(!shared.includes('64.apk'));
     assert.equal($(links[1]).text(),'⬇️');
     assert.equal($(links[1]).attr('href'),'https://example.com/32.apk');
@@ -45,7 +45,8 @@ test('WhatsApp shares the applicable guide only for the selected app variant',()
         const [message]=buildSearchMessages([{name,code:'https://example.com/app.apk'}],'https://ilcovodinello.onrender.com');
         const $=load(message.text);
         const shared=new URL($('a').first().attr('href')).searchParams.get('text');
-        assert.ok(shared.includes('/#guide-'+guide));
+        assert.ok(shared.includes('/guide/'+guide));
+        assert.ok(!shared.includes('Scheda app:'));
         assert.ok(shared.includes(name));
         assert.ok(shared.split('\n\n').length>=4);
     }

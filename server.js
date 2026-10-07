@@ -1,6 +1,7 @@
 import express from 'express';
 import cron from 'node-cron';
 import { createCronRunner } from './api/utils/cron-runner.js';
+import {findSiteGuide,guidePage} from './api/utils/site-guides.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -76,6 +77,12 @@ app.all('/api/app-action', (req, res) => appActionHandler(req, res));
 
 app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
+
+app.get('/guide/:key', (req,res)=>{
+    const guide=findSiteGuide(req.params.key);
+    if(!guide) return res.status(404).type('text').send('Guida non trovata');
+    res.type('html').send(guidePage(guide));
 });
 
 app.get('*', (req, res) => {

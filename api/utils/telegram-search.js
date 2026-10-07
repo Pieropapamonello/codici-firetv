@@ -1,6 +1,6 @@
 import { iconFamily } from '../../public/catalog-icons.js';
 import { catalogMetadata } from '../../public/catalog-metadata.js';
-import { downloaderCode, appShareUrl } from '../../public/app-sharing.js';
+import { downloaderCode } from '../../public/app-sharing.js';
 import { downloadIdentity } from './catalog-duplicates.js';
 import { subscriptionTypeKey } from './notification-prefs.js';
 const escape = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -34,8 +34,7 @@ export function buildSearchMessages(entries, origin) {
                     app.name, description,
                     code ? `Codice Downloader: ${code}` : '',
                     `${app.downloadKind==='page'?'Pagina':'Download'}: ${app.url}`,
-                    app.id ? `Scheda app: ${appShareUrl(app,origin)}` : '',
-                    guide ? `Guida: ${new URL('/#guide-'+guide,origin).href}` : ''
+                    guide ? `Guida: ${new URL('/guide/'+guide,origin).href}` : ''
                 ].filter(Boolean).join('\n\n');
                 const whatsapp = 'https://wa.me/?text='+encodeURIComponent(shareText);
                 return `<a href="${escape(whatsapp)}"><b>${escape(label)}</b></a> <a href="${escape(app.url)}">${app.downloadKind==='page'?'↗️':'⬇️'}</a>${code ? '\nCodice Downloader: <code>'+escape(code)+'</code>' : ''}`;

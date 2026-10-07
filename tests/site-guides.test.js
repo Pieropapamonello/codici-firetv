@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {siteGuides,findSiteGuide} from '../api/utils/site-guides.js';
+import {siteGuides,findSiteGuide,guidePage} from '../api/utils/site-guides.js';
 import {load} from 'cheerio';
 
 test('all site guides are available on Telegram with stable IDs and bounded HTML messages',()=>{
@@ -21,4 +21,11 @@ test('all site guides are available on Telegram with stable IDs and bounded HTML
     assert.equal(findSiteGuide('easyproxy'),findSiteGuide('battery-app'));
     assert.ok(findSiteGuide('cf4').messages.join('').includes('Termux:Boot'));
     assert.ok(findSiteGuide('cf2').messages.join('').includes('domain.digitalplat.org'));
+});
+
+test('dedicated app guide page contains only the chosen guide, not the home catalog',()=>{
+    const html=guidePage(findSiteGuide('stremio-mod'));
+    assert.ok(html.includes('catalogo.stremio-italia.eu/manifest.json'));
+    assert.ok(!html.includes('DubLift'));
+    assert.ok(!html.includes('id="catalog-guides"'));
 });
