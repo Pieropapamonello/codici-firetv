@@ -7,7 +7,9 @@ header > img, body.lite-mode header > img { width: 142px; height: 165px; object-
 header > img:hover { transform: none; box-shadow: none; }
 header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-serif; font-size: clamp(28px,5vw,40px); text-shadow: none; margin: 8px 0; }
 .nello-tagline { color: #795342; font-size: 15px; margin: 0 0 16px; }
-#bookmark-site { margin-bottom: 12px; }
+#bookmark-site { margin-bottom: 0; }
+.header-actions .app-action { min-height:40px; padding:8px 12px; font-size:13px; }
+.header-actions [hidden] { display:none !important; }
 .bookmark-site-help { max-width: 580px; margin: 0 auto 16px; padding: 12px 20px; border: 1px solid #dfcabc; border-radius: 12px; background: #fff; text-align: left; font-size: 14px; line-height: 1.7; }
 .bookmark-site-help[hidden] { display: none; }
 .bookmark-site-help ul { padding-left: 20px; }
