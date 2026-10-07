@@ -2,6 +2,7 @@ import express from 'express';
 import cron from 'node-cron';
 import { createCronRunner } from './api/utils/cron-runner.js';
 import {findSiteGuide,guidePage} from './api/utils/site-guides.js';
+import {registerPublicCommands} from './api/utils/telegram-commands.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -142,6 +143,9 @@ app.listen(PORT, '0.0.0.0', () => {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const publicUrl = process.env.PUBLIC_URL || 'https://ilcovodinello.onrender.com';
     if (botToken) {
+        void registerPublicCommands(botToken)
+            .then(()=>console.log('Telegram commands: main menu only'))
+            .catch(()=>console.error('Telegram command registration failed'));
         const webhookUrl = `${publicUrl}/api/telegram-webhook`;
         fetch(`https://api.telegram.org/bot${botToken}/setWebhook?url=${encodeURIComponent(webhookUrl)}`)
             .then(r => r.json())
