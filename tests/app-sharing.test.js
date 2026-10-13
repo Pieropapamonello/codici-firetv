@@ -29,6 +29,15 @@ test('copied payload contains name, description, code and direct download instea
   assert.ok(!appShareText({ ...app, code: '/download/app.apk' }, 'https://example.com').includes('Codice Downloader:'));
 });
 
+test('share title omits duplicate code suffix but retains version and architecture', () => {
+  const app={name:'TizenTube 2.0.1 ARM 32 bit — codice 5483455',downloaderCode:'5483455',code:'https://example.com/app.apk',desc:'Descrizione'};
+  const text=appShareText(app,'https://example.com');
+  assert.ok(text.startsWith('TizenTube 2.0.1 ARM 32 bit\n\n'));
+  assert.equal(text.match(/5483455/g).length,1);
+  assert.ok(text.includes('Codice Downloader: 5483455'));
+  assert.ok(appShareText({...app,name:'Player 123456'},'https://example.com').startsWith('Player 123456\n'));
+});
+
 test('only copy code is bound and includes details plus the direct download', async () => {
   const original = Object.getOwnPropertyDescriptor(globalThis, 'navigator');
   const events = {};

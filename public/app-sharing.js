@@ -27,7 +27,8 @@ export function appShareText(app, origin) {
     const url = new URL(direct,origin);
     direct = ['http:','https:'].includes(url.protocol) ? url.href : '';
   } catch { direct = ''; }
-  return [app.name, app.desc, code ? `Codice Downloader: ${code}` : '',
+  const name = code ? String(app.name || '').replace(new RegExp(`\\s*[—–-]\\s*codice(?:\\s+Downloader)?\\s*:?\\s*${code}\\s*$`, 'i'), '').trim() : app.name;
+  return [name, app.desc, code ? `Codice Downloader: ${code}` : '',
     direct ? `Download: ${direct}` : ''].filter(Boolean).join('\n\n');
 }
 
