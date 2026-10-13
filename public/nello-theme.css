@@ -122,3 +122,20 @@ header h1, body.lite-mode header h1 { color: #262321; font-family: 'Inter',sans-
 #main-content .variant-list .download-label strong { font-weight:500; }
 #main-content .family-apps > .card:nth-child(even) { background:#fff9f3 !important; }
 #main-content .app-variants > summary:focus-visible { outline:2px solid #aa3c17; outline-offset:2px; }
+
+/* Phones: names get a full row; controls share aligned columns below. */
+@media(max-width:600px) {
+  #main-content .family-apps .card { grid-template-columns:24px minmax(0,1fr); gap:8px 8px; padding:10px 0 !important; }
+  #main-content .card .download-row img { grid-column:1; grid-row:1; }
+  #main-content .card .download-label { grid-column:2; grid-row:1; font-size:14px; line-height:1.45; word-break:normal; }
+  #main-content .card .app-actions { grid-column:1/-1; grid-row:2; width:100%; min-width:0; grid-template-columns:minmax(0,1fr) 60px minmax(0,1.5fr); gap:6px; }
+  #main-content .card .app-action { min-width:0; min-height:44px; padding:6px 4px; font-size:12px; line-height:1.3; }
+  #main-content .card .copy-app-code { flex-wrap:wrap; gap:2px 4px; }
+  #main-content .card .copy-app-code strong { margin:0; }
+  #main-content .variant-list .download-row img { display:none; }
+  #main-content .variant-list .download-label { grid-column:1/-1; }
+  #main-content .card .app-action-status, #main-content .card .admin-controls { grid-column:1/-1; }
+  #main-content .app-variants > summary { grid-template-columns:24px minmax(0,1fr) auto; gap:8px; min-height:44px; font-size:14px; }
+  #main-content .app-variants > summary strong { min-width:0; overflow-wrap:anywhere; }
+  #main-content .variants-toggle { white-space:nowrap; }
+}

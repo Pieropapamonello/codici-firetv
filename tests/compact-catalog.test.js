@@ -23,3 +23,13 @@ test('category panels have one shared description and compact per-variant downlo
     assert.match(categoryDescription('Browser Internet'),/Browser per navigare/);
     assert.match(categoryDescription('Android su Windows'),/non installare/);
 });
+
+test('phone rows give titles their own line and keep all actions below',()=>{
+    const css=readFileSync(new URL('../public/nello-theme.css',import.meta.url),'utf8');
+    const mobile=css.slice(css.lastIndexOf('@media(max-width:600px)'));
+    assert.ok(mobile.includes('grid-template-columns:24px minmax(0,1fr);'));
+    assert.ok(mobile.includes('grid-column:1/-1; grid-row:2;'));
+    assert.ok(mobile.includes('grid-template-columns:minmax(0,1fr) 60px minmax(0,1.5fr)'));
+    assert.ok(mobile.includes('.variant-list .download-label { grid-column:1/-1; }'));
+    assert.ok(mobile.includes('grid-template-columns:24px minmax(0,1fr) auto;'));
+});
