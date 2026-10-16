@@ -43,6 +43,9 @@ export function iconFamily(name = '') {
 }
 
 const canonical = {
+  Sunshine: 'https://raw.githubusercontent.com/LizardByte/Sunshine/master/src_assets/common/assets/web/public/images/logo-sunshine-45.png',
+  'ReVanced Manager': 'https://github.com/ReVanced.png',
+  'ReVanced GmsCore': 'https://github.com/ReVanced.png',
   Moonlight: 'https://raw.githubusercontent.com/moonlight-stream/moonlight-android/master/app/src/main/res/mipmap-hdpi/ic_launcher.png',
   DubLift: '/assets/dublift.png',
   Nuvio: '/assets/nuvio-official.png',
