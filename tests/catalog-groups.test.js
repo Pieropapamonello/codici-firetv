@@ -2,6 +2,16 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { groupCatalog, appGroupKey } from '../public/catalog-groups.js';
 
+test('official Moonlight standard and root APKs share one family',()=>{
+  const groups=groupCatalog([
+    {name:'Moonlight 12.2 Standard senza root',category:'Giochi ed emulazione',code:'https://github.com/moonlight-stream/moonlight-android/releases/download/v12.2/app-nonRoot-release.apk'},
+    {name:'Moonlight 12.2 Root',category:'Giochi ed emulazione',code:'https://github.com/moonlight-stream/moonlight-android/releases/download/v12.2/app-root-release.apk'},
+  ]);
+  assert.equal(groups.length,1);
+  assert.equal(groups[0].name,'Moonlight');
+  assert.equal(groups[0].variants.length,2);
+});
+
 test('TV/Mobile, beta/stable and architectures share one card without losing variants', () => {
   const apps = ['Nuvio Fire TV','Nuvio TV Stabile 1.0.0 ARM 32 bit','Nuvio Mobile Beta 0.4.26 ARM 64 bit'].map((name,id) => ({name,id:String(id),type:'apps',category:'Media center',code:String(id)}));
   const groups = groupCatalog(apps);

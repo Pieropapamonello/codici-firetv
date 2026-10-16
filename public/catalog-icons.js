@@ -43,6 +43,7 @@ export function iconFamily(name = '') {
 }
 
 const canonical = {
+  Moonlight: 'https://raw.githubusercontent.com/moonlight-stream/moonlight-android/master/app/src/main/res/mipmap-hdpi/ic_launcher.png',
   DubLift: '/assets/dublift.png',
   Nuvio: '/assets/nuvio-official.png',
   Stremio: '/assets/stremio.png',

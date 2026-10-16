@@ -4,6 +4,7 @@ const rows = [];
 const add = (names, category, desc, source = 'https://linktr.ee/kpfire') => {
   for (const name of names.split('|')) rows.push({name,category,desc,source,metadataVerified:true});
 };
+add('Moonlight', 'Giochi ed emulazione', 'Client open source per giocare in streaming dal proprio PC tramite Sunshine o un host GameStream compatibile. Il gioco viene eseguito sul PC, che deve restare acceso. Su Android e Fire TV usa normalmente la variante standard senza root; la build root è destinata ai dispositivi con root.', 'https://github.com/moonlight-stream/moonlight-android');
 add('DubLift', 'Componenti aggiuntivi per Stremio e Nuvio', 'Server addon per Stremio e Nuvio: combina le proprie sorgenti video con audio italiano sincronizzato. Include FFmpeg e dashboard di configurazione; deve restare in esecuzione durante la riproduzione. Richiede Android 7.1 o superiore. Scegli ARM 32 bit o ARM 64 bit secondo il sistema Android del dispositivo.', 'https://github.com/joojoooo/DubLiftApp');
 add('Aplayer|BS Player|CSPlayer|HB Player|Kshaw|MediaON Player|NV Player|Sofa Player|UVX Player|Viewella|XP Player', 'Lettori video', 'Lettore per aprire file o indirizzi video. Non include un abbonamento TV; verifica i formati e il dispositivo supportati dalla variante.');
 add('1 Tap Cleaner|All In One Toolbox|Avast Cleanup|AVG Cleaner|CCleaner', 'Pulizia e manutenzione Android', 'Strumento per analizzare memoria e file da ripulire su Android. Controlla cosa verrà eliminato prima di confermare; non è un lettore TV.');
