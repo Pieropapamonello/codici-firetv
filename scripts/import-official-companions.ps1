@@ -1,6 +1,6 @@
-param([switch]$Apply)
+param([switch]$Apply, [string]$PlanScript = "$PSScriptRoot/official-companions.mjs")
 $ErrorActionPreference='Stop'
-$entries = node "$PSScriptRoot/official-companions.mjs" | ConvertFrom-Json
+$entries = node $PlanScript | ConvertFrom-Json
 if ($LASTEXITCODE -ne 0 -or -not $entries.Count) { throw 'Piano non disponibile' }
 if (-not $Apply) { $entries | ForEach-Object {$_.app} | Select-Object name,category; exit }
 $config=(node -e "console.log(JSON.stringify(require('dotenv').config({quiet:true}).parsed))")|ConvertFrom-Json

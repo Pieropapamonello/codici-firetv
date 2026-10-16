@@ -4,6 +4,8 @@ const rows = [];
 const add = (names, category, desc, source = 'https://linktr.ee/kpfire') => {
   for (const name of names.split('|')) rows.push({name,category,desc,source,metadataVerified:true});
 };
+add('S0undTV', 'Video e Twitch', 'Client non ufficiale di Twitch progettato per Android TV e telecomando, non affiliato a Twitch. Scegli Stabile per uso normale o Beta per le funzioni sperimentali.', 'https://github.com/S0und/S0undTV');
+add('RustDesk', 'Accesso remoto', 'Accesso remoto open source tra dispositivi autorizzati. Su Android il controllo dipende dal sistema e dai permessi concessi; non e un telecomando Fire TV dedicato. Non condividere codici o password con sconosciuti.', 'https://github.com/rustdesk/rustdesk');
 add('Sunshine', 'Game streaming - Server per PC', 'Server open source da installare sul computer per trasmettere giochi a Moonlight. Non si installa su Fire TV o Android. Scegli il pacchetto per il sistema operativo del PC; i pacchetti Alpine .apk sono per Linux, non per Android.', 'https://github.com/LizardByte/Sunshine');
 add('ReVanced Manager', 'Personalizzazione app Android', 'Strumento ufficiale per applicare patch ReVanced ad app Android compatibili. Non include YouTube gia modificato. Scegli Stabile per uso normale o Sviluppo per le build sperimentali.', 'https://github.com/ReVanced/revanced-manager');
 add('ReVanced GmsCore|microG Services (GmsCore)', 'Servizi di compatibilità Android', 'Componente ReVanced basato su microG richiesto da alcune app con patch GmsCore. Sono disponibili le varianti Standard e Huawei. Non e un lettore video.', 'https://github.com/ReVanced/GmsCore');

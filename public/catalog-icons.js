@@ -43,6 +43,8 @@ export function iconFamily(name = '') {
 }
 
 const canonical = {
+  S0undTV: 'https://play-lh.googleusercontent.com/c6Ol0HocFNr74WvnfL46PN4_7uzWonJQbVPsNhuecNmfyY_fPJEW-X-tCCs8LVogBusxMQIxkIXuiIUdYnYS=s180',
+  RustDesk: 'https://raw.githubusercontent.com/rustdesk/rustdesk/master/flutter/android/app/src/main/res/mipmap-hdpi/ic_launcher.png',
   Sunshine: 'https://raw.githubusercontent.com/LizardByte/Sunshine/master/src_assets/common/assets/web/public/images/logo-sunshine-45.png',
   'ReVanced Manager': 'https://github.com/ReVanced.png',
   'ReVanced GmsCore': 'https://github.com/ReVanced.png',
